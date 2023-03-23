@@ -1,2 +1,2 @@
-# web_programiranje_projekat
+# WEB PROGRAMIRANJE - projekat
 Web sistem za kreiranje događaja
