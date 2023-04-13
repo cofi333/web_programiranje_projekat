@@ -11850,7 +11850,35 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+<<<<<<< HEAD
 body {
+=======
+.navbar-nav {
+  gap: 15px;
+}
+
+.links .nav-link {
+  color: #fff;
+}
+
+.buttons .create_event_btn, .buttons .log_in_btn {
+  background-color: #009DFF;
+  border-radius: 5px;
+}
+.buttons .create_event_btn .nav-link, .buttons .log_in_btn .nav-link {
+  color: #fff;
+}
+.buttons .sign_up_btn {
+  background-color: #5EDFFF;
+  border-radius: 5px;
+  color: #fff;
+}
+.buttons .sign_up_btn .nav-link {
+  color: #fff;
+}
+
+#sign_up_body {
+>>>>>>> a1011694b5fd00e5988819474ca5159be567522a
   background-image: url("../images/background_image.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -11859,7 +11887,11 @@ body {
 .hero {
   padding: 100px;
 }
+<<<<<<< HEAD
 
 .form {
+=======
+.hero form {
+>>>>>>> a1011694b5fd00e5988819474ca5159be567522a
   background-color: #009DFF;
 }
