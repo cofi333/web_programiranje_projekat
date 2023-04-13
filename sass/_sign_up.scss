@@ -1,4 +1,4 @@
-body {
+#sign_up_body {
     background-image:url('../images/background_image.png');
     background-repeat: no-repeat;
     background-size:cover;
@@ -6,8 +6,12 @@ body {
 
 .hero {
     padding:100px;
+
+    form {
+        background-color: #009DFF;
+    }
+
+    
 }
 
-.form {
-    background-color: #009DFF;
-}
+
