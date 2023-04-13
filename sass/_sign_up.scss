@@ -8,9 +8,55 @@
     padding:100px;
 
     form {
+        padding:30px 55px;
         background-color: #009DFF;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+
+        .form-group {
+            padding:15px 0;
+
+            label {
+                color: #FFFFFF;
+                font-size: 24px;
+                padding:5px 0;
+            }
+
+            input::placeholder {
+                color:#009DFF;
+            }
+        }
+
+        .sign_up {
+            display: flex;
+            justify-content: end;
+            padding:15px 0;
+            .btn {
+                background-color: #BD1EB8;
+                color:#fff;
+                padding:6px 40px;
+                font-size: 18px;
+               
+            }
+        }
+
+        .log_in {
+            font-size: 24px;
+            padding:15px 0;
+
+            span {
+                color:#FFFFFF;
+            }
+
+            a {
+                text-decoration: none;
+                color:#5EDFFF;
+            }
+        }
     }
 
+ 
     
 }
 

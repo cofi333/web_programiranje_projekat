@@ -11884,5 +11884,42 @@ textarea.form-control-lg {
   padding: 100px;
 }
 .hero form {
+  padding: 30px 55px;
   background-color: #009DFF;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.hero form .form-group {
+  padding: 15px 0;
+}
+.hero form .form-group label {
+  color: #FFFFFF;
+  font-size: 24px;
+  padding: 5px 0;
+}
+.hero form .form-group input::placeholder {
+  color: #009DFF;
+}
+.hero form .sign_up {
+  display: flex;
+  justify-content: end;
+  padding: 15px 0;
+}
+.hero form .sign_up .btn {
+  background-color: #BD1EB8;
+  color: #fff;
+  padding: 6px 40px;
+  font-size: 18px;
+}
+.hero form .log_in {
+  font-size: 24px;
+  padding: 15px 0;
+}
+.hero form .log_in span {
+  color: #FFFFFF;
+}
+.hero form .log_in a {
+  text-decoration: none;
+  color: #5EDFFF;
 }
