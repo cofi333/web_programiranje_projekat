@@ -11929,6 +11929,16 @@ textarea.form-control-lg {
   background-repeat: no-repeat;
   background-size: cover;
 }
+#login_body .login {
+  padding-top: 10em;
+  display: flex;
+  gap: 5em;
+  justify-content: center;
+  align-items: center;
+}
+#login_body .login form {
+  background-color: #009DFF;
+}
 
 * {
   padding: 0;

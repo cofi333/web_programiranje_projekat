@@ -2,4 +2,19 @@
     background-image: url(/images/background_image.png);
     background-repeat: no-repeat;
     background-size: cover;
+
+    .login{
+        
+        padding-top: 10em;
+        display: flex;
+        gap: 5em;
+        justify-content: center;
+        align-items: center;
+
+        form{
+            background-color: #009DFF;
+        }
+    }
 }
+
+
