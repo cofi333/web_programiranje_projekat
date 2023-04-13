@@ -11925,19 +11925,22 @@ textarea.form-control-lg {
 }
 
 #login_body {
-  background-image: url(/images/background_image.png);
+  background-image: url("../images/background_image.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
-#login_body .login {
-  padding-top: 10em;
+
+.login {
   display: flex;
-  gap: 5em;
   justify-content: center;
-  align-items: center;
+  padding-top: 10em;
+  gap: 1em;
 }
-#login_body .login form {
+.login form {
   background-color: #009DFF;
+  width: 35%;
+  padding: 2em;
+  color: white;
 }
 
 * {

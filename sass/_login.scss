@@ -1,20 +1,21 @@
 #login_body{
-    background-image: url(/images/background_image.png);
+    background-image:url('../images/background_image.png');
     background-repeat: no-repeat;
     background-size: cover;
-
-    .login{
-        
-        padding-top: 10em;
-        display: flex;
-        gap: 5em;
-        justify-content: center;
-        align-items: center;
-
-        form{
-            background-color: #009DFF;
-        }
+}
+.login{
+    display: flex;
+    //width: 100%;
+    justify-content: center;
+    padding-top: 10em;
+    gap: 1em;
+    form{
+        background-color: #009DFF;
+        width: 35%;
+        padding: 2em;
+        color: white;
     }
 }
 
 
+      
