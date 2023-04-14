@@ -9,59 +9,68 @@
 
     padding: 100px 0;
 
-    
-    form {
-        padding:30px 55px;
-        background-color: #009DFF;
-        height: 100%;
-       
-        .form-group {
-            padding:15px 0;
-
-            label {
-                color: #FFFFFF;
-                font-size: 24px;
-                padding:5px 0;
-            }
-
-            input::placeholder {
-                color:#009DFF;
-            }
-        }
-
-        .sign_up {
-            display: flex;
-            justify-content: end;
-            padding:15px 0;
-            .btn {
-                background-color: #BD1EB8;
-                color:#fff;
-                padding:6px 40px;
-                font-size: 18px;
-               
-            }
-        }
-
-        .log_in {
-            font-size: 24px;
-            padding:15px 0;
-
-            span {
-                color:#FFFFFF;
-            }
-
-            a {
-                text-decoration: none;
-                color:#5EDFFF;
-            }
-        }
+    .content {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
     }
 
     .picture {
         display: flex;
-        justify-content: end;
+        justify-content: center;
     }
+
  
+    .form {
+        width: 60%;
+
+        form {
+            padding:30px 55px;
+            background-color: #009DFF;
+            height: 100%;
+           
+            .form-group {
+                padding:15px 0;
+    
+                label {
+                    color: #FFFFFF;
+                    font-size: 24px;
+                    padding:5px 0;
+                }
+    
+                input::placeholder {
+                    color:#009DFF;
+                }
+            }
+    
+            .sign_up {
+                display: flex;
+                justify-content: end;
+                padding:15px 0;
+                .btn {
+                    background-color: #BD1EB8;
+                    color:#fff;
+                    padding:6px 40px;
+                    font-size: 18px;
+                   
+                }
+            }
+    
+            .log_in {
+                font-size: 24px;
+                padding:15px 0;
+    
+                span {
+                    color:#FFFFFF;
+                }
+    
+                a {
+                    text-decoration: none;
+                    color:#5EDFFF;
+                }
+            }
+        }
+    }
     
 }
 
@@ -75,6 +84,7 @@
 
         .content {
             gap: 10px;
+            flex-direction: column;
         }
 
         form {
@@ -85,14 +95,11 @@
         .picture {
             order: 2;
             padding: 0;
-            justify-content: center;
-            
-            
-
         }
 
         .form {
             padding: 0;
+            width: 100%;
         }
     }
  }

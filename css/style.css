@@ -11900,47 +11900,55 @@ textarea.form-control-lg {
 .hero_sign_up {
   padding: 100px 0;
 }
-.hero_sign_up form {
+.hero_sign_up .content {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.hero_sign_up .picture {
+  display: flex;
+  justify-content: center;
+}
+.hero_sign_up .form {
+  width: 60%;
+}
+.hero_sign_up .form form {
   padding: 30px 55px;
   background-color: #009DFF;
   height: 100%;
 }
-.hero_sign_up form .form-group {
+.hero_sign_up .form form .form-group {
   padding: 15px 0;
 }
-.hero_sign_up form .form-group label {
+.hero_sign_up .form form .form-group label {
   color: #FFFFFF;
   font-size: 24px;
   padding: 5px 0;
 }
-.hero_sign_up form .form-group input::placeholder {
+.hero_sign_up .form form .form-group input::placeholder {
   color: #009DFF;
 }
-.hero_sign_up form .sign_up {
+.hero_sign_up .form form .sign_up {
   display: flex;
   justify-content: end;
   padding: 15px 0;
 }
-.hero_sign_up form .sign_up .btn {
+.hero_sign_up .form form .sign_up .btn {
   background-color: #BD1EB8;
   color: #fff;
   padding: 6px 40px;
   font-size: 18px;
 }
-.hero_sign_up form .log_in {
+.hero_sign_up .form form .log_in {
   font-size: 24px;
   padding: 15px 0;
 }
-.hero_sign_up form .log_in span {
+.hero_sign_up .form form .log_in span {
   color: #FFFFFF;
 }
-.hero_sign_up form .log_in a {
+.hero_sign_up .form form .log_in a {
   text-decoration: none;
   color: #5EDFFF;
-}
-.hero_sign_up .picture {
-  display: flex;
-  justify-content: end;
 }
 
 @media (max-width: 991.98px) {
@@ -11949,6 +11957,7 @@ textarea.form-control-lg {
   }
   .hero_sign_up .content {
     gap: 10px;
+    flex-direction: column;
   }
   .hero_sign_up form {
     order: 1;
@@ -11956,10 +11965,10 @@ textarea.form-control-lg {
   .hero_sign_up .picture {
     order: 2;
     padding: 0;
-    justify-content: center;
   }
   .hero_sign_up .form {
     padding: 0;
+    width: 100%;
   }
 }
 @media (max-width: 767.98px) {
@@ -12015,6 +12024,45 @@ textarea.form-control-lg {
   padding: 0.2em 2em;
 }
 
+footer {
+  background-color: #009DFF;
+  padding: 3em 0;
+}
+footer .row {
+  align-items: center;
+}
+footer .type {
+  display: flex;
+  list-style: none;
+  gap: 0.7em;
+  padding-left: 0;
+  margin: 0;
+}
+footer .type li a {
+  text-decoration: none;
+  color: #fff;
+}
+footer h6, footer .h6 {
+  color: #fff;
+  padding-bottom: 0.2em;
+}
+footer .icons {
+  display: flex;
+  gap: 0.8em;
+  align-items: center;
+}
+
+@media (max-width: 767.98px) {
+  footer .row {
+    gap: 2em;
+  }
+  footer h6, footer .h6 {
+    text-align: center;
+  }
+  footer .type, footer .icons {
+    justify-content: center;
+  }
+}
 * {
   padding: 0;
   margin: 0;
