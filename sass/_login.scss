@@ -1,20 +1,33 @@
 #login_body{
-    background-image: url(/images/background_image.png);
+    background-image:url('../images/background_image.png');
     background-repeat: no-repeat;
     background-size: cover;
+}
+.login{
+    display: flex;
+    justify-content: center;
+    padding-top: 10em;
+    gap: 1em;
 
-    .login{
-        
-        padding-top: 10em;
-        display: flex;
-        gap: 5em;
-        justify-content: center;
-        align-items: center;
+    #login-form{
+        background-color: #009DFF;
+        width: 35%;
+        padding: 3em;
+        color: white;
 
-        form{
-            background-color: #009DFF;
+        .form-label{
+            font-size: 1.3em;
+        }
+
+        .btn{
+            background-color: #BD1EB8;;
+            float: right;
+            margin-top: 1em;
+            font-size: 1.2em;
+            padding: 0.2em 2em;
         }
     }
 }
 
 
+      
