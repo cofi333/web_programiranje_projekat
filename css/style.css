@@ -11850,6 +11850,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl, .navbar .container-xxl {
+  justify-content: end;
+}
+
 .navbar-nav {
   gap: 15px;
 }
@@ -11874,56 +11878,114 @@ textarea.form-control-lg {
   color: #fff;
 }
 
+@media (max-width: 991.98px) {
+  .navbar-nav .nav-link {
+    text-align: center;
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .buttons .create_event_btn, .buttons .log_in_btn, .buttons .sign_up_btn {
+    width: 30%;
+  }
+}
 #sign_up_body {
   background-image: url("../images/background_image.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.hero {
-  padding: 100px;
+.hero_sign_up {
+  padding: 100px 0;
 }
-.hero form {
+.hero_sign_up form {
   padding: 30px 55px;
   background-color: #009DFF;
   height: 100%;
-  align-items: center;
-  justify-content: center;
 }
-.hero form .form-group {
+.hero_sign_up form .form-group {
   padding: 15px 0;
 }
-.hero form .form-group label {
+.hero_sign_up form .form-group label {
   color: #FFFFFF;
   font-size: 24px;
   padding: 5px 0;
 }
-.hero form .form-group input::placeholder {
+.hero_sign_up form .form-group input::placeholder {
   color: #009DFF;
 }
-.hero form .sign_up {
+.hero_sign_up form .sign_up {
   display: flex;
   justify-content: end;
   padding: 15px 0;
 }
-.hero form .sign_up .btn {
+.hero_sign_up form .sign_up .btn {
   background-color: #BD1EB8;
   color: #fff;
   padding: 6px 40px;
   font-size: 18px;
 }
-.hero form .log_in {
+.hero_sign_up form .log_in {
   font-size: 24px;
   padding: 15px 0;
 }
-.hero form .log_in span {
+.hero_sign_up form .log_in span {
   color: #FFFFFF;
 }
-.hero form .log_in a {
+.hero_sign_up form .log_in a {
   text-decoration: none;
   color: #5EDFFF;
 }
+.hero_sign_up .picture {
+  display: flex;
+  justify-content: end;
+}
 
+@media (max-width: 991.98px) {
+  .hero_sign_up {
+    padding: 50px 0;
+  }
+  .hero_sign_up .content {
+    gap: 10px;
+  }
+  .hero_sign_up form {
+    order: 1;
+  }
+  .hero_sign_up .picture {
+    order: 2;
+    padding: 0;
+    justify-content: center;
+  }
+  .hero_sign_up .form {
+    padding: 0;
+  }
+}
+@media (max-width: 767.98px) {
+  .hero_sign_up form .sign_up {
+    justify-content: center;
+    padding: 30px 0;
+  }
+  .hero_sign_up form .form-group label {
+    font-size: 17px;
+  }
+  .hero_sign_up form .log_in {
+    font-size: 18px;
+    text-align: center;
+  }
+}
+@media (max-width: 575.98px) {
+  .hero_sign_up {
+    padding: 0;
+  }
+  .hero_sign_up form {
+    padding: 30px;
+  }
+  .hero_sign_up .picture img {
+    width: 70%;
+  }
+}
 #login_body {
   background-image: url(/images/background_image.png);
   background-repeat: no-repeat;

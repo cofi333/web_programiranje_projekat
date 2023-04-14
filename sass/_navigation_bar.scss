@@ -1,8 +1,15 @@
+.navbar {
+    .container-fluid {
+        justify-content: end;
+    }
+}
+
 .navbar-nav {
     gap:15px;
 
    
 }
+
 
 
 .links {
@@ -33,3 +40,25 @@
         }
       }
 }
+
+
+@include media-breakpoint-down(lg) { 
+    .navbar-nav {
+        .nav-link {
+            text-align: center;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .create_event_btn, .log_in_btn, .sign_up_btn { 
+            width: 30%;
+           
+        }
+
+    }
+ }
+
