@@ -11936,11 +11936,21 @@ textarea.form-control-lg {
   padding-top: 10em;
   gap: 1em;
 }
-.login form {
+.login #login-form {
   background-color: #009DFF;
   width: 35%;
-  padding: 2em;
+  padding: 3em;
   color: white;
+}
+.login #login-form .form-label {
+  font-size: 1.3em;
+}
+.login #login-form .btn {
+  background-color: #BD1EB8;
+  float: right;
+  margin-top: 1em;
+  font-size: 1.2em;
+  padding: 0.2em 2em;
 }
 
 * {
