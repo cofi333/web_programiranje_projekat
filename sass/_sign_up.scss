@@ -107,21 +107,23 @@
 
  @include media-breakpoint-down(md) { 
     .hero_sign_up {
-        form {
-            .sign_up {
-                justify-content: center;
-                padding: 30px 0;
-            }
-
-            .form-group {
-                label {
-                    font-size: 17px;
+        .form {
+            form {
+                .sign_up {
+                    justify-content: center;
+                    padding: 30px 0;
                 }
-            }
-
-            .log_in {
-                font-size: 18px;
-                text-align: center;
+    
+                .form-group {
+                    label {
+                        font-size: 17px;
+                    }
+                }
+    
+                .log_in {
+                    font-size: 16px;
+                    text-align: center;
+                }
             }
         }
     }

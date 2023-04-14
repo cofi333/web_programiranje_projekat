@@ -11972,15 +11972,15 @@ textarea.form-control-lg {
   }
 }
 @media (max-width: 767.98px) {
-  .hero_sign_up form .sign_up {
+  .hero_sign_up .form form .sign_up {
     justify-content: center;
     padding: 30px 0;
   }
-  .hero_sign_up form .form-group label {
+  .hero_sign_up .form form .form-group label {
     font-size: 17px;
   }
-  .hero_sign_up form .log_in {
-    font-size: 18px;
+  .hero_sign_up .form form .log_in {
+    font-size: 16px;
     text-align: center;
   }
 }
