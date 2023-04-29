@@ -93,13 +93,15 @@
         }
 
         .picture {
-            order: 2;
-            padding: 0;
+            img {
+                display: none;
+            }
         }
 
         .form {
             padding: 0;
-            width: 100%;
+            width: 95%;
+            margin:0 auto;
         }
     }
  }
@@ -135,14 +137,12 @@
 
        
 
-        form {
-            padding: 30px;
-        }
+       .form {
+            form {
+                padding:30px 20px;
+            }
 
-       .picture {
-        img {
-            width: 70%;
-        }
        }
+      
     }
   } 

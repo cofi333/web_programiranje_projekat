@@ -41,6 +41,13 @@
       }
 }
 
+.navbar_index {
+    position: absolute;
+    lefT: 0;
+    right: 0;
+    background-color: #6141BD80;
+   }
+
 
 @include media-breakpoint-down(lg) { 
     .navbar-nav {
