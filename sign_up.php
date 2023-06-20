@@ -55,16 +55,16 @@
           </div>
 
           <div class="form">
-            <form action="" method="post" id="form">
+            <form action="./php/registration.php" method="post" id="form">
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Your name">
+                <input  type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Your name">
                 <span class="error" id="name_error"></span>
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Your email">
-                <span class="error" id="name_error"></span>
+                <span class="error" id="email_error"></span>
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
@@ -78,7 +78,7 @@
               </div>
              
               <div class="sign_up">
-                <button type="submit" class="btn">Sign up</button>
+                <input type="submit" name="btnSubmit" class="btn" />
               </div>
 
               <div class="log_in">
