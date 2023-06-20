@@ -55,25 +55,25 @@
           </div>
 
           <div class="form">
-            <form>
+            <form action="" method="post" id="form">
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Your name">
                 <span class="error" id="name_error"></span>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Your email">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Your email">
                 <span class="error" id="name_error"></span>
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="InputPassword1" name="password" placeholder="Your password">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Your password">
                 <span class="error" id="password_error"></span>
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Repeat password</label>
-                <input type="password" class="form-control" id="InputPassword2" name="repeat-password" placeholder="Repeat your password">
+                <label for="repeat-password">Repeat password</label>
+                <input type="password" class="form-control" id="repeated-password" name="repeat-password" placeholder="Repeat your password">
                 <span class="error" id="repeat_password_error"></span>
               </div>
              
@@ -118,6 +118,9 @@
 
 
       <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
+      <script src="./script/validateForm.js"></script>
 </body>
+
+
 
 </html>

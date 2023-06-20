@@ -11935,6 +11935,12 @@ textarea.form-control-lg {
 .hero_sign_up .form form .form-group input::placeholder {
   color: #009DFF;
 }
+.hero_sign_up .form form .form-group .error {
+  color: #f00;
+  font-size: 1em;
+  display: block;
+  padding-top: 0.5em;
+}
 .hero_sign_up .form form .sign_up {
   display: flex;
   justify-content: end;
