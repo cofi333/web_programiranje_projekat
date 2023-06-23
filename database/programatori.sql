@@ -2,9 +2,9 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 23, 2023 at 06:36 PM
--- Server version: 8.0.33-0ubuntu0.20.04.2
+-- Host: 127.0.0.1
+-- Generation Time: Jun 23, 2023 at 09:07 PM
+-- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `programatori`
 --
-CREATE DATABASE IF NOT EXISTS `programatori` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE DATABASE IF NOT EXISTS `programatori` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `programatori`;
 
 -- --------------------------------------------------------
@@ -29,11 +29,10 @@ USE `programatori`;
 -- Table structure for table `admins`
 --
 
-DROP TABLE IF EXISTS `admins`;
 CREATE TABLE `admins` (
-  `id_admin` int NOT NULL,
-  `email` varchar(40) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(60) COLLATE utf8mb4_general_ci NOT NULL
+  `id_admin` int(11) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `password` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -42,14 +41,13 @@ CREATE TABLE `admins` (
 -- Table structure for table `comments`
 --
 
-DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
-  `comment_id` int NOT NULL,
-  `event_id` int NOT NULL,
-  `guest_id` int NOT NULL,
+  `comment_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `guest_id` int(11) NOT NULL,
   `comment` tinytext NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -57,10 +55,9 @@ CREATE TABLE `comments` (
 -- Table structure for table `events`
 --
 
-DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
-  `event_id` int NOT NULL,
-  `id_user` int NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `event_title` varchar(30) NOT NULL,
   `event_organizer` varchar(30) NOT NULL,
   `event_type` varchar(25) NOT NULL,
@@ -69,7 +66,7 @@ CREATE TABLE `events` (
   `event_date_time` datetime NOT NULL,
   `is_banned` tinyint(1) NOT NULL,
   `event_img` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -77,12 +74,11 @@ CREATE TABLE `events` (
 -- Table structure for table `event_category`
 --
 
-DROP TABLE IF EXISTS `event_category`;
 CREATE TABLE `event_category` (
-  `ec_id` int NOT NULL,
-  `event_id` int NOT NULL,
+  `ec_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
   `category` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -90,15 +86,14 @@ CREATE TABLE `event_category` (
 -- Table structure for table `guests`
 --
 
-DROP TABLE IF EXISTS `guests`;
 CREATE TABLE `guests` (
-  `guest_id` int NOT NULL,
-  `id_user` int NOT NULL,
+  `guest_id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `guest_fname` varchar(25) NOT NULL,
   `guest_lname` varchar(25) NOT NULL,
   `guest_mail` varchar(45) NOT NULL,
-  `wish_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `wish_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -106,13 +101,12 @@ CREATE TABLE `guests` (
 -- Table structure for table `guest_event`
 --
 
-DROP TABLE IF EXISTS `guest_event`;
 CREATE TABLE `guest_event` (
-  `guest_event_id` int NOT NULL,
-  `event_id` int NOT NULL,
-  `guest_id` int NOT NULL,
+  `guest_event_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `guest_id` int(11) NOT NULL,
   `is_coming` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -120,23 +114,22 @@ CREATE TABLE `guest_event` (
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `id_user` int NOT NULL,
-  `wish_id` int NOT NULL,
-  `address` varchar(40) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `email` varchar(40) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `password` varchar(60) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `firstname` varchar(30) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `lastname` varchar(30) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `registration_token` char(40) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `wish_id` int(11) NOT NULL,
+  `address` varchar(40) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `firstname` varchar(30) NOT NULL,
+  `lastname` varchar(30) NOT NULL,
+  `registration_token` char(40) NOT NULL,
   `registration_expires` datetime NOT NULL,
-  `active` smallint NOT NULL DEFAULT '0',
-  `forgotten_password_token` char(40) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `active` smallint(6) NOT NULL DEFAULT 0,
+  `forgotten_password_token` char(40) NOT NULL,
   `forgotten_password_expires` datetime NOT NULL,
-  `is_banned` smallint NOT NULL,
-  `date_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+  `is_banned` smallint(6) NOT NULL,
+  `date_time` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -144,13 +137,12 @@ CREATE TABLE `users` (
 -- Table structure for table `wish_list`
 --
 
-DROP TABLE IF EXISTS `wish_list`;
 CREATE TABLE `wish_list` (
-  `wish_id` int NOT NULL,
-  `id_user` int NOT NULL,
+  `wish_id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `wish_gift_name` varchar(30) NOT NULL,
   `wish_gift_link` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -220,43 +212,43 @@ ALTER TABLE `wish_list`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id_admin` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `guests`
 --
 ALTER TABLE `guests`
-  MODIFY `guest_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `guest_event`
 --
 ALTER TABLE `guest_event`
-  MODIFY `guest_event_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `guest_event_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `wish_list`
 --
 ALTER TABLE `wish_list`
-  MODIFY `wish_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
