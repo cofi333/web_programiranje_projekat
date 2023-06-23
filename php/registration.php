@@ -2,7 +2,7 @@
 
 require_once 'functions.php';
 
-if (isset($_POST['firstname'])) {
+if (isset($_POST['name'])) {
     $firstname = trim($_POST["name"]);
 }
 
@@ -14,35 +14,35 @@ if (isset($_POST['password'])) {
     $password = trim($_POST["password"]);
 }
 
-if (isset($_POST['passwordConfirm'])) {
+if (isset($_POST['repeat-password'])) {
     $passwordConfirm = trim($_POST["repeat-password"]);
 }
 
 
 
 if (empty($firstname)) {
-    redirection('index.php?r=4');
+    redirection('../index.php?r=4');
 }
 
 
 if (empty($password)) {
-    redirection('index.php?r=9');
+    redirection('../index.php?r=9');
 }
 
 if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $password)) {
-    redirection('index.php?r=10');
+    redirection('../index.php?r=10');
 }
 
 if (empty($passwordConfirm)) {
-    redirection('index.php?r=9');
+    redirection('../index.php?r=9');
 }
 
 if ($password !== $passwordConfirm) {
-    redirection('index.php?r=7');
+    redirection('../index.php?r=7');
 }
 
 if (empty($email) or !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    redirection('index.php?r=8');
+    redirection('../index.php?r=8');
 }
 
 
@@ -58,9 +58,9 @@ if (!existsUser($pdo, $email)) {
             error_log("****************************************");
             error_log($e->getMessage());
             error_log("file:" . $e->getFile() . " line:" . $e->getLine());
-            redirection("index.php?r=11");
+            redirection("../index.php?r=11");
         }
     }
 } else {
-    redirection('index.php?r=2');
+    redirection('../index.php?r=2');
 }

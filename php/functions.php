@@ -1,9 +1,12 @@
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require_once 'vendor/autoload.php';
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 require_once "config.php";
 
 //function to register new user
@@ -12,7 +15,7 @@ function registerUser(PDO $pdo, string $password, string $firstname,  string $em
 
     $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users(password,firstname,email,registration_token,registration_expires,active) 
+    $sql = "INSERT INTO users (password,firstname,email,registration_token,registration_expires,active) 
 VALUES (:passwordHashed,:firstname,:email,:token,DATE_ADD(now(),INTERVAL 1 DAY),0)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':passwordHashed', $passwordHashed, PDO::PARAM_STR);
