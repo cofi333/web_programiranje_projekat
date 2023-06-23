@@ -3,9 +3,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/phpmailer/phpmailer/src/Exception.php';
-require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require 'vendor/phpmailer/phpmailer/src/SMTP.php';
+require_once 'vendor/autoload.php';
 require_once "config.php";
 
 //function to register new user
@@ -14,12 +12,12 @@ function registerUser(PDO $pdo, string $password, string $firstname,  string $em
 
     $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users(password,firstname,email,registration_token,registration_expires,active)
-            VALUES (:passwordHashed,:firstname,:lastname,:email,:token,DATE_ADD(now(),INTERVAL 1 DAY),0)";
+    $sql = "INSERT INTO users(password,firstname,email,registration_token,registration_expires,active) 
+VALUES (:passwordHashed,:firstname,:email,:token,DATE_ADD(now(),INTERVAL 1 DAY),0)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':passwordHashed', $passwordHashed, PDO::PARAM_STR);
     $stmt->bindParam(':firstname', $firstname, PDO::PARAM_STR);
-    $stmt->bindParam(':lastname', $lastname, PDO::PARAM_STR);
+    //$stmt->bindParam(':lastname', $lastname, PDO::PARAM_STR);
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->bindParam(':token', $token, PDO::PARAM_STR);
     $stmt->execute();
@@ -111,7 +109,7 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body, int 
         $phpmailer->send();
     } catch (Exception $e) {
         $message = "Message could not be sent. Mailer Error: {$phpmailer->ErrorInfo}";
-        addEmailFailure($pdo, $id_user, $message);
+        //addEmailFailure($pdo, $id_user, $message);
     }
 
 }

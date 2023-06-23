@@ -88,7 +88,7 @@
             </form>
               <?php
               require_once './php/config.php';
-              require_once  './php/registration.php';
+             // require_once  './php/registration.php';
               $r = 0;
 
               if (isset($_GET["r"]) and is_numeric($_GET['r'])) {

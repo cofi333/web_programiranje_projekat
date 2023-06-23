@@ -1,6 +1,6 @@
 <?php
 
-
+require_once 'functions.php';
 
 if (isset($_POST['firstname'])) {
     $firstname = trim($_POST["name"]);
@@ -24,16 +24,13 @@ if (empty($firstname)) {
     redirection('index.php?r=4');
 }
 
-if (empty($lastname)) {
-    redirection('index.php?r=4');
-}
 
 if (empty($password)) {
     redirection('index.php?r=9');
 }
 
 if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $password)) {
-    redirection('index.php?l=10');
+    redirection('index.php?r=10');
 }
 
 if (empty($passwordConfirm)) {

@@ -38,7 +38,7 @@
                     <a class="nav-link" href="event.html">Create an event</a>
                 </li>
                 <li class="nav-item sign_up_btn">
-                    <a class="nav-link" href="./sign_up.html">Sign up</a>
+                    <a class="nav-link" href="./sign_up.php">Sign up</a>
                 </li>
                 <li class="nav-item log_in_btn">
                     <a class="nav-link" href="./login.html">Log in</a>
