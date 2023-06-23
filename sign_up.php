@@ -86,8 +86,29 @@
                 <a href="/login.html">Log in</a>
               </div>
             </form>
+              <?php
+              require_once './php/config.php';
+              require_once  './php/registration.php';
+              $r = 0;
+
+              if (isset($_GET["r"]) and is_numeric($_GET['r'])) {
+                  $r = (int)$_GET["r"];
+
+                  if (array_key_exists($r, $messages)) {
+                      echo '
+                    <div class="alert alert-info ~alert-dismissible fade show m-3" role="alert">
+                        ' . $messages[$r] . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+                  }
+              }
+              ?>
           </div>
         </div>
+
+
       </section>
 
       <footer>
