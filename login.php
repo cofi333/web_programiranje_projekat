@@ -55,14 +55,33 @@
             <div class="loginPic">
                 <img src="./images/people.png" alt="peoplepng">
             </div>
-            <form id="login-form" action="#">
+            <form id="login-form" action="php/login_data.php" method="post">
+                <?php
+                require_once './php/config.php';
+
+                $l = 0;
+
+                if (isset($_GET["l"]) and is_numeric($_GET['l'])) {
+                    $l = (int)$_GET["l"];
+
+                    if (array_key_exists($l, $messages)) {
+                        echo '
+                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
+                        ' . $messages[$l] . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+                    }
+                }
+                ?>
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                 </div>
                 <button type="submit" class="btn btn-primary">Log In</button>
         
