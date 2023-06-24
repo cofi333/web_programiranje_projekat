@@ -1,0 +1,64 @@
+#create_event_page {
+  background-image: url("../images/background_image.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+.basic-info {
+    margin-top: 70px;
+    color: #fff;
+
+  input::placeholder {
+    color:#CE1AB8;
+  }
+
+  .event_type {
+    margin-top: 25px;
+
+    .form-select {
+      color: #fff;
+      background-color: #009DFF;
+    }
+  }
+
+  .location {
+    margin-top: 70px;
+    .location_buttons {
+      background-color: #009DFF;
+      width: 190px;
+      height: 40px;
+      font-size: 17px;
+      color: #fff;
+    }
+
+    #location_input_venue, #location_input_online {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .show {
+      display: block !important;
+    }
+  }
+
+  .date_time {
+    margin-top: 70px;
+
+  }
+
+
+  .sign_up {
+    margin-top: 60px;
+    display: flex;
+    justify-content: end;
+    padding:15px 0;
+    .btn {
+      background-color: #BD1EB8;
+      color:#fff;
+      padding:6px 40px;
+      font-size: 18px;
+
+    }
+  }
+}
+

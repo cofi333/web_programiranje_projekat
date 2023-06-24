@@ -46,16 +46,19 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
             </ul>
 
             <ul class="navbar-nav buttons">
-                <?php
-                echo $_SESSION['username'];
-                ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="./php/logout.php">Log out</a>
+                <li class="nav-item create_event_btn">
+                    <a class="nav-link" href="event.php">Create an event</a>
                 </li>
-
             </ul>
 
+            <div class="user">
+                <a href="user_profile.php"><img src="./images/user_image.png" id="user_image"></a>
+            </div>
+
         </div>
+
+
+
     </div>
 </nav>
 
