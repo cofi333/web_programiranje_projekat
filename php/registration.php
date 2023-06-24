@@ -52,8 +52,8 @@ if (!existsUser($pdo, $email)) {
         $id_user = registerUser($pdo, $password, $firstname,  $email, $token);
         try {
             $body = "Your username is $email. To activate your account click on the <a href=" . SITE . "active.php?token=$token>link</a>";
-            sendEmail($pdo, $email, $emailMessages['register'], $body, $id_user);
-            redirection("index.php?r=3");
+            sendEmail($pdo, $email, $emailMessages['register'], $body);
+            redirection("../sign_up.php?r=3");
         } catch (Exception $e) {
             error_log("****************************************");
             error_log($e->getMessage());
@@ -62,5 +62,5 @@ if (!existsUser($pdo, $email)) {
         }
     }
 } else {
-    redirection('../index.php?r=2');
+    redirection('../sign_up.php?r=2');
 }

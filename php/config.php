@@ -22,9 +22,7 @@ $dsn = "mysql:host=" . HOST  . ";dbname=" . DB . ";charset=". CHARSET;
 
 $pdo = connectDatabase($dsn, $pdoOptions);
 
-if(connectDatabase($dsn, $pdoOptions)){
-    echo "hi"; //debug
-}
+
 
 const SITE = "http://localhost/web_programiranje_projekat/";
 

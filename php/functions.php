@@ -1,12 +1,10 @@
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+require 'vendor/autoload.php';
+
 require_once "config.php";
 
 //function to register new user
@@ -85,7 +83,7 @@ function connectDatabase(string $dsn, array $pdoOptions): PDO
 }
 
 //function to send mail via mailtrap
-function sendEmail(PDO $pdo, string $email, array $emailData, string $body, int $id_user): void
+function sendEmail(PDO $pdo, string $email, array $emailData, string $body): void
 {
 
     $phpmailer = new PHPMailer(true);
@@ -96,8 +94,8 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body, int 
         $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 2525;
-        $phpmailer->Username = '47fa68be3f6c8b';
-        $phpmailer->Password = '********7d19';
+        $phpmailer->Username = '91a70046fbb2a2';
+        $phpmailer->Password = '********a475';
 
 
 
@@ -110,9 +108,9 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body, int 
         $phpmailer->AltBody = $emailData['altBody'];
 
         $phpmailer->send();
+
     } catch (Exception $e) {
         $message = "Message could not be sent. Mailer Error: {$phpmailer->ErrorInfo}";
-        //addEmailFailure($pdo, $id_user, $message);
     }
 
 }
