@@ -41,7 +41,7 @@
                     <a class="nav-link" href="./sign_up.php">Sign up</a>
                 </li>
                 <li class="nav-item log_in_btn">
-                    <a class="nav-link" href="./login.html">Log in</a>
+                    <a class="nav-link" href="login.php">Log in</a>
                 </li>
             </ul>
            

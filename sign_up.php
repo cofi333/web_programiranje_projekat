@@ -40,7 +40,7 @@
                     <a class="nav-link" href="#">Sign up</a>
                 </li>
                 <li class="nav-item log_in_btn">
-                    <a class="nav-link" href="./login.html">Log in</a>
+                    <a class="nav-link" href="login.php">Log in</a>
                 </li>
             </ul>
            
@@ -104,7 +104,7 @@
 
               <div class="log_in">
                 <span>You have an account?</span>
-                <a href="/login.html">Log in</a>
+                <a href="/login.php">Log in</a>
               </div>
             </form>
           </div>

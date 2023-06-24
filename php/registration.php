@@ -51,7 +51,7 @@ if (!existsUser($pdo, $email)) {
     if ($token) {
         $id_user = registerUser($pdo, $password, $firstname,  $email, $token);
         try {
-            $body = "Your username is $email. To activate your account click on the <a href=" . SITE . "active.php?token=$token>link</a>";
+            $body = "Your username is $email. To activate your account click on the <a href=" . SITE . "php/active.php?token=$token>link</a>";
             sendEmail($pdo, $email, $emailMessages['register'], $body);
             redirection("../sign_up.php?r=3");
         } catch (Exception $e) {

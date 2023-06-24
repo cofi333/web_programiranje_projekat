@@ -1,6 +1,6 @@
 <?php
-require_once "./php/config.php";
-require_once "./php/functions.php";
+require_once "config.php";
+require_once "functions.php";
 
 if (isset($_GET['token'])) {
     $token = trim($_GET['token']);
@@ -18,7 +18,7 @@ if (!empty($token) and strlen($token) === 40) {
 
 
     if ($stmt->rowCount() > 0) {
-        redirection('index.php?r=6');
+        redirection('../login.php?r=6');
     } else {
         redirection('index.php?r=12');
     }

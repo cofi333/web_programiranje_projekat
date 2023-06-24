@@ -94,9 +94,8 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body): voi
         $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 2525;
-        $phpmailer->Username = '91a70046fbb2a2';
-        $phpmailer->Password = '********a475';
-
+        $phpmailer->Username = 'cfff98553c90d7';
+        $phpmailer->Password = '91970256f8d0e2';
 
 
         $phpmailer->setFrom('webmaster@example.com', 'Webmaster');
