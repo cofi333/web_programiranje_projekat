@@ -94,8 +94,8 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body): voi
         $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 2525;
-        $phpmailer->Username = 'cfff98553c90d7';
-        $phpmailer->Password = '91970256f8d0e2';
+        $phpmailer->Username = '91a70046fbb2a2';
+        $phpmailer->Password = '27338e9f68a475';
 
 
         $phpmailer->setFrom('webmaster@example.com', 'Webmaster');
@@ -112,5 +112,27 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body): voi
         $message = "Message could not be sent. Mailer Error: {$phpmailer->ErrorInfo}";
     }
 
+}
+
+function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
+{
+    $sql = "SELECT id_user, password FROM users WHERE email=:email AND active=1 AND is_banned = 0 LIMIT 0,1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+
+    $data = [];
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($stmt->rowCount() > 0) {
+
+        $registeredPassword = $result['password'];
+
+        if (password_verify($enteredPassword, $registeredPassword)) {
+            $data['id_user'] = $result['id_user'];
+        }
+    }
+
+    return $data;
 }
 

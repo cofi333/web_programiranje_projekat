@@ -18,7 +18,7 @@ if (!empty($token) and strlen($token) === 40) {
 
 
     if ($stmt->rowCount() > 0) {
-        redirection('../login.php?r=6');
+        redirection('../login.php?l=6');
     } else {
         redirection('index.php?r=12');
     }
