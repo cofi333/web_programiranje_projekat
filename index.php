@@ -35,7 +35,7 @@
 
             <ul class="navbar-nav buttons">
                 <li class="nav-item create_event_btn">
-                    <a class="nav-link" href="event.html">Create an event</a>
+                    <a class="nav-link" href="event.php">Create an event</a>
                 </li>
                 <li class="nav-item sign_up_btn">
                     <a class="nav-link" href="./sign_up.php">Sign up</a>
