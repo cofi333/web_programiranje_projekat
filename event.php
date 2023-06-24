@@ -56,7 +56,7 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
 
     <main>
         <section class="container basic-info">
-            <form action="/php/create-event.php" method="post">
+            <form action="./php/create-event.php" method="post">
                 <div class="row">
                     <div class="bi-info col-md-12">
                         <h1>Basic info</h1>
@@ -67,31 +67,30 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                     <div class="bi-input">
                         <div class="mb-3">
                             <label for="event-title" class="form-label">Event title</label>
-                            <input type="text" class="form-control" id="event-title" placeholder="Event title">
+                            <input type="text" class="form-control" name="event-title" id="event-title">
                         </div>
 
                         <div class="mb-3">
                             <label for="organizer" class="form-label">Organizer</label>
-                            <input type="text" class="form-control" id="organizer" placeholder="Organizer">
+                            <input type="text" class="form-control" name="event-organizer" id="organizer">
                         </div>
                     </div>
                 </div>
 
                 <div class="row event_type">
                     <div class="col-md-3">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Type</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" name="event-category" aria-label="Default select example">
                             <option selected>Category</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                           <?php
+
+                            $sql = "SELECT ec_id,category FROM event_category";
+                            $q = $pdo -> query($sql);
+                            $q -> setFetchMode(PDO::FETCH_ASSOC);
+
+                            while($row = $q -> fetch()) {
+                           ?>
+                            <option value="<?php echo ($row['ec_id'])?>"><?php echo htmlspecialchars($row['category'])?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
@@ -111,12 +110,12 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
 
                     <div id="location_input_venue">
                         <label for="organizer" class="form-label">Venue location</label>
-                        <input type="text" class="form-control" id="venue_location" name="venue_location">
+                        <input type="text" class="form-control" id="venue_location" name="venue-location">
                     </div>
 
                     <div id="location_input_online">
                         <label for="organizer" class="form-label">Online event</label>
-                        <input type="text" class="form-control" id="online_location" name="online_location">
+                        <input type="text" class="form-control" id="online_location" name="online-location">
                     </div>
 
                 </div>
@@ -128,13 +127,21 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                     <div class="row">
                         <div class="col-md-6">
                             <label for="organizer" class="form-label">Date</label>
-                            <input type="text" class="form-control" name="event_date">
+                            <input type="text" class="form-control" name="event-date" placeholder="YYYY-MM-DD">
                         </div>
                         <div class="col-md-6">
                             <label for="organizer" class="form-label">Time</label>
-                            <input type="text" class="form-control" name="event_time">
+                            <input type="text" class="form-control" name="event-time" placeholder="HH:MM:SS">
                         </div>
                     </div>
+                </div>
+
+                <div class="description">
+                    <h1>Description</h1>
+                    <p>Please describe more about your event.</p>
+
+                    <label for="organizer" class="form-label">Description</label>
+                    <input type="text" class="form-control" name="event-description">
                 </div>
 
                 <div class="sign_up">
