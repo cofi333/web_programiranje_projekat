@@ -12147,7 +12147,7 @@ footer .icons {
 .basic-info .location .show {
   display: block !important;
 }
-.basic-info .date_time {
+.basic-info .date_time, .basic-info .description {
   margin-top: 70px;
 }
 .basic-info .sign_up {

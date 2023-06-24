@@ -136,3 +136,21 @@ function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
     return $data;
 }
 
+function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location, $date, $time, $description) : void
+{
+    $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_date, event_time, event_description)
+    VALUES (:category,:id_user ,:title, :organizer, :location, :date, :time, :description)";
+
+
+     $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':category', $category, PDO::PARAM_STR);
+    $stmt->bindParam(':id_user', $user_id, PDO::PARAM_STR);
+    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+    $stmt->bindParam(':organizer', $organizer, PDO::PARAM_STR);
+    $stmt->bindParam(':location', $location, PDO::PARAM_STR);
+    $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+    $stmt->bindParam(':time', $time, PDO::PARAM_STR);
+     $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+    $stmt->execute();
+
+}
