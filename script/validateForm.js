@@ -99,7 +99,7 @@ let validateRepeatedPassword = () => {
 
 }
 
-
+const isEmpty = value => value === '';
 
 const isValidEmail = (email) => {
     let rex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;

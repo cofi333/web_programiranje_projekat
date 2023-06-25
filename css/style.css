@@ -12160,6 +12160,11 @@ footer .icons {
   font-size: 18px;
 }
 
+@media (max-width: 767.98px) {
+  .sign_up {
+    justify-content: center !important;
+  }
+}
 * {
   padding: 0;
   margin: 0;
@@ -12171,6 +12176,10 @@ footer .icons {
   gap: 15px;
 }
 
+.user {
+  display: flex;
+  justify-content: center;
+}
 .user img {
   width: 50px;
   height: 50px;

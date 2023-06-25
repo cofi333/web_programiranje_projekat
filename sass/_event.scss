@@ -70,3 +70,10 @@
   }
 }
 
+
+@include media-breakpoint-down(md) {
+  .sign_up {
+    justify-content: center !important;
+
+  }
+}
