@@ -12163,6 +12163,13 @@ footer .icons {
   font-size: 18px;
 }
 
+<<<<<<< HEAD
+@media (max-width: 767.98px) {
+  .sign_up {
+    justify-content: center !important;
+  }
+}
+=======
 .heading {
   background-image: url("../images/userdashboard.png");
   background-size: cover;
@@ -12180,6 +12187,7 @@ footer .icons {
   margin: 0;
 }
 
+>>>>>>> e472e098d6276f90324796061ed657fde7037950
 * {
   padding: 0;
   margin: 0;
@@ -12191,6 +12199,10 @@ footer .icons {
   gap: 15px;
 }
 
+.user {
+  display: flex;
+  justify-content: center;
+}
 .user img {
   width: 50px;
   height: 50px;

@@ -91,8 +91,8 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body): voi
         $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 2525;
-        $phpmailer->Username = '91a70046fbb2a2';
-        $phpmailer->Password = '27338e9f68a475';
+        $phpmailer->Username = '28e695b2b69468';
+        $phpmailer->Password = 'ba9c57e1bb08c1';
 
 
         $phpmailer->setFrom('webmaster@example.com', 'Webmaster');
@@ -133,11 +133,22 @@ function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
     return $data;
 }
 
-function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location, $img, $date, $time, $description) : void
+function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location, $date, $time, $description) : void
 {
+<<<<<<< HEAD
     $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_img , event_date, event_time, event_description)
     VALUES (:category,:id_user ,:title, :organizer, :location, :img , :date, :time, :description)";
 
+=======
+<<<<<<< HEAD
+
+    $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_img , event_date, event_time, event_description)
+    VALUES (:category,:id_user ,:title, :organizer, :location, :img , :date, :time, :description)";
+=======
+    $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_date, event_time, event_description)
+    VALUES (:category,:id_user ,:title, :organizer, :location, :date, :time, :description)";
+>>>>>>> parent of 2539dcf (fix)
+>>>>>>> 1fabe8b076e7c65244c609ab2634b03ab86e3adf
 
 
     $stmt = $pdo->prepare($sql);
@@ -146,7 +157,6 @@ function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location
     $stmt->bindParam(':title', $title, PDO::PARAM_STR);
     $stmt->bindParam(':organizer', $organizer, PDO::PARAM_STR);
     $stmt->bindParam(':location', $location, PDO::PARAM_STR);
-    $stmt->bindParam(':img', $img, PDO::PARAM_STR);
     $stmt->bindParam(':date', $date, PDO::PARAM_STR);
     $stmt->bindParam(':time', $time, PDO::PARAM_STR);
     $stmt->bindParam(':description', $description, PDO::PARAM_STR);

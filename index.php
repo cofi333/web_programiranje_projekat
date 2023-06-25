@@ -46,7 +46,7 @@
                     echo '</li>';
 
                     echo '<li class="nav-item sign_up_btn">';
-                    echo '<a class="nav-link" href="./sign_up.php">Sign up</a>';
+                    echo '<a class="nav-link" href="./login.php">Create an event</a>';
                     echo '</li>';
 
                     echo '<li class="nav-item log_in_btn">';
