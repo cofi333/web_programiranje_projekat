@@ -58,13 +58,14 @@
                     echo '<li class="nav-item create_event_btn">';
                     echo '<a class="nav-link" href="./event.php">Create an event</a>';
                     echo '</li>';
+                    echo '</ul>';
 
                     echo '<div class="user">';
                     echo '<a href="user_profile.php"><img src="./images/user_image.png" id="user_image"></a>';
                     echo '</div>';
                 }
                 ?>
-            </ul>
+
            
           </div>
         </div>

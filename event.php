@@ -123,17 +123,10 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                     <h1>Location</h1>
                     <p>Help people in the area discover your event and let attendees know where to show up.</p>
 
-                    <div class="row">
-                        <div class="col-md-2">
-                            <button type="button" id="venue_button" class="location_buttons btn">Venue</button>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" id="online_button" class="location_buttons btn"">Online event</button>
-                        </div>
-                    </div>
+                  
 
                     <div id="location_input">
-                        <label for="organizer" id="location_input_label" class="form-label"></label>
+                        <label for="event-location" id="location_input_label" class="form-label"></label>
                         <input type="text" class="form-control" id="event-location" name="event-location">
                     </div>
 
@@ -205,7 +198,6 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
 
 
     <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
-    <script src="./script/eventLocation.js"></script>
-    <!--<script src="./script/createEventValidateForm.js"></script>-->
+    <script src="./script/createEventValidateForm.js"></script>
 </body>
 </html>

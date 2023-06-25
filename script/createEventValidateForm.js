@@ -1,4 +1,11 @@
 let form = document.getElementById("form");
+let title = document.getElementById("event-title");
+let organizer = document.getElementById("event-organizer");
+let category = document.getElementById("event-category");
+let date = document.getElementById("event-date");
+let time = document.getElementById("event-time");
+let description = document.getElementById("event-description");
+let location = document.getElementById("event-location");
 let validForm = false;
 
 
@@ -8,15 +15,21 @@ form.addEventListener("submit", function(e) {
     validateEventTitle();
     validateEventOrganizer();
     validateEventCategory();
-    validateLocation();
+ //   validateLocation();
     validateDate();
     validateTime();
     validateDescription();
+
+
+
+
+
+    if(validateEventTitle() && validateEventOrganizer() && validateEventCategory()  && validateDate() && validateTime() && validateDescription()) this.submit();
 });
 
 let validateEventTitle = () => {
 
-    let title = document.getElementById("event-title");
+
     let title_errorMessage = document.getElementById("event-title_error");
 
     if(isEmpty(title.value)) {
@@ -28,12 +41,12 @@ let validateEventTitle = () => {
         title_errorMessage.innerText = "";
     }
 
+    return validForm;
 
 }
 
 let validateEventOrganizer = () => {
 
-    let organizer = document.getElementById("event-organizer");
     let organizer_errorMessage = document.getElementById("event-organizer_error");
 
     if(isEmpty(organizer.value)) {
@@ -44,11 +57,12 @@ let validateEventOrganizer = () => {
         validForm = true;
         organizer_errorMessage.innerText = "";
     }
+
+    return validForm;
 }
 
 let validateEventCategory = () => {
 
-    let category = document.getElementById("event-category");
     let category_errorMessage = document.getElementById("event-category_error");
 
     if(category.value === "default") {
@@ -60,42 +74,47 @@ let validateEventCategory = () => {
         validForm = true;
     }
 
+    return validForm;
 }
 
 let validateLocation = () => {
 
-    let location = document.getElementById("event-location");
     let location_errorMessage = document.getElementById("event-location_error");
+
+
 
     if(isEmpty(location.value)) {
         validForm = false;
         location_errorMessage.innerText = "Please enter a location.";
+
     }
     else {
         validForm = true;
         location_errorMessage.innerText = "";
     }
 
+    return validForm;
 }
 
 let validateDate = () => {
 
-    let date = document.getElementById("event-date");
     let date_errorMessage = document.getElementById("event-date_error");
 
-    if(!isValidDate(date.value)) {
+    if(isEmpty(date.value)) {
+        date_errorMessage.innerText = "Please enter a date.";
         validForm = false;
-        date_errorMessage.innerText = "Date is in incorrect format.";
     }
+
     else {
         validForm = true;
         date_errorMessage.innerText = "";
     }
 
+
+    return validForm;
 }
 
 let validateTime = () => {
-    let time = document.getElementById("event-time");
     let time_errorMessage = document.getElementById("event-time_error");
 
     if(isEmpty(time.value)) {
@@ -103,13 +122,19 @@ let validateTime = () => {
         time_errorMessage.innerText = "Please enter a time.";
     }
     else {
-        validForm = true;
-        time_errorMessage.innerText = "";
+        if(!isValidTime(time.value)) {
+            validForm = false;
+            time_errorMessage.innerText = "Time is in incorrect format.";
+        }
+        else {
+            validForm = true;
+            time_errorMessage.innerText = "";
+        }
     }
+    return validForm;
 }
 
 let validateDescription = () => {
-    let description = document.getElementById("event-description");
     let description_errorMessage = document.getElementById("event-description_error");
 
     if(isEmpty(description.value)) {
@@ -120,17 +145,17 @@ let validateDescription = () => {
         validForm = true;
         description_errorMessage.innerText = "";
     }
+
+    return validForm;
 }
 
 
 
 const isEmpty = value => value === '';
 
-const isValidDate = (date) => {
-    let rexDate = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
-    return rexDate.test(date);
-}
+
 
 const isValidTime = (time) => {
-
+    let rexTime = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/;
+    return rexTime.test(time);
 }
