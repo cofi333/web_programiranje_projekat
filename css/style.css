@@ -12116,6 +12116,13 @@ footer .icons {
   background-size: cover;
 }
 
+#form .error {
+  color: #ff8080;
+  font-size: 1em;
+  display: block;
+  padding-top: 0.5em;
+}
+
 .basic-info {
   margin-top: 70px;
   color: #fff;
@@ -12140,7 +12147,7 @@ footer .icons {
   font-size: 17px;
   color: #fff;
 }
-.basic-info .location #location_input_venue, .basic-info .location #location_input_online {
+.basic-info .location #location_input {
   display: none;
   margin-top: 15px;
 }

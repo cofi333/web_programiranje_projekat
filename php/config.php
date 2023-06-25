@@ -39,7 +39,8 @@ $messages = [
     9 => 'Password is too short! It must be minimum 8 characters long!',
     10 => 'Password is not enough strong! (min 8 characters, at least 1 lowercase character, 1 uppercase character, 1 number, and 1 special character',
     11 => 'Something went wrong with mail server. We will try to send email later!',
-    12 => 'Your account is already activated!'
+    12 => 'Your account is already activated!',
+    13 => 'Your event is created!'
 ];
 
 $emailMessages = [

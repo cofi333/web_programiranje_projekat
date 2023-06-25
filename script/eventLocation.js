@@ -1,24 +1,27 @@
-const venue_location = document.getElementById("location_input_venue");
-const online_location = document.getElementById("location_input_online");
+const event_label = document.getElementById("location_input_label");
+const event_input = document.getElementById("location_input");
 const online_button = document.getElementById("online_button");
 const venue_button = document.getElementById("venue_button");
 
 venue_button.addEventListener("click", function() {
-    if(online_location.style.display === "block") {
-        online_location.style.display = "none";
-        venue_location.style.display = "block";
+    event_label.innerText = "Venue";
+
+    if (event_input.style.display === "none") {
+        event_input.style.display = "block";
     }
     else {
-        venue_location.style.display = "block";
+        event_input.style.display = "block";
     }
+
 });
 
 online_button.addEventListener("click", function() {
-    if(venue_location.style.display === "block") {
-        venue_location.style.display = "none";
-        online_location.style.display = "block";
+    event_label.innerText = "Online event";
+
+    if (event_input.style.display === "none") {
+        event_input.style.display = "block";
     }
     else {
-        online_location.style.display = "block";
+        event_input.style.display = "block";
     }
 });

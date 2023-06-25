@@ -19,13 +19,10 @@ if(isset($_POST['event-category'])) {
     $category = $_POST['event-category'];
 }
 
-if(isset($_POST['venue-location'])) {
-    $location = $_POST['venue-location'];
+if(isset($_POST['event-location'])) {
+    $location = $_POST['event-location'];
 }
 
-if(isset($_POST['online-location'])) {
-    $location = $_POST['online-location'];
-}
 
 if(isset($_POST['event-date'])) {
     $date = $_POST['event-date'];
@@ -40,7 +37,7 @@ if(isset($_POST['event-description'])) {
 }
 
 createEvent( $pdo,$category,$user_id, $title, $organizer, $location, $date, $time, $description);
-
+redirection('../event.php?e=13');
 
 
 

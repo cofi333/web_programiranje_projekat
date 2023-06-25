@@ -56,7 +56,25 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
 
     <main>
         <section class="container basic-info">
-            <form action="./php/create-event.php" method="post">
+            <form action="./php/create-event.php" method="post" id="form">
+                <?php
+                require_once './php/config.php';
+                $e = 0;
+
+                if (isset($_GET["e"]) and is_numeric($_GET['e'])) {
+                    $e = (int)$_GET["e"];
+
+                    if (array_key_exists($e, $messages)) {
+                        echo '
+                    <div class="alert alert-info ~alert-dismissible fade show m-3" role="alert">
+                        ' . $messages[$e] . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+                    }
+                }
+                ?>
                 <div class="row">
                     <div class="bi-info col-md-12">
                         <h1>Basic info</h1>
@@ -68,19 +86,21 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                         <div class="mb-3">
                             <label for="event-title" class="form-label">Event title</label>
                             <input type="text" class="form-control" name="event-title" id="event-title">
+                            <span class="error" id="event-title_error"></span>
                         </div>
 
                         <div class="mb-3">
                             <label for="organizer" class="form-label">Organizer</label>
-                            <input type="text" class="form-control" name="event-organizer" id="organizer">
+                            <input type="text" class="form-control" name="event-organizer" id="event-organizer">
+                            <span class="error" id="event-organizer_error"></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="row event_type">
                     <div class="col-md-3">
-                        <select class="form-select" name="event-category" aria-label="Default select example">
-                            <option selected>Category</option>
+                        <select class="form-select" name="event-category" id="event-category" aria-label="Default select example">
+                            <option selected value="default">Category</option>
                            <?php
 
                             $sql = "SELECT ec_id,category FROM event_category";
@@ -92,6 +112,7 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                             <option value="<?php echo ($row['ec_id'])?>"><?php echo htmlspecialchars($row['category'])?></option>
                             <?php } ?>
                         </select>
+                        <span class="error" id="event-category_error"></span>
                     </div>
                 </div>
 
@@ -108,15 +129,12 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                         </div>
                     </div>
 
-                    <div id="location_input_venue">
-                        <label for="organizer" class="form-label">Venue location</label>
-                        <input type="text" class="form-control" id="venue_location" name="venue-location">
+                    <div id="location_input">
+                        <label for="organizer" id="location_input_label" class="form-label"></label>
+                        <input type="text" class="form-control" id="event-location" name="event-location">
                     </div>
 
-                    <div id="location_input_online">
-                        <label for="organizer" class="form-label">Online event</label>
-                        <input type="text" class="form-control" id="online_location" name="online-location">
-                    </div>
+                    <span class="error" id="event-location_error"></span>
 
                 </div>
 
@@ -127,11 +145,13 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                     <div class="row">
                         <div class="col-md-6">
                             <label for="organizer" class="form-label">Date</label>
-                            <input type="text" class="form-control" name="event-date" placeholder="YYYY-MM-DD">
+                            <input type="text" id="event-date" class="form-control" name="event-date" placeholder="YYYY-MM-DD">
+                            <span class="error" id="event-date_error"></span>
                         </div>
                         <div class="col-md-6">
                             <label for="organizer" class="form-label">Time</label>
-                            <input type="text" class="form-control" name="event-time" placeholder="HH:MM:SS">
+                            <input type="text" id="event-time" class="form-control" name="event-time" placeholder="HH:MM:SS">
+                            <span class="error" id="event-time_error"></span>
                         </div>
                     </div>
                 </div>
@@ -141,7 +161,8 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                     <p>Please describe more about your event.</p>
 
                     <label for="organizer" class="form-label">Description</label>
-                    <input type="text" class="form-control" name="event-description">
+                    <input type="text" id="event-description" class="form-control" name="event-description">
+                    <span class="error" id="event-description_error"></span>
                 </div>
 
                 <div class="sign_up">
@@ -180,7 +201,8 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
 
 
 
-      <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="./script/eventLocation.js"></script>
+    <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
+    <script src="./script/eventLocation.js"></script>
+    <script src="./script/createEventValidateForm.js"></script>
 </body>
 </html>
