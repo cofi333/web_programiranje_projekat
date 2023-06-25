@@ -36,7 +36,28 @@ if(isset($_POST['event-description'])) {
     $description = $_POST['event-description'];
 }
 
-createEvent( $pdo,$category,$user_id, $title, $organizer, $location, $date, $time, $description);
+switch($category) {
+    case 1:
+        $img = "images/music_category.jpg";
+        break;
+    case 2:
+        $img = "images/nightlife_category.jpg";
+        break;
+    case 3:
+        $img ="images/culture_category.jpg";
+        break;
+    case 4:
+        $img = "images/food_category.jpg";
+        break;
+    case 5:
+        $img = "images/sport_category.jpg";
+        break;
+
+    default:
+        $img = "";
+}
+
+createEvent( $pdo,$category,$user_id, $title, $organizer, $location,$img, $date, $time, $description);
 redirection('../event.php?e=13');
 
 
