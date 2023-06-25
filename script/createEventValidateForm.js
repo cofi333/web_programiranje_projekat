@@ -5,7 +5,7 @@ let category = document.getElementById("event-category");
 let date = document.getElementById("event-date");
 let time = document.getElementById("event-time");
 let description = document.getElementById("event-description");
-let location = document.getElementById("event-location");
+let Eventlocation = document.getElementById("event-location");
 let validForm = false;
 
 
@@ -15,7 +15,7 @@ form.addEventListener("submit", function(e) {
     validateEventTitle();
     validateEventOrganizer();
     validateEventCategory();
- //   validateLocation();
+    validateLocation();
     validateDate();
     validateTime();
     validateDescription();
@@ -24,7 +24,7 @@ form.addEventListener("submit", function(e) {
 
 
 
-    if(validateEventTitle() && validateEventOrganizer() && validateEventCategory()  && validateDate() && validateTime() && validateDescription()) this.submit();
+    if(validateEventTitle() && validateEventOrganizer() && validateEventCategory()  && validateDate() && validateTime() && validateDescription() && validateLocation()) this.submit();
 });
 
 let validateEventTitle = () => {
@@ -83,7 +83,7 @@ let validateLocation = () => {
 
 
 
-    if(isEmpty(location.value)) {
+    if(isEmpty(Eventlocation.value.trim())) {
         validForm = false;
         location_errorMessage.innerText = "Please enter a location.";
 

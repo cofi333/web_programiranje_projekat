@@ -11850,6 +11850,9 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.navbar {
+  z-index: 999;
+}
 .navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl, .navbar .container-xxl {
   justify-content: end;
 }
@@ -12158,6 +12161,23 @@ footer .icons {
   color: #fff;
   padding: 6px 40px;
   font-size: 18px;
+}
+
+.heading {
+  background-image: url("../images/userdashboard.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50vh;
+}
+
+.main-user-section {
+  background: radial-gradient(#FF19F2, #730770);
+  background-size: cover;
+}
+
+#user-footer {
+  margin: 0;
 }
 
 * {
