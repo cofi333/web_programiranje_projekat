@@ -135,13 +135,9 @@ function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
 
 function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location, $img, $date, $time, $description) : void
 {
-<<<<<<< HEAD
+
     $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_img , event_date, event_time, event_description)
     VALUES (:category,:id_user ,:title, :organizer, :location, :img , :date, :time, :description)";
-=======
-    $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_date, event_time, event_description)
-                        VALUES (:category,:id_user ,:title, :organizer, :location, :date, :time, :description)";
->>>>>>> 1e1c994901ddba60bcd24b9a135b194d5a76d544
 
 
     $stmt = $pdo->prepare($sql);
