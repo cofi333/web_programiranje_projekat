@@ -27,6 +27,9 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 links">
                         <li class="nav-item">
+                            <a class="nav-link" href="./index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Music</a>
                         </li>
                         <li class="nav-item">
@@ -145,7 +148,7 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                     <div class="row">
                         <div class="col-md-6">
                             <label for="organizer" class="form-label">Date</label>
-                            <input type="text" id="event-date" class="form-control" name="event-date" placeholder="YYYY-MM-DD">
+                            <input type="date" id="event-date" class="form-control" name="event-date">
                             <span class="error" id="event-date_error"></span>
                         </div>
                         <div class="col-md-6">
@@ -203,6 +206,6 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
 
     <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
     <script src="./script/eventLocation.js"></script>
-    <script src="./script/createEventValidateForm.js"></script>
+    <!--<script src="./script/createEventValidateForm.js"></script>-->
 </body>
 </html>

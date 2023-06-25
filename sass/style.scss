@@ -4,7 +4,6 @@
 @import "login.scss";
 @import "_footer.scss";
 @import "_index.scss";
-@import "_user_main.scss";
 @import "_event.scss";
 
 *{
@@ -12,6 +11,19 @@
     margin: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+}
+
+#navbarSupportedContent {
+    gap: 15px;
+}
+
+.user {
+
+    img {
+        width: 50px;
+        height: 50px;
+
+    }
 }
 
 

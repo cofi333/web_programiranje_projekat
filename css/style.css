@@ -12101,15 +12101,6 @@ footer .icons {
 #index_body header .search input::placeholder {
   color: #fff;
 }
-#navbarSupportedContent {
-  gap: 15px;
-}
-
-.user img {
-  width: 50px;
-  height: 50px;
-}
-
 #create_event_page {
   background-image: url("../images/background_image.png");
   background-repeat: no-repeat;
@@ -12175,4 +12166,13 @@ footer .icons {
   margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+}
+
+#navbarSupportedContent {
+  gap: 15px;
+}
+
+.user img {
+  width: 50px;
+  height: 50px;
 }

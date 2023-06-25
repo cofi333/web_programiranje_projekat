@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body id="index_body">
+
     <nav class="navbar navbar_index navbar-expand-lg">
         <div class="container-fluid container">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,15 +35,35 @@
             </ul>
 
             <ul class="navbar-nav buttons">
-                <li class="nav-item create_event_btn">
-                    <a class="nav-link" href="event.php">Create an event</a>
-                </li>
-                <li class="nav-item sign_up_btn">
-                    <a class="nav-link" href="./sign_up.php">Sign up</a>
-                </li>
-                <li class="nav-item log_in_btn">
-                    <a class="nav-link" href="login.php">Log in</a>
-                </li>
+
+                <?php
+                session_start();
+                require_once 'php/config.php';
+                require_once 'php/functions.php';
+                if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_SESSION['id_user'])) {
+                    echo '<li class="nav-item create_event_btn">';
+                    echo '<a class="nav-link" href="./login.php">Create an event</a>';
+                    echo '</li>';
+
+                    echo '<li class="nav-item sign_up_btn">';
+                    echo '<a class="nav-link" href="./login.php">Create an event</a>';
+                    echo '</li>';
+
+                    echo '<li class="nav-item log_in_btn">';
+                    echo '<a class="nav-link" href="./login.php">Log in</a>';
+                    echo '</li>';
+                }
+
+                else{
+                    echo '<li class="nav-item create_event_btn">';
+                    echo '<a class="nav-link" href="./event.php">Create an event</a>';
+                    echo '</li>';
+
+                    echo '<div class="user">';
+                    echo '<a href="user_profile.php"><img src="./images/user_image.png" id="user_image"></a>';
+                    echo '</div>';
+                }
+                ?>
             </ul>
            
           </div>
@@ -87,8 +108,6 @@
           </div>
         </div>
       </footer>
-      
-
 </body>
 
 <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>

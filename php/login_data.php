@@ -11,7 +11,7 @@ if(!empty($email) and !empty($password)){
     if ($data and is_int($data['id_user'])) {
         $_SESSION['username'] = $email;
         $_SESSION['id_user'] = $data['id_user'];
-        redirection('../user_main.php');
+        redirection('../index.php');
     } else {
         redirection('../login.php?l=1');
     }
