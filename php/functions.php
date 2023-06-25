@@ -4,7 +4,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
-
 require_once "config.php";
 
 //function to register new user
@@ -14,11 +13,10 @@ function registerUser(PDO $pdo, string $password, string $firstname,  string $em
     $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO users (password,firstname,email,registration_token,registration_expires,active) 
-VALUES (:passwordHashed,:firstname,:email,:token,DATE_ADD(now(),INTERVAL 1 DAY),0)";
+                        VALUES (:passwordHashed,:firstname,:email,:token,DATE_ADD(now(),INTERVAL 1 DAY),0)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':passwordHashed', $passwordHashed, PDO::PARAM_STR);
     $stmt->bindParam(':firstname', $firstname, PDO::PARAM_STR);
-    //$stmt->bindParam(':lastname', $lastname, PDO::PARAM_STR);
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->bindParam(':token', $token, PDO::PARAM_STR);
     $stmt->execute();
@@ -32,7 +30,6 @@ VALUES (:passwordHashed,:firstname,:email,:token,DATE_ADD(now(),INTERVAL 1 DAY),
 //function to check if user exists
 function existsUser(PDO $pdo, string $email): bool
 {
-
     $sql = "SELECT id_user FROM users WHERE email=:email AND (registration_expires>now() OR active ='1') LIMIT 0,1";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
@@ -74,7 +71,7 @@ function connectDatabase(string $dsn, array $pdoOptions): PDO
     try {
         $pdo = new PDO($dsn, USER, PASSWORD , $pdoOptions);
 
-    } catch (\PDOException $e) {
+    } catch (PDOException $e) {
         var_dump($e->getCode());
         throw new \PDOException($e->getMessage());
     }
@@ -139,10 +136,10 @@ function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
 function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location, $date, $time, $description) : void
 {
     $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_date, event_time, event_description)
-    VALUES (:category,:id_user ,:title, :organizer, :location, :date, :time, :description)";
+                        VALUES (:category,:id_user ,:title, :organizer, :location, :date, :time, :description)";
 
 
-     $stmt = $pdo->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':category', $category, PDO::PARAM_STR);
     $stmt->bindParam(':id_user', $user_id, PDO::PARAM_STR);
     $stmt->bindParam(':title', $title, PDO::PARAM_STR);
@@ -150,7 +147,6 @@ function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location
     $stmt->bindParam(':location', $location, PDO::PARAM_STR);
     $stmt->bindParam(':date', $date, PDO::PARAM_STR);
     $stmt->bindParam(':time', $time, PDO::PARAM_STR);
-     $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+    $stmt->bindParam(':description', $description, PDO::PARAM_STR);
     $stmt->execute();
-
 }
