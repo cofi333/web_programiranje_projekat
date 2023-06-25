@@ -129,10 +129,10 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                     <h1>Location</h1>
                     <p>Help people in the area discover your event and let attendees know where to show up.</p>
 
-                  
+
 
                     <div id="location_input">
-                        <label for="event-location" id="location_input_label" class="form-label"></label>
+                        <label for="event-location" id="location_input_label" class="form-label">Location</label>
                         <input type="text" class="form-control" id="event-location" name="event-location">
                     </div>
 
