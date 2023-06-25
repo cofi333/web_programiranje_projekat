@@ -53,7 +53,6 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
 
                     </ul>
 
-
                     <div class="user">
                         <a href="user_profile.php"><img src="./images/user_image.png" id="user_image"></a>
                     </div>
