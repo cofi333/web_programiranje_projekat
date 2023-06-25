@@ -4,6 +4,15 @@
   background-size:cover;
 }
 
+#form {
+  .error {
+    color: #ff8080;
+    font-size: 1em;
+    display: block;
+    padding-top: 0.5em;
+  }
+}
+
 .basic-info {
     margin-top: 70px;
     color: #fff;
@@ -31,7 +40,7 @@
       color: #fff;
     }
 
-    #location_input_venue, #location_input_online {
+    #location_input {
       display: none;
       margin-top: 15px;
     }

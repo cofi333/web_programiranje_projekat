@@ -111,4 +111,3 @@ const isValidPassword = (password) => {
     return rexPassword.test(password);
 }
 
-const isEmpty = value => value === '';
