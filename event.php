@@ -46,6 +46,12 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                         </li>
                     </ul>
 
+                    <ul class="navbar-nav buttons">
+                        <li class="nav-item create_event_btn">
+                            <a class="nav-link" href="#">Create an event</a>
+                        </li>
+
+                    </ul>
 
 
                     <div class="user">
@@ -197,7 +203,7 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
 
 
 
-    <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./script/createEventValidateForm.js"></script>
 </body>
 </html>

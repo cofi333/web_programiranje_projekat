@@ -72,7 +72,7 @@
       </nav>
 
       <header>
-        <img src="./images/index_background_image.png" alt="Background image">
+          <img src="./images/index_background_image.png" alt="background">
         <div class="search">
             <div class="container">
                 <input type="text" placeholder="Search an event...">
@@ -111,7 +111,7 @@
       </footer>
 </body>
 
-<script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="./script/swiper.js"></script>
 </html>
