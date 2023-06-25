@@ -135,20 +135,9 @@ function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
 
 function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location, $date, $time, $description) : void
 {
-<<<<<<< HEAD
     $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_img , event_date, event_time, event_description)
     VALUES (:category,:id_user ,:title, :organizer, :location, :img , :date, :time, :description)";
 
-=======
-<<<<<<< HEAD
-
-    $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_img , event_date, event_time, event_description)
-    VALUES (:category,:id_user ,:title, :organizer, :location, :img , :date, :time, :description)";
-=======
-    $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_date, event_time, event_description)
-    VALUES (:category,:id_user ,:title, :organizer, :location, :date, :time, :description)";
->>>>>>> parent of 2539dcf (fix)
->>>>>>> 1fabe8b076e7c65244c609ab2634b03ab86e3adf
 
 
     $stmt = $pdo->prepare($sql);
