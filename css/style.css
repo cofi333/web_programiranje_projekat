@@ -12180,6 +12180,11 @@ footer .icons {
   margin: 0;
 }
 
+.swiper .swiper-wrapper .swiper-slide .event-card img {
+  width: 400px !important;
+  height: 201px !important;
+}
+
 * {
   padding: 0;
   margin: 0;

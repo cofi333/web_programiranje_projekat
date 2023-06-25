@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body id="index_body">
@@ -81,6 +81,25 @@
       </header>
 
       <section class="events">
+          <div class="swiper">
+              <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                      <div class="event-card">
+                          <img src="./images/index_background_image.png" alt="bck">
+                          <h2>Title</h2>
+                          <p>Datum: 26.06.2023</p>
+                          <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos dolor ipsum nam officia veniam. Asperiores atque doloribus, earum est fugit laudantium omnis optio perferendis ratione, rerum, suscipit tempora veniam?</span><span>Ab accusamus ad beatae deserunt dolorem doloribus ducimus minima nihil vitae voluptatibus! Aspernatur consequuntur cum debitis earum iure laboriosam minima quasi sint voluptatibus. Aut, magnam pariatur quo recusandae repellendus sit!</span></p>
+                      </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                      <img src="./images/index_background_image.png" alt="bck">
+                      <h2>Title 2</h2>
+                      <p>Datum: 26.06.2023</p>
+                      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos dolor ipsum nam officia veniam. Asperiores atque doloribus, earum est fugit laudantium omnis optio perferendis ratione, rerum, suscipit tempora veniam?</span><span>Ab accusamus ad beatae deserunt dolorem doloribus ducimus minima nihil vitae voluptatibus! Aspernatur consequuntur cum debitis earum iure laboriosam minima quasi sint voluptatibus. Aut, magnam pariatur quo recusandae repellendus sit!</span></p>
+                  </div>
+              </div>
+          </div>
         
       </section>
 
@@ -112,6 +131,7 @@
 </body>
 
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="node_modules/swiper/swiper-bundle.min.js"></script>
 <script src="./script/swiper.js"></script>
+<script src="./script/fetchJSONFromServer.js"></script>
 </html>
