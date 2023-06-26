@@ -114,7 +114,7 @@
 
             <div class="form" id="forgot_password_form">
 
-                <form action="./php/forget-password.php" method="post" id="forget-form">
+                <form action="php/reset-password.php" method="post" id="forget-form">
 
 
 
