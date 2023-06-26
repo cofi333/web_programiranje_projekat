@@ -41,7 +41,9 @@ $messages = [
     11 => 'Something went wrong with mail server. We will try to send email later!',
     12 => 'Your account is already activated!',
     13 => 'Your event is created!',
-    14 => 'If you have account on our site, email with instructions for reset password is sent to you.'
+    14 => 'If you have account on our site, email with instructions for reset password is sent to you.',
+    15 => 'Your password has been updated. You can log in now.',
+    16 => 'Token or other data are invalid!'
 ];
 
 $emailMessages = [

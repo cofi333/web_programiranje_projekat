@@ -11910,72 +11910,78 @@ textarea.form-control-lg {
 .hero_sign_up {
   padding: 100px 0;
 }
-.hero_sign_up .content {
+
+.content {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
-.hero_sign_up .picture {
+
+.picture {
   display: flex;
   justify-content: center;
 }
-.hero_sign_up .form {
+
+.form {
   width: 60%;
 }
-.hero_sign_up .form form {
+.form form {
   padding: 30px 55px;
   background-color: #009DFF;
   height: 100%;
 }
-.hero_sign_up .form form .form-group {
+.form form .form-group {
   padding: 15px 0;
 }
-.hero_sign_up .form form .form-group label {
+.form form .form-group label {
   color: #FFFFFF;
   font-size: 24px;
   padding: 5px 0;
 }
-.hero_sign_up .form form .form-group input::placeholder {
+.form form .form-group input::placeholder {
   color: #009DFF;
 }
-.hero_sign_up .form form .form-group .error {
+.form form .form-group .error {
   color: #f00;
   font-size: 1em;
   display: block;
   padding-top: 0.5em;
 }
-.hero_sign_up .form form .sign_up {
+.form form .sign_up {
   display: flex;
   justify-content: end;
   padding: 15px 0;
 }
-.hero_sign_up .form form .sign_up .btn {
+.form form .sign_up .btn {
   background-color: #BD1EB8;
   color: #fff;
   padding: 6px 40px;
   font-size: 18px;
 }
-.hero_sign_up .form form .log_in {
+.form form .log_in {
   font-size: 24px;
   padding: 15px 0;
 }
-.hero_sign_up .form form .log_in span {
+.form form .log_in span {
   color: #FFFFFF;
 }
-.hero_sign_up .form form .log_in a {
+.form form .log_in a {
   text-decoration: none;
   color: #5EDFFF;
 }
-.hero_sign_up #forgot-password {
+
+#forgot-password {
   text-decoration: underline;
 }
-.hero_sign_up #forgot-password:hover {
+#forgot-password:hover {
   cursor: pointer;
 }
-.hero_sign_up #forgot_password_form {
+
+#forgot_password_form {
   display: none;
 }
-.hero_sign_up .show {
+
+.show {
   display: block !important;
 }
 
@@ -12195,6 +12201,14 @@ footer .icons {
 .swiper .swiper-wrapper .swiper-slide .event-card img {
   width: 400px !important;
   height: 201px !important;
+}
+
+#reset_form_body {
+  background: radial-gradient(#FF19F2, #730770);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 * {

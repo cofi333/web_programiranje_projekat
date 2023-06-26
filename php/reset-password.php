@@ -9,9 +9,9 @@ if (!empty($email) and getUserData($pdo, 'id_user', 'email', $email)) {
         setForgottenToken($pdo, $email, $token);
         $id_user = getUserData($pdo, 'id_user', 'email', $email);
         try {
-            $body = "To start the process of changing password, visit <a href=" . SITE . "forget.php?token=$token>link</a>.";
+            $body = "To start the process of changing password, visit <a href=" . SITE . "php/forget.php?token=$token>link</a>.";
             sendEmail($pdo, $email, $emailMessages['forget'], $body);
-            redirection('../sign_up.php?f=14');
+            redirection('../sign_up.php?r=14');
         } catch (Exception $e) {
             error_log("****************************************");
             error_log($e->getMessage());
