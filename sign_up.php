@@ -105,8 +105,47 @@
                 <span>You have an account?</span>
                 <a href="login.php">Log in</a>
               </div>
+
+                <span id="forgot-password">Forgot password?</span>
+
+
             </form>
           </div>
+
+            <div class="form" id="forgot_password_form">
+
+                <form action="./php/forget-password.php" method="post" id="forget-form">
+
+
+
+                    <?php
+                    require_once './php/config.php';
+                    $f = 0;
+
+                    if (isset($_GET["f"]) and is_numeric($_GET['f'])) {
+                        $f = (int)$_GET["f"];
+
+                        if (array_key_exists($f, $messages)) {
+                            echo '
+                    <div class="alert alert-info ~alert-dismissible fade show m-3" role="alert">
+                        ' . $messages[$f] . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+                        }
+                    }
+                    ?>
+
+                    <div class="form-group">
+                        <label for="email-forgot">Email</label>
+                        <input type="email" class="form-control" id="email-forgot" name="email-forgot" aria-describedby="emailHelp" placeholder="Your email">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Reset password</button>
+                </form>
+            </div>
+
         </div>
 
 
@@ -141,6 +180,7 @@
 
       <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
       <script src="./script/validateForm.js"></script>
+      <script src="./script/forgotPassword.js"></script>
 </body>
 
 

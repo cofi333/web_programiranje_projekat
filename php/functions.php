@@ -91,8 +91,8 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body): voi
         $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 2525;
-        $phpmailer->Username = '28e695b2b69468';
-        $phpmailer->Password = 'ba9c57e1bb08c1';
+        $phpmailer->Username = '91a70046fbb2a2';
+        $phpmailer->Password = '27338e9f68a475';
 
 
         $phpmailer->setFrom('webmaster@example.com', 'Webmaster');
@@ -153,4 +153,30 @@ function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location
     $stmt->execute();
 
 
+}
+
+function setForgottenToken(PDO $pdo, string $email, string $token): void
+{
+    $sql = "UPDATE users SET forgotten_password_token = :token, forgotten_password_expires = DATE_ADD(now(),INTERVAL 6 HOUR) WHERE email = :email";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':token', $token, PDO::PARAM_STR);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();
+}
+
+function getUserData(PDO $pdo, string $data, string $field, string $value): string
+{
+    $sql = "SELECT $data as data FROM users WHERE $field=:value LIMIT 0,1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':value', $value, PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $data = '';
+
+    if ($stmt->rowCount() > 0) {
+        $data = $result['data'];
+    }
+
+    return $data;
 }

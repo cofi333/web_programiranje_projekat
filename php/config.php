@@ -40,7 +40,8 @@ $messages = [
     10 => 'Password is not enough strong! (min 8 characters, at least 1 lowercase character, 1 uppercase character, 1 number, and 1 special character',
     11 => 'Something went wrong with mail server. We will try to send email later!',
     12 => 'Your account is already activated!',
-    13 => 'Your event is created!'
+    13 => 'Your event is created!',
+    14 => 'If you have account on our site, email with instructions for reset password is sent to you.'
 ];
 
 $emailMessages = [

@@ -20,7 +20,7 @@
         justify-content: center;
     }
 
- 
+
     .form {
         width: 60%;
 
@@ -28,7 +28,6 @@
             padding:30px 55px;
             background-color: #009DFF;
             height: 100%;
-           
             .form-group {
                 padding:15px 0;
     
@@ -77,6 +76,25 @@
                 }
             }
         }
+    }
+
+
+    #forgot-password {
+
+        text-decoration: underline;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    #forgot_password_form {
+        display: none;
+    }
+
+
+    .show {
+        display: block !important;
     }
     
 }

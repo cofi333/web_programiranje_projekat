@@ -11966,6 +11966,18 @@ textarea.form-control-lg {
   text-decoration: none;
   color: #5EDFFF;
 }
+.hero_sign_up #forgot-password {
+  text-decoration: underline;
+}
+.hero_sign_up #forgot-password:hover {
+  cursor: pointer;
+}
+.hero_sign_up #forgot_password_form {
+  display: none;
+}
+.hero_sign_up .show {
+  display: block !important;
+}
 
 @media (max-width: 991.98px) {
   .hero_sign_up {
