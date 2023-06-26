@@ -38,19 +38,19 @@ if(isset($_POST['event-description'])) {
 
 switch($category) {
     case 1:
-        $img = "images/music_category.jpg";
+        $img = "images/event_images/music_category.jpg";
         break;
     case 2:
-        $img = "images/nightlife_category.jpg";
+        $img = "images/event_images/nightlife_category.jpg";
         break;
     case 3:
-        $img ="images/culture_category.jpg";
+        $img ="images/event_images/culture_category.jpg";
         break;
     case 4:
-        $img = "images/food_category.jpg";
+        $img = "images/event_images/food_category.jpg";
         break;
     case 5:
-        $img = "images/sport_category.jpg";
+        $img = "images/event_images/sport_category.jpg";
         break;
 
     default:
