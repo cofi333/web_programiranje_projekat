@@ -87,37 +87,7 @@
           <h2>New Events</h2>
           <div class="swiper"> <!-- tbody -->
               <div class="swiper-wrapper"> <!-- tr -->
-                  <div class="swiper-slide"> <!-- td -->
-
-                          <img src="./images/index_background_image.png" alt="bck">
-
-
-                          <h2>Title 2</h2>
-                          <p>Datum: 26.06.2023</p>
-                          <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos dolor ipsum nam officia veniam. Asperiores atque doloribus, earum est fugit laudantium omnis optio perferendis ratione, rerum, suscipit tempora veniam?</span></p>
-
-                  </div>
-
-                  <div class="swiper-slide">
-
-                          <img src="./images/index_background_image.png" alt="bck">
-
-
-                          <h2>Title 2</h2>
-                          <p>Datum: 26.06.2023</p>
-                          <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos dolor ipsum nam officia veniam. Asperiores atque doloribus, earum est fugit laudantium omnis optio perferendis ratione, rerum, suscipit tempora veniam?</span></p>
-
-                  </div>
-
-                  <div class="swiper-slide">
-                          <img src="./images/index_background_image.png" alt="bck">
-                          <h2>Title 2</h2>
-                          <p>Datum: 26.06.2023</p>
-                          <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos dolor ipsum nam officia veniam. Asperiores atque doloribus, earum est fugit laudantium omnis optio perferendis ratione, rerum, suscipit tempora veniam?</span></p>
-                  </div>
               </div>
-
-
           </div>
 
               <img id="leftClick" src="./images/iconLeft.svg" alt="leftclick">
@@ -158,4 +128,8 @@
 <script src="./script/swiper.js"></script>
 
 <script src="./script/fetchJSONFromServer.js"></script>
+<script>
+    fetchEventJSON();
+    fetchUserJSON();
+</script>
 </html>
