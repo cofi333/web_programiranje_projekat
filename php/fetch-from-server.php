@@ -5,3 +5,5 @@ $sql = $pdo->prepare("SELECT events.event_img,events.event_title, events.event_d
 $sql->execute();
 $result = $sql->fetchAll();
 exit(json_encode($result));
+
+

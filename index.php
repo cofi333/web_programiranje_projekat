@@ -157,5 +157,7 @@
 <script src="node_modules/swiper/swiper-bundle.min.js"></script>
 <script src="./script/swiper.js"></script>
 
-<script src="./script/fetchJSONFromServer.js"></script>
+<script src="./script/fetchJSONFromServer.js">
+    showData();
+</script>
 </html>
