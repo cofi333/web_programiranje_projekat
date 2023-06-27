@@ -7,6 +7,9 @@
     <title>Events</title>
     <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body id="index_body">
 
@@ -81,26 +84,46 @@
       </header>
 
       <section class="events">
+          <h2>New Events</h2>
           <div class="swiper">
               <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                      <div class="event-card">
+
                           <img src="./images/index_background_image.png" alt="bck">
-                          <h2>Title</h2>
+
+
+                          <h2>Title 2</h2>
                           <p>Datum: 26.06.2023</p>
-                          <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos dolor ipsum nam officia veniam. Asperiores atque doloribus, earum est fugit laudantium omnis optio perferendis ratione, rerum, suscipit tempora veniam?</span><span>Ab accusamus ad beatae deserunt dolorem doloribus ducimus minima nihil vitae voluptatibus! Aspernatur consequuntur cum debitis earum iure laboriosam minima quasi sint voluptatibus. Aut, magnam pariatur quo recusandae repellendus sit!</span></p>
-                      </div>
+                          <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos dolor ipsum nam officia veniam. Asperiores atque doloribus, earum est fugit laudantium omnis optio perferendis ratione, rerum, suscipit tempora veniam?</span></p>
+
                   </div>
 
                   <div class="swiper-slide">
-                      <img src="./images/index_background_image.png" alt="bck">
-                      <h2>Title 2</h2>
-                      <p>Datum: 26.06.2023</p>
-                      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos dolor ipsum nam officia veniam. Asperiores atque doloribus, earum est fugit laudantium omnis optio perferendis ratione, rerum, suscipit tempora veniam?</span><span>Ab accusamus ad beatae deserunt dolorem doloribus ducimus minima nihil vitae voluptatibus! Aspernatur consequuntur cum debitis earum iure laboriosam minima quasi sint voluptatibus. Aut, magnam pariatur quo recusandae repellendus sit!</span></p>
+
+                          <img src="./images/index_background_image.png" alt="bck">
+
+
+                          <h2>Title 2</h2>
+                          <p>Datum: 26.06.2023</p>
+                          <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos dolor ipsum nam officia veniam. Asperiores atque doloribus, earum est fugit laudantium omnis optio perferendis ratione, rerum, suscipit tempora veniam?</span></p>
+
+                  </div>
+
+                  <div class="swiper-slide">
+                          <img src="./images/index_background_image.png" alt="bck">
+                          <h2>Title 2</h2>
+                          <p>Datum: 26.06.2023</p>
+                          <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos dolor ipsum nam officia veniam. Asperiores atque doloribus, earum est fugit laudantium omnis optio perferendis ratione, rerum, suscipit tempora veniam?</span></p>
                   </div>
               </div>
+
+
           </div>
-        
+
+              <img id="leftClick" src="./images/iconLeft.svg" alt="leftclick">
+              <img id="rightClick" src="./images/iconRight.svg" alt="rightClick">
+
+
       </section>
 
       <footer>
@@ -133,5 +156,8 @@
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="node_modules/swiper/swiper-bundle.min.js"></script>
 <script src="./script/swiper.js"></script>
-<script src="./script/fetchJSONFromServer.js"></script>
+
+<script src="./script/fetchJSONFromServer.js">
+    fetchEventCard();
+</script>
 </html>

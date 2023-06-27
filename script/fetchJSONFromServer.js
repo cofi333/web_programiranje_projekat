@@ -1,3 +1,4 @@
+let fetchEventCard = () => {
     fetch("http://localhost/web_programiranje_projekat/php/fetch-from-server.php/", {
         method: 'GET',
         headers: {
@@ -5,5 +6,6 @@
         },
     })
         .then((response) => response.json())
-        .then(response => console.log(JSON.stringify(response, null, 2)))
+        .then(response => console.log(response))
         .catch(error => console.log(error));
+}

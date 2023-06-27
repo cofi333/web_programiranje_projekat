@@ -12192,9 +12192,37 @@ footer .icons {
   margin: 0;
 }
 
-.swiper .swiper-wrapper .swiper-slide .event-card img {
-  width: 400px !important;
-  height: 201px !important;
+.events {
+  position: relative;
+}
+.events .swiper .swiper-wrapper .swiper-slide {
+  border-radius: 1.1em;
+  gap: 10em;
+  width: 400px;
+  background-color: #009DFF;
+  padding: 1em;
+}
+.events .swiper .swiper-wrapper .swiper-slide img {
+  border-top-left-radius: 1.1em;
+  border-top-right-radius: 1.1em;
+  width: 400px;
+  height: 200px;
+  padding: 0;
+}
+.events .swiper .swiper-wrapper .swiper-slide:hover {
+  cursor: pointer;
+}
+.events #leftClick {
+  z-index: 99;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+}
+.events #rightClick {
+  z-index: 99;
+  position: absolute;
+  top: 50%;
+  right: 5%;
 }
 
 * {
@@ -12202,6 +12230,7 @@ footer .icons {
   margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  font-family: "Oxygen", sans-serif;
 }
 
 #navbarSupportedContent {

@@ -1,11 +1,39 @@
-.swiper{
-  .swiper-wrapper{
-    .swiper-slide{
-      .event-card{
+.events{
+  position: relative;
+  .swiper{
+    .swiper-wrapper{
+      .swiper-slide{
+        border-radius: 1.1em;
+        gap: 10em;
         img{
-          width: 400px !important;
-          height: 201px !important;
+          border-top-left-radius: 1.1em;
+          border-top-right-radius: 1.1em;
+          width: 400px;
+          height: 200px;
+          padding: 0;
         }
+
+        width: 400px;
+        background-color: #009DFF;
+        padding: 1em;
+        &:hover{
+          cursor: pointer;
+        }
+      }
     }
   }
-}}
+
+  #leftClick{
+    z-index: 99;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+  }
+
+    #rightClick{
+      z-index: 99;
+      position: absolute;
+      top: 50%;
+      right: 5%;
+    }
+  }
