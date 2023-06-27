@@ -127,14 +127,11 @@
 <script src="node_modules/swiper/swiper-bundle.min.js"></script>
 <script src="./script/swiper.js"></script>
 
-<<<<<<< HEAD
-<script src="./script/fetchJSONFromServer.js">
-    showData();
-=======
+
 <script src="./script/fetchJSONFromServer.js"></script>
 <script>
     fetchEventJSON();
     fetchUserJSON();
->>>>>>> b9542941d4410360852301fe56a2d15959f17320
+
 </script>
 </html>
