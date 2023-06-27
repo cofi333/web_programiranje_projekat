@@ -85,9 +85,9 @@
 
       <section class="events">
           <h2>New Events</h2>
-          <div class="swiper">
-              <div class="swiper-wrapper">
-                  <div class="swiper-slide">
+          <div class="swiper"> <!-- tbody -->
+              <div class="swiper-wrapper"> <!-- tr -->
+                  <div class="swiper-slide"> <!-- td -->
 
                           <img src="./images/index_background_image.png" alt="bck">
 
@@ -157,7 +157,5 @@
 <script src="node_modules/swiper/swiper-bundle.min.js"></script>
 <script src="./script/swiper.js"></script>
 
-<script src="./script/fetchJSONFromServer.js">
-    fetchEventCard();
-</script>
+<script src="./script/fetchJSONFromServer.js"></script>
 </html>
