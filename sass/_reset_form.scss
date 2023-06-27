@@ -1,0 +1,26 @@
+#reset_form_body {
+  background: radial-gradient(#FF19F2, #730770);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+@include media-breakpoint-down(lg) {
+  .sign_up {
+    justify-content: center !important;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .form {
+    width: 75%;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+
+  .form {
+    width: 100%;
+  }
+}
