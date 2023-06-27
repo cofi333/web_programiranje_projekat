@@ -54,7 +54,7 @@
     </header>
 
     <main>
-        <section class="login">
+        <section class="login container">
             <div class="loginPic">
                 <img src="./images/people.png" alt="peoplepng">
             </div>
@@ -87,12 +87,27 @@
                   <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                 </div>
                 <button type="submit" class="btn btn-primary">Log In</button>
-        
+
+                <span id="forgot-password">Forgot password?</span>
                 <p>Don't have an account? <a href="./sign_up.php">Sing Up</a></p>
               </form>
+
+
+            <div class="form" id="forgot_password_form">
+
+                <form action="php/reset-password.php" method="post" id="forget-form">
+                    <div class="form-group">
+                        <label for="email-forgot">Email</label>
+                        <input type="email" class="form-control" id="email-forgot" name="email-forgot" aria-describedby="emailHelp" placeholder="Your email">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Reset password</button>
+                </form>
+            </div>
         </section>
     </main>
     
     <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
+    <script src="./script/forgotPassword.js"></script>
 </body>
 </html>

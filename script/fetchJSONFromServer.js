@@ -11,8 +11,8 @@
             for(let i in response){
                 let path = response[i].event_img;
                 output += `<div class="swiper-slide">
-                    
                     <img src="${path}" alt=bck">
+                    <h1>${response[i].event_title}</h1>
                 </div>`;
 
             }

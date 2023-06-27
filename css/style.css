@@ -11970,13 +11970,6 @@ textarea.form-control-lg {
   color: #5EDFFF;
 }
 
-#forgot-password {
-  text-decoration: underline;
-}
-#forgot-password:hover {
-  cursor: pointer;
-}
-
 #forgot_password_form {
   display: none;
 }
@@ -12040,7 +12033,7 @@ textarea.form-control-lg {
 }
 .login #login-form {
   background-color: #009DFF;
-  width: 35%;
+  width: 55%;
   padding: 3em;
   color: white;
 }
@@ -12053,6 +12046,12 @@ textarea.form-control-lg {
   margin-top: 1em;
   font-size: 1.2em;
   padding: 0.2em 2em;
+}
+.login #login-form #forgot-password {
+  text-decoration: underline;
+}
+.login #login-form #forgot-password:hover {
+  cursor: pointer;
 }
 
 footer {

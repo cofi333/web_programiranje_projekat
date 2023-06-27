@@ -109,23 +109,9 @@
                 <a href="login.php">Log in</a>
               </div>
 
-                <span id="forgot-password">Forgot password?</span>
-
-
             </form>
           </div>
 
-            <div class="form" id="forgot_password_form">
-
-                <form action="php/reset-password.php" method="post" id="forget-form">
-                    <div class="form-group">
-                        <label for="email-forgot">Email</label>
-                        <input type="email" class="form-control" id="email-forgot" name="email-forgot" aria-describedby="emailHelp" placeholder="Your email">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Reset password</button>
-                </form>
-            </div>
 
         </div>
 
@@ -161,7 +147,6 @@
 
       <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
       <script src="./script/validateForm.js"></script>
-      <script src="./script/forgotPassword.js"></script>
 </body>
 
 

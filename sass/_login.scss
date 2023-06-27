@@ -11,7 +11,7 @@
 
     #login-form{
         background-color: #009DFF;
-        width: 35%;
+        width: 55%;
         padding: 3em;
         color: white;
 
@@ -26,8 +26,17 @@
             font-size: 1.2em;
             padding: 0.2em 2em;
         }
+
+        #forgot-password {
+            text-decoration: underline;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+
     }
+
 }
 
 
-      
