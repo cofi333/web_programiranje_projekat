@@ -6,6 +6,11 @@
   height: 100vh;
 }
 
+@include media-breakpoint-down(lg) {
+  .sign_up {
+    justify-content: center !important;
+  }
+}
 
 @include media-breakpoint-down(md) {
   .form {
