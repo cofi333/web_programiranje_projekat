@@ -144,7 +144,7 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
 
                 <div class="date_time">
                     <h1>Date and time</h1>
-                    <p>Tell event-goers when your event starts and ends so they can make plans to attend.</p>
+                    <p>Tell event-goers when your event starts and ends, so they can make plans to attend.</p>
 
                     <div class="row">
                         <div class="col-md-6">
