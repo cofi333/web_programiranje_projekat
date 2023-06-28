@@ -132,6 +132,5 @@
 <script>
     fetchEventJSON();
     fetchUserJSON();
-
 </script>
 </html>

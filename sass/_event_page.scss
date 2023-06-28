@@ -1,0 +1,24 @@
+#event_page {
+  background: rgb(97,65,189);
+  background: radial-gradient(circle, rgba(97,65,189,1) 30%, rgba(28,19,55,1) 100%);
+  header {
+    background-image: url("../images/event_page_background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;
+  }
+
+  .about_event {
+    padding: 3em 0;
+    h2 {
+      color: #009DFF;
+      font-size: 2.5em;
+    }
+
+    p {
+      color: #fff;
+      font-size: 1.3em;
+    }
+
+  }
+}

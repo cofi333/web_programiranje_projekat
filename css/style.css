@@ -12253,6 +12253,28 @@ footer .icons {
     width: 100%;
   }
 }
+#event_page {
+  background: rgb(97, 65, 189);
+  background: radial-gradient(circle, rgb(97, 65, 189) 30%, rgb(28, 19, 55) 100%);
+}
+#event_page header {
+  background-image: url("../images/event_page_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+}
+#event_page .about_event {
+  padding: 3em 0;
+}
+#event_page .about_event h2, #event_page .about_event .h2 {
+  color: #009DFF;
+  font-size: 2.5em;
+}
+#event_page .about_event p {
+  color: #fff;
+  font-size: 1.3em;
+}
+
 * {
   padding: 0;
   margin: 0;
