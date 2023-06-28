@@ -1,4 +1,5 @@
 
+
 const fetchEventJSON = () => {
     fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-event.php/", {
         method: 'GET',
@@ -38,6 +39,38 @@ const fetchUserJSON = () => {
         .then((response) => response.json())
         .then(response => {
             console.log(response);
-            //document.querySelector('.swiper-wrapper').innerHTML = output;
         }).catch(error => console.log(error));
 };
+
+
+const fetchUserEvents = () => {
+        fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-userEvent.php/", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        })
+            .then((response) => response.json())
+            .then(response => {
+                console.log(response);
+                let output = '';
+                for(let i in response){
+                    output +=
+                        `<div class="user-event">
+                        <div class="event-data">
+                            <img src="${response[i].event_img}" alt="eventImg" />
+                            <h2>${response[i].event_title}</h2>
+                        </div>
+                        <div class="event-options">
+                            <button type="button" class="btn btn-primary">Update Event</button>
+                            <button type="button" class="btn btn-danger delete-event">Delete Event</button>
+                            <a class="btn btn-warning update-event" href="./php/update-event.php?=${response[i].event_id}" role="button">Update Event</a>
+                        </div>
+                    </div>`;
+                }
+
+                document.querySelector('.events').innerHTML = output;
+            }).catch(error => console.log(error));
+
+}
+
