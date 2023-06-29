@@ -6,6 +6,8 @@ if (isset($_POST['event_id'])) {
     $event_id = $_POST['event_id'];
 }
 
+
+
 if (isset($_POST['event-title'])) {
     $new_title = $_POST['event-title'];
 }

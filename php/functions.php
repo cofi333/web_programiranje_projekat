@@ -195,3 +195,15 @@ function getUserData(PDO $pdo, string $data, string $field, string $value): stri
 
     return $data;
 }
+
+function insertGuest (PDO $pdo, string $event_id ,string $id_user,string $email, string $name) : void
+{
+    $sql = "INSERT INTO guests (event_id,id_user,guest_mail,guest_name) VALUES (:event_id,:id_user,:mail, :name)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':event_id', $event_id, PDO::PARAM_STR);
+    $stmt->bindParam(':id_user', $id_user, PDO::PARAM_STR);
+    $stmt->bindParam(':mail', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->execute();
+}
+

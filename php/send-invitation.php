@@ -4,9 +4,11 @@ if (isset($_GET['event_id'])) {
     $event_id = trim($_GET['event_id']);
 }
 
-$sql = $pdo->prepare("SELECT events.event_id, events.ec_id, events.event_organizer, events.event_title, events.event_date, events.event_time,events.event_location ,events.event_description, event_category.category FROM events INNER JOIN event_category ON events.ec_id = event_category.ec_id WHERE event_id =". $event_id);
+$sql = $pdo->prepare("SELECT event_id, event_title FROM events WHERE event_id=" .$event_id);
 $sql->execute();
 $result = $sql->fetch();
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -36,6 +38,7 @@ $result = $sql->fetch();
                 </div>
 
                 <div class="btn-form">
+                    <input type="hidden" name="event_id" value="<?php echo $result['event_id'] ?>"/>
                     <input type="submit" name="btnSubmit" class="btn btn-primary" value="Send" />
                 </div>
 
@@ -48,6 +51,7 @@ $result = $sql->fetch();
 
 </body>
 
+<script src="../script/invitationValidateForm.js"></script>
 <script src="../node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
 </html>
 
