@@ -62,9 +62,9 @@ const fetchUserEvents = () => {
                             <h2>${response[i].event_title}</h2>
                         </div>
                         <div class="event-options">
-                            <button type="button" class="btn btn-primary">Update Event</button>
-                            <button type="button" class="btn btn-danger delete-event">Delete Event</button>
-                            <a class="btn btn-warning update-event" href="./php/update-event.php?=${response[i].event_id}" role="button">Update Event</a>
+                            <button type="button" class="btn btn-primary">Send invitation</button>
+                            <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${response[i].event_id}" role="button">Update Event</a>
+                            <a class="btn btn-danger update-event" href="./php/delete-event.php?event_id=${response[i].event_id}" role="button">Delete Event</a>
                         </div>
                     </div>`;
                 }
@@ -72,5 +72,16 @@ const fetchUserEvents = () => {
                 document.querySelector('.events').innerHTML = output;
             }).catch(error => console.log(error));
 
+}
+
+const test = () => {
+    fetch("http://localhost/web_programiranje_projekat/php/delete-event.php?event_id=138/", {
+        method: 'GET',
+        headers: {
+            'Accept' : 'application/json',
+        },
+    }).then((response) => {
+        console.log(response);
+    });
 }
 

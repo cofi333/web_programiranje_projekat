@@ -43,7 +43,8 @@ $messages = [
     13 => 'Your event is created!',
     14 => 'If you have account on our site, email with instructions for reset password is sent to you.',
     15 => 'Your password has been updated. You can log in now.',
-    16 => 'Token or other data are invalid!'
+    16 => 'Token or other data are invalid!',
+    17 => 'Your event is deleted.'
 ];
 
 $emailMessages = [

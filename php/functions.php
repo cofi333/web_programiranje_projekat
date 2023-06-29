@@ -155,6 +155,21 @@ function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location
 
 }
 
+function updateEvent(PDO $pdo, $event_id,$category,  $title, $organizer, $location, $date, $time, $description) : void
+{
+    $sql = "UPDATE events SET ec_id= :category,  event_title= :title, event_organizer= :organizer, event_location= :location, event_date= :date, event_time = :time, event_description= :description WHERE event_id = :event_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':category', $category, PDO::PARAM_STR);
+    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+    $stmt->bindParam(':organizer', $organizer, PDO::PARAM_STR);
+    $stmt->bindParam(':location', $location, PDO::PARAM_STR);
+    $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+    $stmt->bindParam(':time', $time, PDO::PARAM_STR);
+    $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+    $stmt->bindParam(':event_id', $event_id, PDO::PARAM_STR);
+    $stmt->execute();
+}
+
 function setForgottenToken(PDO $pdo, string $email, string $token): void
 {
     $sql = "UPDATE users SET forgotten_password_token = :token, forgotten_password_expires = DATE_ADD(now(),INTERVAL 6 HOUR) WHERE email = :email";
