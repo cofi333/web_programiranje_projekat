@@ -12230,10 +12230,11 @@ footer .icons {
   right: 5%;
 }
 
-#reset_form_body {
+#center_form {
   background: radial-gradient(#FF19F2, #730770);
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
 }
@@ -12275,6 +12276,11 @@ footer .icons {
   font-size: 1.3em;
 }
 
+.invitation-header {
+  margin-bottom: 2em;
+  color: #fff;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -12292,7 +12298,7 @@ footer .icons {
   height: 50px;
 }
 
-.update-btn {
+.btn-form {
   display: flex;
   justify-content: end;
   margin-top: 15px;

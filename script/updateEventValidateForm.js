@@ -18,7 +18,6 @@ let date_value = date.value.trim();
 let time_value = time.value.trim();
 let description_value = description.value.trim();
 
-
 form.addEventListener("submit", function(e) {
     e.preventDefault();
 

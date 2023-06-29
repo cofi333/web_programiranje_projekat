@@ -18,15 +18,15 @@ $result = $sql->fetch();
     <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
 </head>
-<body id="reset_form_body">
-<section class="reset_form container">
+<body id="center_form">
+<section class="center_form container">
     <div class="content">
         <div class="form">
             <form action="./update-event-data.php" method="post" id="form">
                 <span class="error" id="error"></span>
                 <div class="form-group">
                     <label for="event-title">Event title</label>
-                    <input type="text" class="form-control" id="event-title" name="event-title" aria-describedby="emailHelp" value="<?php echo $result['event_title'] ?>">
+                    <input type="text" class="form-control" id="event-title" name="event-title" value="<?php echo $result['event_title'] ?>">
 
                 </div>
                 <div class="form-group">
@@ -90,7 +90,7 @@ $result = $sql->fetch();
                     <input type="text" class="form-control" id="event-description" name="event-description" value="<?php echo $result['event_description'] ?>">
                 </div>
 
-               <div class="update-btn">
+               <div class="btn-form">
                    <input type="hidden" name="event_id" value="<?php echo $result['event_id']?>">
                    <input type="submit" name="btnSubmit" class="btn btn-primary" value="Update" />
                </div>

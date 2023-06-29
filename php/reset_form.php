@@ -16,8 +16,8 @@ if (isset($_GET['token'])) {
     <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
 </head>
-<body id="reset_form_body">
-<section class="reset_form container">
+<body id="center_form">
+<section class="center_form container">
     <div class="content">
         <div class="form">
 

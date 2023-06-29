@@ -9,6 +9,7 @@
 @import "_swiper-element";
 @import "_reset_form";
 @import "_event_page";
+@import "_send-invitation";
 
 *{
     padding: 0;
@@ -31,9 +32,10 @@
     }
 }
 
-.update-btn {
+.btn-form {
     display: flex;
     justify-content: end;
     margin-top: 15px;
 }
+
 
