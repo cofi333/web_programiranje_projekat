@@ -34,5 +34,7 @@ if (isset($_POST['event-description'])) {
     $new_description = $_POST['event-description'];
 }
 
+
+
 updateEvent($pdo, $event_id ,$new_category, $new_title, $new_organizer, $new_location, $new_date, $new_time, $new_description);
 redirection('../user_profile.php');

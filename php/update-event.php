@@ -23,6 +23,7 @@ $result = $sql->fetch();
     <div class="content">
         <div class="form">
             <form action="./update-event-data.php" method="post" id="form">
+                <span class="error" id="error"></span>
                 <div class="form-group">
                     <label for="event-title">Event title</label>
                     <input type="text" class="form-control" id="event-title" name="event-title" aria-describedby="emailHelp" value="<?php echo $result['event_title'] ?>">
@@ -103,7 +104,7 @@ $result = $sql->fetch();
 
 </body>
 
-
+<script src="../script/updateEventValidateForm.js"></script>
 <script src="../node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
 </html>
 
