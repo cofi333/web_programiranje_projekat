@@ -19,3 +19,5 @@ const swiper = new Swiper(".swiper", {
     prevEl: "#rightClick",
   },
 });
+
+const userSwiper = new Swiper(".user-swiper");

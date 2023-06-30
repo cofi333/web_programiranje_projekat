@@ -37,8 +37,14 @@ const fetchUserJSON = async ()=> {
             },
         });
         const data = await res.json();
-        console.log(data);
-
+        let output = '';
+        for(let i in data){
+            output +=
+                `<p>Username: ${data[i].email}</p>
+                 <p>Name: ${data[i].firstname }</p>
+                 <p>Date created: ${data[i].date_time}</p>`;
+        }
+        document.getElementById('user-info').innerHTML = output;
     }catch (e){
         console.log("Error in fetching data", e);
     }
@@ -55,26 +61,24 @@ const fetchUserEvents = async () => {
 
         const data = await res.json();
         let output = '';
+        console.log(data);
         for(let i in data){
             output +=
-                `<div class="user-event">
+                `<div class="swiper-slide">
                         <div class="event-data">
                             <img src="${data[i].event_img}" alt="eventImg" />
                             <h2>${data[i].event_title}</h2>
                         </div>
                         <div class="event-options">
-
                             <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Send invitation</a>
                             <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
-                            <!--<a class="btn btn-danger" id="delete-btn" href="./php/delete-event.php?event_id=${data[i].event_id}" role="button">Delete Event</a> -->
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</button>
-                            
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</button>                            
                         </div>
                     </div>`;
 
              delete_btn.href = "./php/delete-event.php?event_id=" + data[i].event_id;
         }
-        document.querySelector('.events').innerHTML = output;
+        document.querySelector('.swiper-wrapper').innerHTML = output;
     }catch (e){
         console.log("Error in fetching data", e);
     }
