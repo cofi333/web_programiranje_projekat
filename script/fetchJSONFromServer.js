@@ -1,3 +1,5 @@
+let delete_btn = document.getElementById("delete-btn");
+
 const fetchEventJSON = async () => {
     try{
         const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-event.php/", {
@@ -64,10 +66,13 @@ const fetchUserEvents = async () => {
 
                             <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Send invitation</a>
                             <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
-                            <a class="btn btn-danger" id="delete-btn" href="./php/delete-event.php?event_id=${data[i].event_id}" role="button">Delete Event</a>
-
+                            <!--<a class="btn btn-danger" id="delete-btn" href="./php/delete-event.php?event_id=${data[i].event_id}" role="button">Delete Event</a> -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</button>
+                            
                         </div>
                     </div>`;
+
+             delete_btn.href = "./php/delete-event.php?event_id=" + data[i].event_id;
         }
         document.querySelector('.events').innerHTML = output;
     }catch (e){
