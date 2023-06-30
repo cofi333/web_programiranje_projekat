@@ -1,5 +1,4 @@
 
-
 let form = document.getElementById("form");
 let title = document.getElementById("event-title");
 let organizer = document.getElementById("event-organizer");

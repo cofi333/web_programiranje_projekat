@@ -64,6 +64,8 @@ const fetchUserEvents = () => {
                         <div class="event-options">
                             <a href="./php/send-invitation.php?event_id=${response[i].event_id}" class="btn btn-primary">Send invitation</a>
                             <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${response[i].event_id}" role="button">Update Event</a>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEventModal"> Delete Event </button>
+
                             <a class="btn btn-danger" id="delete-btn" href="./php/delete-event.php?event_id=${response[i].event_id}" role="button">Delete Event</a>
                         </div>
                     </div>`;
