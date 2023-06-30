@@ -196,14 +196,32 @@ function getUserData(PDO $pdo, string $data, string $field, string $value): stri
     return $data;
 }
 
-function insertGuest (PDO $pdo, string $event_id ,string $id_user,string $email, string $name) : void
+function insertGuest (PDO $pdo, int $event_id ,int $id_user,string $email, string $name) : void
 {
     $sql = "INSERT INTO guests (event_id,id_user,guest_mail,guest_name) VALUES (:event_id,:id_user,:mail, :name)";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':event_id', $event_id, PDO::PARAM_STR);
-    $stmt->bindParam(':id_user', $id_user, PDO::PARAM_STR);
+    $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+    $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
     $stmt->bindParam(':mail', $email, PDO::PARAM_STR);
     $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->execute();
+}
+
+function guestResponse (PDO $pdo, int $event_id, int $guest_id, int $is_coming ): void {
+    $sql = "INSERT INTO guest_event(event_id,guest_id,is_coming) VALUES (:event_id, :id_guest, :is_coming)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+    $stmt->bindParam(':id_guest', $guest_id, PDO::PARAM_INT);
+    $stmt->bindParam(':is_coming', $is_coming, PDO::PARAM_INT);
+    $stmt->execute();
+}
+
+function guestUpdateRespone (PDO $pdo, int $event_id, int $guest_id, int $is_coming): void {
+    $sql = "UPDATE guest_event SET is_coming=:is_coming WHERE event_id=:event_id AND guest_id=:guest_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam('is_coming', $is_coming, PDO::PARAM_INT);
+    $stmt->bindParam('event_id', $event_id, PDO::PARAM_INT);
+    $stmt->bindParam('guest_id', $guest_id, PDO::PARAM_INT);
     $stmt->execute();
 }
 

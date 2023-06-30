@@ -9,7 +9,6 @@ $sql = "SELECT * FROM events WHERE event_id = " . $event_id;
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
-//var_dump($result);
 
 ?>
 

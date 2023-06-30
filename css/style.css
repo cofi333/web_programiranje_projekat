@@ -12281,6 +12281,25 @@ footer .icons {
   color: #fff;
 }
 
+#event_page .guest-coming {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+#event_page .guest-coming h2, #event_page .guest-coming .h2 {
+  color: #009DFF;
+}
+#event_page .guest-coming label {
+  color: #fff;
+}
+#event_page .guest-coming .radio_btns {
+  font-size: 1.2em;
+}
+#event_page .guest-coming #submit-btn {
+  margin-top: 1em;
+}
+
 * {
   padding: 0;
   margin: 0;
