@@ -130,7 +130,6 @@
 
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="./script/fetchJSONFromServer.js"></script>
-<<<<<<< HEAD
 <script>
     let listEventBtn = document.getElementById('listEvents');
     let alreadyFetched = false;
@@ -143,20 +142,6 @@
         }
     });
 </script>
-=======
-    <script>
-        let listEventBtn = document.getElementById('listEvents');
-        let alreadyFetched = false;
-        listEventBtn.addEventListener("click", function (e){
-            if(!alreadyFetched) {
-                fetchUserEvents();
-                alreadyFetched = true;
-            } else{
-                e.preventDefault();
-            }
-        });
-    </script>
->>>>>>> 5f91b6c05fb351c64f056cfc80f5a8bcb9746337
 
 </body>
 </html>
