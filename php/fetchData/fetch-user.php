@@ -8,8 +8,7 @@ if(isset($_SESSION['id_user'])){
     $id_user = $_SESSION['id_user'];
 }
 
-$sql = "SELECT email, firstname, date_time FROM users WHERE id_user = "  . $id_user;
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
+$sql = $pdo->prepare("SELECT users.email, users.firstname, users.date_time FROM users WHERE id_user = "  . $id_user . ";");
+$sql->execute();
+$result = $sql->fetchAll();
 exit(json_encode($result));
