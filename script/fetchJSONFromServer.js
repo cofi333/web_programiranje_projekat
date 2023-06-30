@@ -1,80 +1,79 @@
-
-
-const fetchEventJSON = () => {
-    fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-event.php/", {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-        },
-    })
-        .then((response) => response.json())
-        .then(response => {
-            console.log(JSON.stringify(response, null, 2));
-            let output = '';
-            for(let i in response){
-                output +=
-                    `<div class="swiper-slide">
-                   <a href="./eventPage.php?id=${response[i].event_id}">
-                   <img src="${response[i].event_img}" alt=bck">
-                   <h2>${response[i].event_title}</h2>
-                  </a>
-                   <p>${response[i].event_date}</p>
-                   <p>${response[i].event_time}</p>
-                   <p>${response[i].event_description}</p>  
-               </div>`;
-
-            }
-            document.querySelector('.swiper-wrapper').innerHTML = output;
-        }).catch(error => console.log(error));
-};
-
-
-const fetchUserJSON = () => {
-    fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-user.php/", {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-        },
-    })
-        .then((response) => response.json())
-        .then(response => {
-            console.log(response);
-        }).catch(error => console.log(error));
-};
-
-
-const fetchUserEvents = () => {
-        fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-userEvent.php/", {
+const fetchEventJSON = async () => {
+    try{
+        const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-event.php/", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
             },
-        })
-            .then((response) => response.json())
-            .then(response => {
-                console.log(response);
-                let output = '';
-                for(let i in response){
-                    output +=
-                        `<div class="user-event">
+        });
+        const data = await res.json();
+        let output = '';
+        for(let i in data){
+            output +=
+                `<div class="swiper-slide">
+                   <a href="./eventPage.php?id=${data[i].event_id}">
+                   <img src="${data[i].event_img}" alt=bck">
+                   <h2>${data[i].event_title}</h2>
+                  </a>
+                   <p>${data[i].event_date}</p>
+                   <p>${data[i].event_time}</p>
+                   <p>${data[i].event_description}</p>
+               </div>`;
+        }
+        document.querySelector('.swiper-wrapper').innerHTML = output;
+    }catch (e){
+        console.log("Error in fetching data", e);
+    }
+};
+
+const fetchUserJSON = async ()=> {
+    try{
+        const res= await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-user.php/", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        });
+        const data = await res.json();
+        console.log(data);
+
+    }catch (e){
+        console.log("Error in fetching data", e);
+    }
+};
+
+const fetchUserEvents = async () => {
+    try{
+        const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-userEvent.php/", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        });
+
+        const data = await res.json();
+        let output = '';
+        for(let i in data){
+            output +=
+                `<div class="user-event">
                         <div class="event-data">
-                            <img src="${response[i].event_img}" alt="eventImg" />
-                            <h2>${response[i].event_title}</h2>
+                            <img src="${data[i].event_img}" alt="eventImg" />
+                            <h2>${data[i].event_title}</h2>
                         </div>
                         <div class="event-options">
-                            <a href="./php/send-invitation.php?event_id=${response[i].event_id}" class="btn btn-primary">Send invitation</a>
-                            <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${response[i].event_id}" role="button">Update Event</a>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEventModal"> Delete Event </button>
 
-                            <a class="btn btn-danger" id="delete-btn" href="./php/delete-event.php?event_id=${response[i].event_id}" role="button">Delete Event</a>
+                            <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Send invitation</a>
+                            <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
+                            <a class="btn btn-danger" id="delete-btn" href="./php/delete-event.php?event_id=${data[i].event_id}" role="button">Delete Event</a>
+
                         </div>
                     </div>`;
-                }
-
-                document.querySelector('.events').innerHTML = output;
-            }).catch(error => console.log(error));
-
-}
+        }
+        document.querySelector('.events').innerHTML = output;
+    }catch (e){
+        console.log("Error in fetching data", e);
+    }
+};
 
 
 

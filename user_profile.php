@@ -149,18 +149,18 @@
 
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="./script/fetchJSONFromServer.js"></script>
-    <script>
-        let listEventBtn = document.getElementById('listEvents');
-        let alreadyFetched = false;
-        listEventBtn.addEventListener("click", function (e){
-            if(!alreadyFetched) {
-                fetchUserEvents();
-                alreadyFetched = true;
-            } else{
-                e.preventDefault();
-            }
-        });
-    </script>
+<script>
+    let listEventBtn = document.getElementById('listEvents');
+    let alreadyFetched = false;
+    listEventBtn.addEventListener("click", function (e){
+        if(!alreadyFetched) {
+            fetchUserEvents();
+            alreadyFetched = true;
+        } else{
+            e.preventDefault();
+        }
+    });
+</script>
 
 </body>
 </html>
