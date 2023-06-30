@@ -16,7 +16,7 @@ $result = $sql->fetch();
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Document</title>
+    <title>Update <?php echo $result['event_title'] ?></title>
 </head>
 <body id="center_form">
 <section class="center_form container">
@@ -87,24 +87,46 @@ $result = $sql->fetch();
 
                 <div class="form-group">
                     <label for="event-description">Description</label>
-                    <input type="text" class="form-control" id="event-description" name="event-description" value="<?php echo $result['event_description'] ?>">
+                    <textarea type="text" class="form-control" id="event-description" name="event-description"><?php echo $result['event_description'] ?></textarea>
                 </div>
 
                <div class="btn-form">
                    <input type="hidden" name="event_id" value="<?php echo $result['event_id']?>">
-                   <input type="submit" name="btnSubmit" class="btn btn-primary" value="Update" />
+                   <input type="submit" id="update-btn" class="btn btn-primary" value="Update"/>
                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update event</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to update event?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="../user_profile.php" class="btn btn-secondary">Cancel</a>
+                                <input type="submit" class="btn btn-primary" id="modal-submit" value="Submit">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </form>
         </div>
+
 
     </div>
 
 </section>
 
+
+
+
 </body>
 
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../script/updateEventValidateForm.js"></script>
-<script src="../node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
 </html>
 
