@@ -61,9 +61,15 @@ const fetchUserEvents = async () => {
                             <h2>${data[i].event_title}</h2>
                         </div>
                         <div class="event-options">
+<<<<<<< HEAD
                             <button type="button" class="btn btn-primary">Send invitation</button>
                             <a id="update-event" class="btn btn-warning" href="./php/update-event.php?=${data[i].event_id}" role="button">Update Event</a>
                             <a id="delete-event" class="btn btn-danger" href="./php/delete-event.php?=${data[i].event_id}" role="button">Delete Event</a>
+=======
+                            <a href="./php/send-invitation.php?event_id=${response[i].event_id}" class="btn btn-primary">Send invitation</a>
+                            <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${response[i].event_id}" role="button">Update Event</a>
+                            <a class="btn btn-danger" id="delete-btn" href="./php/delete-event.php?event_id=${response[i].event_id}" role="button">Delete Event</a>
+>>>>>>> 5f91b6c05fb351c64f056cfc80f5a8bcb9746337
                         </div>
                     </div>`;
         }
@@ -72,4 +78,6 @@ const fetchUserEvents = async () => {
         console.log("Error in fetching data", e);
     }
 };
+
+
 

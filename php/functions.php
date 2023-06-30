@@ -155,6 +155,21 @@ function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location
 
 }
 
+function updateEvent(PDO $pdo, $event_id,$category,  $title, $organizer, $location, $date, $time, $description) : void
+{
+    $sql = "UPDATE events SET ec_id= :category,  event_title= :title, event_organizer= :organizer, event_location= :location, event_date= :date, event_time = :time, event_description= :description WHERE event_id = :event_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':category', $category, PDO::PARAM_STR);
+    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+    $stmt->bindParam(':organizer', $organizer, PDO::PARAM_STR);
+    $stmt->bindParam(':location', $location, PDO::PARAM_STR);
+    $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+    $stmt->bindParam(':time', $time, PDO::PARAM_STR);
+    $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+    $stmt->bindParam(':event_id', $event_id, PDO::PARAM_STR);
+    $stmt->execute();
+}
+
 function setForgottenToken(PDO $pdo, string $email, string $token): void
 {
     $sql = "UPDATE users SET forgotten_password_token = :token, forgotten_password_expires = DATE_ADD(now(),INTERVAL 6 HOUR) WHERE email = :email";
@@ -180,3 +195,15 @@ function getUserData(PDO $pdo, string $data, string $field, string $value): stri
 
     return $data;
 }
+
+function insertGuest (PDO $pdo, string $event_id ,string $id_user,string $email, string $name) : void
+{
+    $sql = "INSERT INTO guests (event_id,id_user,guest_mail,guest_name) VALUES (:event_id,:id_user,:mail, :name)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':event_id', $event_id, PDO::PARAM_STR);
+    $stmt->bindParam(':id_user', $id_user, PDO::PARAM_STR);
+    $stmt->bindParam(':mail', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->execute();
+}
+
