@@ -12299,6 +12299,17 @@ footer .icons {
 #event_page .guest-coming #submit-btn {
   margin-top: 1em;
 }
+#event_page .guest-coming #form {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+#event_page .guest-coming #form .form-group {
+  width: 100%;
+}
 
 * {
   padding: 0;

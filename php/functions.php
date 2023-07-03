@@ -282,3 +282,17 @@ function guestUpdateRespone (PDO $pdo, int $event_id, int $guest_id, int $is_com
     }
 }
 
+function insertComment(PDO $pdo, int $event_id, int $guest_id, string $comment): void {
+    try {
+        $sql = "INSERT INTO comments (event_id,guest_id,comment,date) VALUES (:event_id, :guest_id, :comment, DATE_ADD(now(),INTERVAL 1 DAY))";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+        $stmt->bindParam(':guest_id', $guest_id, PDO::PARAM_INT);
+        $stmt->bindParam(':comment', $comment, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+    catch(PDOException $e) {
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
+}

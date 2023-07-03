@@ -1,5 +1,6 @@
 #event_page {
   .guest-coming {
+
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -18,5 +19,22 @@
     #submit-btn {
       margin-top: 1em;
     }
+
+    #form {
+      width: 75%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+
+      .form-group {
+        width: 100%;
+      }
+    }
+
+
+
+
   }
 }
