@@ -5,11 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Your Profile</title>
 </head>
 <body>
@@ -84,9 +84,6 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Messages</button>
             </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" disabled>Disabled</button>
-            </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active py-5" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
@@ -147,14 +144,11 @@
                 </div>
             </div>
             <div class="tab-pane fade justify-content-center py-3" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
-                    <div class="user-swiper">
-                        <div class="swiper-wrapper">
+                    <div class="created-by-user">
 
-                        </div>
                     </div>
             </div>
             <div class="tab-pane fade justify-content-center" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...</div>
-            <div class="tab-pane fade justify-content-center" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
         </div>
     </main>
 
@@ -207,7 +201,9 @@
 
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="node_modules/swiper/swiper-bundle.min.js"></script>
-    <script src="./script/swiper.js"></script>
+    <script src="./script/swiper.js">
+
+    </script>
     <script src="./script/fetchJSONFromServer.js"></script>
     <script>
         fetchUserJSON();

@@ -26,7 +26,7 @@ function registerUser(PDO $pdo, string $password, string $firstname,  string $em
 
     }
     catch (PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 }
@@ -43,7 +43,7 @@ function existsUser(PDO $pdo, string $email): bool
 
     }
     catch(PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 
@@ -83,7 +83,7 @@ function connectDatabase(string $dsn, array $pdoOptions): PDO
         $pdo = new PDO($dsn, USER, PASSWORD , $pdoOptions);
 
     } catch (PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 
@@ -117,11 +117,13 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body): voi
         $phpmailer->send();
 
     } catch (Exception $e) {
+        echo 'Error: ' . $e->getMessage();
         $message = "Message could not be sent. Mailer Error: {$phpmailer->ErrorInfo}";
     }
 
 }
 
+//function to check user data on log in event
 function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
 {
     try {
@@ -134,7 +136,7 @@ function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
     catch(PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 
@@ -154,7 +156,7 @@ function createEvent(PDO $pdo,int $category, int $user_id, string $title, string
 {
     try {
         $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_img , event_date, event_time, event_description)
-    VALUES (:category,:id_user ,:title, :organizer, :location, :img , :date, :time, :description)";
+                VALUES (:category,:id_user ,:title, :organizer, :location, :img , :date, :time, :description)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':category', $category, PDO::PARAM_INT);
@@ -169,11 +171,12 @@ function createEvent(PDO $pdo,int $category, int $user_id, string $title, string
         $stmt->execute();
     }
     catch (PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 
 }
+
 
 function updateEvent(PDO $pdo,int $event_id,int $category, string $title, string $organizer, string $location, string $date, string $time, string $description) : void
 {
@@ -191,11 +194,12 @@ function updateEvent(PDO $pdo,int $event_id,int $category, string $title, string
         $stmt->execute();
     }
     catch (PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 }
 
+//funtion that sends token on forgot-password event
 function setForgottenToken(PDO $pdo, string $email, string $token): void
 {
     try {
@@ -206,11 +210,12 @@ function setForgottenToken(PDO $pdo, string $email, string $token): void
         $stmt->execute();
     }
     catch(PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 }
 
+//funtion that select user based on email address
 function getUserData(PDO $pdo, string $data, string $field, string $value): string
 {
     try {
@@ -223,7 +228,7 @@ function getUserData(PDO $pdo, string $data, string $field, string $value): stri
         $data = '';
     }
     catch (PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 
@@ -234,10 +239,11 @@ function getUserData(PDO $pdo, string $data, string $field, string $value): stri
     return $data;
 }
 
+//function that stores guest info into guests table
 function insertGuest (PDO $pdo, int $event_id ,int $id_user,string $email, string $name) : void
 {
     try {
-        $sql = "INSERT INTO guests (event_id,id_user,guest_mail,guest_name) VALUES (:event_id,:id_user,:mail, :name)";
+        $sql = "INSERT INTO guests (event_id, id_user, guest_mail, guest_name) VALUES (:event_id,:id_user,:mail, :name)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
         $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
@@ -246,11 +252,12 @@ function insertGuest (PDO $pdo, int $event_id ,int $id_user,string $email, strin
         $stmt->execute();
     }
     catch(PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 }
 
+//fucntion for fetching guest response
 function guestResponse (PDO $pdo, int $event_id, int $guest_id, int $is_coming ): void {
      try {
          $sql = "INSERT INTO guest_event(event_id,guest_id,is_coming) VALUES (:event_id, :id_guest, :is_coming)";
@@ -261,12 +268,13 @@ function guestResponse (PDO $pdo, int $event_id, int $guest_id, int $is_coming )
          $stmt->execute();
      }
      catch (PDOException $e) {
-         var_dump($e->getCode());
+         echo 'Error: ' . $e->getMessage();
          throw new \PDOException($e->getMessage());
 
      }
 }
 
+//function for updating guest response on event (is coming, not coming)
 function guestUpdateRespone (PDO $pdo, int $event_id, int $guest_id, int $is_coming): void {
     try {
         $sql = "UPDATE guest_event SET is_coming=:is_coming WHERE event_id=:event_id AND guest_id=:guest_id";
@@ -276,8 +284,8 @@ function guestUpdateRespone (PDO $pdo, int $event_id, int $guest_id, int $is_com
         $stmt->bindParam('guest_id', $guest_id, PDO::PARAM_INT);
         $stmt->execute();
     }
-    catch (PDOException $e){
-        var_dump($e->getCode());
+    catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 }

@@ -12193,6 +12193,31 @@ footer .icons {
   background-size: cover;
 }
 
+.created-by-user {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.created-by-user .usr-ev {
+  padding: 1em;
+  background-color: #009DFF;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.created-by-user .usr-ev .event-data {
+  display: flex;
+  gap: 1.5em;
+  align-items: center;
+  font-size: 0.9em;
+}
+.created-by-user .usr-ev .event-data img {
+  width: 200px;
+  height: 120px;
+}
+
 #user-footer {
   margin: 0;
 }

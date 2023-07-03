@@ -5,6 +5,7 @@ const swiper = new Swiper(".swiper", {
   centeredSlides: true,
   initialSlide: 1,
   slidesPerView: "auto",
+  loop: true,
 
   coverflowEffect: {
     rotate: 0,
@@ -19,5 +20,3 @@ const swiper = new Swiper(".swiper", {
     prevEl: "#rightClick",
   },
 });
-
-const userSwiper = new Swiper(".user-swiper");
