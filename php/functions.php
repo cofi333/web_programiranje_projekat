@@ -12,29 +12,40 @@ function registerUser(PDO $pdo, string $password, string $firstname,  string $em
 
     $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (password,firstname,email,registration_token,registration_expires,active) 
+    try {
+        $sql = "INSERT INTO users (password,firstname,email,registration_token,registration_expires,active) 
                         VALUES (:passwordHashed,:firstname,:email,:token,DATE_ADD(now(),INTERVAL 1 DAY),0)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':passwordHashed', $passwordHashed, PDO::PARAM_STR);
-    $stmt->bindParam(':firstname', $firstname, PDO::PARAM_STR);
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-    $stmt->bindParam(':token', $token, PDO::PARAM_STR);
-    $stmt->execute();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':passwordHashed', $passwordHashed, PDO::PARAM_STR);
+        $stmt->bindParam(':firstname', $firstname, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':token', $token, PDO::PARAM_STR);
+        $stmt->execute();
 
-    // http://dev.mysql.com/doc/refman/5.6/en/date-and-time-functions.html
+        return $pdo->lastInsertId();
 
-    return $pdo->lastInsertId();
-
+    }
+    catch (PDOException $e) {
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
 }
 
 //function to check if user exists
 function existsUser(PDO $pdo, string $email): bool
 {
-    $sql = "SELECT id_user FROM users WHERE email=:email AND (registration_expires>now() OR active ='1') LIMIT 0,1";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-    $stmt->execute();
-    $stmt->fetch(PDO::FETCH_ASSOC);
+    try {
+        $sql = "SELECT id_user FROM users WHERE email=:email AND (registration_expires>now() OR active ='1') LIMIT 0,1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->fetch(PDO::FETCH_ASSOC);
+
+    }
+    catch(PDOException $e) {
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
 
     if ($stmt->rowCount() > 0) {
         return true;
@@ -114,13 +125,19 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body): voi
 //function to check user data on log in event
 function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
 {
-    $sql = "SELECT id_user, password FROM users WHERE email=:email AND active=1 AND is_banned = 0 LIMIT 0,1";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    try {
+        $sql = "SELECT id_user, password FROM users WHERE email=:email AND active=1 AND is_banned = 0 LIMIT 0,1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 
-    $data = [];
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $data = [];
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    catch(PDOException $e) {
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
 
     if ($stmt->rowCount() > 0) {
 
@@ -134,65 +151,94 @@ function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
     return $data;
 }
 
+<<<<<<< HEAD
 //function for creating event
 function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location, $img, $date, $time, $description) : void
+=======
+function createEvent(PDO $pdo,int $category, int $user_id, string $title, string $organizer, string $location,string $img, string $date, string $time, string $description) : void
+>>>>>>> 87cd682f25ebe6b1a7c63b89e5fddda14e41c72f
 {
-    $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_img , event_date, event_time, event_description)
+    try {
+        $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_img , event_date, event_time, event_description)
     VALUES (:category,:id_user ,:title, :organizer, :location, :img , :date, :time, :description)";
 
-
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':category', $category, PDO::PARAM_STR);
-    $stmt->bindParam(':id_user', $user_id, PDO::PARAM_STR);
-    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-    $stmt->bindParam(':organizer', $organizer, PDO::PARAM_STR);
-    $stmt->bindParam(':location', $location, PDO::PARAM_STR);
-    $stmt->bindParam(':img', $img, PDO::PARAM_STR);
-    $stmt->bindParam(':date', $date, PDO::PARAM_STR);
-    $stmt->bindParam(':time', $time, PDO::PARAM_STR);
-    $stmt->bindParam(':description', $description, PDO::PARAM_STR);
-    $stmt->execute();
-
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':category', $category, PDO::PARAM_INT);
+        $stmt->bindParam(':id_user', $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':organizer', $organizer, PDO::PARAM_STR);
+        $stmt->bindParam(':location', $location, PDO::PARAM_STR);
+        $stmt->bindParam(':img', $img, PDO::PARAM_STR);
+        $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+        $stmt->bindParam(':time', $time, PDO::PARAM_STR);
+        $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+    catch (PDOException $e) {
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
 
 }
 
+<<<<<<< HEAD
 //fucntion for updating event
 function updateEvent(PDO $pdo, $event_id,$category,  $title, $organizer, $location, $date, $time, $description) : void
+=======
+function updateEvent(PDO $pdo,int $event_id,int $category, string $title, string $organizer, string $location, string $date, string $time, string $description) : void
+>>>>>>> 87cd682f25ebe6b1a7c63b89e5fddda14e41c72f
 {
-    $sql = "UPDATE events SET ec_id= :category,  event_title= :title, event_organizer= :organizer, event_location= :location, event_date= :date, event_time = :time, event_description= :description WHERE event_id = :event_id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':category', $category, PDO::PARAM_STR);
-    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-    $stmt->bindParam(':organizer', $organizer, PDO::PARAM_STR);
-    $stmt->bindParam(':location', $location, PDO::PARAM_STR);
-    $stmt->bindParam(':date', $date, PDO::PARAM_STR);
-    $stmt->bindParam(':time', $time, PDO::PARAM_STR);
-    $stmt->bindParam(':description', $description, PDO::PARAM_STR);
-    $stmt->bindParam(':event_id', $event_id, PDO::PARAM_STR);
-    $stmt->execute();
+    try {
+        $sql = "UPDATE events SET ec_id= :category,  event_title= :title, event_organizer= :organizer, event_location= :location, event_date= :date, event_time = :time, event_description= :description WHERE event_id = :event_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':category', $category, PDO::PARAM_INT);
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':organizer', $organizer, PDO::PARAM_STR);
+        $stmt->bindParam(':location', $location, PDO::PARAM_STR);
+        $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+        $stmt->bindParam(':time', $time, PDO::PARAM_STR);
+        $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+        $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    catch (PDOException $e) {
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
 }
 
 //funtion that sends token on forgot-password event
 function setForgottenToken(PDO $pdo, string $email, string $token): void
 {
-    $sql = "UPDATE users SET forgotten_password_token = :token, forgotten_password_expires = DATE_ADD(now(),INTERVAL 6 HOUR) WHERE email = :email";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':token', $token, PDO::PARAM_STR);
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-    $stmt->execute();
+    try {
+        $sql = "UPDATE users SET forgotten_password_token = :token, forgotten_password_expires = DATE_ADD(now(),INTERVAL 6 HOUR) WHERE email = :email";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':token', $token, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+    catch(PDOException $e) {
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
 }
 
 //funtion that select user based on email address
 function getUserData(PDO $pdo, string $data, string $field, string $value): string
 {
-    $sql = "SELECT $data as data FROM users WHERE $field=:value LIMIT 0,1";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':value', $value, PDO::PARAM_STR);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    try {
+        $sql = "SELECT $data as data FROM users WHERE $field=:value LIMIT 0,1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':value', $value, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $data = '';
+        $data = '';
+    }
+    catch (PDOException $e) {
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
 
     if ($stmt->rowCount() > 0) {
         $data = $result['data'];
@@ -204,32 +250,51 @@ function getUserData(PDO $pdo, string $data, string $field, string $value): stri
 //function that stores guest info into guests table
 function insertGuest (PDO $pdo, int $event_id ,int $id_user,string $email, string $name) : void
 {
-    $sql = "INSERT INTO guests (event_id,id_user,guest_mail,guest_name) VALUES (:event_id,:id_user,:mail, :name)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
-    $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
-    $stmt->bindParam(':mail', $email, PDO::PARAM_STR);
-    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-    $stmt->execute();
+    try {
+        $sql = "INSERT INTO guests (event_id,id_user,guest_mail,guest_name) VALUES (:event_id,:id_user,:mail, :name)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+        $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $stmt->bindParam(':mail', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+    catch(PDOException $e) {
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
 }
 
 //fucntion for fetching guest response
 function guestResponse (PDO $pdo, int $event_id, int $guest_id, int $is_coming ): void {
-    $sql = "INSERT INTO guest_event(event_id,guest_id,is_coming) VALUES (:event_id, :id_guest, :is_coming)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
-    $stmt->bindParam(':id_guest', $guest_id, PDO::PARAM_INT);
-    $stmt->bindParam(':is_coming', $is_coming, PDO::PARAM_INT);
-    $stmt->execute();
+     try {
+         $sql = "INSERT INTO guest_event(event_id,guest_id,is_coming) VALUES (:event_id, :id_guest, :is_coming)";
+         $stmt = $pdo->prepare($sql);
+         $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+         $stmt->bindParam(':id_guest', $guest_id, PDO::PARAM_INT);
+         $stmt->bindParam(':is_coming', $is_coming, PDO::PARAM_INT);
+         $stmt->execute();
+     }
+     catch (PDOException $e) {
+         var_dump($e->getCode());
+         throw new \PDOException($e->getMessage());
+
+     }
 }
 
 //function for updating guest response on event (is coming, not coming)
 function guestUpdateRespone (PDO $pdo, int $event_id, int $guest_id, int $is_coming): void {
-    $sql = "UPDATE guest_event SET is_coming=:is_coming WHERE event_id=:event_id AND guest_id=:guest_id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam('is_coming', $is_coming, PDO::PARAM_INT);
-    $stmt->bindParam('event_id', $event_id, PDO::PARAM_INT);
-    $stmt->bindParam('guest_id', $guest_id, PDO::PARAM_INT);
-    $stmt->execute();
+    try {
+        $sql = "UPDATE guest_event SET is_coming=:is_coming WHERE event_id=:event_id AND guest_id=:guest_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam('is_coming', $is_coming, PDO::PARAM_INT);
+        $stmt->bindParam('event_id', $event_id, PDO::PARAM_INT);
+        $stmt->bindParam('guest_id', $guest_id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    catch (PDOException $e){
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
 }
 
