@@ -111,6 +111,7 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body): voi
 
 }
 
+//function to check user data on log in event
 function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
 {
     $sql = "SELECT id_user, password FROM users WHERE email=:email AND active=1 AND is_banned = 0 LIMIT 0,1";
@@ -133,6 +134,7 @@ function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
     return $data;
 }
 
+//function for creating event
 function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location, $img, $date, $time, $description) : void
 {
     $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_img , event_date, event_time, event_description)
@@ -155,6 +157,7 @@ function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location
 
 }
 
+//fucntion for updating event
 function updateEvent(PDO $pdo, $event_id,$category,  $title, $organizer, $location, $date, $time, $description) : void
 {
     $sql = "UPDATE events SET ec_id= :category,  event_title= :title, event_organizer= :organizer, event_location= :location, event_date= :date, event_time = :time, event_description= :description WHERE event_id = :event_id";
@@ -170,6 +173,7 @@ function updateEvent(PDO $pdo, $event_id,$category,  $title, $organizer, $locati
     $stmt->execute();
 }
 
+//funtion that sends token on forgot-password event
 function setForgottenToken(PDO $pdo, string $email, string $token): void
 {
     $sql = "UPDATE users SET forgotten_password_token = :token, forgotten_password_expires = DATE_ADD(now(),INTERVAL 6 HOUR) WHERE email = :email";
@@ -179,6 +183,7 @@ function setForgottenToken(PDO $pdo, string $email, string $token): void
     $stmt->execute();
 }
 
+//funtion that select user based on email address
 function getUserData(PDO $pdo, string $data, string $field, string $value): string
 {
     $sql = "SELECT $data as data FROM users WHERE $field=:value LIMIT 0,1";
@@ -196,6 +201,7 @@ function getUserData(PDO $pdo, string $data, string $field, string $value): stri
     return $data;
 }
 
+//function that stores guest info into guests table
 function insertGuest (PDO $pdo, int $event_id ,int $id_user,string $email, string $name) : void
 {
     $sql = "INSERT INTO guests (event_id,id_user,guest_mail,guest_name) VALUES (:event_id,:id_user,:mail, :name)";
@@ -207,6 +213,7 @@ function insertGuest (PDO $pdo, int $event_id ,int $id_user,string $email, strin
     $stmt->execute();
 }
 
+//fucntion for fetching guest response
 function guestResponse (PDO $pdo, int $event_id, int $guest_id, int $is_coming ): void {
     $sql = "INSERT INTO guest_event(event_id,guest_id,is_coming) VALUES (:event_id, :id_guest, :is_coming)";
     $stmt = $pdo->prepare($sql);
@@ -216,6 +223,7 @@ function guestResponse (PDO $pdo, int $event_id, int $guest_id, int $is_coming )
     $stmt->execute();
 }
 
+//function for updating guest response on event (is coming, not coming)
 function guestUpdateRespone (PDO $pdo, int $event_id, int $guest_id, int $is_coming): void {
     $sql = "UPDATE guest_event SET is_coming=:is_coming WHERE event_id=:event_id AND guest_id=:guest_id";
     $stmt = $pdo->prepare($sql);

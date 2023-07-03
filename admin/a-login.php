@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>admin-login</title>
+</head>
+<body class="admin-login">
+<div class="position-absolute top-50 start-50 translate-middle">
+    <?php
+        require_once '../php/config.php';
+
+        $errorMsg = '';
+
+        if(isset($_GET['m'])){
+            $errorMsg = $messages[$_GET['m']];
+            echo '<div class="alert alert-danger" role="alert">';
+            echo $errorMsg;
+            echo '</div>';
+        }
+
+
+    ?>
+    <form id="admin-login-form" action="validate-data.php" method="post">
+        <h2 class="mb-3">creatEvent</h2>
+        <div class="form-back">
+            <div class="form-floating mb-3 ">
+                <input type="text" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Username:</label>
+            </div>
+            <div class="form-floating mb-3 ">
+                <input type="password" name="paswd" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password:</label>
+            </div>
+        </div>
+
+        <input type="submit" value="Log In" class="btn btn-dark">
+    </form>
+</div>
+</body>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</html>

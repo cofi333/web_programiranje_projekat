@@ -64,21 +64,22 @@ const fetchUserEvents = async () => {
         console.log(data);
         for(let i in data){
             output +=
-                `<div class="swiper-slide">
-                        <div class="event-data">
+                `<div class="usr-ev">
+                            
+                        <div class="event-data">                           
                             <img src="${data[i].event_img}" alt="eventImg" />
-                            <h2>${data[i].event_title}</h2>
+                            <h4>${data[i].event_title}</h4>
                         </div>
                         <div class="event-options">
                             <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Send invitation</a>
                             <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</button>                            
                         </div>
-                    </div>`;
+                </div>`;
 
              delete_btn.href = "./php/delete-event.php?event_id=" + data[i].event_id;
         }
-        document.querySelector('.swiper-wrapper').innerHTML = output;
+        document.querySelector('.created-by-user').innerHTML = output;
     }catch (e){
         console.log("Error in fetching data", e);
     }
