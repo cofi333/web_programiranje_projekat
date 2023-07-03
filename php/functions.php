@@ -26,7 +26,7 @@ function registerUser(PDO $pdo, string $password, string $firstname,  string $em
 
     }
     catch (PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 }
@@ -43,7 +43,7 @@ function existsUser(PDO $pdo, string $email): bool
 
     }
     catch(PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 
@@ -83,7 +83,7 @@ function connectDatabase(string $dsn, array $pdoOptions): PDO
         $pdo = new PDO($dsn, USER, PASSWORD , $pdoOptions);
 
     } catch (PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 
@@ -117,6 +117,7 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body): voi
         $phpmailer->send();
 
     } catch (Exception $e) {
+        echo 'Error: ' . $e->getMessage();
         $message = "Message could not be sent. Mailer Error: {$phpmailer->ErrorInfo}";
     }
 
@@ -135,7 +136,7 @@ function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
     catch(PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 
@@ -151,16 +152,11 @@ function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
     return $data;
 }
 
-<<<<<<< HEAD
-//function for creating event
-function createEvent(PDO $pdo, $category,$user_id, $title, $organizer, $location, $img, $date, $time, $description) : void
-=======
 function createEvent(PDO $pdo,int $category, int $user_id, string $title, string $organizer, string $location,string $img, string $date, string $time, string $description) : void
->>>>>>> 87cd682f25ebe6b1a7c63b89e5fddda14e41c72f
 {
     try {
         $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_img , event_date, event_time, event_description)
-    VALUES (:category,:id_user ,:title, :organizer, :location, :img , :date, :time, :description)";
+                VALUES (:category,:id_user ,:title, :organizer, :location, :img , :date, :time, :description)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':category', $category, PDO::PARAM_INT);
@@ -175,18 +171,14 @@ function createEvent(PDO $pdo,int $category, int $user_id, string $title, string
         $stmt->execute();
     }
     catch (PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 
 }
 
-<<<<<<< HEAD
-//fucntion for updating event
-function updateEvent(PDO $pdo, $event_id,$category,  $title, $organizer, $location, $date, $time, $description) : void
-=======
+
 function updateEvent(PDO $pdo,int $event_id,int $category, string $title, string $organizer, string $location, string $date, string $time, string $description) : void
->>>>>>> 87cd682f25ebe6b1a7c63b89e5fddda14e41c72f
 {
     try {
         $sql = "UPDATE events SET ec_id= :category,  event_title= :title, event_organizer= :organizer, event_location= :location, event_date= :date, event_time = :time, event_description= :description WHERE event_id = :event_id";
@@ -202,7 +194,7 @@ function updateEvent(PDO $pdo,int $event_id,int $category, string $title, string
         $stmt->execute();
     }
     catch (PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 }
@@ -218,7 +210,7 @@ function setForgottenToken(PDO $pdo, string $email, string $token): void
         $stmt->execute();
     }
     catch(PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 }
@@ -236,7 +228,7 @@ function getUserData(PDO $pdo, string $data, string $field, string $value): stri
         $data = '';
     }
     catch (PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 
@@ -251,7 +243,7 @@ function getUserData(PDO $pdo, string $data, string $field, string $value): stri
 function insertGuest (PDO $pdo, int $event_id ,int $id_user,string $email, string $name) : void
 {
     try {
-        $sql = "INSERT INTO guests (event_id,id_user,guest_mail,guest_name) VALUES (:event_id,:id_user,:mail, :name)";
+        $sql = "INSERT INTO guests (event_id, id_user, guest_mail, guest_name) VALUES (:event_id,:id_user,:mail, :name)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
         $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
@@ -260,7 +252,7 @@ function insertGuest (PDO $pdo, int $event_id ,int $id_user,string $email, strin
         $stmt->execute();
     }
     catch(PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 }
@@ -276,7 +268,7 @@ function guestResponse (PDO $pdo, int $event_id, int $guest_id, int $is_coming )
          $stmt->execute();
      }
      catch (PDOException $e) {
-         var_dump($e->getCode());
+         echo 'Error: ' . $e->getMessage();
          throw new \PDOException($e->getMessage());
 
      }
@@ -292,8 +284,8 @@ function guestUpdateRespone (PDO $pdo, int $event_id, int $guest_id, int $is_com
         $stmt->bindParam('guest_id', $guest_id, PDO::PARAM_INT);
         $stmt->execute();
     }
-    catch (PDOException $e){
-        var_dump($e->getCode());
+    catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 }
