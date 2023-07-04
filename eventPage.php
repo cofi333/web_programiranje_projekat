@@ -5,6 +5,9 @@ require_once './php/config.php';
 if(isset($_GET['id'])){
     $event_id = $_GET['id'];
     $_SESSION['event_id'] = $event_id;
+} else{
+    redirection('index.php');
+    exit();
 }
 
 $sql = "SELECT * FROM events WHERE event_id = " . $event_id;

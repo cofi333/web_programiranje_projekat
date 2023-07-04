@@ -2,6 +2,9 @@
 require_once 'config.php';
 if (isset($_GET['event_id'])) {
     $event_id = trim($_GET['event_id']);
+} else{
+    redirection('../user_profile.php');
+    exit();
 }
 
 $sql = $pdo->prepare("SELECT events.event_id, events.ec_id, events.event_organizer, events.event_title, events.event_date, events.event_time,events.event_location ,events.event_description, event_category.category FROM events INNER JOIN event_category ON events.ec_id = event_category.ec_id WHERE event_id =". $event_id);
