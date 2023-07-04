@@ -8,19 +8,20 @@ if (isset($_POST['guest_id'])) {
     $guest_id = $_POST['guest_id'];
 }
 
+try {
+    $sql = "SELECT guest_id, event_id, comment_sent FROM guest_event WHERE event_id=".$event_id;
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+catch(PDOException $e) {
+    var_dump($e->getCode());
+    throw new \PDOException($e->getMessage());
+}
+
+
 if(isset($_POST['flexRadioDefault'])) {
     $is_coming = $_POST['flexRadioDefault'];
-
-   try {
-       $sql = "SELECT guest_id, event_id FROM guest_event WHERE event_id=".$event_id;
-       $stmt = $pdo->prepare($sql);
-       $stmt->execute();
-       $result = $stmt->fetch(PDO::FETCH_ASSOC);
-   }
-   catch(PDOException $e) {
-       var_dump($e->getCode());
-       throw new \PDOException($e->getMessage());
-   }
 
     if($result) {
         guestUpdateRespone($pdo, $event_id, $guest_id, $is_coming);
@@ -36,18 +37,25 @@ if(isset($_POST['flexRadioDefault'])) {
 if(isset($_POST['guest-comment'])) {
     $comment = $_POST['guest-comment'];
 
-    insertComment($pdo, $event_id, $guest_id, $comment);
+    if($result['comment_sent'] == 0) {
 
-    try {
-        $sql = "UPDATE guest_event SET comment_sent = 1 WHERE event_id=" . $event_id ." AND guest_id=".$guest_id;
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-    }
-    catch(PDOException $e){
-        var_dump($e->getCode());
-        throw new \PDOException($e->getMessage());
-    }
+        insertComment($pdo, $event_id, $guest_id, $comment);
 
+        try {
+            $sql = "UPDATE guest_event SET comment_sent = 1 WHERE event_id=" . $event_id . " AND guest_id=" . $guest_id;
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            var_dump($e->getCode());
+            throw new \PDOException($e->getMessage());
+        }
+
+        redirection('../index.php');
+
+    }
+    else {
+        echo 'you already sent comment';
+    }
 
 }
 

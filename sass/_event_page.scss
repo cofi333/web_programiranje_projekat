@@ -21,4 +21,53 @@
     }
 
   }
+
+  .event_comments {
+    margin: 5em 0;
+    position: relative;
+
+    .swiper-comments {
+      overflow: hidden;
+      }
+
+    #leftClick {
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      z-index: 10;
+    }
+
+    #rightClick {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      z-index: 10;
+    }
+
+    }
+    .comment {
+      width: 400px;
+      background-color: #009DFF;
+      padding: 2em;
+
+      .user {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5em;
+        i {
+          font-size: 1.5em;
+        }
+      }
+
+      h2 {
+        font-size: 1.5em;
+        margin-bottom: unset;
+      }
+
+      p {
+        margin-top: 3em;
+        text-align: justify;
+      }
+    }
 }

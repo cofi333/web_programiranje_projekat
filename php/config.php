@@ -45,7 +45,8 @@ $messages = [
     15 => 'Your password has been updated. You can log in now.',
     16 => 'Token or other data are invalid!',
     17 => 'Your event is deleted.',
-    18 => 'Check your credentials and try again'
+    18 => 'Check your credentials and try again',
+    19 => 'You already sent an invitation to this guest!'
 ];
 
 $emailMessages = [

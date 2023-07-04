@@ -12300,6 +12300,47 @@ footer .icons {
   color: #fff;
   font-size: 1.3em;
 }
+#event_page .event_comments {
+  margin: 5em 0;
+  position: relative;
+}
+#event_page .event_comments .swiper-comments {
+  overflow: hidden;
+}
+#event_page .event_comments #leftClick {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  z-index: 10;
+}
+#event_page .event_comments #rightClick {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  z-index: 10;
+}
+#event_page .comment {
+  width: 400px;
+  background-color: #009DFF;
+  padding: 2em;
+}
+#event_page .comment .user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+#event_page .comment .user i {
+  font-size: 1.5em;
+}
+#event_page .comment h2, #event_page .comment .h2 {
+  font-size: 1.5em;
+  margin-bottom: unset;
+}
+#event_page .comment p {
+  margin-top: 3em;
+  text-align: justify;
+}
 
 .invitation-header {
   margin-bottom: 2em;

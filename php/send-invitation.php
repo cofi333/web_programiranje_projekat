@@ -3,11 +3,20 @@ require_once 'config.php';
 if (isset($_GET['event_id'])) {
     $event_id = trim($_GET['event_id']);
 }
+else {
+    redirection('../user_profile.php');
+    exit();
+}
 
-$sql = $pdo->prepare("SELECT event_id, event_title FROM events WHERE event_id=" .$event_id);
-$sql->execute();
-$result = $sql->fetch();
-
+try {
+    $sql = $pdo->prepare("SELECT event_id, event_title FROM events WHERE event_id=" .$event_id);
+    $sql->execute();
+    $result = $sql->fetch();
+}
+catch (PDOException $e) {
+    echo 'Error: ' . $e->getMessage();
+    throw new \PDOException($e->getMessage());
+}
 
 ?>
 <!doctype html>
@@ -26,6 +35,24 @@ $result = $sql->fetch();
     <div class="content">
         <div class="form">
             <form action="./send-invitation-data.php" method="post" id="form">
+                <?php
+                require_once './config.php';
+                $si = 0;
+
+                if (isset($_GET["si"]) and is_numeric($_GET['si'])) {
+                    $si = (int)$_GET["si"];
+
+                    if (array_key_exists($si, $messages)) {
+                        echo '
+                    <div class="alert alert-info ~alert-dismissible fade show m-3" role="alert">
+                        ' . $messages[$si] . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+                    }
+                }
+                ?>
                 <div class="form-group">
                     <label for="guest-email">Guest email:</label>
                     <input type="email" class="form-control" id="guest-email" name="guest-email" aria-describedby="emailHelp">

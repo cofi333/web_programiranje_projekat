@@ -300,7 +300,24 @@ function insertComment(PDO $pdo, int $event_id, int $guest_id, string $comment):
         $stmt->execute();
     }
     catch(PDOException $e) {
-        var_dump($e->getCode());
+        echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
+}
+
+function getGuestId (PDO $pdo, string $mail, int $event_id) : mixed  {
+    try {
+        $sql ="SELECT guest_id FROM guests WHERE guest_mail=:mail AND event_id=:id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':mail', $mail, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $event_id, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch();
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+        throw new \PDOException($e->getMessage());
+    }
+
+    return $result['guest_id'];
 }

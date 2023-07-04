@@ -20,3 +20,17 @@ const swiper = new Swiper(".swiper", {
     prevEl: "#rightClick",
   },
 });
+
+const swiper_comments = new Swiper(".swiper-comments", {
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "3",
+  initialSlide: 1,
+
+  navigation: {
+    nextEl: "#rightClick",
+    prevEl: "#leftClick",
+  },
+});
+
+

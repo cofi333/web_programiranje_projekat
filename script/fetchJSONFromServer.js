@@ -86,4 +86,37 @@ const fetchUserEvents = async () => {
 };
 
 
+const fetchComments = async () => {
+    try {
+        const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-comments.php", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        });
+
+        const data = await res.json();
+        let output = '';
+        for (let i in data) {
+            output += `
+                 <div class="swiper-slide">
+                    <div class="comment">
+                        <div class="user">
+                            <i class="fa-regular fa-user"></i>
+                            <h2>${data[i].guest_name}</h2>
+                        </div>
+                        <p>${data[i].comment}</p>
+                    </div>
+                </div>
+            `;
+
+            document.querySelector('.swiper-wrapper').innerHTML = output;
+
+        }
+    } catch (e) {
+        console.log("Error in fetching data", e);
+    }
+}
+
+
 
