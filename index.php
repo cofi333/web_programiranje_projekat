@@ -69,7 +69,7 @@
                 }
                 ?>
 
-           
+
           </div>
         </div>
       </nav>
@@ -109,7 +109,7 @@
                 <li><a href="#">Sport</a></li>
               </ul>
             </div>
-            
+
             <div class="social-medias col-md-3">
               <h6>Follow us</h6>
               <div class="icons">
@@ -131,6 +131,5 @@
 <script src="./script/fetchJSONFromServer.js"></script>
 <script>
     fetchEventJSON();
-    fetchUserJSON();
 </script>
 </html>

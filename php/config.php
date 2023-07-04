@@ -1,10 +1,5 @@
 <?php
 require_once 'functions.php';
-//const HOST = "localhost";
-//const USER = "programatori";
-//const PASSWORD = "4sqwbd4SfhJhvCL";
-//const DB = "programatori";
-//const CHARSET = "utf8mb4";
 
 const HOST = "localhost";
 const USER = "root";
@@ -21,8 +16,6 @@ $pdoOptions = [
 $dsn = "mysql:host=" . HOST  . ";dbname=" . DB . ";charset=". CHARSET;
 
 $pdo = connectDatabase($dsn, $pdoOptions);
-
-
 
 const SITE = "http://localhost/web_programiranje_projekat/";
 

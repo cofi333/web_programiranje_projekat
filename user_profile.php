@@ -72,7 +72,6 @@
 
         <?php echo "WELCOME ". $_SESSION['username']; ?>
         <img src="./images/user_image.png" alt="user">
-        <a href="./php/logout.php">Log out</a>
 
         <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">

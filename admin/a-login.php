@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>admin-login</title>
 </head>
 <body class="admin-login">
@@ -16,16 +16,23 @@
 
         $errorMsg = '';
 
-        if(isset($_GET['m'])){
+        if(isset($_GET['m']) && ($_GET['m'] == 18 || $_GET['m'] == 0)){
             $errorMsg = $messages[$_GET['m']];
-            echo '<div class="alert alert-danger" role="alert">';
-            echo $errorMsg;
+            echo '<div class="alert alert-danger alert-dismissible" role="alert">';
+                echo $errorMsg;
+                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+            echo '</div>';
+        }
+        if(isset($_GET['m']) && $_GET['m'] == 5){
+            $errorMsg = $messages[$_GET['m']];
+            echo '<div class="alert alert-success alert-dismissible" role="alert">';
+                echo $errorMsg;
+                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
             echo '</div>';
         }
 
-
     ?>
-    <form id="admin-login-form" action="validate-data.php" method="post">
+    <form id="admin-login-form" action="php/validate-data.php" method="post">
         <h2 class="mb-3">creatEvent</h2>
         <div class="form-back">
             <div class="form-floating mb-3 ">

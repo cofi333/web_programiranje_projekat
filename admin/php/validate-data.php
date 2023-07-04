@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../php/config.php';
+require_once '../../php/config.php';
 $adminUsername = '';
 $adminPassword = '';
 $dbUsername = '';
@@ -32,10 +32,10 @@ if($flag == 1){
     if(password_verify($adminPassword, $dbPassword) && ($adminUsername === $dbUsername)){
         $_SESSION['admin-username'] = $adminUsername;
         $_SESSION['admin-id'] = $dbID;
-        redirection('./admin.php');
+        redirection('../admin.php');
     } else{
         session_destroy();
-        redirection('./a-login.php?m=18');
+        redirection('../a-login.php?m=18');
     }
 }
 
