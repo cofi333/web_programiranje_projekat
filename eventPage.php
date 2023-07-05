@@ -91,11 +91,12 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="swiper-wrapper">
 
             </div>
+            <img id="leftClick" src="./images/iconLeft.svg" alt="leftclick">
+            <img id="rightClick" src="./images/iconRight.svg" alt="rightClick">
+            <div class="swiper-pagination"></div>
         </div>
 
 
-        <img id="leftClick" src="./images/iconLeft.svg" alt="leftclick">
-        <img id="rightClick" src="./images/iconRight.svg" alt="rightClick">
     </div>
 
 

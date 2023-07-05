@@ -50,6 +50,7 @@ const fetchUserJSON = async ()=> {
     }
 };
 
+let path="./php/delete-event.php?event_id=";
 const fetchUserEvents = async () => {
     try{
         const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-userEvent.php/", {
@@ -62,6 +63,7 @@ const fetchUserEvents = async () => {
         const data = await res.json();
         let output = '';
         console.log(data);
+
         for(let i in data){
             output +=
                 `<div class="usr-ev">
@@ -71,13 +73,14 @@ const fetchUserEvents = async () => {
                             <h4>${data[i].event_title}</h4>
                         </div>
                         <div class="event-options">
+                           
                             <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Send invitation</a>
                             <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</button>                            
                         </div>
                 </div>`;
 
-             delete_btn.href = "./php/delete-event.php?event_id=" + data[i].event_id;
+
         }
         document.querySelector('.created-by-user').innerHTML = output;
     }catch (e){

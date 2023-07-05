@@ -49,18 +49,41 @@ $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
     </div>
 </section>
 
+
 <section class="guest-coming container">
+
+    <?php
+    $ei = 0;
+
+    if (isset($_GET["ei"]) and is_numeric($_GET['ei'])) {
+        $ei = (int)$_GET["ei"];
+
+        if (array_key_exists($ei, $messages)) {
+            echo '
+                    <div class="alert alert-info ~alert-dismissible fade show m-3" role="alert">
+                        ' . $messages[$ei] . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+        }
+    }
+    ?>
+
+
     <form action="./event_invitation-data.php" method="post" id="form">
         <?php
         if( date("Y-m-d H:i:s")  > ($result['event_date'] . " " . $result['event_time'])) {
-            if($result2 && $result2['comment_sent'] == 1) {
-                echo 'You already sent comment about this event. Thank you!';
-            }
-            else {
-                echo ' <div class="form-group">
+            if($result['event_comments'] == "on") {
+                if( $result2 && $result2['comment_sent'] == 1) {
+                    echo 'you already sent the comment. thank you.';
+                }
+                else {
+                    echo ' <div class="form-group">
                 <textarea class="form-control" name="guest-comment" placeholder="Enter a comment about how did you spent time at this event" id="exampleFormControlTextarea1" rows="1"></textarea>
         </div>
                 <input type="submit" id="submit-btn" class="btn btn-primary" value="Submit"/>';
+                }
             }
         }
         else {

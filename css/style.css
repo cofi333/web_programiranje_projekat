@@ -12164,8 +12164,16 @@ footer .icons {
 .basic-info .location .show {
   display: block !important;
 }
-.basic-info .date_time, .basic-info .description {
+.basic-info .date_time, .basic-info .description, .basic-info .event_comments {
   margin-top: 70px;
+}
+.basic-info .switch {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.basic-info .switch .form-switch {
+  font-size: 1.5em;
 }
 .basic-info .sign_up {
   margin-top: 60px;
@@ -12218,7 +12226,7 @@ footer .icons {
   height: 120px;
 }
 
-#user-footer {
+#user-profile-footer {
   margin: 0;
 }
 
@@ -12263,6 +12271,11 @@ footer .icons {
   align-items: center;
   height: 100vh;
 }
+#center_form .switch {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
 
 @media (max-width: 991.98px) {
   .sign_up {
@@ -12300,26 +12313,32 @@ footer .icons {
   color: #fff;
   font-size: 1.3em;
 }
-#event_page .event_comments {
-  margin: 5em 0;
-  position: relative;
-}
 #event_page .event_comments .swiper-comments {
   overflow: hidden;
+  position: relative;
+}
+#event_page .event_comments .swiper-comments .swiper-slide {
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 #event_page .event_comments #leftClick {
   position: absolute;
-  top: 50%;
-  left: 5%;
+  top: 30%;
+  left: 25%;
   z-index: 10;
 }
 #event_page .event_comments #rightClick {
   position: absolute;
-  top: 50%;
-  right: 5%;
+  top: 30%;
+  right: 25%;
   z-index: 10;
 }
+#event_page .event_comments .swiper-pagination-bullet-active {
+  background: radial-gradient(circle, rgb(97, 65, 189) 30%, rgb(28, 19, 55) 100%);
+}
 #event_page .comment {
+  border-radius: 30px;
   width: 400px;
   background-color: #009DFF;
   padding: 2em;
@@ -12338,8 +12357,8 @@ footer .icons {
   margin-bottom: unset;
 }
 #event_page .comment p {
-  margin-top: 3em;
-  text-align: justify;
+  margin-top: 2em;
+  text-align: center;
 }
 
 .invitation-header {

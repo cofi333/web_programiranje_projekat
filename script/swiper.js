@@ -23,13 +23,15 @@ const swiper = new Swiper(".swiper", {
 
 const swiper_comments = new Swiper(".swiper-comments", {
   grabCursor: true,
-  centeredSlides: true,
-  slidesPerView: "3",
-  initialSlide: 1,
+  slidesPerView: "auto",
 
   navigation: {
     nextEl: "#rightClick",
     prevEl: "#leftClick",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable:true,
   },
 });
 

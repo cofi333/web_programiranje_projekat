@@ -36,6 +36,15 @@ if(isset($_POST['event-description'])) {
     $description = $_POST['event-description'];
 }
 
+if(isset($_POST['event-comments'])) {
+    $comments = $_POST['event-comments'];
+}
+else {
+    $comments = "off";
+}
+
+
+
 switch($category) {
     case 1:
         $img = "images/event_images/music_category.jpg";
@@ -57,7 +66,7 @@ switch($category) {
         $img = "";
 }
 
-createEvent( $pdo,$category,$user_id, $title, $organizer, $location,$img, $date, $time, $description);
+createEvent( $pdo,$category,$user_id, $title, $organizer, $location,$img, $date, $time, $description, $comments);
 redirection('../event.php?e=13');
 
 

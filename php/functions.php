@@ -152,11 +152,11 @@ function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
     return $data;
 }
 
-function createEvent(PDO $pdo,int $category, int $user_id, string $title, string $organizer, string $location,string $img, string $date, string $time, string $description) : void
+function createEvent(PDO $pdo,int $category, int $user_id, string $title, string $organizer, string $location,string $img, string $date, string $time, string $description, string $comments) : void
 {
     try {
-        $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_img , event_date, event_time, event_description)
-                VALUES (:category,:id_user ,:title, :organizer, :location, :img , :date, :time, :description)";
+        $sql = "INSERT INTO events (ec_id,id_user, event_title, event_organizer,event_location, event_img , event_date, event_time, event_description, event_comments)
+                VALUES (:category,:id_user ,:title, :organizer, :location, :img , :date, :time, :description, :comments)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':category', $category, PDO::PARAM_INT);
@@ -168,6 +168,7 @@ function createEvent(PDO $pdo,int $category, int $user_id, string $title, string
         $stmt->bindParam(':date', $date, PDO::PARAM_STR);
         $stmt->bindParam(':time', $time, PDO::PARAM_STR);
         $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+        $stmt->bindParam(':comments', $comments, PDO::PARAM_STR);
         $stmt->execute();
     }
     catch (PDOException $e) {
@@ -178,10 +179,10 @@ function createEvent(PDO $pdo,int $category, int $user_id, string $title, string
 }
 
 
-function updateEvent(PDO $pdo,int $event_id,int $category, string $title, string $organizer, string $location, string $date, string $time, string $description) : void
+function updateEvent(PDO $pdo,int $event_id,int $category, string $title, string $organizer, string $location, string $date, string $time, string $description, string $comments) : void
 {
     try {
-        $sql = "UPDATE events SET ec_id= :category,  event_title= :title, event_organizer= :organizer, event_location= :location, event_date= :date, event_time = :time, event_description= :description WHERE event_id = :event_id";
+        $sql = "UPDATE events SET ec_id= :category,  event_title= :title, event_organizer= :organizer, event_location= :location, event_date= :date, event_time = :time, event_description= :description, event_comments= :comments WHERE event_id = :event_id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':category', $category, PDO::PARAM_INT);
         $stmt->bindParam(':title', $title, PDO::PARAM_STR);
@@ -190,6 +191,7 @@ function updateEvent(PDO $pdo,int $event_id,int $category, string $title, string
         $stmt->bindParam(':date', $date, PDO::PARAM_STR);
         $stmt->bindParam(':time', $time, PDO::PARAM_STR);
         $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+        $stmt->bindParam(':comments', $comments, PDO::PARAM_STR);
         $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
         $stmt->execute();
     }

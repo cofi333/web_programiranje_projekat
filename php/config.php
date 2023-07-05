@@ -39,7 +39,11 @@ $messages = [
     16 => 'Token or other data are invalid!',
     17 => 'Your event is deleted.',
     18 => 'Check your credentials and try again',
-    19 => 'You already sent an invitation to this guest!'
+    19 => 'You already sent an invitation to this guest!',
+    20 => 'You already sent comment about this event. Thank you!',
+    21 => 'Your response is saved.',
+    22 => 'Your response is updated.',
+
 ];
 
 $emailMessages = [

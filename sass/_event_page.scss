@@ -23,29 +23,40 @@
   }
 
   .event_comments {
-    margin: 5em 0;
-    position: relative;
 
     .swiper-comments {
       overflow: hidden;
+      position: relative;
+
+      .swiper-slide {
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
       }
 
     #leftClick {
       position: absolute;
-      top: 50%;
-      left: 5%;
+      top: 30%;
+      left: 25%;
       z-index: 10;
     }
 
     #rightClick {
       position: absolute;
-      top: 50%;
-      right: 5%;
+      top: 30%;
+      right: 25%;
       z-index: 10;
     }
 
+    .swiper-pagination-bullet-active {
+      background: radial-gradient(circle, rgb(97, 65, 189) 30%, rgb(28, 19, 55) 100%);
+    }
+
+
     }
     .comment {
+      border-radius: 30px;
       width: 400px;
       background-color: #009DFF;
       padding: 2em;
@@ -66,8 +77,8 @@
       }
 
       p {
-        margin-top: 3em;
-        text-align: justify;
+        margin-top: 2em;
+        text-align: center;
       }
     }
 }
