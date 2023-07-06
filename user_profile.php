@@ -81,7 +81,10 @@
                 <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Events</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Messages</button>
+                <button class="nav-link" id="pills-guests-tab" data-bs-toggle="pill" data-bs-target="#pills-guests" type="button" role="tab" aria-controls="pills-guests" aria-selected="false">Guests</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-messages-tab" data-bs-toggle="pill" data-bs-target="#pills-messages" type="button" role="tab" aria-controls="pills-messages" aria-selected="false">Messages</button>
             </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
@@ -142,12 +145,13 @@
                     <!-- update account section -->
                 </div>
             </div>
+            <div class="tab-pane fade justify-content-center py-3" id="pills-guests" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0"></div>
             <div class="tab-pane fade justify-content-center py-3" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                     <div class="created-by-user">
 
                     </div>
             </div>
-            <div class="tab-pane fade justify-content-center" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...</div>
+            <div class="tab-pane fade justify-content-center" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab" tabindex="0">...</div>
         </div>
     </main>
 

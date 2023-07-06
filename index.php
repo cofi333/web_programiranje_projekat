@@ -93,7 +93,6 @@
               <img id="leftClick" src="./images/iconLeft.svg" alt="leftclick">
               <img id="rightClick" src="./images/iconRight.svg" alt="rightClick">
 
-
       </section>
 
       <footer>

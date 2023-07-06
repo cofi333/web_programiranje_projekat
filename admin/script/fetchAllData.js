@@ -27,3 +27,18 @@ const fetchEvents = async() => {
         console.log("Fetch error" + e);
     }
 }
+
+const fetchAdminInfo = async () => {
+    try{
+        const response = await fetch("http://localhost/web_programiranje_projekat/admin/php/fetch-Admin-info.php/" , {
+            method: 'GET',
+            headers:{
+                'Accept': 'application/json',
+            },
+        });
+        const data = await response.json();
+        console.log(data);
+    }catch (e){
+        console.log("Fetch error" + e);
+    }
+}

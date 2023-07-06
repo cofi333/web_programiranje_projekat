@@ -1,5 +1,5 @@
-let delete_btn = document.getElementById("delete-btn");
-
+let delete_btn= document.getElementById("delete-btn");
+let eventID = [];
 const fetchEventJSON = async () => {
     try{
         const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-event.php/", {
@@ -62,10 +62,11 @@ const fetchUserEvents = async () => {
         const data = await res.json();
         let output = '';
         console.log(data);
-        for(let i in data){
+
+        for(let i in data) {
+           eventID.push(data[i].event_id);
             output +=
-                `<div class="usr-ev">
-                            
+                `<div class="usr-ev">   
                         <div class="event-data">                           
                             <img src="${data[i].event_img}" alt="eventImg" />
                             <h4>${data[i].event_title}</h4>
@@ -73,17 +74,25 @@ const fetchUserEvents = async () => {
                         <div class="event-options">
                             <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Send invitation</a>
                             <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</button>                            
+                            <a id="delButton" class="btn btn-danger" href="./php/delete-event.php?event_id=${data[i].event_id}" role="button">Delete event</a>                                                       
                         </div>
                 </div>`;
-
-             delete_btn.href = "./php/delete-event.php?event_id=" + data[i].event_id;
         }
+
         document.querySelector('.created-by-user').innerHTML = output;
-    }catch (e){
+
+        document.addEventListener('DOMContentLoaded', selectDeleteButtons);
+    } catch (e){
         console.log("Error in fetching data", e);
     }
 };
 
 
-
+const selectDeleteButtons = () => {
+    const deleteButtons = document.querySelectorAll('.btn-danger');
+    deleteButtons.forEach((button, index) => {
+        button.addEventListener('click', (event) => {
+            confirm("You ok?");
+        });
+    });
+};
