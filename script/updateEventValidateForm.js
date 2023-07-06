@@ -15,7 +15,12 @@ const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
 
 let isValid = false;
 
-
+let today = new Date();
+let dd = String(today.getDate()).padStart(2,'0');
+let mm = String(today.getMonth() + 1).padStart(2,'0');
+let yyyy = today.getFullYear();
+today = yyyy + '-' + mm + '-' + dd;
+date.min = today;
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();

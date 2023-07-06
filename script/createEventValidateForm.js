@@ -8,6 +8,13 @@ let description = document.getElementById("event-description");
 let location2 = document.getElementById("event-location");
 let validForm = false;
 
+let today = new Date();
+let dd = String(today.getDate()).padStart(2,'0');
+let mm = String(today.getMonth() + 1).padStart(2,'0');
+let yyyy = today.getFullYear();
+today = yyyy + '-' + mm + '-' + dd;
+date.min = today;
+
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();

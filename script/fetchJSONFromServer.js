@@ -50,6 +50,7 @@ const fetchUserJSON = async ()=> {
     }
 };
 
+let path="./php/delete-event.php?event_id=";
 const fetchUserEvents = async () => {
     try{
         const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-userEvent.php/", {
@@ -63,8 +64,8 @@ const fetchUserEvents = async () => {
         let output = '';
         console.log(data);
 
-        for(let i in data) {
-           eventID.push(data[i].event_id);
+
+        for(let i in data){
             output +=
                 `<div class="usr-ev">   
                         <div class="event-data">                           
@@ -72,6 +73,7 @@ const fetchUserEvents = async () => {
                             <h4>${data[i].event_title}</h4>
                         </div>
                         <div class="event-options">
+                           
                             <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Send invitation</a>
                             <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
                             <a id="delButton" class="btn btn-danger" href="./php/delete-event.php?event_id=${data[i].event_id}" role="button">Delete event</a>                                                       
@@ -80,19 +82,40 @@ const fetchUserEvents = async () => {
         }
 
         document.querySelector('.created-by-user').innerHTML = output;
-
-        document.addEventListener('DOMContentLoaded', selectDeleteButtons);
     } catch (e){
         console.log("Error in fetching data", e);
     }
 };
 
 
-const selectDeleteButtons = () => {
-    const deleteButtons = document.querySelectorAll('.btn-danger');
-    deleteButtons.forEach((button, index) => {
-        button.addEventListener('click', (event) => {
-            confirm("You ok?");
+const fetchComments = async () => {
+    try {
+        const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-comments.php", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
         });
-    });
-};
+
+        const data = await res.json();
+        let output = '';
+        for (let i in data) {
+            output += `
+                 <div class="swiper-slide">
+                    <div class="comment">
+                        <div class="user">
+                            <i class="fa-regular fa-user"></i>
+                            <h2>${data[i].guest_name}</h2>
+                        </div>
+                        <p>${data[i].comment}</p>
+                    </div>
+                </div>
+            `;
+
+            document.querySelector('.swiper-wrapper').innerHTML = output;
+
+        }
+    } catch (e) {
+        console.log("Error in fetching data", e);
+    }
+}

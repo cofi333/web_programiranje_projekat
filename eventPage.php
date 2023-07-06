@@ -1,8 +1,10 @@
 <?php
+session_start();
 
 require_once './php/config.php';
 if(isset($_GET['id'])){
     $event_id = $_GET['id'];
+    $_SESSION['event_id'] = $event_id;
 } else{
     redirection('index.php');
     exit();
@@ -13,6 +15,9 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
+
+
 ?>
 
 <!doctype html>
@@ -22,6 +27,7 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="css/style.css">
     <title>Event Page</title>
 </head>
@@ -31,7 +37,6 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="container-fluid container">
             <ul class="navbar-nav buttons">
             <?php
-            session_start();
             require_once 'php/config.php';
             require_once 'php/functions.php';
             if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_SESSION['id_user'])) {
@@ -81,6 +86,20 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <section class="event_comments">
 
+    <div class="container">
+        <div class="swiper-comments">
+            <div class="swiper-wrapper">
+
+            </div>
+            <img id="leftClick" src="./images/iconLeft.svg" alt="leftclick">
+            <img id="rightClick" src="./images/iconRight.svg" alt="rightClick">
+            <div class="swiper-pagination"></div>
+        </div>
+
+
+    </div>
+
+
 </section>
 
 <footer id="user-footer">
@@ -112,4 +131,14 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 </footer>
 
 </body>
+
+<script src="node_modules/swiper/swiper-bundle.min.js"></script>
+<script src="./script/swiper.js"></script>
+<script src="./script/fetchJSONFromServer.js"></script>
+<script src="https://kit.fontawesome.com/ac55437ec8.js" crossorigin="anonymous"></script>
+<script>
+    fetchComments();
+</script>
 </html>
+
+

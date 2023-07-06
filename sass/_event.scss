@@ -50,9 +50,19 @@
     }
   }
 
-  .date_time, .description {
+  .date_time, .description, .event_comments {
     margin-top: 70px;
 
+  }
+
+  .switch {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    .form-switch {
+      font-size: 1.5em;
+    }
   }
 
   .sign_up {

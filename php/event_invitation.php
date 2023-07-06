@@ -13,10 +13,11 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$sql2 = "SELECT event_id, guest_id, is_coming FROM guest_event WHERE event_id=".$event_id . " AND guest_id=".$guest_id;
+$sql2 = "SELECT event_id, guest_id, is_coming,comment_sent FROM guest_event WHERE event_id=".$event_id . " AND guest_id=".$guest_id;
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute();
 $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <!doctype html>
@@ -48,37 +49,67 @@ $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
     </div>
 </section>
 
+
 <section class="guest-coming container">
+
     <?php
+    $ei = 0;
 
-    if($result2) {
-        echo "<h2>Did you change your mind? You can change your response.</h2>";
+    if (isset($_GET["ei"]) and is_numeric($_GET['ei'])) {
+        $ei = (int)$_GET["ei"];
 
+        if (array_key_exists($ei, $messages)) {
+            echo '
+                    <div class="alert alert-info ~alert-dismissible fade show m-3" role="alert">
+                        ' . $messages[$ei] . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+        }
     }
-    else {
-        echo "<h2>Please let the organizer know if you are coming to the event.</h2>";
-    }
-
     ?>
-    <form action="./event_invitation-data.php" method="post" id="form">
 
+
+    <form action="./event_invitation-data.php" method="post" id="form">
+        <?php
+        if( date("Y-m-d H:i:s")  > ($result['event_date'] . " " . $result['event_time'])) {
+            if($result['event_comments'] == "on") {
+                if( $result2 && $result2['comment_sent'] == 1) {
+                    echo 'you already sent the comment. thank you.';
+                }
+                else {
+                    echo ' <div class="form-group">
+                <textarea class="form-control" name="guest-comment" placeholder="Enter a comment about how did you spent time at this event" id="exampleFormControlTextarea1" rows="1"></textarea>
+        </div>
+                <input type="submit" id="submit-btn" class="btn btn-primary" value="Submit"/>';
+                }
+            }
+        }
+        else {
+            echo ' 
+       <div class="rd-btns">
         <div class="form-check">
-            <input class="form-check-input radio_btns" <?php if($result2['is_coming'] == 1) echo "checked" ?> type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault2">
+            <input class="form-check-input radio_btns"';  if($result2 && $result2['is_coming'] == 1)  echo "checked";  echo ' type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault2">
             <label class="form-check-label radio_btns" for="flexRadioDefault2">
                 Coming
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input radio_btns" <?php if($result2['is_coming'] == 0) echo "checked" ?>  type="radio" value="0" name="flexRadioDefault" id="flexRadioDefault1">
+            <input class="form-check-input radio_btns"'; if($result2 && $result2['is_coming'] == 0)  echo "checked"; echo ' type="radio" value="0" name="flexRadioDefault" id="flexRadioDefault1">
             <label class="form-check-label radio_btns" for="flexRadioDefault1">
                 Not coming
             </label>
         </div>
-
+       </div>
+               <input type="submit" id="submit-btn" class="btn btn-primary" value="Submit"/>';
+        }
+        ?>
         <input type="hidden" name="event_id" value="<?php echo $event_id ?>"/>
         <input type="hidden" name="guest_id" value="<?php echo $guest_id ?>"/>
-        <input type="submit" id="submit-btn" class="btn btn-primary" value="Submit"/>
     </form>
+
+
 </section>
 
 </body>

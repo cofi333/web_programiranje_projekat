@@ -12164,8 +12164,16 @@ footer .icons {
 .basic-info .location .show {
   display: block !important;
 }
-.basic-info .date_time, .basic-info .description {
+.basic-info .date_time, .basic-info .description, .basic-info .event_comments {
   margin-top: 70px;
+}
+.basic-info .switch {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.basic-info .switch .form-switch {
+  font-size: 1.5em;
 }
 .basic-info .sign_up {
   margin-top: 60px;
@@ -12218,7 +12226,7 @@ footer .icons {
   height: 120px;
 }
 
-#user-footer {
+#user-profile-footer {
   margin: 0;
 }
 
@@ -12263,6 +12271,11 @@ footer .icons {
   align-items: center;
   height: 100vh;
 }
+#center_form .switch {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
 
 @media (max-width: 991.98px) {
   .sign_up {
@@ -12300,6 +12313,53 @@ footer .icons {
   color: #fff;
   font-size: 1.3em;
 }
+#event_page .event_comments .swiper-comments {
+  overflow: hidden;
+  position: relative;
+}
+#event_page .event_comments .swiper-comments .swiper-slide {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+#event_page .event_comments #leftClick {
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  z-index: 10;
+}
+#event_page .event_comments #rightClick {
+  position: absolute;
+  top: 30%;
+  right: 25%;
+  z-index: 10;
+}
+#event_page .event_comments .swiper-pagination-bullet-active {
+  background: radial-gradient(circle, rgb(97, 65, 189) 30%, rgb(28, 19, 55) 100%);
+}
+#event_page .comment {
+  border-radius: 30px;
+  width: 400px;
+  background-color: #009DFF;
+  padding: 2em;
+}
+#event_page .comment .user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+#event_page .comment .user i {
+  font-size: 1.5em;
+}
+#event_page .comment h2, #event_page .comment .h2 {
+  font-size: 1.5em;
+  margin-bottom: unset;
+}
+#event_page .comment p {
+  margin-top: 2em;
+  text-align: center;
+}
 
 .invitation-header {
   margin-bottom: 2em;
@@ -12323,6 +12383,17 @@ footer .icons {
 }
 #event_page .guest-coming #submit-btn {
   margin-top: 1em;
+}
+#event_page .guest-coming #form {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+#event_page .guest-coming #form .form-group {
+  width: 100%;
 }
 
 * {

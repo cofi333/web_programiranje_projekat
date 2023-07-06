@@ -7,7 +7,7 @@ if (isset($_GET['event_id'])) {
     exit();
 }
 
-$sql = $pdo->prepare("SELECT events.event_id, events.ec_id, events.event_organizer, events.event_title, events.event_date, events.event_time,events.event_location ,events.event_description, event_category.category FROM events INNER JOIN event_category ON events.ec_id = event_category.ec_id WHERE event_id =". $event_id);
+$sql = $pdo->prepare("SELECT events.event_id, events.ec_id, events.event_organizer, events.event_title, events.event_date, events.event_time,events.event_location ,events.event_description, events.event_comments, event_category.category FROM events INNER JOIN event_category ON events.ec_id = event_category.ec_id WHERE event_id =". $event_id);
 $sql->execute();
 $result = $sql->fetch();
 ?>
@@ -39,7 +39,7 @@ $result = $sql->fetch();
                 </div>
 
                 <div class="row event_type">
-                    <div class="col-md-3">
+                    <div class="col-xl-3">
                        <div class="form-group">
                            <label>Category</label>
                            <select class="form-select" name="event-category" id="event-category" aria-label="Default select example">
@@ -93,7 +93,17 @@ $result = $sql->fetch();
                     <textarea type="text" class="form-control" id="event-description" name="event-description"><?php echo $result['event_description'] ?></textarea>
                 </div>
 
-               <div class="btn-form">
+                <div class="form-group">
+                        <div class="switch">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Comments</label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="event-comments" role="switch" id="flexSwitchCheckChecked" <?php if($result['event_comments'] == "on") echo "checked";?> >
+                            </div>
+                        </div>
+                </div>
+
+
+                <div class="btn-form">
                    <input type="hidden" name="event_id" value="<?php echo $result['event_id']?>">
                    <input type="submit" id="update-btn" class="btn btn-primary" value="Update"/>
                </div>

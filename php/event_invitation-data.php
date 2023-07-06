@@ -8,21 +8,56 @@ if (isset($_POST['guest_id'])) {
     $guest_id = $_POST['guest_id'];
 }
 
+try {
+    $sql = "SELECT guest_id, event_id, comment_sent FROM guest_event WHERE event_id=".$event_id . " AND guest_id=" . $guest_id;
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+catch(PDOException $e) {
+    var_dump($e->getCode());
+    throw new \PDOException($e->getMessage());
+}
+
+
 if(isset($_POST['flexRadioDefault'])) {
     $is_coming = $_POST['flexRadioDefault'];
+
+    if($result) {
+        guestUpdateRespone($pdo, $event_id, $guest_id, $is_coming);
+        redirection('./event_invitation.php?ei=22&event_id='. $event_id . '&guest_id=' .$guest_id);
+    }
+    else {
+        guestResponse($pdo, $event_id, $guest_id, $is_coming);
+        redirection('./event_invitation.php?ei=21&event_id='. $event_id . '&guest_id=' .$guest_id);
+    }
 }
 
-$sql = "SELECT guest_id, event_id FROM guest_event WHERE event_id=".$event_id;
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if(isset($_POST['guest-comment'])) {
+    $comment = $_POST['guest-comment'];
+
+    if($result['comment_sent'] == 0) {
+
+        insertComment($pdo, $event_id, $guest_id, $comment);
+
+        try {
+            $sql = "UPDATE guest_event SET comment_sent = 1 WHERE event_id=" . $event_id . " AND guest_id=" . $guest_id;
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            var_dump($e->getCode());
+            throw new \PDOException($e->getMessage());
+        }
+
+        redirection('./event_invitation.php?');
+
+    }
+    else {
+        redirection('./event_invitation.php?ei=20&event_id='. $event_id. '&guest_id=' .$guest_id);
+    }
+
+}
 
 
-if($result) {
-    guestUpdateRespone($pdo, $event_id, $guest_id, $is_coming);
-    echo "your response is updated.";
-}
-else {
-    guestResponse($pdo, $event_id, $guest_id, $is_coming);
-    echo "your response is inserted.";
-}
+

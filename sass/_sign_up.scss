@@ -32,13 +32,13 @@
             height: 100%;
             .form-group {
                 padding:15px 0;
-    
+
                 label {
                     color: #FFFFFF;
                     font-size: 24px;
                     padding:5px 0;
                 }
-    
+
                 input::placeholder {
                     color:#009DFF;
                 }
@@ -50,7 +50,7 @@
                     padding-top: 0.5em;
                 }
             }
-    
+
             .sign_up {
                 display: flex;
                 justify-content: end;
@@ -60,18 +60,18 @@
                     color:#fff;
                     padding:6px 40px;
                     font-size: 18px;
-                   
+
                 }
             }
-    
+
             .log_in {
                 font-size: 24px;
                 padding:15px 0;
-    
+
                 span {
                     color:#FFFFFF;
                 }
-    
+
                 a {
                     text-decoration: none;
                     color:#5EDFFF;

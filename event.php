@@ -169,6 +169,17 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                     <span class="error" id="event-description_error"></span>
                 </div>
 
+                <div class="event_comments">
+                    <div class="switch">
+                        <h1>Comments</h1>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="event-comments" role="switch" id="flexSwitchCheckChecked" checked>
+                        </div>
+                    </div>
+                    <p>You can enable or disable the option to comment. Only invited guests can comment the event. </p>
+                    </div>
+
+
                 <div class="sign_up">
                     <input type="submit" name="btnSubmit" class="btn" value="Save & continue"/>
                 </div>
