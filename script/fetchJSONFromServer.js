@@ -1,5 +1,6 @@
 let delete_btn= document.getElementById("delete-btn");
 let eventID = [];
+let flag = 0;
 const fetchEventJSON = async () => {
     try{
         const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-event.php/", {
@@ -74,7 +75,7 @@ const fetchUserEvents = async () => {
                         </div>
                         <div class="event-options">
                            
-                            <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Send invitation</a>
+                            <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Invitations</a>
                             <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
                             <a id="delButton" class="btn btn-danger" href="./php/delete-event.php?event_id=${data[i].event_id}" role="button">Delete event</a>                                                       
                         </div>
@@ -118,4 +119,7 @@ const fetchComments = async () => {
     } catch (e) {
         console.log("Error in fetching data", e);
     }
-}
+};
+
+
+

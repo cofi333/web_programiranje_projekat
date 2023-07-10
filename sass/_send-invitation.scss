@@ -1,4 +1,18 @@
 .invitation-header {
   margin-bottom: 2em;
   color: #fff;
+  text-align: center;
+}
+
+.guests-list {
+  margin-top: 4em;
+
+  .list {
+    text-align: center;
+  }
+}
+
+
+#response-select {
+  background-color:  shift-color($primary, $table-bg-scale);
 }

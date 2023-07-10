@@ -8,15 +8,22 @@ if (isset($_GET['guest_id'])) {
     $guest_id = $_GET['guest_id'];
 }
 
-$sql = "SELECT * FROM events WHERE event_id = " . $event_id;
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
+try {
+    $sql = "SELECT * FROM events WHERE event_id = " . $event_id;
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$sql2 = "SELECT event_id, guest_id, is_coming,comment_sent FROM guest_event WHERE event_id=".$event_id . " AND guest_id=".$guest_id;
-$stmt2 = $pdo->prepare($sql2);
-$stmt2->execute();
-$result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+    $sql2 = "SELECT event_id, guest_id, is_coming,comment_sent FROM guests WHERE event_id=".$event_id . " AND guest_id=".$guest_id;
+    $stmt2 = $pdo->prepare($sql2);
+    $stmt2->execute();
+    $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+}
+
+catch(PDOException $e) {
+    var_dump($e->getCode());
+    throw new \PDOException($e->getMessage());
+}
 
 ?>
 
@@ -90,13 +97,13 @@ $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
             echo ' 
        <div class="rd-btns">
         <div class="form-check">
-            <input class="form-check-input radio_btns"';  if($result2 && $result2['is_coming'] == 1)  echo "checked";  echo ' type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault2">
+            <input class="form-check-input radio_btns"';  if($result2 && $result2['is_coming'] === 1)  echo "checked";  echo ' type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault2">
             <label class="form-check-label radio_btns" for="flexRadioDefault2">
                 Coming
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input radio_btns"'; if($result2 && $result2['is_coming'] == 0)  echo "checked"; echo ' type="radio" value="0" name="flexRadioDefault" id="flexRadioDefault1">
+            <input class="form-check-input radio_btns"'; if($result2 && ($result2['is_coming']) === 0)  echo "checked"; echo ' type="radio" value="0" name="flexRadioDefault" id="flexRadioDefault1">
             <label class="form-check-label radio_btns" for="flexRadioDefault1">
                 Not coming
             </label>

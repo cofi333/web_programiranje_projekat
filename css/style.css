@@ -12226,6 +12226,13 @@ footer .icons {
   height: 120px;
 }
 
+.user-profile-guests {
+  padding: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
 #user-profile-footer {
   margin: 0;
 }
@@ -12364,6 +12371,18 @@ footer .icons {
 .invitation-header {
   margin-bottom: 2em;
   color: #fff;
+  text-align: center;
+}
+
+.guests-list {
+  margin-top: 4em;
+}
+.guests-list .list {
+  text-align: center;
+}
+
+#response-select {
+  background-color: #cfe2ff;
 }
 
 #event_page .guest-coming {
