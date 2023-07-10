@@ -1,6 +1,8 @@
 let delete_btn= document.getElementById("delete-btn");
 let eventID = [];
+
 let flag = 0;
+
 const fetchEventJSON = async () => {
     try{
         const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-event.php/", {
@@ -11,6 +13,7 @@ const fetchEventJSON = async () => {
         });
         const data = await res.json();
         let output = '';
+        console.log(data);
         for(let i in data){
             output +=
                 `<div class="swiper-slide">
@@ -77,7 +80,7 @@ const fetchUserEvents = async () => {
                            
                             <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Invitations</a>
                             <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
-                            <a id="delButton" class="btn btn-danger" href="./php/delete-event.php?event_id=${data[i].event_id}" role="button">Delete event</a>                                                       
+                            <a id="delButton" class="btn btn-danger" onclick="putID(${data[i].event_id})" role="button" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</a>                                                       
                         </div>
                 </div>`;
         }
@@ -119,7 +122,12 @@ const fetchComments = async () => {
     } catch (e) {
         console.log("Error in fetching data", e);
     }
-};
+
+}
 
 
+//function to insert path to script with ID of event, into button of modal
+let putID = (paramID) => {
+    document.querySelector('#delete-btn').href= `./php/delete-event.php?event_id=${paramID}`;
+}
 

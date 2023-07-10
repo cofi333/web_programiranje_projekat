@@ -43,7 +43,8 @@ $messages = [
     20 => 'You already sent comment about this event. Thank you!',
     21 => 'Your response is saved.',
     22 => 'Your response is updated.',
-    23 => 'Your comment has been sent.'
+    23 => 'Your account is active, but its banned. Contact admin form more information.',
+    24 => 'Your comment has been sent.'
 
 ];
 
