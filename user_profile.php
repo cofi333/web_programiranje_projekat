@@ -216,7 +216,7 @@
     let alreadyFetched = false;
     listEventBtn.addEventListener("click", function (e){
         if(!alreadyFetched) {
-            fetchUserEvents();
+            fetchAndCheck();
             alreadyFetched = true;
         } else{
             e.preventDefault();

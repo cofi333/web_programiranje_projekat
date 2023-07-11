@@ -1,6 +1,3 @@
-let delete_btn= document.getElementById("delete-btn");
-let eventID = [];
-let superID = ''; //global var for event ID
 const fetchEventJSON = async () => {
     try{
         const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-event.php/", {
@@ -52,7 +49,6 @@ const fetchUserJSON = async ()=> {
     }
 };
 
-let path="./php/delete-event.php?event_id=";
 const fetchUserEvents = async () => {
     try{
         const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-userEvent.php/", {
@@ -64,26 +60,28 @@ const fetchUserEvents = async () => {
 
         const data = await res.json();
         let output = '';
-        console.log(data);
+        let bannedEvents = [];
+       // console.log(data);
 
 
-        for(let i in data){
+        for(let i in data) {
+            bannedEvents[i] = data[i].is_banned;
             output +=
                 `<div class="usr-ev">   
                         <div class="event-data">                           
                             <img src="${data[i].event_img}" alt="eventImg" />
-                            <h4>${data[i].event_title}</h4>
+                            <h4 id="statusMessage">${data[i].event_title}</h4>
                         </div>
                         <div class="event-options">
-                           
-                            <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Send invitation</a>
-                            <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
+                            <a id="sendInv" href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary" role="button">Send invitation</a>
+                            <a id="updateEv" class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
                             <a id="delButton" class="btn btn-danger" onclick="putID(${data[i].event_id})" role="button" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</a>                                                       
                         </div>
                 </div>`;
         }
 
         document.querySelector('.created-by-user').innerHTML = output;
+        return bannedEvents;
     } catch (e){
         console.log("Error in fetching data", e);
     }
@@ -122,8 +120,41 @@ const fetchComments = async () => {
     }
 }
 
+const fetchMessages = async () => {
+    try{
+        const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-userMessages.php", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        });
+
+        const data = await res.json();
+    } catch (e){
+        console.log("Error in fetching data", e);
+    }
+}
+
 
 //function to insert path to script with ID of event, into button of modal
 let putID = (paramID) => {
     document.querySelector('#delete-btn').href= `./php/delete-event.php?event_id=${paramID}`;
+}
+
+//fetch events and check if its disabled
+let fetchAndCheck = async () => {
+    let res = await fetchUserEvents();
+    console.log(res);
+
+    let sendInvBtn = document.querySelector('#sendInv');
+    let updateEvBtn = document.querySelector('#updateEv');
+    let statMsg = document.querySelector('#statusMessage');
+
+    for(let i in res) {
+        if(res[i] === 1) {
+            sendInvBtn.classList.add("disabled");
+            updateEvBtn.classList.add("disabled");
+            statMsg.innerHTML = 'Event banned';
+        }
+    }
 }

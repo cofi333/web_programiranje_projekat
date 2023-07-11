@@ -127,13 +127,14 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body): voi
 function checkUserLogin(PDO $pdo, string $email, string $enteredPassword): array
 {
     try {
-        $sql = "SELECT id_user, password FROM users WHERE email=:email AND active=1 AND is_banned = 0 LIMIT 0,1";
+        $sql = "SELECT id_user, password, is_banned FROM users WHERE email=:email AND active=1 LIMIT 0,1";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 
         $data = [];
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $data['is_banned'] = $result['is_banned'];
     }
     catch(PDOException $e) {
         echo 'Error: ' . $e->getMessage();
