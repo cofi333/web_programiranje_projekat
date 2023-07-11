@@ -1,5 +1,8 @@
 <?php
+session_start();
+
 require_once './config.php';
+
 
 if (isset($_GET['event_id'])) {
     $event_id = $_GET['event_id'];
@@ -8,16 +11,26 @@ if (isset($_GET['guest_id'])) {
     $guest_id = $_GET['guest_id'];
 }
 
+if(isset($_GET['token'])) {
+    $token = $_GET['token'];
+}
+
 try {
     $sql = "SELECT * FROM events WHERE event_id = " . $event_id;
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $sql2 = "SELECT event_id, guest_id, is_coming,comment_sent FROM guests WHERE event_id=".$event_id . " AND guest_id=".$guest_id;
+    $sql2 = "SELECT event_id, guest_id, is_coming,comment_sent FROM guests WHERE event_id=".$event_id . " AND guest_id=".$guest_id . " AND guest_token=:token";
     $stmt2 = $pdo->prepare($sql2);
+    $stmt2->bindParam(':token', $token, PDO::PARAM_STR);
     $stmt2->execute();
     $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+    $sql3 = "SELECT wish_id, wish_gift_name FROM wish_list WHERE event_id=".$event_id;
+    $stmt3 = $pdo ->query($sql3);
+    $stmt3->setFetchMode(PDO::FETCH_ASSOC);
+
 }
 
 catch(PDOException $e) {
@@ -37,8 +50,20 @@ catch(PDOException $e) {
     <title>Event invitation</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body id="event_page">
 
+<?php
+if($result2 === false) {
+    exit("<body id='removed-guest-body'><div class='content'>
+                <h2>You have been removed from guest list. Contact organizer for more information.</h2>
+                <div class='buton'>
+                  <a href='../index.php' class='btn btn-primary'>Home</a>    
+                    
+                </div>
+                </div></body>");
+}
+?>
+
+<body id="event_page">
 <section class="about_event container">
     <h2><?php echo $result['event_title'] ?></h2>
     <p><?php echo $result['event_description']?></p>
@@ -109,9 +134,19 @@ catch(PDOException $e) {
             </label>
         </div>
        </div>
+        <select class="form-select" name="gift-list" id="gift-list" aria-label="Default select example">
+            <option selected value="default">You can select a gift</option>';
+
+        while($row = $stmt3 -> fetch()) {
+            echo '<option value="' .  $row['wish_id'] .'">' . $row['wish_gift_name'] . '</option>';
+        }
+
+        echo '
+        </select>
                <input type="submit" id="submit-btn" class="btn btn-primary" value="Submit"/>';
         }
         ?>
+        <input type="hidden" name="token" value="<?php echo $token ?>"/>
         <input type="hidden" name="event_id" value="<?php echo $event_id ?>"/>
         <input type="hidden" name="guest_id" value="<?php echo $guest_id ?>"/>
     </form>

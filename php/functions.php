@@ -102,9 +102,8 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body): voi
         $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 2525;
-        $phpmailer->Username = '91a70046fbb2a2';
-        $phpmailer->Password = '27338e9f68a475';
-
+        $phpmailer->Username = '8c6d011cccd20c';
+        $phpmailer->Password = '8f50cb350ba3d2';
 
         $phpmailer->setFrom('webmaster@example.com', 'Webmaster');
         $phpmailer->addAddress("$email");
@@ -242,15 +241,16 @@ function getUserData(PDO $pdo, string $data, string $field, string $value): stri
 }
 
 //function that stores guest info into guests table
-function insertGuest (PDO $pdo, int $event_id ,int $id_user,string $email, string $name) : void
+function insertGuest (PDO $pdo, int $event_id ,int $id_user,string $email, string $name, string $token) : void
 {
     try {
-        $sql = "INSERT INTO guests (event_id, id_user, guest_mail, guest_name) VALUES (:event_id,:id_user,:mail, :name)";
+        $sql = "INSERT INTO guests (event_id, id_user, guest_mail, guest_name, guest_token) VALUES (:event_id,:id_user,:mail, :name, :token)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
         $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $stmt->bindParam(':mail', $email, PDO::PARAM_STR);
         $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':token', $token, PDO::PARAM_STR);
         $stmt->execute();
     }
     catch(PDOException $e) {
@@ -262,13 +262,14 @@ function insertGuest (PDO $pdo, int $event_id ,int $id_user,string $email, strin
 
 
 //function for updating guest response on event (is coming, not coming)
-function guestUpdateRespone (PDO $pdo, int $event_id, int $guest_id, int $is_coming): void {
+function guestUpdateRespone (PDO $pdo, int $event_id, int $guest_id, int $is_coming, string $wish_id): void {
     try {
-        $sql = "UPDATE guests SET is_coming=:is_coming WHERE event_id=:event_id AND guest_id=:guest_id";
+        $sql = "UPDATE guests SET is_coming=:is_coming, wish_id=:wish_id WHERE event_id=:event_id AND guest_id=:guest_id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam('is_coming', $is_coming, PDO::PARAM_INT);
         $stmt->bindParam('event_id', $event_id, PDO::PARAM_INT);
         $stmt->bindParam('guest_id', $guest_id, PDO::PARAM_INT);
+        $stmt->bindParam('wish_id', $wish_id, PDO::PARAM_STR);
         $stmt->execute();
     }
     catch (PDOException $e) {
@@ -309,7 +310,7 @@ function getGuestId (PDO $pdo, string $mail, int $event_id) : mixed  {
     return $result['guest_id'];
 }
 
-function deleteGuest(PDO $pdo, int $guest_id)  {
+function deleteGuest(PDO $pdo, int $guest_id) : void {
     try {
         $sql = "DELETE FROM guests WHERE guest_id=:guest_id";
         $stmt = $pdo->prepare($sql);
@@ -336,3 +337,31 @@ function updateGuestInfo(PDO $pdo, int $guest_id ,string $name): void {
     }
 
 }
+
+function insertGiftItem(PDO $pdo, int $user_id, int $event_id, string $gift_name, string $gift_link) : void {
+    try {
+        $sql = "INSERT INTO wish_list (id_user,event_id,wish_gift_name,wish_gift_link) VALUES (:user_id,:event_id,:gift_name,:gift_link)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+        $stmt->bindParam(':gift_name', $gift_name, PDO::PARAM_STR);
+        $stmt->bindParam(':gift_link', $gift_link, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+        throw new \PDOException($e->getMessage());
+    }
+}
+
+function deleteGiftItem(PDO $pdo, int $wish_id) : void {
+    try {
+        $sql = "DELETE FROM wish_list WHERE wish_id=:wish_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':wish_id', $wish_id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+        throw new \PDOException($e->getMessage());
+    }}

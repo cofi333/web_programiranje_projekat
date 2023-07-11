@@ -78,6 +78,7 @@ const fetchUserEvents = async () => {
                         </div>
                         <div class="event-options">
                            
+                            <a href="./php/wish-list.php?event_id=${data[i].event_id}" class="btn btn-primary">Wish list</a>
                             <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Invitations</a>
                             <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
                             <a id="delButton" class="btn btn-danger" onclick="putID(${data[i].event_id})" role="button" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</a>                                                       

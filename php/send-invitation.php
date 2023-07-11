@@ -96,6 +96,7 @@ catch (PDOException $e) {
                 <th scope="col">Name</th>
                 <th scope="col">Mail</th>
                 <th scope="col">Response</th>
+                <th scope="col">Gift item</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -121,6 +122,7 @@ catch (PDOException $e) {
                      <td>' . $data['guest_name'] . '</td>
                      <td>' . $data['guest_mail'] . '</td>
                      <td>' . $is_coming . '</td>
+                     <td></td>
                      <td> <a class="btn btn-warning update-event" onclick="getId('.$data['guest_id'].')" role="button" data-bs-toggle="modal" data-bs-target="#update-guest-modal">Update guest</a>
                             <a id="delButton" class="btn btn-danger" onclick="getId('.$data['guest_id'].')" data-bs-toggle="modal" data-bs-target="#delete-guest-modal" role="button">Delete guest</a></td>
                    </tr> ';

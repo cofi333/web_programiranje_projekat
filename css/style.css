@@ -12417,6 +12417,28 @@ footer .icons {
   width: 100%;
 }
 
+#removed-guest-body {
+  background: radial-gradient(circle, rgb(97, 65, 189) 30%, rgb(28, 19, 55) 100%);
+}
+#removed-guest-body .content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+}
+#removed-guest-body .content h2, #removed-guest-body .content .h2 {
+  color: #fff;
+}
+
+#wish-list {
+  background: radial-gradient(#FF19F2, #730770);
+}
+
+.wish-list {
+  margin-top: 4em;
+}
+
 * {
   padding: 0;
   margin: 0;
