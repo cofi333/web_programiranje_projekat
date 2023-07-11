@@ -1,4 +1,25 @@
+#send-invitation {
+  background: radial-gradient(#FF19F2, #730770);
+}
+
+.center_form {
+  margin-top: 3em;
+}
+
 .invitation-header {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   color: #fff;
+  text-align: center;
+}
+
+.guests-list {
+  margin-top: 4em;
+
+  .list {
+    text-align: center;
+  }
+}
+
+#response-select {
+  background-color:  shift-color($primary, $table-bg-scale);
 }

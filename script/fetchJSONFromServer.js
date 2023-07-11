@@ -72,9 +72,9 @@ const fetchUserEvents = async () => {
                             <img src="${data[i].event_img}" alt="eventImg" />
                             <h4 id="statusMessage">${data[i].event_title}</h4>
                         </div>
-                        <div class="event-options">
-                            <a id="sendInv" href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary" role="button">Send invitation</a>
-                            <a id="updateEv" class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
+                        <div class="event-options">   
+                            <a href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Invitations</a>
+                            <a class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
                             <a id="delButton" class="btn btn-danger" onclick="putID(${data[i].event_id})" role="button" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</a>                                                       
                         </div>
                 </div>`;
@@ -118,6 +118,7 @@ const fetchComments = async () => {
     } catch (e) {
         console.log("Error in fetching data", e);
     }
+
 }
 
 const fetchMessages = async () => {
@@ -140,6 +141,7 @@ const fetchMessages = async () => {
 let putID = (paramID) => {
     document.querySelector('#delete-btn').href= `./php/delete-event.php?event_id=${paramID}`;
 }
+
 
 //fetch events and check if its disabled
 let fetchAndCheck = async () => {

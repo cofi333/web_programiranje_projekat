@@ -260,27 +260,12 @@ function insertGuest (PDO $pdo, int $event_id ,int $id_user,string $email, strin
     }
 }
 
-//fucntion for fetching guest response
-function guestResponse (PDO $pdo, int $event_id, int $guest_id, int $is_coming ): void {
-     try {
-         $sql = "INSERT INTO guest_event(event_id,guest_id,is_coming) VALUES (:event_id, :id_guest, :is_coming)";
-         $stmt = $pdo->prepare($sql);
-         $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
-         $stmt->bindParam(':id_guest', $guest_id, PDO::PARAM_INT);
-         $stmt->bindParam(':is_coming', $is_coming, PDO::PARAM_INT);
-         $stmt->execute();
-     }
-     catch (PDOException $e) {
-         echo 'Error: ' . $e->getMessage();
-         throw new \PDOException($e->getMessage());
 
-     }
-}
 
 //function for updating guest response on event (is coming, not coming)
 function guestUpdateRespone (PDO $pdo, int $event_id, int $guest_id, int $is_coming): void {
     try {
-        $sql = "UPDATE guest_event SET is_coming=:is_coming WHERE event_id=:event_id AND guest_id=:guest_id";
+        $sql = "UPDATE guests SET is_coming=:is_coming WHERE event_id=:event_id AND guest_id=:guest_id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam('is_coming', $is_coming, PDO::PARAM_INT);
         $stmt->bindParam('event_id', $event_id, PDO::PARAM_INT);
@@ -323,4 +308,32 @@ function getGuestId (PDO $pdo, string $mail, int $event_id) : mixed  {
     }
 
     return $result['guest_id'];
+}
+
+function deleteGuest(PDO $pdo, int $guest_id)  {
+    try {
+        $sql = "DELETE FROM guests WHERE guest_id=:guest_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':guest_id', $guest_id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+        throw new \PDOException($e->getMessage());
+    }
+}
+
+function updateGuestInfo(PDO $pdo, int $guest_id ,string $name): void {
+    try {
+        $sql = "UPDATE guests SET guest_name=:name WHERE guest_id=:guest_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':guest_id', $guest_id, PDO::PARAM_INT);
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+        throw new \PDOException($e->getMessage());
+    }
+
 }
