@@ -44,13 +44,13 @@ $messages = [
     21 => 'Your response is saved.',
     22 => 'Your response is updated.',
     23 => 'Your account is active, but its banned. Contact admin form more information.',
-    24 => 'User has been successfully banned.',
-    25 => 'Something went wrong, please try again.',
-    26 => 'User ban has been revoked.',
-    27 => 'Event banned.',
-    28 => 'Event ban revoked.',
-    29 => 'Event is deleted, message has been sent to the user.',
-    24 => 'Your comment has been sent.'
+    24 => 'Your comment has been sent.',
+    25 => 'User has been successfully banned.',
+    26 => 'Something went wrong, please try again.',
+    27 => 'User ban has been revoked.',
+    28 => 'Event banned.',
+    29 => 'Event ban revoked.',
+    30 => 'Event is deleted, message has been sent to the user.'
 ];
 
 $emailMessages = [

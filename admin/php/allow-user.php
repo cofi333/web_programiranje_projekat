@@ -7,11 +7,11 @@ if(isset($_GET['id_user'])) {
         $sql = ("UPDATE users SET is_banned = 0 WHERE id_user = " . $_GET['id_user'] . " AND is_banned = 1");
         $stmt = $pdo->prepare($sql);
         $bool = $stmt->execute();
-        redirection("../admin.php?m=26");
+        redirection("../admin.php?m=27");
     } catch (PDOException $e){
         echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 } else {
-    redirection("../admin.php?m=25");
+    redirection("../admin.php?m=26");
 }

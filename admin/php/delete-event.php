@@ -31,7 +31,7 @@ if($flag == 1){
         echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     } finally {
-        redirection('../admin.php?m=29');
+        redirection('../admin.php?m=30');
     }
 }
 else{

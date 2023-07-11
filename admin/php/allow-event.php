@@ -9,12 +9,12 @@ if(isset($_GET['id_event'])){
         $sql = "UPDATE events SET is_banned = 0 WHERE event_id = " . $eventID;
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
-        redirection("../admin.php?m=28");
+        redirection("../admin.php?m=29");
     }catch (PDOException $e){
         echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
     }
 }
 else{
-    redirection('../admin.php?m=25');
+    redirection('../admin.php?m=26');
 }
