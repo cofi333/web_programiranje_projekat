@@ -210,7 +210,6 @@
     <script src="./script/fetchJSONFromServer.js"></script>
     <script>
         fetchUserJSON();
-        fetchGuests();
     </script>
 <script>
     let listEventBtn = document.getElementById('pills-profile-tab');

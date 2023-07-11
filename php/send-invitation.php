@@ -32,7 +32,7 @@ catch (PDOException $e) {
     <link rel="stylesheet" href="../css/style.css">
     <title>Send an invitation</title>
 </head>
-<body id="center_form">
+<body id="send-invitation">
 
 <section class="center_form container-lg">
     <h2 class="invitation-header">Send an invitation for <?php echo $result2['event_title'] ?></h2>
@@ -80,7 +80,7 @@ catch (PDOException $e) {
 
 </section>
 
-<section class="guests-list">
+<section class="guests-list container">
     <h2 class="invitation-header">List of currently invited guests</h2>
     <select class="form-select form-select-sm" id="response-select">
         <option selected disabled>Filter responses by</option>
@@ -121,8 +121,8 @@ catch (PDOException $e) {
                      <td>' . $data['guest_name'] . '</td>
                      <td>' . $data['guest_mail'] . '</td>
                      <td>' . $is_coming . '</td>
-                     <td> <a class="btn btn-warning update-event" href="" role="button">Update guest</a>
-                            <a id="delButton" class="btn btn-danger" onclick="delete_guest(25)" id="delete-guest-moodal" data-bs-toggle="modal" data-bs-target="#delete-guest-modal" role="button">Delete guest</a></td>
+                     <td> <a class="btn btn-warning update-event" onclick="getId('.$data['guest_id'].')" role="button" data-bs-toggle="modal" data-bs-target="#update-guest-modal">Update guest</a>
+                            <a id="delButton" class="btn btn-danger" onclick="getId('.$data['guest_id'].')" data-bs-toggle="modal" data-bs-target="#delete-guest-modal" role="button">Delete guest</a></td>
                    </tr> ';
                 $number++;
             }
@@ -146,7 +146,33 @@ catch (PDOException $e) {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" id="delete-guest" class="btn btn-danger">Delete</button>
+                <a href="" id="delete-guest" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="update-guest-modal" tabindex="-1" aria-labelledby="update-guest-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update guest info</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="./update-guest.php" method="post">
+                    <div class="form-floating mb-3">
+                        <input type="text" name="guest-new-name" class="form-control" id="floatingName" placeholder="Your name">
+                        <label for="floatingName">Name</label>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <input type="hidden" id="input-guest-id" name="guest-id" value="">
+                        <input type="hidden" id="input-event-id" name="event-id" value="">
+                        <input type="submit" value="Update" class="btn btn-primary">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -157,13 +183,34 @@ catch (PDOException $e) {
 <script src="../script/invitationValidateForm.js"></script>
 <script src="../node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="../script/fetchResponses.js"></script>
-
 <script>
-   function delete_guest(id) {
-        let btn = document.getElementById("delete-guest");
-        btn.href= "./delete-guest/php?guest_id=" +id;
+
+    let event_id= "<?php Print($_GET['event_id']) ?>";
+    $(document).ready(function() {
+        $("#response-select").on('change', function() {
+            let value = $(this).val();
+
+            $.ajax({
+                url: "../php/fetchData/fetch-responses.php?event_id="+event_id,
+                type: "POST",
+                data: "request=" + value,
+                success: function(data) {
+                    $(".list").html(data);
+                }
+
+            });
+        })
+    });
+
+    let getId = (id) => {
+        let deleteBtn = document.getElementById("delete-guest");
+        let inputUpdate = document.getElementById("input-guest-id");
+        let eventIdValue = document.getElementById("input-event-id");
+        deleteBtn.href = "./delete-guest.php?guest_id=" + id + "&event_id="+ event_id;
+        inputUpdate.value = id;
+        eventIdValue.value = event_id;
     }
 </script>
+
 </html>
 

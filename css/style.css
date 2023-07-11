@@ -12368,8 +12368,16 @@ footer .icons {
   text-align: center;
 }
 
+#send-invitation {
+  background: radial-gradient(#FF19F2, #730770);
+}
+
+.center_form {
+  margin-top: 3em;
+}
+
 .invitation-header {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   color: #fff;
   text-align: center;
 }

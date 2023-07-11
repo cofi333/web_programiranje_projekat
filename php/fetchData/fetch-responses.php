@@ -6,7 +6,13 @@ if(isset($_POST['request'])) {
     $request = $_POST['request'];
 }
 
-$sql = $pdo->prepare("SELECT guest_name, guest_mail, is_coming FROM guests WHERE is_coming=". $request);
+if(isset($_GET['event_id'])) {
+    $event_id = $_GET['event_id'];
+}
+
+
+
+$sql = $pdo->prepare("SELECT guest_name, guest_mail, is_coming FROM guests WHERE is_coming=". $request. " AND event_id=".$event_id);
 $sql->execute();
 $result = $sql->fetchAll();
 

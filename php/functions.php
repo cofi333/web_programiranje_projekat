@@ -308,3 +308,31 @@ function getGuestId (PDO $pdo, string $mail, int $event_id) : mixed  {
 
     return $result['guest_id'];
 }
+
+function deleteGuest(PDO $pdo, int $guest_id)  {
+    try {
+        $sql = "DELETE FROM guests WHERE guest_id=:guest_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':guest_id', $guest_id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+        throw new \PDOException($e->getMessage());
+    }
+}
+
+function updateGuestInfo(PDO $pdo, int $guest_id ,string $name): void {
+    try {
+        $sql = "UPDATE guests SET guest_name=:name WHERE guest_id=:guest_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':guest_id', $guest_id, PDO::PARAM_INT);
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+        throw new \PDOException($e->getMessage());
+    }
+
+}
