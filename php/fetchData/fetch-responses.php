@@ -12,7 +12,7 @@ if(isset($_GET['event_id'])) {
 
 
 
-$sql = $pdo->prepare("SELECT guest_name, guest_mail, is_coming FROM guests WHERE is_coming=". $request. " AND event_id=".$event_id);
+$sql = $pdo->prepare("SELECT guest_id,guest_name, guest_mail, is_coming FROM guests WHERE is_coming=". $request. " AND event_id=".$event_id);
 $sql->execute();
 $result = $sql->fetchAll();
 
@@ -43,8 +43,8 @@ $result = $sql->fetchAll();
                      <td>' . $data['guest_name'] . '</td>
                      <td>' . $data['guest_mail'] . '</td>
                      <td>' . $is_coming. '</td>
-                     <td> <a class="btn btn-warning update-event" href="" role="button">Update guest</a>
-                           <a id="delButton" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#delete-guest-modal" role="button">Delete guest</a></td>
+                     <td> <a class="btn btn-warning update-event" onclick="getId('.$data['guest_id'].')" data-bs-toggle="modal" data-bs-target="#update-guest-modal" role="button">Update guest</a>
+                           <a id="delButton" class="btn btn-danger" onclick="getId('.$data['guest_id'].')" data-bs-toggle="modal" data-bs-target="#delete-guest-modal" role="button">Delete guest</a></td>
                    </tr> ';
             $number++;
         }
@@ -52,6 +52,7 @@ $result = $sql->fetchAll();
         ?>
     </tbody>
 </table>
+
 
 
 
