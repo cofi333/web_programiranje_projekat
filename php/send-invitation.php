@@ -157,17 +157,18 @@ catch (PDOException $e) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update guest info</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close close-modal-btn" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="./update-guest.php" method="post">
+                <form action="./update-guest.php" id="form2" method="post">
                     <div class="form-floating mb-3">
-                        <input type="text" name="guest-new-name" class="form-control" id="floatingName" placeholder="Your name">
+                        <input type="text" name="guest-new-name" class="form-control" id="guest-new-name" placeholder="Your name">
+                        <span class="error" id="new-name-error"></span>
                         <label for="floatingName">Name</label>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary close-modal-btn" data-bs-dismiss="modal">Cancel</button>
                         <input type="hidden" id="input-guest-id" name="guest-id" value="">
                         <input type="hidden" id="input-event-id" name="event-id" value="">
                         <input type="submit" value="Update" class="btn btn-primary">
@@ -183,6 +184,7 @@ catch (PDOException $e) {
 <script src="../script/invitationValidateForm.js"></script>
 <script src="../node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="../script/updateGuestValidateForm.js"></script>
 <script>
 
     let event_id= "<?php Print($_GET['event_id']) ?>";

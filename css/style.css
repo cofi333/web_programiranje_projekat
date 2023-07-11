@@ -11941,12 +11941,6 @@ textarea.form-control-lg {
 .form form .form-group input::placeholder {
   color: #009DFF;
 }
-.form form .form-group .error {
-  color: #f00;
-  font-size: 1em;
-  display: block;
-  padding-top: 0.5em;
-}
 .form form .sign_up {
   display: flex;
   justify-content: end;
@@ -12444,4 +12438,11 @@ footer .icons {
   display: flex;
   justify-content: end;
   margin-top: 15px;
+}
+
+.error {
+  color: #f00;
+  font-size: 1em;
+  display: block;
+  padding-top: 0.5em;
 }
