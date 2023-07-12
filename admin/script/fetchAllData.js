@@ -53,13 +53,34 @@ const fetchEvents = async() => {
                             <p>Ban Status: ${data[event].is_banned}</p>
                         </div>
                         <div class="ev-action">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateEvent">Update event</button>
+                            <button 
+                                id="updateEventButton"
+                                onclick="updateEvent('${data[event].event_id}', 
+                                                     '${data[event].event_title}', 
+                                                     'ID: ${data[event].id_user}',
+                                                     '${data[event].event_description}',
+                                                     '${data[event].event_location}',
+                                                     '${data[event].event_date}',
+                                                     '${data[event].event_time}')"
+                                type="button" 
+                                class="btn btn-primary" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#updateEvent">
+                                    Update event
+                                </button>
+                            
                             <button onclick="banEvent(${data[event].event_id})" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#banEventModal">Ban Event</button>
                             <button onclick="deleteEvent(${data[event].event_id}, ${data[event].id_user})" type="button" data-bs-toggle="modal" data-bs-target="#deleteEvent" class="btn btn-danger">Delete Event</button>
                         </div>
                        </div>`;
         }
-
+/*
+*                                                   ${data[event].event_title},
+                                                     ${data[event].id_user},
+                                                     ${data[event].event_description},
+                                                     ${data[event].event_location},
+                                                     ${data[event].event_date},
+                                                     ${data[event].event_location})"*/
         document.querySelector('#pills-contact').innerHTML = events;
     }catch (e){
         console.log("Fetch error" + e);
@@ -96,4 +117,14 @@ let banEvent = (param) => {
 let deleteEvent = (idEvent, idUser) => {
     document.querySelector('#deleteEventAdmin').value = `${idEvent}`;
     document.querySelector('#deleteEventUser').value =  `${idUser}`;
+}
+
+let updateEvent = (eventID, eventName, eventOwner, eventDesc, eventLocation, eventDate, eventTime) => {
+    document.querySelector('.admin-event-id').value = eventID;
+    console.log(document.querySelector('.admin-event-name').value = eventName);
+    document.querySelector('.admin-event-owner').value = eventOwner;
+    document.querySelector('.admin-event-desc').value = eventDesc;
+    document.querySelector('.admin-event-location').value = eventLocation;
+    document.querySelector('.admin-event-date').value = eventDate;
+    document.querySelector('.admin-event-time').value = eventTime;
 }

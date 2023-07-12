@@ -25,9 +25,12 @@
     <title>admin-panel</title>
 </head>
 <body>
-    <header>
-        <nav class="mt-3 d-flex justify-content-around">
+    <header class="mt-3 position-sticky top-0 start-0">
+        <nav class=" d-flex justify-content-around position-sticky">
             <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-admin-tab" data-bs-toggle="pill" data-bs-target="#pills-admin" type="button" role="tab" aria-controls="pills-admin" aria-selected="false">Admin profile</button>
+                </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Users</button>
                 </li>
@@ -70,6 +73,34 @@
 
     <main>
         <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab" tabindex="0">
+                <?php
+                //session_start();
+                require_once '../php/config.php';
+
+                $redirectionMessage = '';
+                if(isset($_GET['m'])){
+                    $redirectionMessage = $messages[$_GET['m']];
+                    if($_GET['m'] === 26){
+                        echo '<div class="alert alert-danger fade show p-3" role="alert">';
+                    }
+                    else{
+                        echo '<div class="alert alert-success fade show p-3" role="alert">';
+                    }
+                    echo $redirectionMessage;
+                    echo '</div>';
+                } else{
+                    echo '<span>';
+                    echo 'Howdy admin';
+                    echo '</span>';
+                }
+
+
+
+                ?>
+            </div>
+        </div>
+        <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
 
             </div>
@@ -110,28 +141,34 @@
                     </div>
                     <div class="modal-body">
                         <form method="post" action="php/update-event.php" class="form-floating">
+                            <input name="eventID" type="hidden" value="" class="form-control admin-event-id">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control admin-event-update" id="floatingInput" placeholder="name@example.com">
+                                <input name="eventName" type="text" class="form-control admin-event-name" value="" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Event Name: </label>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control admin-event-update" id="floatingInput" placeholder="name@example.com">
+                                <input name="userID" type="text" class="form-control admin-event-owner disabled" id="floatingInput" placeholder="name@example.com" disabled>
                                 <label for="floatingInput">Even owner: </label>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control admin-event-update" id="floatingInput" placeholder="name@example.com">
+                                <input name="eventDescription" type="text" class="form-control admin-event-desc" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Event description: </label>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control admin-event-update" id="floatingInput" placeholder="name@example.com">
+                                <input name="eventLocation" type="text" class="form-control admin-event-location" id="floatingInput" placeholder="name@example.com">
+                                <label for="floatingInput">Event location: </label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input name="eventDate" type="text" class="form-control admin-event-date" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Event date: </label>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control admin-event-update" id="floatingInput" placeholder="name@example.com">
+                                <input name="eventTime" type="text" class="form-control admin-event-time" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Event Time: </label>
                             </div>
                             <input type="submit" class="btn btn-success" value="Update Event" id="updateEventButton">
@@ -194,6 +231,9 @@
 
         <!-- Admin events modals -->
 
+        <section class="admin-actions">
+
+        </section>
     </main>
 </body>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -203,6 +243,5 @@
         fetchUsers();
         fetchEvents();
     </script>
-    <script src="script/event-check.js"></script>
 </html>
 

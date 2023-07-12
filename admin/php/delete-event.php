@@ -1,14 +1,17 @@
 <?php
+session_start();
 require_once '../../php/config.php';
 $event_id = '';
 $user_id = '';
 $deleteMessage = '';
+$admin_id = '';
 $flag = 0;
 
-if(isset($_POST['id_event']) && isset($_POST['id_user']) && isset($_POST['deleteMessage'])) {
+if(isset($_POST['id_event']) && isset($_POST['id_user']) && isset($_POST['deleteMessage']) && isset($_SESSION['admin-id'])) {
     $event_id = $_POST['id_event'];
     $user_id = $_POST['id_user'];
     $deleteMessage = $_POST['deleteMessage'];
+    $admin_id = $_SESSION['admin-id'];
     $flag = 1;
 }
 
@@ -24,7 +27,7 @@ if($flag == 1){
     }
 
     try{
-        $message = "INSERT INTO admin_to_user_msg (admin_id, user_id, message) VALUES ('1', '$user_id', '$deleteMessage')";
+        $message = "INSERT INTO admin_to_user_msg (admin_id, user_id, message) VALUES ('$admin_id', '$user_id', '$deleteMessage')";
         $stmt = $pdo->prepare($message);
         $stmt->execute();
     }catch (PDOException $e){
