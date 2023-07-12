@@ -1,6 +1,7 @@
 <?php
 require_once 'config.php';
 
+
 if (isset($_POST['event_id'])) {
     $event_id = $_POST['event_id'];
 }
@@ -13,7 +14,12 @@ if(isset($_POST['token'])) {
 }
 
 if(isset($_POST['gift-list'])){
-    $wish_id = $_POST['gift-list'];
+    if($_POST['gift-list'] === "default") {
+        $wish_id = NULL;
+    }
+    else {
+        $wish_id = $_POST['gift-list'];
+    }
 }
 
 

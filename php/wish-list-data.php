@@ -22,4 +22,4 @@ if(isset($_POST['gift-link'])) {
 
 
 insertGiftItem($pdo, $user_id, $event_id, $gift_name, $gift_link);
-redirection('./wish-list.php?event_id='.$event_id);
+redirection('./wish-list.php?event_id='.$event_id . "&wl=34");

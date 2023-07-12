@@ -1,10 +1,13 @@
-.admin-login{
+.admin-login {
     background-color: #490149;
 }
-#admin-login-form{
+
+#admin-login-form {
     padding: 5em;
     width: 720px;
     border-radius: 10px;
     background-color: #009DFF;
 }
+
+
 

@@ -44,8 +44,17 @@ $messages = [
     21 => 'Your response is saved.',
     22 => 'Your response is updated.',
     23 => 'Your account is active, but its banned. Contact admin form more information.',
-    24 => 'Your comment has been sent.'
-
+    24 => 'Your comment has been sent.',
+    25 => 'User has been successfully banned.',
+    26 => 'Something went wrong, please try again.',
+    27 => 'User ban has been revoked.',
+    28 => 'Event banned.',
+    29 => 'Event ban revoked.',
+    30 => 'Event is deleted, message has been sent to the user.',
+    31 => 'The invitation has been sent.',
+    32 => 'Gift is updated.',
+    33 => 'Gift is deleted.',
+    34 => 'Gift is added.',
 ];
 
 $emailMessages = [

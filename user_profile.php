@@ -152,7 +152,6 @@
             </div>
 
             <div class="tab-pane fade justify-content-center" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab" tabindex="0">...</div>
-        </div>
     </main>
 
     <footer id="user-profile-footer">
@@ -216,7 +215,7 @@
     let alreadyFetched = false;
     listEventBtn.addEventListener("click", function (e){
         if(!alreadyFetched) {
-            fetchUserEvents();
+            fetchAndCheck();
             alreadyFetched = true;
         } else{
             e.preventDefault();

@@ -5,15 +5,11 @@ $adminUsername = '';
 $adminPassword = '';
 $dbUsername = '';
 $dbPassword = '';
-$flag = 0;
 
 if(isset($_POST['email']) && isset($_POST['paswd'])){
     $adminUsername = $_POST['email'];
     $adminPassword = $_POST['paswd'];
-    $flag = 1;
-}
 
-if($flag == 1){
     try{
         $sql = "SELECT * FROM admins";
         $stmt = $pdo->prepare($sql);
@@ -29,7 +25,7 @@ if($flag == 1){
     }
 
 
-    if(password_verify($adminPassword, $dbPassword) && ($adminUsername === $dbUsername)){
+    if(($adminPassword === $dbPassword) && ($adminUsername === $dbUsername)){
         $_SESSION['admin-username'] = $adminUsername;
         $_SESSION['admin-id'] = $dbID;
         redirection('../admin.php');

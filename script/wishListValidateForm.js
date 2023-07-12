@@ -1,6 +1,7 @@
 let form = document.getElementById("form");
 let gift_name = document.getElementById("gift-name");
 let gift_link = document.getElementById("gift-link");
+let isValid = false;
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -38,7 +39,7 @@ let validateLink = () => {
     let link_error = document.getElementById("gift-link-error");
 
     if(!isValidLink(gift_link.value)) {
-        link_error.innerHTML='Link is not in valid form';
+        link_error.innerHTML='Link is not in valid form.';
         isValid = false;
     }
     else {

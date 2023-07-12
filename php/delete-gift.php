@@ -13,4 +13,4 @@ if (isset($_GET['event_id'])) {
 
 deleteGiftItem($pdo, $wish_id);
 
-redirection('./wish-list.php?event_id=' . $event_id);
+redirection('./wish-list.php?event_id=' . $event_id. "&wl=33");

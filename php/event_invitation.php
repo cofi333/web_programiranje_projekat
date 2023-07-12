@@ -21,7 +21,7 @@ try {
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $sql2 = "SELECT event_id, guest_id, is_coming,comment_sent FROM guests WHERE event_id=".$event_id . " AND guest_id=".$guest_id . " AND guest_token=:token";
+    $sql2 = "SELECT event_id, guest_id, is_coming,comment_sent,wish_id FROM guests WHERE event_id=".$event_id . " AND guest_id=".$guest_id . " AND guest_token=:token";
     $stmt2 = $pdo->prepare($sql2);
     $stmt2->bindParam(':token', $token, PDO::PARAM_STR);
     $stmt2->execute();
@@ -30,7 +30,6 @@ try {
     $sql3 = "SELECT wish_id, wish_gift_name FROM wish_list WHERE event_id=".$event_id;
     $stmt3 = $pdo ->query($sql3);
     $stmt3->setFetchMode(PDO::FETCH_ASSOC);
-
 }
 
 catch(PDOException $e) {
@@ -114,7 +113,7 @@ if($result2 === false) {
                     echo ' <div class="form-group">
                 <textarea class="form-control" name="guest-comment" placeholder="Enter a comment about how did you spent time at this event" id="exampleFormControlTextarea1" rows="1"></textarea>
         </div>
-                <input type="submit" id="submit-btn" class="btn btn-primary" value="Submit"/>';
+                <input type="submit" id="submit-btn" class="btn btn-primary" value="Send"/>';
                 }
             }
         }
@@ -136,14 +135,17 @@ if($result2 === false) {
        </div>
         <select class="form-select" name="gift-list" id="gift-list" aria-label="Default select example">
             <option selected value="default">You can select a gift</option>';
-
         while($row = $stmt3 -> fetch()) {
-            echo '<option value="' .  $row['wish_id'] .'">' . $row['wish_gift_name'] . '</option>';
+            if($result2['wish_id'] === $row['wish_id']) {
+                echo '<option selected value="' .  $row['wish_id'] .'">' . $row['wish_gift_name'] . ' </option>';
+            }
+            else {
+                echo '<option value="' .  $row['wish_id'] .'">' . $row['wish_gift_name'] . '</option>';
+            }
         }
-
         echo '
         </select>
-               <input type="submit" id="submit-btn" class="btn btn-primary" value="Submit"/>';
+               <input type="submit" id="submit-btn" class="btn btn-primary" value="Send"/>';
         }
         ?>
         <input type="hidden" name="token" value="<?php echo $token ?>"/>

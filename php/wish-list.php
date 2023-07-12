@@ -1,15 +1,20 @@
 <?php
+session_start();
 require_once 'config.php';
 
 if(isset($_GET['event_id'])) {
     $event_id = $_GET['event_id'];
+    $_SESSION['event_id2'] = $event_id;
 }
 
 
 try {
     $sql = $pdo->prepare("SELECT wish_id,wish_gift_name, wish_gift_link FROM wish_list WHERE event_id=".$event_id);
+    $sql2 = $pdo->prepare("SELECT event_title FROM events WHERE event_id=".$event_id);
     $sql->execute();
+    $sql2->execute();
     $result = $sql->fetchAll();
+    $result2 = $sql2->fetch();
 }
 catch (PDOException $e) {
     echo 'Error: ' . $e->getMessage();
@@ -32,9 +37,28 @@ catch (PDOException $e) {
 </head>
 <body id="wish-list">
 <section class="center_form container-lg">
+    <h2 class="invitation-header">Add gift items for <?php echo $result2['event_title'] ?></h2>
     <div class="content">
         <div class="form">
             <form action="./wish-list-data.php" method="post" id="form">
+                <?php
+                require_once './config.php';
+                $wl = 0;
+
+                if (isset($_GET["wl"]) and is_numeric($_GET['wl'])) {
+                    $wl = (int)$_GET["wl"];
+
+                    if (array_key_exists($wl, $messages)) {
+                        echo '
+                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
+                        ' . $messages[$wl] . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+                    }
+                }
+                ?>
                 <div class="form-group">
                     <label for="gift-name">Gift name:</label>
                     <input type="text" class="form-control" id="gift-name" name="gift-name">
@@ -71,24 +95,7 @@ catch (PDOException $e) {
                 <th scope="col">Actions</th>
             </tr>
             </thead>
-            <tbody>
-                <?php
-                    $number=1;
-
-                    foreach($result as $data) {
-                        echo '<tr>
-                            <th scope="row">'. $number . '</th>
-                            <td>' . $data['wish_gift_name'] . '</td>
-                            <td><a href="' . $data['wish_gift_link'] . '" target="_blank"> Link of product</a></td>
-                            <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-gift-modal">Update gift</a>
-                            <a class="btn btn-danger" onclick="getId('.$data['wish_id'].')" role="button" data-bs-toggle="modal" data-bs-target="#delete-gift-modal">Delete gift</a>
-                            </td>
-                    </tr>';
-                        $number++;
-                    }
-
-
-                ?>
+            <tbody class="wish-table">
             </tbody>
         </table>
 
@@ -124,20 +131,20 @@ catch (PDOException $e) {
             <div class="modal-body">
                 <form action="./update-gift.php" id="form2" method="post">
                     <div class="form-floating mb-3">
-                        <input type="text" name="gift-new-name" class="form-control" id="gift-new-name" placeholder="Your name">
+                        <input type="text" name="gift-new-name" value="" class="form-control" id="gift-new-name" placeholder="Your name">
                         <span class="error" id="gift-new-name-error"></span>
                         <label for="floatingName">Name</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" name="gift-new-link" class="form-control" id="gift-new-link" placeholder="Your name">
+                        <input type="text" name="gift-new-link" value="" class="form-control" id="gift-new-link" placeholder="Your name">
                         <span class="error" id="gift-new-link-error"></span>
                         <label for="floatingName">Link</label>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary close-modal-btn" data-bs-dismiss="modal">Cancel</button>
-                        <input type="hidden" id="input-gift-id" name="guest-id" value="">
+                        <input type="hidden" id="input-wish-id" name="wish-id" value="">
                         <input type="hidden" id="input-event-id" name="event-id" value="">
                         <input type="submit" value="Update" class="btn btn-primary">
                     </div>
@@ -150,15 +157,8 @@ catch (PDOException $e) {
 </body>
 
 <script src="../node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
+<script src="../script/fetchJSONFromServer.js"></script>
 <script src="../script/wishListValidateForm.js"></script>
-<script>
-
-    let event_id= "<?php Print($_GET['event_id']) ?>";
-
-    let getId = (id) => {
-        let deleteBtn = document.getElementById("delete-gift");
-        deleteBtn.href = "./delete-gift.php?wish_id=" + id + "&event_id="+ event_id;
-    }
-
-</script>
+<script src="../script/updateWishListValidateForm.js"></script>
+<script>fetchGifts();</script>
 </html>
