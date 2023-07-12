@@ -73,7 +73,8 @@ const fetchUserEvents = async () => {
                             <h4 id="statusMessage">${data[i].event_title}</h4>
                         </div>
 
-                        <div class="event-options">   
+                        <div class="event-options"> 
+                            <a id="createWish" href="./php/wish-list.php?event_id=${data[i].event_id}" class="btn btn-primary">Wish list</a>  
                             <a id="sendInv" href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Invitations</a>
                             <a id="updateEv" class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
                             <a id="delButton" class="btn btn-danger" onclick="putID(${data[i].event_id})" role="button" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</a>                                                       
@@ -151,11 +152,14 @@ let fetchUserEventsAndCheck = async () => {
     let sendInvBtn = document.querySelector('#sendInv');
     let updateEvBtn = document.querySelector('#updateEv');
     let statMsg = document.querySelector('#statusMessage');
+    let createWish = document.querySelector('#createWish');
 
     for(let i in res) {
         if(res[i] === 1) {
             sendInvBtn.classList.add("disabled");
             updateEvBtn.classList.add("disabled");
+            createWish.classList.add("disabled");
+
             statMsg.innerHTML = 'Event banned';
         }
     }
