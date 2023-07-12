@@ -21,7 +21,7 @@ if(isset($_POST['eventID']) and isset($_POST['eventName']) and isset($_POST['eve
         $sql = "UPDATE `events` SET `event_title`='$eventName', `event_location`='$eventLocation', `event_date`='$eventDate',`event_time`='$eventTime',`event_description`='$eventDescription' WHERE event_id = " . $eventID;
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
-        redirection('../admin.php?m=31');
+        redirection('../admin.php?m=35');
     }catch (PDOException $e){
         echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());

@@ -51,7 +51,12 @@ $messages = [
     28 => 'Event banned.',
     29 => 'Event ban revoked.',
     30 => 'Event is deleted, message has been sent to the user.',
-    31 => 'Event is updated!'
+    31 => 'The invitation has been sent.',
+    32 => 'Gift is updated.',
+    33 => 'Gift is deleted.',
+    34 => 'Gift is added.',
+    35 => 'Event is updated!'
+
 ];
 
 $emailMessages = [

@@ -72,7 +72,9 @@ const fetchUserEvents = async () => {
                             <img src="${data[i].event_img}" alt="eventImg" />
                             <h4 id="statusMessage">${data[i].event_title}</h4>
                         </div>
-                        <div class="event-options">   
+
+                        <div class="event-options"> 
+                            <a id="createWish" href="./php/wish-list.php?event_id=${data[i].event_id}" class="btn btn-primary">Wish list</a>  
                             <a id="sendInv" href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Invitations</a>
                             <a id="updateEv" class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
                             <a id="delButton" class="btn btn-danger" onclick="putID(${data[i].event_id})" role="button" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</a>                                                       
@@ -150,13 +152,69 @@ let fetchUserEventsAndCheck = async () => {
     let sendInvBtn = document.querySelector('#sendInv');
     let updateEvBtn = document.querySelector('#updateEv');
     let statMsg = document.querySelector('#statusMessage');
+    let createWish = document.querySelector('#createWish');
 
     for(let i in res) {
         if(res[i] === 1) {
             sendInvBtn.classList.add("disabled");
             updateEvBtn.classList.add("disabled");
+            createWish.classList.add("disabled");
+
             statMsg.innerHTML = 'Event banned';
         }
     }
+}
+
+let fetchGifts = async () => {
+    try {
+        const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-gifts.php", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        });
+
+        const data = await res.json();
+        let output = '';
+        let number=1;
+
+        for (let i in data) {
+            output += `
+            <tr>
+                            <th scope="row"> ${number}</th>
+                            <td>${data[i].wish_gift_name}</td>
+                            <td><a href="${data[i].wish_gift_link}" target="_blank">Link of product</a></td>
+                            <td><a class="btn btn-warning" onclick="getGiftData('${data[i].wish_gift_name}', '${data[i].wish_gift_link}', ${data[i].wish_id}, ${data[i].event_id})" data-bs-toggle="modal" data-bs-target="#update-gift-modal">Update gift</a>
+                            <a class="btn btn-danger" onclick="getGiftId(${data[i].wish_id}, ${data[i].event_id})" role="button" data-bs-toggle="modal" data-bs-target="#delete-gift-modal">Delete gift</a>
+                            </td>
+                    </tr>
+            `;
+
+            document.querySelector('.wish-table').innerHTML = output;
+            number++;
+        }
+    } catch (e) {
+        console.log("Error in fetching data", e);
+    }
+}
+
+
+
+let getGiftId = (wish_id, event_id) => {
+    let deleteBtn = document.getElementById("delete-gift");
+    deleteBtn.href = "./delete-gift.php?wish_id=" + wish_id + "&event_id=" + event_id;
+
+}
+
+let getGiftData = (name, link, wish_id, event_id) => {
+
+    let input_name = document.getElementById("gift-new-name");
+    let input_link = document.getElementById("gift-new-link");
+    let input_wish_id = document.getElementById("input-wish-id");
+    let input_event_id = document.getElementById("input-event-id");
+    input_name.value = name;
+    input_link.value = link;
+    input_wish_id.value = wish_id;
+    input_event_id.value = event_id;
 }
 

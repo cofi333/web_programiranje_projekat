@@ -29,7 +29,7 @@
         <nav class=" d-flex justify-content-around position-sticky">
             <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-admin-tab" data-bs-toggle="pill" data-bs-target="#pills-admin" type="button" role="tab" aria-controls="pills-admin" aria-selected="false">Admin profile</button>
+                    <button class="nav-link active" id="pills-admin-tab" data-bs-toggle="pill" data-bs-target="#pills-admin" type="button" role="tab" aria-controls="pills-admin" aria-selected="true">Admin profile</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Users</button>
@@ -73,7 +73,7 @@
 
     <main>
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab" tabindex="0">
+            <div class="tab-pane fade active sh" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab" tabindex="0">
                 <?php
                 //session_start();
                 require_once '../php/config.php';

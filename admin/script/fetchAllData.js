@@ -111,7 +111,7 @@ let banUser = (param) => {
 
 let banEvent = (param) => {
     document.querySelector('#banEvent').href = `./php/ban-event.php?id_event=${param}`;
-    document.querySelector('#allowEvent').href = `.php/allow-event.php?id_event=${param}`;
+    document.querySelector('#allowEvent').href = `./php/allow-event.php?id_event=${param}`;
 }
 
 let deleteEvent = (idEvent, idUser) => {

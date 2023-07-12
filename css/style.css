@@ -12388,6 +12388,10 @@ footer .icons {
 }
 
 #event_page .guest-coming {
+  background-color: #009DFF;
+  padding: 20px 0;
+  border-radius: 35px;
+  width: 40%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -12399,8 +12403,10 @@ footer .icons {
 #event_page .guest-coming label {
   color: #fff;
 }
-#event_page .guest-coming .radio_btns {
+#event_page .guest-coming .rd-btns {
   font-size: 1.2em;
+  display: flex;
+  gap: 70px;
 }
 #event_page .guest-coming #submit-btn {
   margin-top: 1em;
@@ -12415,6 +12421,28 @@ footer .icons {
 }
 #event_page .guest-coming #form .form-group {
   width: 100%;
+}
+
+#removed-guest-body {
+  background: radial-gradient(circle, rgb(97, 65, 189) 30%, rgb(28, 19, 55) 100%);
+}
+#removed-guest-body .content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+}
+#removed-guest-body .content h2, #removed-guest-body .content .h2 {
+  color: #fff;
+}
+
+#wish-list {
+  background: radial-gradient(#FF19F2, #730770);
+}
+
+.wish-list {
+  margin-top: 4em;
 }
 
 * {

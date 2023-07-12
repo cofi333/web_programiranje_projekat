@@ -1,12 +1,27 @@
 <?php
 require_once 'config.php';
 
+
 if (isset($_POST['event_id'])) {
     $event_id = $_POST['event_id'];
 }
 if (isset($_POST['guest_id'])) {
     $guest_id = $_POST['guest_id'];
 }
+
+if(isset($_POST['token'])) {
+    $token = $_POST['token'];
+}
+
+if(isset($_POST['gift-list'])){
+    if($_POST['gift-list'] === "default") {
+        $wish_id = NULL;
+    }
+    else {
+        $wish_id = $_POST['gift-list'];
+    }
+}
+
 
 try {
     $sql = "SELECT guest_id, event_id, comment_sent FROM guests WHERE event_id=".$event_id . " AND guest_id=" . $guest_id;
@@ -22,8 +37,8 @@ catch(PDOException $e) {
 
 if(isset($_POST['flexRadioDefault'])) {
     $is_coming = $_POST['flexRadioDefault'];
-        guestUpdateRespone($pdo, $event_id, $guest_id, $is_coming);
-        redirection('./event_invitation.php?ei=22&event_id='. $event_id . '&guest_id=' .$guest_id);
+        guestUpdateRespone($pdo, $event_id, $guest_id, $is_coming, $wish_id);
+        redirection('./event_invitation.php?ei=22&event_id='. $event_id . '&guest_id=' .$guest_id. '&token='.$token);
 }
 
 
@@ -43,11 +58,11 @@ if(isset($_POST['guest-comment'])) {
             throw new \PDOException($e->getMessage());
         }
 
-        redirection('./event_invitation.php?&event_id='. $event_id. '&guest_id=' .$guest_id);
+        redirection('./event_invitation.php?event_id='. $event_id . '&guest_id=' .$guest_id. '&token='.$token);
 
     }
     else {
-        redirection('./event_invitation.php?ei=20&event_id='. $event_id. '&guest_id=' .$guest_id);
+        redirection('./event_invitation.php?ei=20&event_id='. $event_id . '&guest_id=' .$guest_id. '&token='.$token);
     }
 
 }
