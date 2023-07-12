@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2023 at 10:09 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Jul 12, 2023 at 11:21 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `admins` (
   `id_admin` int(11) NOT NULL,
   `username` varchar(40) NOT NULL,
   `password` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -46,7 +46,7 @@ CREATE TABLE `admin_to_user_msg` (
   `admin_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `message` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `comments` (
   `guest_id` int(11) NOT NULL,
   `comment` text NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -81,7 +81,7 @@ CREATE TABLE `events` (
   `event_time` time NOT NULL,
   `event_description` text NOT NULL,
   `event_comments` varchar(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -92,7 +92,18 @@ CREATE TABLE `events` (
 CREATE TABLE `event_category` (
   `ec_id` int(11) NOT NULL,
   `category` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event_category`
+--
+
+INSERT INTO `event_category` (`ec_id`, `category`) VALUES
+(1, 'Music'),
+(2, 'Nightlife'),
+(3, 'Culture'),
+(4, 'Food'),
+(5, 'Sport');
 
 -- --------------------------------------------------------
 
@@ -110,7 +121,7 @@ CREATE TABLE `guests` (
   `is_coming` tinyint(1) DEFAULT NULL,
   `guest_token` char(40) NOT NULL,
   `comment_sent` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -124,7 +135,7 @@ CREATE TABLE `guest_event` (
   `guest_id` int(11) NOT NULL,
   `is_coming` tinyint(1) NOT NULL,
   `comment_sent` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -144,7 +155,7 @@ CREATE TABLE `users` (
   `forgotten_password_expires` datetime NOT NULL,
   `is_banned` smallint(6) NOT NULL,
   `date_time` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -158,7 +169,7 @@ CREATE TABLE `wish_list` (
   `event_id` int(11) NOT NULL,
   `wish_gift_name` varchar(255) NOT NULL,
   `wish_gift_link` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -261,7 +272,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `event_category`
 --
 ALTER TABLE `event_category`
-  MODIFY `ec_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `guests`
