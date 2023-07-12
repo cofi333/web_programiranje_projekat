@@ -1,18 +1,32 @@
 let isEmpty = value => value === '';
-document.querySelector('#sumbitDeleteForm').addEventListener("click", function (e){
+let validForm = false;
+document.querySelector('#deleteForm').addEventListener("submit", function (e){
+    e.preventDefault();
+
+    if(validateForm()){
+        this.submit();
+    }
+})
+
+let validateForm = () => {
 
     let messageBox = document.querySelector('.deleteMessage');
     let errMsg = document.querySelector('#errorMsg');
+    console.log("text: " , messageBox.value.trim());
+    console.log("text-len: " , messageBox.value.trim().length);
 
 
-    if(!isEmpty(messageBox.value.trim())) {
+
+    if(!isEmpty(messageBox.value.trim()) && messageBox.value.trim().length >= 15) {
         errMsg.innerHTML = '';
-        this.submit();
+        validForm = true;
     }
     else {
-        e.preventDefault();
         errMsg.innerHTML = 'Message is required for deleting event create by user';
+        validForm = false;
     }
-})
+
+    return validForm;
+}
 
 

@@ -50,7 +50,8 @@ $messages = [
     27 => 'User ban has been revoked.',
     28 => 'Event banned.',
     29 => 'Event ban revoked.',
-    30 => 'Event is deleted, message has been sent to the user.'
+    30 => 'Event is deleted, message has been sent to the user.',
+    31 => 'Event is updated!'
 ];
 
 $emailMessages = [
