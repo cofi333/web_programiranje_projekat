@@ -1,5 +1,11 @@
 let isEmpty = value => value === '';
+
+//formating date
+let moment = require('moment');
+
 let validForm = false;
+let validUpdateForm = false;
+//delete form validation
 document.querySelector('#deleteForm').addEventListener("submit", function (e){
     e.preventDefault();
 
@@ -27,6 +33,56 @@ let validateForm = () => {
     }
 
     return validForm;
+}
+
+//update form validation
+document.querySelector('#update-form').addEventListener("submit", function (e){
+    e.preventDefault();
+
+    if(validateUpdateForm()){
+        this.submit();
+    }
+});
+
+let validateUpdateForm = () => {
+    let inputName = document.querySelector('.admin-event-name');
+    let inputDesc = document.querySelector('.admin-event-desc');
+    let inputLocation = document.querySelector('.admin-event-location');
+    let inputDate = document.querySelector('.admin-event-date').value;
+    let inputTime = document.querySelector('.admin-event-time').value;
+    let errMsg = document.querySelector('.errorMessage');
+
+    if(!isEmpty(inputName.value.trim()) && inputName.trim().length > 5) {
+        validUpdateForm = true;
+    } else {
+        validUpdateForm = false;
+        errMsg.innerHTML += 'Please inter valid event name! <br/>';
+    }
+
+    if(!isEmpty(inputDesc.value.trim()) && inputDesc.value.trim().length > 10) {
+        validUpdateForm = true;
+    } else {
+        validUpdateForm = false;
+        errMsg.innerHTML += 'Please enter valid event description! <br/>';
+    }
+
+    if(!isEmpty(inputLocation.value.trim()) && inputLocation.value.trim().length > 5) {
+        validUpdateForm = true;
+    } else {
+        validUpdateForm = false;
+        errMsg.innerHTML += 'Please enter valid location for this event! <br/>';
+    }
+
+    if(!isEmpty(inputDate.value.trim())){
+        validUpdateForm = true;
+    } else{
+        validUpdateForm = false;
+        errMsg.innerHTML += 'Please enter a valid date';
+    }
+
+    if(!isEmpty())
+
+
 }
 
 

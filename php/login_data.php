@@ -22,7 +22,7 @@
         if($data and is_int($data['id_user'])){
             $_SESSION['username'] = $user_email;
             $_SESSION['id_user'] = $data['id_user'];
-            redirection('../index.php?=blahhhh');
+            redirection('../index.php');
         }
         else {
             redirection('../index.php?l=1');

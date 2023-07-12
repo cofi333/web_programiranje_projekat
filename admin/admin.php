@@ -140,7 +140,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="php/update-event.php" class="form-floating">
+                        <form id="update-form" method="post" action="php/update-event.php" class="form-floating">
                             <input name="eventID" type="hidden" value="" class="form-control admin-event-id">
                             <div class="form-floating mb-3">
                                 <input name="eventName" type="text" class="form-control admin-event-name" value="" id="floatingInput" placeholder="name@example.com">
@@ -171,6 +171,7 @@
                                 <input name="eventTime" type="text" class="form-control admin-event-time" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Event Time: </label>
                             </div>
+                            <p class="errorMessage"></p>
                             <input type="submit" class="btn btn-success" value="Update Event" id="updateEventButton">
                         </form>
 
