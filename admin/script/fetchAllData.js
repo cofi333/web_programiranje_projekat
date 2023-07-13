@@ -7,7 +7,7 @@ const fetchUsers = async() => {
             },
         });
            const data = await response.json();
-           console.log(data);
+           //console.log(data);
            let users = '';
            for(let user in data) {
                users += `
@@ -40,7 +40,7 @@ const fetchEvents = async() => {
             },
         });
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
         let events = '';
         for(let event in data) {
             events += `<div class="admin-v-events">
@@ -96,7 +96,7 @@ const fetchAdminInfo = async () => {
             },
         });
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
     }catch (e){
         console.log("Fetch error" + e);
     }
@@ -121,7 +121,7 @@ let deleteEvent = (idEvent, idUser) => {
 
 let updateEvent = (eventID, eventName, eventOwner, eventDesc, eventLocation, eventDate, eventTime) => {
     document.querySelector('.admin-event-id').value = eventID;
-    console.log(document.querySelector('.admin-event-name').value = eventName);
+    document.querySelector('.admin-event-name').value = eventName;
     document.querySelector('.admin-event-owner').value = eventOwner;
     document.querySelector('.admin-event-desc').value = eventDesc;
     document.querySelector('.admin-event-location').value = eventLocation;

@@ -29,9 +29,11 @@ date.min = today;
 form.addEventListener("submit", function(e) {
     e.preventDefault();
 
+
     if(validateForm()) {
         this.submit();
     }
+
 });
 
 //Function to validate form

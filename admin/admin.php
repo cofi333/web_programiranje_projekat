@@ -20,7 +20,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>admin-panel</title>
 </head>
@@ -73,7 +73,7 @@
 
     <main>
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade active sh" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab" tabindex="0">
+            <div class="tab-pane fade active show" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab" tabindex="0">
                 <?php
                 //session_start();
                 require_once '../php/config.php';
@@ -145,31 +145,37 @@
                             <div class="form-floating mb-3">
                                 <input name="eventName" type="text" class="form-control admin-event-name" value="" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Event Name: </label>
+                                <p class="errorMessageName error"></p>
                             </div>
 
                             <div class="form-floating mb-3">
                                 <input name="userID" type="text" class="form-control admin-event-owner disabled" id="floatingInput" placeholder="name@example.com" disabled>
                                 <label for="floatingInput">Even owner: </label>
+                                <p class="errorMessageOwner error"></p>
                             </div>
 
                             <div class="form-floating mb-3">
                                 <input name="eventDescription" type="text" class="form-control admin-event-desc" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Event description: </label>
+                                <p class="errorMessageDesc error"></p>
                             </div>
 
                             <div class="form-floating mb-3">
                                 <input name="eventLocation" type="text" class="form-control admin-event-location" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Event location: </label>
+                                <p class="errorMessageLocation error"></p>
                             </div>
 
                             <div class="form-floating mb-3">
                                 <input name="eventDate" type="text" class="form-control admin-event-date" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Event date: </label>
+                                <p class="errorMessageDate error"></p>
                             </div>
 
                             <div class="form-floating mb-3">
                                 <input name="eventTime" type="text" class="form-control admin-event-time" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Event Time: </label>
+                                <p class="errorMessageTime error"></p>
                             </div>
                             <p class="errorMessage"></p>
                             <input type="submit" class="btn btn-success" value="Update Event" id="updateEventButton">
