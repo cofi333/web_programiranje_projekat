@@ -77,7 +77,7 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
 
                     if (array_key_exists($e, $messages)) {
                         echo '
-                    <div class="alert alert-info ~alert-dismissible fade show m-3" role="alert">
+                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
                         ' . $messages[$e] . '
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>

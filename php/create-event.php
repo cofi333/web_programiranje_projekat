@@ -43,6 +43,10 @@ else {
     $comments = "off";
 }
 
+if(empty($title) || empty($organizer) || empty($category) || empty($location) || empty($date) || empty($time) || empty($description)) {
+    redirection('../event.php?e=4');
+}
+
 
 
 switch($category) {

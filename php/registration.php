@@ -18,33 +18,30 @@ if (isset($_POST['repeat-password'])) {
     $passwordConfirm = trim($_POST["repeat-password"]);
 }
 
-
-
 if (empty($firstname)) {
-    redirection('../index.php?r=4');
+    redirection('../sign_up.php?r=4');
 }
 
 
 if (empty($password)) {
-    redirection('../index.php?r=9');
+    redirection('../sign_up.php?r=9');
 }
 
 if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $password)) {
-    redirection('../index.php?r=10');
+    redirection('../sign_up.php?r=10');
 }
 
 if (empty($passwordConfirm)) {
-    redirection('../index.php?r=9');
+    redirection('../sign_up.php?r=9');
 }
 
 if ($password !== $passwordConfirm) {
-    redirection('../index.php?r=7');
+    redirection('../sign_up.php?r=7');
 }
 
 if (empty($email) or !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    redirection('../index.php?r=8');
+    redirection('../sign_up.php?r=8');
 }
-
 
 if (!existsUser($pdo, $email)) {
     $token = createToken(20);

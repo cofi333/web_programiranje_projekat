@@ -4,14 +4,6 @@
   background-size:cover;
 }
 
-#form {
-  .error {
-    color: #ff8080;
-    font-size: 1em;
-    display: block;
-    padding-top: 0.5em;
-  }
-}
 
 .basic-info {
     margin-top: 70px;
@@ -77,6 +69,17 @@
       font-size: 18px;
 
     }
+  }
+}
+
+
+@include media-breakpoint-down(sm) {
+  h1 {
+    text-align: center;
+  }
+
+  .switch {
+    justify-content: center;
   }
 }
 

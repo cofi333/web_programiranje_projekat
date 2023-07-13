@@ -55,7 +55,7 @@ $messages = [
     32 => 'Gift is updated.',
     33 => 'Gift is deleted.',
     34 => 'Gift is added.',
-    35 => 'Event is updated!'
+    35 => 'Event is updated!',
 
 ];
 
