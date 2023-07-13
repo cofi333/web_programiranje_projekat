@@ -1,10 +1,6 @@
 let isEmpty = value => value === '';
-
-//formating date
-let moment = require('moment');
-
 let validForm = false;
-let validUpdateForm = false;
+
 //delete form validation
 document.querySelector('#deleteForm').addEventListener("submit", function (e){
     e.preventDefault();
@@ -18,8 +14,6 @@ let validateForm = () => {
 
     let messageBox = document.querySelector('.deleteMessage');
     let errMsg = document.querySelector('#errorMsg');
-    console.log("text: " , messageBox.value.trim());
-    console.log("text-len: " , messageBox.value.trim().length);
 
 
 
@@ -39,50 +33,51 @@ let validateForm = () => {
 document.querySelector('#update-form').addEventListener("submit", function (e){
     e.preventDefault();
 
+    console.log(validateUpdateForm());
     if(validateUpdateForm()){
         this.submit();
     }
 });
 
 let validateUpdateForm = () => {
+    let validUpdateForm = true;
     let inputName = document.querySelector('.admin-event-name');
     let inputDesc = document.querySelector('.admin-event-desc');
     let inputLocation = document.querySelector('.admin-event-location');
-    let inputDate = document.querySelector('.admin-event-date').value;
-    let inputTime = document.querySelector('.admin-event-time').value;
-    let errMsg = document.querySelector('.errorMessage');
+    let inputDate = document.querySelector('.admin-event-date');
+    let inputTime = document.querySelector('.admin-event-time');
 
-    if(!isEmpty(inputName.value.trim()) && inputName.trim().length > 5) {
-        validUpdateForm = true;
-    } else {
+    //errorMessages
+    let errMsgName = document.querySelector('.errorMessageName');
+    let errMsgDesc = document.querySelector('.errorMessageDesc');
+    let errMsgLocation = document.querySelector('.errorMessageLocation');
+    let errMsgDate = document.querySelector('.errorMessageDate');
+    let errMsgTime = document.querySelector('.errorMessageTime');
+
+    if(isEmpty(inputDesc.value.trim()) && !(inputDesc.value.trim().length > 10)) {
         validUpdateForm = false;
-        errMsg.innerHTML += 'Please inter valid event name! <br/>';
+        errMsgDesc.innerHTML = 'Please enter valid event description!';
     }
 
-    if(!isEmpty(inputDesc.value.trim()) && inputDesc.value.trim().length > 10) {
-        validUpdateForm = true;
-    } else {
+    if(isEmpty(inputLocation.value.trim()) && !(inputLocation.value.trim().length > 5)) {
         validUpdateForm = false;
-        errMsg.innerHTML += 'Please enter valid event description! <br/>';
+        errMsgLocation.innerHTML = 'Please enter valid location for this event!';
     }
 
-    if(!isEmpty(inputLocation.value.trim()) && inputLocation.value.trim().length > 5) {
-        validUpdateForm = true;
-    } else {
+    if(isEmpty(inputDate.value.trim())) {
         validUpdateForm = false;
-        errMsg.innerHTML += 'Please enter valid location for this event! <br/>';
+        errMsgDate.innerHTML = 'Please enter a valid date';
     }
 
-    if(!isEmpty(inputDate.value.trim())){
-        validUpdateForm = true;
-    } else{
+    if(isEmpty(inputTime.value.trim())) {
         validUpdateForm = false;
-        errMsg.innerHTML += 'Please enter a valid date';
+        errMsgTime.innerHTML = 'Please enter a valid time for your event';
     }
 
-    if(!isEmpty())
+    if(isEmpty(inputName.value.trim()) && !(inputName.value.trim().length > 5)) {
+        validUpdateForm = false;
+        errMsgName.innerHTML = 'Please inter valid event name!';
+    }
 
-
+    return validUpdateForm;
 }
-
-

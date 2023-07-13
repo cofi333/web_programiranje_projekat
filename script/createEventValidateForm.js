@@ -22,7 +22,7 @@ form.addEventListener("submit", function(e) {
     validateEventTitle();
     validateEventOrganizer();
     validateEventCategory();
-     validateLocation();
+    validateLocation();
     validateDate();
     validateTime();
     validateDescription();
