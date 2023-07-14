@@ -78,7 +78,7 @@
             }
             ?>
         </section>
-        <section class="login container">
+        <section class="login container d-flex justify-content-center gap-2">
             <div class="loginPic">
                 <img src="./images/people.png" alt="peoplepng">
             </div>
@@ -114,6 +114,32 @@
             </div>
         </section>
     </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="categories col-md-9">
+                    <h6>Categories</h6>
+                    <ul class="type">
+                        <li><a href="#">Music</a></li>
+                        <li><a href="#">Nightlife</a></li>
+                        <li><a href="#">Culture</a></li>
+                        <li><a href="#">Food</a></li>
+                        <li><a href="#">Sport</a></li>
+                    </ul>
+                </div>
+
+                <div class="social-medias col-md-3">
+                    <h6>Follow us</h6>
+                    <div class="icons">
+                        <a href="#"><img src="./images/facebook_icon.png" alt="Facebook"></a>
+                        <a href="#"><img src="./images/twitter_icon.png" alt="Twitter"></a>
+                        <a href="#"><img src="./images/instagram_icon.png" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./script/forgotPassword.js"></script>

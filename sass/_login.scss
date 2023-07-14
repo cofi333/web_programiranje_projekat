@@ -4,11 +4,8 @@
     background-size: cover;
 }
 .login{
-    display: flex;
-    justify-content: center;
     padding-top: 10em;
-    gap: 1em;
-
+    padding-bottom: 10em;
     #login-form{
         background-color: #009DFF;
         width: 55%;
@@ -35,7 +32,17 @@
         }
     }
 }
+@include media-breakpoint-down(lg) {
+    .login{
+        width: 100%;
+        .loginPic{
+            img{
+                display: none;
+            }
 
-@include media-breakpoint-between()
+        }
+    }
+}
+
 
 
