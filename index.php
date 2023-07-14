@@ -76,11 +76,6 @@
 
       <header>
           <img src="./images/index_background_image.png" alt="background">
-        <div class="search">
-            <div class="container">
-                <input type="text" placeholder="Search an event...">
-            </div>
-        </div>
       </header>
 
       <section class="events">

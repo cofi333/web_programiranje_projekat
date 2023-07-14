@@ -57,37 +57,42 @@
     </header>
 
     <main>
-        <section class="login container">
-            <div class="loginPic">
-                <img src="./images/people.png" alt="peoplepng">
-            </div>
-            <form id="login-form" action="php/login_data.php" method="post">
-                <?php
-                require_once './php/config.php';
+        <section class="hero-login">
+            <?php
+            require_once './php/config.php';
 
-                $l = 0;
+            $l = 0;
 
-                if (isset($_GET["l"]) and is_numeric($_GET['l'])) {
-                    $l = (int)$_GET["l"];
+            if (isset($_GET["l"]) and is_numeric($_GET['l'])) {
+                $l = (int)$_GET["l"];
 
-                    if (array_key_exists($l, $messages)) {
-                        echo '
+                if (array_key_exists($l, $messages)) {
+                    echo '
                     <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
                         ' . $messages[$l] . '
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>
                     ';
-                    }
                 }
-                ?>
+            }
+            ?>
+        </section>
+        <section class="login container">
+            <div class="loginPic">
+                <img src="./images/people.png" alt="peoplepng">
+            </div>
+            <form id="login-form" action="php/login_data.php" method="post">
+
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Email</label>
                   <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <p id="emailError"></p>
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Password</label>
                   <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                  <p id="passwordError"></p>
                 </div>
                 <button type="submit" class="btn btn-primary">Log In</button>
 
@@ -110,7 +115,8 @@
         </section>
     </main>
     
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./script/forgotPassword.js"></script>
+    <script src="script/loginValidateForm.js"></script>
 </body>
 </html>
