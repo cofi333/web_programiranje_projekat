@@ -12120,12 +12120,8 @@ footer .icons {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-#form .error {
-  color: #ff8080;
-  font-size: 1em;
-  display: block;
-  padding-top: 0.5em;
+#create_event_page #form {
+  margin-top: 30px;
 }
 
 .basic-info {
@@ -12182,6 +12178,14 @@ footer .icons {
   font-size: 18px;
 }
 
+@media (max-width: 575.98px) {
+  h1, .h1 {
+    text-align: center;
+  }
+  .switch {
+    justify-content: center;
+  }
+}
 .heading {
   background-image: url("../images/userdashboard.png");
   background-size: cover;
@@ -12270,7 +12274,6 @@ footer .icons {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
 }
 #center_form .switch {
   display: flex;
@@ -12325,13 +12328,13 @@ footer .icons {
 }
 #event_page .event_comments #leftClick {
   position: absolute;
-  top: 30%;
+  top: 40%;
   left: 25%;
   z-index: 10;
 }
 #event_page .event_comments #rightClick {
   position: absolute;
-  top: 30%;
+  top: 40%;
   right: 25%;
   z-index: 10;
 }
@@ -12339,8 +12342,12 @@ footer .icons {
   background: radial-gradient(circle, rgb(97, 65, 189) 30%, rgb(28, 19, 55) 100%);
 }
 #event_page .comment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   border-radius: 30px;
   width: 400px;
+  height: 500px;
   background-color: #009DFF;
   padding: 2em;
 }
@@ -12457,6 +12464,10 @@ footer .icons {
   gap: 15px;
 }
 
+.user {
+  display: flex;
+  justify-content: center;
+}
 .user img {
   width: 50px;
   height: 50px;
@@ -12473,4 +12484,10 @@ footer .icons {
   font-size: 1em;
   display: block;
   padding-top: 0.5em;
+}
+
+@media (max-width: 575.98px) {
+  .error {
+    font-size: 0.85em;
+  }
 }

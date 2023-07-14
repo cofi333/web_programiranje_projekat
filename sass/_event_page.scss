@@ -37,14 +37,14 @@
 
     #leftClick {
       position: absolute;
-      top: 30%;
+      top: 40%;
       left: 25%;
       z-index: 10;
     }
 
     #rightClick {
       position: absolute;
-      top: 30%;
+      top: 40%;
       right: 25%;
       z-index: 10;
     }
@@ -56,8 +56,12 @@
 
     }
     .comment {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
       border-radius: 30px;
       width: 400px;
+      height: 500px;
       background-color: #009DFF;
       padding: 2em;
 

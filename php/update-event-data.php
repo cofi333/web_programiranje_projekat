@@ -1,12 +1,13 @@
 <?php
+session_start();
 require_once './functions.php';
 require_once './config.php';
+
+$errors = [];
 
 if (isset($_POST['event_id'])) {
     $event_id = $_POST['event_id'];
 }
-
-
 
 if (isset($_POST['event-title'])) {
     $new_title = $_POST['event-title'];
@@ -43,5 +44,47 @@ else {
     $comments = "off";
 }
 
-updateEvent($pdo, $event_id ,$new_category, $new_title, $new_organizer, $new_location, $new_date, $new_time, $new_description, $comments);
-redirection('../user_profile.php');
+if(empty($new_title) || empty($new_organizer) || empty($new_category) || empty($new_location) || empty($new_date) || empty($new_time) || empty($new_description)) {
+    $errors[] = "Fields can't be empty.";
+}
+
+if(is_numeric($new_title)) {
+    $errors[] = "Please enter a valid title.";
+}
+
+if(trim(strlen($new_organizer)) < 3 ) {
+    $errors[] = "Organizer must have at least 3 characters.";
+}
+
+if($new_category === "default") {
+    $errors[] = "You must select category of your event.";
+}
+
+if(trim(strlen($new_location)) < 5) {
+    $errors[] = "Please enter a valid location.";
+}
+
+if(!validateTime($new_time)) {
+    $errors[] = "Time is not in valid form.";
+}
+
+if(trim(strlen($new_description)) < 15) {
+    $errors[] = "Description must have at least 15 characters.";
+}
+
+
+function validateTime($date, $format = 'H:i:s') {
+    $d = DateTime::createFromFormat($format, $date);
+    return $d && $d->format($format) == $date;
+}
+
+if(!$errors) {
+    updateEvent($pdo, $event_id ,$new_category, $new_title, $new_organizer, $new_location, $new_date, $new_time, $new_description, $comments);
+    redirection('../user_profile.php');
+}
+else {
+    $_SESSION['update_event_errors'] = $errors;
+    redirection('./update-event.php?event_id='.$event_id);
+}
+
+

@@ -1,3 +1,4 @@
+//Form and input values
 let form = document.getElementById("form");
 let title = document.getElementById("event-title");
 let organizer = document.getElementById("event-organizer");
@@ -6,8 +7,17 @@ let date = document.getElementById("event-date");
 let time = document.getElementById("event-time");
 let description = document.getElementById("event-description");
 let location2 = document.getElementById("event-location");
-let validForm = false;
 
+//Span elements for error messages
+let title_errorMessage = document.getElementById("event-title_error");
+let organizer_errorMessage = document.getElementById("event-organizer_error");
+let category_errorMessage = document.getElementById("event-category_error");
+let location_errorMessage = document.getElementById("event-location_error");
+let date_errorMessage = document.getElementById("event-date_error");
+let time_errorMessage = document.getElementById("event-time_error");
+let description_errorMessage = document.getElementById("event-description_error");
+
+//Code to disable option to create event in past
 let today = new Date();
 let dd = String(today.getDate()).padStart(2,'0');
 let mm = String(today.getMonth() + 1).padStart(2,'0');
@@ -19,156 +29,71 @@ date.min = today;
 form.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    validateEventTitle();
-    validateEventOrganizer();
-    validateEventCategory();
-    validateLocation();
-    validateDate();
-    validateTime();
-    validateDescription();
 
-
-    title.addEventListener("change", validateEventTitle);
-    organizer.addEventListener("change", validateEventOrganizer);
-    category.addEventListener("change", validateEventCategory);
-    date.addEventListener("change", validateDate);
-    time.addEventListener("change", validateTime);
-    description.addEventListener("change", validateDescription);
-    location2.addEventListener("change", validateLocation);
-
-
-
-
-    if(validateEventTitle() && validateEventOrganizer() && validateEventCategory() && validateLocation()  && validateDate() && validateTime() && validateDescription()) this.submit();
+    if(validateForm()) {
+        this.submit();
+    }
 
 });
 
-let validateEventTitle = () => {
+//Function to validate form
+let validateForm = () => {
 
+    let validForm = true;
+    title_errorMessage.innerText="";
+    organizer_errorMessage.innerText="";
+    category_errorMessage.innerText="";
+    location_errorMessage.innerText="";
+    date_errorMessage.innerText="";
+    time_errorMessage.innerText="";
+    description_errorMessage.innerText="";
 
-    let title_errorMessage = document.getElementById("event-title_error");
-
-    if(isEmpty(title.value)) {
+    if(isEmpty(title.value.trim())) {
         title_errorMessage.innerText = "Please enter a title.";
         validForm = false;
     }
-    else {
-        validForm = true;
-        title_errorMessage.innerText = "";
-    }
 
-    return validForm;
-
-}
-
-let validateEventOrganizer = () => {
-
-    let organizer_errorMessage = document.getElementById("event-organizer_error");
-
-    if(isEmpty(organizer.value)) {
-        organizer_errorMessage.innerText = "Please enter who is a organizer.";
+    if(organizer.value.trim().length < 3) {
+        organizer_errorMessage.innerText = "Organizer can't be empty and must have at least 3 characters.";
         validForm = false;
     }
-    else {
-        validForm = true;
-        organizer_errorMessage.innerText = "";
-    }
 
-    return validForm;
-}
-
-let validateEventCategory = () => {
-
-    let category_errorMessage = document.getElementById("event-category_error");
 
     if(category.value === "default") {
         category_errorMessage.innerText = "Please select category.";
         validForm = false;
     }
-    else {
-        category_errorMessage.innerText = "";
-        validForm = true;
-    }
 
-    return validForm;
-}
-
-let validateLocation = () => {
-
-    let location_errorMessage = document.getElementById("event-location_error");
-    if(isEmpty(location2.value)) {
-
+    if(location2.value.trim().length < 3) {
         validForm = false;
-        location_errorMessage.innerText = "Please enter a location.";
-
+        location_errorMessage.innerText = "Please enter a valid location.";
     }
-    else {
-        validForm = true;
-        location_errorMessage.innerText = "";
-    }
-
-    return validForm;
-}
-
-let validateDate = () => {
-
-    let date_errorMessage = document.getElementById("event-date_error");
 
     if(isEmpty(date.value)) {
         date_errorMessage.innerText = "Please enter a date.";
         validForm = false;
     }
 
-    else {
-        validForm = true;
-        date_errorMessage.innerText = "";
-    }
-
-
-    return validForm;
-}
-
-let validateTime = () => {
-    let time_errorMessage = document.getElementById("event-time_error");
-
-    if(isEmpty(time.value)) {
+    if(!isValidTime(time.value)) {
         validForm = false;
-        time_errorMessage.innerText = "Please enter a time.";
+        time_errorMessage.innerText = "Time is in incorrect format.";
     }
-    else {
-        if(!isValidTime(time.value)) {
-            validForm = false;
-            time_errorMessage.innerText = "Time is in incorrect format.";
-        }
-        else {
-            validForm = true;
-            time_errorMessage.innerText = "";
-        }
-    }
-    return validForm;
-}
 
-let validateDescription = () => {
-    let description_errorMessage = document.getElementById("event-description_error");
-
-    if(isEmpty(description.value)) {
+    if(description.value.trim().length < 15) {
         validForm = false;
-        description_errorMessage.innerText = "Please enter a description.";
+        description_errorMessage.innerText = "Description must have at least 15 characters.";
     }
-    else {
-        validForm = true;
-        description_errorMessage.innerText = "";
-    }
+
 
     return validForm;
 }
 
 
-
+//Function checks if input value is empty
 const isEmpty = value => value === '';
 
 
-
+//Function checks if time is in valid form
 const isValidTime = (time) => {
     let rexTime = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/;
     return rexTime.test(time);

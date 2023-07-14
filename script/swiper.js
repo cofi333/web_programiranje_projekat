@@ -25,6 +25,7 @@ const swiper_comments = new Swiper(".swiper-comments", {
   grabCursor: true,
   slidesPerView: "auto",
 
+
   navigation: {
     nextEl: "#rightClick",
     prevEl: "#leftClick",

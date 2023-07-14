@@ -55,6 +55,24 @@
       </nav>
 
       <section class="hero_sign_up container">
+          <?php
+          require_once './php/config.php';
+          $r = 0;
+
+          if (isset($_GET["r"]) and is_numeric($_GET['r'])) {
+              $r = (int)$_GET["r"];
+
+              if (array_key_exists($r, $messages)) {
+                  echo '
+                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
+                        ' . $messages[$r] . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+              }
+          }
+          ?>
         <div class="content">
           <div class="picture">
             <img src="./images/microphone.png" alt="Microphone picture">
@@ -63,44 +81,28 @@
           <div class="form">
             <form action="./php/registration.php" method="post" id="form">
 
-                <?php
-                require_once './php/config.php';
-                $r = 0;
 
-                if (isset($_GET["r"]) and is_numeric($_GET['r'])) {
-                    $r = (int)$_GET["r"];
-
-                    if (array_key_exists($r, $messages)) {
-                        echo '
-                    <div class="alert alert-info ~alert-dismissible fade show m-3" role="alert">
-                        ' . $messages[$r] . '
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                        </button>
-                    </div>
-                    ';
-                    }
-                }
-                ?>
 
               <div class="form-group">
+                  <p class="error" id="error-messages"></p>
                 <label for="name">Name</label>
                 <input  type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Your name">
-                <span class="error" id="name_error"></span>
+                  <span class="error" id="name-error"></span>
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Your email">
-                <span class="error" id="email_error"></span>
+                  <span class="error" id="mail-error"></span>
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Your password">
-                <span class="error" id="password_error"></span>
+                  <span class="error" id="password-error"></span>
               </div>
               <div class="form-group">
                 <label for="repeat-password">Repeat password</label>
                 <input type="password" class="form-control" id="repeated-password" name="repeat-password" placeholder="Repeat your password">
-                <span class="error" id="repeat_password_error"></span>
+                  <span class="error" id="repeat-password-error"></span>
               </div>
              
               <div class="sign_up">
@@ -149,7 +151,7 @@
 
 
       <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
-      <script src="./script/validateForm.js"></script>
+      <script src="script/registrationValidateForm.js"></script>
 </body>
 
 

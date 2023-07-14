@@ -67,25 +67,40 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
 
     <main>
         <section class="container basic-info">
-            <form action="./php/create-event.php" method="post" id="form">
-                <?php
-                require_once './php/config.php';
-                $e = 0;
+            <?php
+            require_once './php/config.php';
+            $e = 0;
 
-                if (isset($_GET["e"]) and is_numeric($_GET['e'])) {
-                    $e = (int)$_GET["e"];
+            if (isset($_GET["e"]) and is_numeric($_GET['e'])) {
+                $e = (int)$_GET["e"];
 
-                    if (array_key_exists($e, $messages)) {
-                        echo '
-                    <div class="alert alert-info ~alert-dismissible fade show m-3" role="alert">
+                if (array_key_exists($e, $messages)) {
+                    echo '
+                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
                         ' . $messages[$e] . '
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>
                     ';
-                    }
                 }
-                ?>
+            }
+
+            if(isset($_SESSION['event_errors'])) {
+                foreach($_SESSION['event_errors'] as $value) {
+                    echo '
+                    <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+                        ' . $value . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+                }
+
+                unset($_SESSION['event_errors']);
+            }
+
+            ?>
+            <form action="./php/create-event.php" method="post" id="form">
                 <div class="row">
                     <div class="bi-info col-md-12">
                         <h1>Basic info</h1>

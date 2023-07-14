@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'config.php';
 if (isset($_GET['event_id'])) {
     $event_id = trim($_GET['event_id']);
@@ -26,6 +27,23 @@ $result = $sql->fetch();
     <div class="content">
         <div class="form">
             <form action="./update-event-data.php" method="post" id="form">
+                <?php
+
+                if (isset($_SESSION['update_event_errors'])) {
+                    foreach ($_SESSION['update_event_errors'] as $value) {
+                        echo '
+                    <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+                        ' . $value . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+                    }
+                    unset($_SESSION['update_event_errors']);
+                }
+
+
+                ?>
                 <span class="error" id="error"></span>
                 <div class="form-group">
                     <label for="event-title">Event title</label>
@@ -57,7 +75,8 @@ $result = $sql->fetch();
                                    else {
                                        ?>  <option value="<?php echo ($row['ec_id'])?>"><?php echo htmlspecialchars($row['category'])?></option>
                                    <?php }
-                               } ?>
+                               }
+                               ?>
                            </select>
                        </div>
                     </div>

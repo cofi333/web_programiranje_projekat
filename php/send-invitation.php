@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'config.php';
 if (isset($_GET['event_id'])) {
     $event_id = trim($_GET['event_id']);
@@ -36,6 +37,7 @@ catch (PDOException $e) {
 
 <section class="center_form container-lg">
     <h2 class="invitation-header">Send an invitation for <?php echo $result2['event_title'] ?></h2>
+
     <div class="content">
         <div class="form">
             <form action="./send-invitation-data.php" method="post" id="form">
@@ -48,7 +50,7 @@ catch (PDOException $e) {
 
                     if (array_key_exists($si, $messages)) {
                         echo '
-                    <div class="alert alert-info ~alert-dismissible fade show m-3" role="alert">
+                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
                         ' . $messages[$si] . '
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
@@ -56,6 +58,22 @@ catch (PDOException $e) {
                     ';
                     }
                 }
+
+
+                if (isset($_SESSION['invitation_errors'])) {
+                    foreach ($_SESSION['invitation_errors'] as $value) {
+                        echo '
+                    <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+                        ' . $value . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+                    }
+                    unset($_SESSION['invitation_errors']);
+                }
+
+
                 ?>
                 <div class="form-group">
                     <label for="guest-email">Guest email:</label>

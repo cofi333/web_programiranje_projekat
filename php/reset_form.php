@@ -29,7 +29,7 @@ if (isset($_GET['token'])) {
 
                 if (array_key_exists($rf, $messages)) {
                     echo '
-                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
+                    <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
                         ' . $messages[$rf] . '
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
