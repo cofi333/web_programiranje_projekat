@@ -98,7 +98,7 @@ catch (PDOException $e) {
 
 </section>
 
-<section class="guests-list container">
+<section class="guests-list container-lg">
     <h2 class="invitation-header">List of currently invited guests</h2>
     <select class="form-select form-select-sm" id="response-select">
         <option selected disabled>Filter responses by</option>
@@ -106,36 +106,36 @@ catch (PDOException $e) {
         <option value="0">Not coming</option>
     </select>
 
-    <div class="list">
-        <table class="table table-primary table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Mail</th>
-                <th scope="col">Response</th>
-                <th scope="col">Gift item</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-            $number = 1;
-            foreach($result as $data) {
+    <div class="list table-responsive-lg">
+            <table class="table table-primary table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" class="min-width150">Name</th>
+                    <th scope="col" class="min-width300">Mail</th>
+                    <th scope="col" class="min-width100">Response</th>
+                    <th scope="col" class="min-width300">Gift item</th>
+                    <th scope="col" class="min-width300">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                $number = 1;
+                foreach($result as $data) {
 
-                if(is_numeric($data['is_coming'])) {
-                    if($data['is_coming'] === 0 ) {
-                        $is_coming = 'Not coming';
+                    if(is_numeric($data['is_coming'])) {
+                        if($data['is_coming'] === 0 ) {
+                            $is_coming = 'Not coming';
+                        }
+                        else {
+                            $is_coming = 'Coming';
+                        }
                     }
                     else {
-                        $is_coming = 'Coming';
+                        $is_coming= 'Did not answered yet';
                     }
-                }
-                else {
-                    $is_coming= 'Did not answered yet';
-                }
 
-                echo  '<tr>
+                    echo  '<tr>
                      <th scope="row">' . $number . '</th>
                      <td>' . $data['guest_name'] . '</td>
                      <td>' . $data['guest_mail'] . '</td>
@@ -144,14 +144,13 @@ catch (PDOException $e) {
                      <td> <a class="btn btn-warning update-event" onclick="getId('.$data['guest_id'].')" role="button" data-bs-toggle="modal" data-bs-target="#update-guest-modal">Update guest</a>
                             <a id="delButton" class="btn btn-danger" onclick="getId('.$data['guest_id'].')" data-bs-toggle="modal" data-bs-target="#delete-guest-modal" role="button">Delete guest</a></td>
                    </tr> ';
-                $number++;
-            }
-            ?>
-            </tbody>
-        </table>
+                    $number++;
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
 
-
-    </div>
 </section>
 
 <div class="modal fade" id="delete-guest-modal" tabindex="-1" aria-labelledby="delete-guest-modal" aria-hidden="true">

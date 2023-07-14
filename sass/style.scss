@@ -50,6 +50,24 @@
     padding-top: 0.5em;
 }
 
+.min-width300 {
+    @include media-breakpoint-down(lg) {
+        min-width: 300px;
+    }
+}
+
+.min-width100 {
+    @include media-breakpoint-down(lg) {
+        min-width: 100px;
+    }
+}
+
+.min-width150 {
+    @include media-breakpoint-down(lg) {
+        min-width: 150px;
+    }
+}
+
 @include media-breakpoint-down(sm) {
    .error {
        font-size: 0.85em;

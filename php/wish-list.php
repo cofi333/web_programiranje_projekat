@@ -99,24 +99,22 @@ catch (PDOException $e) {
 
 </section>
 
-<section class="wish-list container">
+<section class="wish-list container-lg">
     <h2 class="invitation-header">List of currently added gifts</h2>
 
-    <div class="list">
+    <div class="list table-responsive-lg">
         <table class="table table-primary table-striped">
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Link</th>
-                <th scope="col">Actions</th>
+                <th scope="col" class="min-width300">Name</th>
+                <th scope="col" class="min-width150">Link</th>
+                <th scope="col" class="min-width300">Actions</th>
             </tr>
             </thead>
             <tbody class="wish-table">
             </tbody>
         </table>
-
-
     </div>
 </section>
 

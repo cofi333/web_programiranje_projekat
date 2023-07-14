@@ -5,3 +5,12 @@
 .wish-list {
   margin-top: 4em;
 }
+
+
+@include media-breakpoint-down(sm) {
+  #center_form, #wish-list {
+    .btn-form {
+      justify-content: center;
+    }
+  }
+}

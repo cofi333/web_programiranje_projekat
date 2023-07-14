@@ -11,10 +11,25 @@
     gap: 1em;
   }
 
+
 }
 
 @include media-breakpoint-down(lg) {
   .sign_up {
     justify-content: center !important;
   }
+
+  .form {
+    width: 100%;
+
+    form {
+      padding: 30px;
+    }
+  }
+
+
+
 }
+
+
+

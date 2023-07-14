@@ -11993,14 +11993,14 @@ textarea.form-control-lg {
   }
 }
 @media (max-width: 767.98px) {
-  .hero_sign_up .form form .sign_up {
+  .form form .sign_up {
     justify-content: center;
     padding: 30px 0;
   }
-  .hero_sign_up .form form .form-group label {
+  .form form .form-group label {
     font-size: 17px;
   }
-  .hero_sign_up .form form .log_in {
+  .form form .log_in {
     font-size: 16px;
     text-align: center;
   }
@@ -12285,15 +12285,11 @@ footer .icons {
   .sign_up {
     justify-content: center !important;
   }
-}
-@media (max-width: 767.98px) {
-  .form {
-    width: 75%;
-  }
-}
-@media (max-width: 575.98px) {
   .form {
     width: 100%;
+  }
+  .form form {
+    padding: 30px;
   }
 }
 #event_page {
@@ -12394,10 +12390,16 @@ footer .icons {
   background-color: #cfe2ff;
 }
 
+@media (max-width: 575.98px) {
+  #send-invitation .btn-form {
+    justify-content: center;
+  }
+}
 #event_page .guest-coming {
   background-color: #009DFF;
   padding: 20px 0;
   border-radius: 35px;
+  margin-bottom: 15px;
   width: 40%;
   display: flex;
   justify-content: center;
@@ -12444,6 +12446,30 @@ footer .icons {
   color: #fff;
 }
 
+@media (max-width: 991.98px) {
+  #event_page .guest-coming {
+    width: 95%;
+  }
+}
+@media (max-width: 575.98px) {
+  #event_page .guest-coming {
+    margin-top: 50px;
+  }
+  #event_page .guest-coming .rd-btns {
+    flex-direction: column;
+    gap: 0;
+  }
+  #event_page .about_event {
+    text-align: center;
+    padding: 10px;
+  }
+  #event_page .about_event p {
+    font-size: 1em;
+  }
+  #event_page .about_event h2, #event_page .about_event .h2 {
+    font-size: 2.2em;
+  }
+}
 #wish-list {
   background: radial-gradient(#FF19F2, #730770);
 }
@@ -12452,6 +12478,11 @@ footer .icons {
   margin-top: 4em;
 }
 
+@media (max-width: 575.98px) {
+  #center_form .btn-form, #wish-list .btn-form {
+    justify-content: center;
+  }
+}
 * {
   padding: 0;
   margin: 0;
@@ -12484,6 +12515,24 @@ footer .icons {
   font-size: 1em;
   display: block;
   padding-top: 0.5em;
+}
+
+@media (max-width: 991.98px) {
+  .min-width300 {
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .min-width100 {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .min-width150 {
+    min-width: 150px;
+  }
 }
 
 @media (max-width: 575.98px) {

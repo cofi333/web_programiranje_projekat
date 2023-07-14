@@ -14,10 +14,10 @@ if (isset($_GET['token'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Document</title>
+    <title>Reset your password</title>
 </head>
 <body id="center_form">
-<section class="center_form container">
+<section class="center_form container-lg">
     <div class="content">
         <div class="form">
 
