@@ -12118,12 +12118,6 @@ textarea.form-control-lg {
 .form form .form-group input::placeholder {
   color: #009DFF;
 }
-.form form .form-group .error {
-  color: #f00;
-  font-size: 1em;
-  display: block;
-  padding-top: 0.5em;
-}
 .form form .sign_up {
   display: flex;
   justify-content: end;
@@ -12410,6 +12404,13 @@ footer .icons {
   height: 120px;
 }
 
+.user-profile-guests {
+  padding: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
 #user-profile-footer {
   margin: 0;
 }
@@ -12545,12 +12546,36 @@ footer .icons {
   text-align: center;
 }
 
+#send-invitation {
+  background: radial-gradient(#FF19F2, #730770);
+}
+
+.center_form {
+  margin-top: 3em;
+}
+
 .invitation-header {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   color: #fff;
+  text-align: center;
+}
+
+.guests-list {
+  margin-top: 4em;
+}
+.guests-list .list {
+  text-align: center;
+}
+
+#response-select {
+  background-color: #cfe2ff;
 }
 
 #event_page .guest-coming {
+  background-color: #009DFF;
+  padding: 20px 0;
+  border-radius: 35px;
+  width: 40%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -12562,8 +12587,10 @@ footer .icons {
 #event_page .guest-coming label {
   color: #fff;
 }
-#event_page .guest-coming .radio_btns {
+#event_page .guest-coming .rd-btns {
   font-size: 1.2em;
+  display: flex;
+  gap: 70px;
 }
 #event_page .guest-coming #submit-btn {
   margin-top: 1em;
@@ -12578,6 +12605,28 @@ footer .icons {
 }
 #event_page .guest-coming #form .form-group {
   width: 100%;
+}
+
+#removed-guest-body {
+  background: radial-gradient(circle, rgb(97, 65, 189) 30%, rgb(28, 19, 55) 100%);
+}
+#removed-guest-body .content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+}
+#removed-guest-body .content h2, #removed-guest-body .content .h2 {
+  color: #fff;
+}
+
+#wish-list {
+  background: radial-gradient(#FF19F2, #730770);
+}
+
+.wish-list {
+  margin-top: 4em;
 }
 
 * {
@@ -12601,4 +12650,11 @@ footer .icons {
   display: flex;
   justify-content: end;
   margin-top: 15px;
+}
+
+.error {
+  color: #f00;
+  font-size: 1em;
+  display: block;
+  padding-top: 0.5em;
 }/*# sourceMappingURL=style.css.map */

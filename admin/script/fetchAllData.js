@@ -11,16 +11,16 @@ const fetchUsers = async() => {
            let users = '';
            for(let user in data) {
                users += `
-                <div class="user-admin">
+                <div class="user-admin d-md-flex justify-content-between align-items-center">
                     <div class="user-data">
-                        <h4>User ID: ${data[user].id_user}</h4>
+                        <h4>${data[user].id_user}</h4>
                         <p class="usr-name">Username: ${data[user].email}</p>
                         <p class="usr-active">Active status: ${data[user].active}</p>
                         <p class="usr-ban">Ban status: ${data[user].is_banned}</p>
                         <p class="usr-date">Date created: ${data[user].date_time}</p>
                     </div> 
-                    <div class="admin-usr-actions">
-                        <button onclick="banUser(${data[user].id_user})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#restrictUser" data-bs-whatever="@mdo">Restrict user</button>
+                    <div class="admin-usr-actions d-flex justify-content-center">
+                        <button onclick="banUser(${data[user].id_user})" type="button" class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#restrictUser" data-bs-whatever="@mdo">User actions</button>
                     </div>
                </div>`;
            }
@@ -43,7 +43,7 @@ const fetchEvents = async() => {
         //console.log(data);
         let events = '';
         for(let event in data) {
-            events += `<div class="admin-v-events">
+            events += `<div class="admin-v-events d-md-flex justify-content-between align-items-center">
                         <div class="ev-info">
                             <h4>Event ID: ${data[event].event_id}</h4>
                             <h4>Event name: ${data[event].event_title}</h4>
@@ -52,7 +52,7 @@ const fetchEvents = async() => {
                             <p>Event location: ${data[event].event_location}</p>
                             <p>Ban Status: ${data[event].is_banned}</p>
                         </div>
-                        <div class="ev-action">
+                        <div class="ev-action d-flex justify-content-center gap-2">
                             <button 
                                 id="updateEventButton"
                                 onclick="updateEvent('${data[event].event_id}', 

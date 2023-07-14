@@ -20,14 +20,19 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/style.css"/>
+    
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     <title>admin-panel</title>
 </head>
 <body>
-    <header class="mt-3 position-sticky top-0 start-0">
-        <nav class=" d-flex justify-content-around position-sticky">
-            <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+    <header class="admin-nav-header py-3 position-sticky">        
+        <nav class="navbar navbar-expand-lg d-flex justify-content-evenly align-items-center">
+            <ul class="nav nav-pills  justify-content-center" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="pills-admin-tab" data-bs-toggle="pill" data-bs-target="#pills-admin" type="button" role="tab" aria-controls="pills-admin" aria-selected="true">Admin profile</button>
                 </li>
@@ -38,34 +43,14 @@
                     <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Events</button>
                 </li>
             </ul>
-
-            <div class="logo">
-                <h2>creteEvent/admin</h2>
-            </div>
-
+                <h2 class="logo">creteEvent/admin</h2>
             <div class="bs-modal">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Log Out
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>You are about to log out, are you sure?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <a href="./php/logout.php" type="button" class="btn btn-primary">Yes</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <!-- Modal -->
             </div>
         </nav>
@@ -73,41 +58,57 @@
 
     <main>
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade active show" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab" tabindex="0">
+            <div class="tab-pane fade active show align-middle" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab" tabindex="0">
                 <?php
-                //session_start();
                 require_once '../php/config.php';
 
                 $redirectionMessage = '';
                 if(isset($_GET['m'])){
                     $redirectionMessage = $messages[$_GET['m']];
-                    if($_GET['m'] === 26){
-                        echo '<div class="alert alert-danger fade show p-3" role="alert">';
+                    echo '<div class="py-3 px-3"><h2>Redirect response:</h2></div>';
+                    if($_GET['m'] == 26 || $_GET['m'] == 36 || $_GET['m'] == 37){
+                        echo '<div class="alert alert-danger alert-dismissible fade show my-3 mx-auto" style="width: 600px;" role="alert">';
                     }
                     else{
-                        echo '<div class="alert alert-success fade show p-3" role="alert">';
+                        echo '<div class="alert alert-success alert-dismissible fade show my-3 mx-auto" style="width: 600px;" role="alert">';
                     }
                     echo $redirectionMessage;
                     echo '</div>';
+
+
+                    if(isset($_SESSION['errors']) && $_GET['m'] == 36){
+                        echo '<div class="py-3 px-3"><h2>Update form errors: </h2></div>';
+                        echo '<div class="alert alert-danger my-5  mx-auto" style="width: 600px;" role="alert">';
+                        echo '<h4 class="alert-heading">Check following</h4>';
+                        echo '<hr>';
+                        foreach ($_SESSION['errors'] as $key => $value){
+                            echo $value . '<br/>';
+                        }
+                        echo '</div>';
+                    }
+
                 } else{
-                    echo '<span>';
                     echo 'Howdy admin';
-                    echo '</span>';
                 }
-
-
-
                 ?>
+
+                <section class="form-errors">
+                    <?php
+                        require_once '../php/config.php';
+
+
+                    ?>
+                </section>
             </div>
         </div>
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
-
-            </div>
+            <div class="tab-pane fade admin-v-users" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                    <!-- Admin view users -->
+            </div> 
 
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
-                <div class="admin-v-events"> <!-- Admin view events -->
-
+                <div class="admin-v-events"> 
+                    <!-- Admin view events -->
                 </div>
             </div>
         </div>
@@ -206,6 +207,10 @@
                                 <textarea name="deleteMessage" class="form-control deleteMessage" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                                 <label for="floatingTextarea2">Message</label>
                             </div>
+                            <div class="form-floating">
+                                <input name="eventNameDel" type="text" class="form-control" placeholder="Enter event name" id="floatingInput">
+                                <label for="floatingInput">Enter event name: </label>
+                            </div>
                             <p id="errorMsg"></p>
                             <input type="submit" id="sumbitDeleteForm" class="btn btn-danger" value="Delete Event">
                         </form>
@@ -218,7 +223,7 @@
         </div>
 
         <div class="modal fade" id="banEventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Event actions</h1>
@@ -236,6 +241,24 @@
             </div>
         </div>
 
+        <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>You are about to log out, are you sure?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="./php/logout.php" type="button" class="btn btn-primary">Yes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Admin events modals -->
 
         <section class="admin-actions">
@@ -243,6 +266,7 @@
         </section>
     </main>
 </body>
+
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="./script/event-check.js"></script>
     <script src="script/fetchAllData.js"></script>
@@ -251,4 +275,3 @@
         fetchEvents();
     </script>
 </html>
-

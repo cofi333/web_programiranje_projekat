@@ -131,9 +131,4 @@
 <script>
     fetchEventJSON();
 </script>
-
-<script>
-    let moment = require('moment');
-    moment().format();
-</script>
 </html>

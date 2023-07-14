@@ -57,11 +57,14 @@ const fetchUserEvents = async () => {
                 'Accept': 'application/json',
             },
         });
-
         const data = await res.json();
         let output = '';
+        if(data.length === 0){
+            output += `<h4 class="text-center py-5">You have no active events</h4>`;
+        }
+
         let bannedEvents = [];
-       // console.log(data);
+        console.log(data);
 
 
         for(let i in data) {
@@ -122,21 +125,6 @@ const fetchComments = async () => {
 
 }
 
-const fetchMessages = async () => {
-    try{
-        const res = await fetch("http://localhost/web_programiranje_projekat/php/fetchData/fetch-userMessages.php", {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-            },
-        });
-
-        const data = await res.json();
-    } catch (e){
-        console.log("Error in fetching data", e);
-    }
-}
-
 
 //function to insert path to script with ID of event, into button of modal
 let putID = (paramID) => {
@@ -147,7 +135,6 @@ let putID = (paramID) => {
 //fetch events and check if its disabled
 let fetchUserEventsAndCheck = async () => {
     let res = await fetchUserEvents();
-    //console.log(res);
 
     let sendInvBtn = document.querySelector('#sendInv');
     let updateEvBtn = document.querySelector('#updateEv');
@@ -194,6 +181,34 @@ let fetchGifts = async () => {
             number++;
         }
     } catch (e) {
+        console.log("Error in fetching data", e);
+    }
+}
+
+let fetchUserMessages = async () => {
+    try {
+        const res = await fetch('http://localhost/web_programiranje_projekat/php/fetchData/fetch-userMessages.php/', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        });
+        const data = await res.json();
+        console.log(data);
+        let message = '';
+        for(let i in data){
+            message +=      `<a href="#" class="list-group-item list-group-item-action w-50 p-3 mx-auto my-1" aria-current="true">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Deleted event - ${data[i].event_name}</h5>
+                                    <small>${data[i].date_sent}</small>
+                                </div>
+                                <p class="mb-1">${data[i].message}</p>
+                                <small>Action has been taken by administrator.</small>
+                            </a>`;
+        }
+
+        document.querySelector('.list-group').innerHTML = message;
+    }catch (e){
         console.log("Error in fetching data", e);
     }
 }

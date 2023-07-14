@@ -69,8 +69,6 @@
 
 
     <main class="main-user-section">
-
-        <?php echo "WELCOME ". $_SESSION['username']; ?>
         <img src="./images/user_image.png" alt="user">
 
         <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
@@ -87,11 +85,11 @@
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active py-5" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                <div id="user-info" style="text-align: center;"></div>
+                <div class="pb-2 text-center" id="user-info"></div>
 
-                <div class="user-action" style="text-align: center">
+                <div class="user-action py-3" style="text-align: center">
                    <!-- logout modal section -->
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#logoutEventModal">Log out</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logoutEventModal">Log out</button>
                     <div class="modal fade" id="logoutEventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -111,9 +109,9 @@
                     </div>
                     <!-- logout modal section -->
 
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Update profile info</button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Update profile info</button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Update profile info</h1>
@@ -154,7 +152,11 @@
         </div>
 
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade justify-content-center" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab" tabindex="0">...</div>
+            <div class="usr-msg tab-pane fade justify-content-center" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab" tabindex="0">
+                <div class="list-group py-5">
+
+                </div>
+            </div>
         </div>
     </main>
 
@@ -213,6 +215,7 @@
     <script src="./script/fetchJSONFromServer.js"></script>
     <script>
         fetchUserJSON();
+        fetchUserMessages();
     </script>
 <script>
     let listEventBtn = document.getElementById('pills-profile-tab');
@@ -225,6 +228,7 @@
             e.preventDefault();
         }
     });
+
 </script>
 
 </body>

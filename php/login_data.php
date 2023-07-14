@@ -25,6 +25,6 @@
             redirection('../index.php');
         }
         else {
-            redirection('../index.php?l=1');
+            redirection('../login.php?l=1');
         }
     }
