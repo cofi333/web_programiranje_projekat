@@ -382,3 +382,34 @@ function updateGiftItem(PDO $pdo,int $wish_id, string $name, string $link) : voi
         throw new \PDOException($e->getMessage());
     }
 }
+
+//Fetch comment_sent to check if user already sent comment for event
+function getGuestCommentInfo(PDO $pdo, int $event_id, int $guest_id) : array {
+    try {
+        $sql = "SELECT comment_sent FROM guests WHERE event_id=:event_id AND guest_id=:guest_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+        $stmt->bindParam(':guest_id', $guest_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    catch(PDOException $e) {
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
+}
+
+//Disable option for guest to comment again
+function updateGuestComment(PDO $pdo, int $event_id, int $guest_id) : void {
+    try {
+        $sql = "UPDATE guests SET comment_sent = 1 WHERE event_id=:event_id AND guest_id=:guest_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+        $stmt->bindParam(':guest_id', $guest_id, PDO::PARAM_INT);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
+}
+

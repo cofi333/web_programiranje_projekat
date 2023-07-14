@@ -18,7 +18,8 @@ $result = $sql->fetchAll();
 
 ?>
 
-<table class="table table-primary table-striped">
+<div class="table-responsive">
+<table class="table table-primary table-striped table">
     <thead>
     <tr>
         <th scope="col">#</th>
@@ -41,11 +42,11 @@ $result = $sql->fetchAll();
                 }
             echo  '<tr>
                      <th scope="row">' . $number . '</th>
-                     <td>' . $data['guest_name'] . '</td>
-                     <td>' . $data['guest_mail'] . '</td>
-                     <td>' . $is_coming. '</td>
-                     <td>' . $data['wish_gift_name'] .'</td>
-                     <td> <a class="btn btn-warning update-event" onclick="getId('.$data['guest_id'].')" data-bs-toggle="modal" data-bs-target="#update-guest-modal" role="button">Update guest</a>
+                     <td class="min-width150">' . $data['guest_name'] . '</td>
+                     <td class="min-width300">' . $data['guest_mail'] . '</td>
+                     <td class="min-width100">' . $is_coming. '</td>
+                     <td class="min-width300">' . $data['wish_gift_name'] .'</td>
+                     <td class="min-width300"> <a class="btn btn-warning update-event" onclick="getId('.$data['guest_id'].')" data-bs-toggle="modal" data-bs-target="#update-guest-modal" role="button">Update guest</a>
                            <a id="delButton" class="btn btn-danger" onclick="getId('.$data['guest_id'].')" data-bs-toggle="modal" data-bs-target="#delete-guest-modal" role="button">Delete guest</a></td>
                    </tr> ';
             $number++;
@@ -54,6 +55,7 @@ $result = $sql->fetchAll();
         ?>
     </tbody>
 </table>
+</div>
 
 
 

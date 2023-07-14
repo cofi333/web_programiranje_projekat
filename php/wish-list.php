@@ -39,21 +39,6 @@ catch (PDOException $e) {
 <section class="center_form container-lg">
     <h2 class="invitation-header">Add gift items for <?php echo $result2['event_title'] ?></h2>
 
-    <?php
-    if(isset($_SESSION['wish_list_errors'])) {
-        foreach($_SESSION['wish_list_errors'] as $value) {
-            echo '
-                    <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
-                        ' . $value . '
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                        </button>
-                    </div>
-                    ';
-        }
-
-        unset($_SESSION['wish_list_errors']);
-    }
-    ?>
     <div class="content">
         <div class="form">
             <form action="./wish-list-data.php" method="post" id="form">
@@ -74,6 +59,22 @@ catch (PDOException $e) {
                     ';
                     }
                 }
+
+
+                if (isset($_SESSION['wish_list_errors'])) {
+                    foreach ($_SESSION['wish_list_errors'] as $value) {
+                        echo '
+                    <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+                        ' . $value . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+                    }
+
+                    unset($_SESSION['wish_list_errors']);
+                }
+
                 ?>
                 <div class="form-group">
                     <label for="gift-name">Gift name:</label>
@@ -98,24 +99,22 @@ catch (PDOException $e) {
 
 </section>
 
-<section class="wish-list container">
+<section class="wish-list container-lg">
     <h2 class="invitation-header">List of currently added gifts</h2>
 
-    <div class="list">
+    <div class="list table-responsive-lg">
         <table class="table table-primary table-striped">
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Link</th>
-                <th scope="col">Actions</th>
+                <th scope="col" class="min-width300">Name</th>
+                <th scope="col" class="min-width150">Link</th>
+                <th scope="col" class="min-width300">Actions</th>
             </tr>
             </thead>
             <tbody class="wish-table">
             </tbody>
         </table>
-
-
     </div>
 </section>
 

@@ -119,7 +119,7 @@
 
 
  @include media-breakpoint-down(md) { 
-    .hero_sign_up {
+
         .form {
             form {
                 .sign_up {
@@ -137,9 +137,10 @@
                     font-size: 16px;
                     text-align: center;
                 }
+
             }
         }
-    }
+
   }
 
   @include media-breakpoint-down(sm) {

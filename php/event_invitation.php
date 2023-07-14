@@ -49,19 +49,20 @@ catch(PDOException $e) {
     <title>Event invitation</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-
+<!--Notification to the user that he is deleted from the guest list-->
 <?php
 if($result2 === false) {
-    exit("<body id='removed-guest-body'><div class='content'>
+    exit("<body id='removed-guest-body'>
+            <div class='content'>
                 <h2>You have been removed from guest list. Contact organizer for more information.</h2>
                 <div class='buton'>
                   <a href='../index.php' class='btn btn-primary'>Home</a>    
-                    
                 </div>
-                </div></body>");
+            </div>
+         </body>");
 }
 ?>
-
+<!--Event information-->
 <body id="event_page">
 <section class="about_event container">
     <h2><?php echo $result['event_title'] ?></h2>
@@ -82,7 +83,7 @@ if($result2 === false) {
 
 
 <section class="guest-coming container">
-
+<!--Error messages and notifications-->
     <?php
     $ei = 0;
 
@@ -114,23 +115,18 @@ if($result2 === false) {
     }
     ?>
 
-
     <form action="./event_invitation-data.php" method="post" id="form">
         <?php
-        if( date("Y-m-d H:i:s")  > ($result['event_date'] . " " . $result['event_time'])) {
-            if($result['event_comments'] == "on") {
-                if( $result2 && $result2['comment_sent'] == 1) {
-                    echo 'you already sent the comment. thank you.';
-                }
-                else {
+        if( date("Y-m-d H:i:s")  > ($result['event_date'] . " " . $result['event_time'])) { // Check if event has started
+            if($result['event_comments'] == "on") {   // Check if organizer enabled option to comment
                     echo ' <div class="form-group">
                 <textarea class="form-control" name="guest-comment" placeholder="Enter a comment about how did you spent time at this event" id="exampleFormControlTextarea1" rows="1"></textarea>
         </div>
                 <input type="submit" id="submit-btn" class="btn btn-primary" value="Send"/>';
-                }
+
             }
         }
-        else {
+        else { // If event didn't start yet, display radio buttons for coming/not coming
             echo ' 
        <div class="rd-btns">
         <div class="form-check">
@@ -148,8 +144,8 @@ if($result2 === false) {
        </div>
         <select class="form-select" name="gift-list" id="gift-list" aria-label="Default select example">
             <option selected value="default">You can select a gift</option>';
-        while($row = $stmt3 -> fetch()) {
-            if($result2['wish_id'] === $row['wish_id']) {
+        while($row = $stmt3 -> fetch()) {  // Fetch all gifts for this event
+            if($result2['wish_id'] === $row['wish_id']) { // If user already selected a gift, set that gift to be selected
                 echo '<option selected value="' .  $row['wish_id'] .'">' . $row['wish_gift_name'] . ' </option>';
             }
             else {
@@ -170,8 +166,5 @@ if($result2 === false) {
 </section>
 
 </body>
-
-
-
 <script src="../node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
 </html>

@@ -23,7 +23,7 @@ $result = $sql->fetch();
     <title>Update <?php echo $result['event_title'] ?></title>
 </head>
 <body id="center_form">
-<section class="center_form container">
+<section class="center_form container-lg">
     <div class="content">
         <div class="form">
             <form action="./update-event-data.php" method="post" id="form">

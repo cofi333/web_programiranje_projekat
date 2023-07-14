@@ -1,6 +1,9 @@
+
 #send-invitation {
   background: radial-gradient(#FF19F2, #730770);
 }
+
+
 
 .center_form {
   margin-top: 3em;
@@ -22,4 +25,12 @@
 
 #response-select {
   background-color:  shift-color($primary, $table-bg-scale);
+}
+
+@include media-breakpoint-down(sm) {
+  #send-invitation {
+    .btn-form {
+      justify-content: center;
+    }
+  }
 }

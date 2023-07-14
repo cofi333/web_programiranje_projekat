@@ -3,6 +3,7 @@
     background-color: #009DFF;
     padding: 20px 0;
     border-radius: 35px;
+    margin-bottom: 15px;
     width: 40%;
     display: flex;
     justify-content: center;
@@ -55,4 +56,39 @@
       color: #fff;
     }
   }
+}
+
+@include media-breakpoint-down(lg) {
+  #event_page {
+    .guest-coming {
+      width: 95%;
+    }
+  }
+
+}
+
+@include media-breakpoint-down(sm) {
+  #event_page {
+    .guest-coming {
+      margin-top: 50px;
+      .rd-btns {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+
+    .about_event {
+      text-align: center;
+      padding: 10px;
+      p {
+        font-size: 1em;
+      }
+
+       h2{
+         font-size: 2.2em;
+       }
+    }
+  }
+
+
 }
