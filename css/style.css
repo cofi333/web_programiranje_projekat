@@ -12120,6 +12120,9 @@ footer .icons {
   background-repeat: no-repeat;
   background-size: cover;
 }
+#create_event_page #form {
+  margin-top: 30px;
+}
 
 .basic-info {
   margin-top: 70px;
@@ -12271,7 +12274,6 @@ footer .icons {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
 }
 #center_form .switch {
   display: flex;

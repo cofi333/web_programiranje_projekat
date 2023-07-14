@@ -3,6 +3,8 @@ session_start();
 require_once 'config.php';
 require_once 'functions.php';
 
+$errors = [];
+
 if (isset($_SESSION['id_user'])) {
    $user_id = $_SESSION['id_user'];
 }
@@ -44,9 +46,38 @@ else {
 }
 
 if(empty($title) || empty($organizer) || empty($category) || empty($location) || empty($date) || empty($time) || empty($description)) {
-    redirection('../event.php?e=4');
+    $errors[] = "Fields can't be empty!";
 }
 
+if(is_numeric($title)) {
+    $errors[] = "Please enter a valid title.";
+}
+
+if(trim(strlen($organizer)) < 3 ) {
+    $errors[] = "Organizer must have at least 3 characters.";
+}
+
+if($category === "default") {
+    $errors[] = "You must select category of your event.";
+}
+
+if(trim(strlen($location)) < 5) {
+    $errors[] = "Please enter a valid location.";
+}
+
+if(!validateTime($time)) {
+    $errors[] = "Time is not in valid form.";
+}
+
+if(trim(strlen($description)) < 15) {
+    $errors[] = "Description must have at least 15 characters.";
+}
+
+
+function validateTime($date, $format = 'H:i:s') {
+    $d = DateTime::createFromFormat($format, $date);
+    return $d && $d->format($format) == $date;
+}
 
 
 switch($category) {
@@ -70,8 +101,14 @@ switch($category) {
         $img = "";
 }
 
-createEvent( $pdo,$category,$user_id, $title, $organizer, $location,$img, $date, $time, $description, $comments);
-redirection('../event.php?e=13');
+if(!$errors) {
+    createEvent( $pdo,$category,$user_id, $title, $organizer, $location,$img, $date, $time, $description, $comments);
+    redirection('../event.php?e=13');
+}
+else {
+    $_SESSION['event_errors'] = $errors;
+    redirection('../event.php');
+}
 
 
 

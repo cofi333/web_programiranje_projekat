@@ -34,7 +34,7 @@ let validateForm = () => {
         guest_errorMessage.innerHTML = "Please enter a name.";
         validForm = false;
     }
-    else if (guest_name.value < 3) {
+    else if (guest_name.value.length < 3) {
         guest_errorMessage.innerHTML= "Name must be at least 3 characters";
         validForm = false;
     }

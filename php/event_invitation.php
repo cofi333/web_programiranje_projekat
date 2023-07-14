@@ -99,6 +99,19 @@ if($result2 === false) {
                     ';
         }
     }
+
+    if (isset($_SESSION['event_invitation_errors'])) {
+        foreach ($_SESSION['event_invitation_errors'] as $value) {
+            echo '
+                    <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+                        ' . $value . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+        }
+        unset($_SESSION['event_invitation_errors']);
+    }
     ?>
 
 

@@ -53,23 +53,23 @@ switch ($method) {
             }
 
             if (empty($resetEmail)) {
-                redirection('reset_form.php?rf=8');
+                redirection('reset_form.php?rf=8&token='. $token);
             }
 
             if (empty($resetPassword)) {
-                redirection('reset_form.php?rf=9');
+                redirection('reset_form.php?rf=9&token='. $token);
             }
 
             if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $resetPassword)) {
-                redirection('reset_form.php?rf=10');
+                redirection('reset_form.php?rf=10&token='. $token);
             }
 
             if (empty($resetPasswordConfirm)) {
-                redirection('reset_form.php?rf=9');
+                redirection('reset_form.php?rf=9&token='. $token);
             }
 
             if ($resetPassword !== $resetPasswordConfirm) {
-                redirection('reset_form.php?rf=7');
+                redirection('reset_form.php?rf=7&token='. $token);
             }
 
             $passwordHashed = password_hash($resetPassword, PASSWORD_DEFAULT);
