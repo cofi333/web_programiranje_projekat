@@ -1,0 +1,28 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Oxygen", sans-serif;
+}
+
+.admin-login {
+  background-color: #490149;
+}
+
+#admin-login-form {
+  padding: 5em;
+  width: 720px;
+  border-radius: 10px;
+  background-color: #009DFF;
+}
+
+.admin-nav-header {
+  background-color: rgba(97, 65, 189, 0.5);
+}
+
+.user-admin, .admin-v-events {
+  background-color: #009DFF;
+  margin: 2em;
+  padding: 2em;
+  border-radius: 10px;
+}/*# sourceMappingURL=style.css.map */
