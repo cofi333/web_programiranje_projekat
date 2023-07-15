@@ -64,6 +64,26 @@ if($result2 === false) {
 ?>
 <!--Event information-->
 <body id="event_page">
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid  container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav buttons">
+                <li class="nav-item create_event_btn">
+                    <a class="nav-link" href="../index.php">Home</a>
+                </li>
+                <li class="nav-item sign_up_btn">
+                    <a class="nav-link" href="../sign_up.php">Sign up</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
 <section class="about_event container">
     <h2><?php echo $result['event_title'] ?></h2>
     <p><?php echo $result['event_description']?></p>
@@ -92,7 +112,7 @@ if($result2 === false) {
 
         if (array_key_exists($ei, $messages)) {
             echo '
-                    <div class="alert alert-info ~alert-dismissible fade show m-3" role="alert">
+                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
                         ' . $messages[$ei] . '
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>

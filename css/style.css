@@ -12716,6 +12716,9 @@ footer .icons {
   color: #fff;
   font-size: 1.3em;
 }
+#event_page .event_comments {
+  margin-top: 50px;
+}
 #event_page .event_comments .swiper-comments {
   overflow: hidden;
   position: relative;
@@ -12724,6 +12727,10 @@ footer .icons {
   display: flex;
   justify-content: center;
   position: relative;
+}
+#event_page .event_comments .swiper-pagination {
+  position: absolute;
+  bottom: 5%;
 }
 #event_page .event_comments #leftClick {
   position: absolute;
@@ -12746,7 +12753,7 @@ footer .icons {
   justify-content: space-around;
   border-radius: 30px;
   width: 400px;
-  height: 500px;
+  height: 270px;
   background-color: #009DFF;
   padding: 2em;
 }
@@ -12768,12 +12775,51 @@ footer .icons {
   text-align: center;
 }
 
+@media (max-width: 1199.98px) {
+  #event_page .event_comments #leftClick {
+    left: 20%;
+  }
+  #event_page .event_comments #rightClick {
+    right: 20%;
+  }
+}
+@media (max-width: 991.98px) {
+  #event_page .event_comments #leftClick {
+    left: 10%;
+  }
+  #event_page .event_comments #rightClick {
+    right: 10%;
+  }
+}
+@media (max-width: 767.98px) {
+  #event_page .event_comments #leftClick {
+    position: unset;
+  }
+  #event_page .event_comments #rightClick {
+    position: unset;
+  }
+  #event_page .event_comments .swiper-pagination {
+    bottom: 28%;
+  }
+  #event_page .swiper-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+@media (max-width: 575.98px) {
+  #event_page .event_comments .comment p {
+    font-size: 14px;
+  }
+}
 #send-invitation {
   background: radial-gradient(#FF19F2, #730770);
 }
 
 .center_form {
   margin-top: 3em;
+  margin-bottom: 3em;
 }
 
 .invitation-header {

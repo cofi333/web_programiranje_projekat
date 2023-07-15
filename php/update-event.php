@@ -138,7 +138,7 @@ $result = $sql->fetch();
                                 <p>Are you sure you want to update event?</p>
                             </div>
                             <div class="modal-footer">
-                                <a href="../user_profile.php" class="btn btn-secondary">Cancel</a>
+                                <buton data-bs-dismiss="modal" aria-label="Close" class="btn btn-secondary">Cancel</buton>
                                 <input type="submit" class="btn btn-primary" id="modal-submit" value="Submit">
                             </div>
                         </div>

@@ -3,6 +3,10 @@ require_once 'config.php';
 if (isset($_GET['token'])) {
     $token = trim($_GET['token']);
 }
+else {
+    redirection('../index.php?l=0');
+    exit();
+}
 ?>
 
 

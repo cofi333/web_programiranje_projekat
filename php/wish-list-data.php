@@ -27,7 +27,11 @@ if(empty($gift_name) || empty($gift_link)) {
 }
 
 if(trim(strlen($gift_name) < 3)) {
-    $errors[] = "Gift must have at least 3 characters.";
+    $errors[] = "Name must have at least 3 characters.";
+}
+
+if(trim(strlen($gift_name)) > 30) {
+    $errors[] = "Name must have maximum 30 characters.";
 }
 
 if(!filter_var($gift_link, FILTER_VALIDATE_URL)) {

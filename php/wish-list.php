@@ -6,6 +6,10 @@ if(isset($_GET['event_id'])) {
     $event_id = $_GET['event_id'];
     $_SESSION['event_id2'] = $event_id;
 }
+else {
+    redirection('../index.php?l=0');
+    exit();
+}
 
 
 try {
