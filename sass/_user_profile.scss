@@ -9,6 +9,16 @@
 .main-user-section{
   background: radial-gradient(#FF19F2, #730770);
   background-size: cover;
+  padding-top: 5em;
+
+  #cover-profile-pic{
+    position: absolute;
+    top: 405px;
+    left: 100px;
+    width: 150px;
+    border: 5px solid #009DFF;
+    border-radius: 50%;
+  }
 }
 
 .created-by-user{
@@ -48,7 +58,7 @@
   margin: 0;
 }
 
-@include media-breakpoint-down(sm){
+@include media-breakpoint-down(lg){
 .main-user-section{
   .created-by-user{
     .usr-ev{
@@ -57,6 +67,7 @@
       .event-data{
         flex-direction: column-reverse;
         img{
+          width: 80%;
           height: unset;
         }
       }
@@ -69,5 +80,14 @@
     }
   }
 }
+
+}
+
+@include media-breakpoint-down(md) {
+  .main-user-section{
+    #cover-profile-pic{
+      display: none;
+    }
+  }
 
 }
