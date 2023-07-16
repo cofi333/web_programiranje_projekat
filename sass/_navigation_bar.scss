@@ -1,5 +1,8 @@
 .navbar {
-  z-index: 999;
+  z-index: 998;
+  padding-top: 0.9em;
+  padding-bottom: 0.9em;
+  background-color: #6141BD80;
     .container-fluid {
         justify-content: end;
     }
@@ -44,9 +47,9 @@
 
 .navbar_index {
     position: absolute;
-    lefT: 0;
+    left: 0;
     right: 0;
-    background-color: #6141BD80;
+  background-color: #6141BD80;
    }
 
 

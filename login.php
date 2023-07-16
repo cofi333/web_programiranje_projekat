@@ -11,50 +11,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body id="login_body">
-    <header>
-        <nav class="navbar navbar-expand-lg container">
-            <div class="container-fluid">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 links">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.php">Home</a>
-                    </li>
-                  <li class="nav-item">
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid  container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 links">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.php">Home</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#">Music</a>
-                  </li>
-                  <li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Nightlife</a>
-                  </li>
-                  <li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Culture</a>
-                  </li>
-                  <li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Food</a>
-                  </li>
-                  <li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Sport</a>
-                  </li>
-                </ul>
-    
-                <ul class="navbar-nav buttons">
-                    <li class="nav-item create_event_btn">
-                        <a class="nav-link" href="#">Create an event</a>
-                    </li>
-                    <li class="nav-item sign_up_btn">
-                        <a class="nav-link" href="./sign_up.php">Sign up</a>
-                    </li>
-                    <li class="nav-item log_in_btn">
-                        <a class="nav-link" href="#">Log in</a>
-                    </li>
-                </ul>
-               
-              </div>
-            </div>
-          </nav>
-    </header>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav buttons">
+                <li class="nav-item create_event_btn">
+                    <a class="nav-link" href="sign_up.php">Create an event</a>
+                </li>
+                <li class="nav-item sign_up_btn">
+                    <a class="nav-link" href="sign_up.php">Sign up</a>
+                </li>
+                <li class="nav-item log_in_btn">
+                    <a class="nav-link" href="#">Log in</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
 
     <main>
         <section class="hero-login">

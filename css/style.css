@@ -12248,7 +12248,10 @@ textarea.form-control-lg {
   }
 }
 .navbar {
-  z-index: 999;
+  z-index: 998;
+  padding-top: 0.9em;
+  padding-bottom: 0.9em;
+  background-color: rgba(97, 65, 189, 0.5019607843);
 }
 .navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl, .navbar .container-xxl {
   justify-content: end;
@@ -12280,7 +12283,7 @@ textarea.form-control-lg {
 
 .navbar_index {
   position: absolute;
-  lefT: 0;
+  left: 0;
   right: 0;
   background-color: rgba(97, 65, 189, 0.5019607843);
 }
