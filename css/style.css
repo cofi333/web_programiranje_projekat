@@ -12656,6 +12656,11 @@ footer .icons {
   margin: 0;
 }
 
+@media (max-width: 767.98px) {
+  .main-user-section .user-ev {
+    flex-direction: column;
+  }
+}
 .events {
   position: relative;
 }

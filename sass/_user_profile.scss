@@ -47,3 +47,27 @@
 #user-profile-footer{
   margin: 0;
 }
+
+@include media-breakpoint-up(sm){
+.main-user-section{
+  .created-by-user{
+    .user-ev{
+      flex-direction: column;
+      gap: 15px;
+      .event-data{
+        flex-direction: column-reverse;
+        img{
+          height: unset;
+        }
+      }
+      .even-options{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+}
