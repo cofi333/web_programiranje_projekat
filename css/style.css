@@ -12618,6 +12618,15 @@ footer .icons {
 .main-user-section {
   background: radial-gradient(#FF19F2, #730770);
   background-size: cover;
+  padding-top: 5em;
+}
+.main-user-section #cover-profile-pic {
+  position: absolute;
+  top: 405px;
+  left: 100px;
+  width: 150px;
+  border: 5px solid #009DFF;
+  border-radius: 50%;
 }
 
 .created-by-user {
@@ -12656,22 +12665,28 @@ footer .icons {
   margin: 0;
 }
 
-@media (min-width: 576px) {
-  .main-user-section .created-by-user .user-ev {
+@media (max-width: 991.98px) {
+  .main-user-section .created-by-user .usr-ev {
     flex-direction: column;
     gap: 15px;
   }
-  .main-user-section .created-by-user .user-ev .event-data {
+  .main-user-section .created-by-user .usr-ev .event-data {
     flex-direction: column-reverse;
   }
-  .main-user-section .created-by-user .user-ev .event-data img {
+  .main-user-section .created-by-user .usr-ev .event-data img {
+    width: 80%;
     height: unset;
   }
-  .main-user-section .created-by-user .user-ev .even-options {
+  .main-user-section .created-by-user .usr-ev .event-options {
     display: flex;
     flex-direction: column;
     gap: 5px;
     width: 100%;
+  }
+}
+@media (max-width: 767.98px) {
+  .main-user-section #cover-profile-pic {
+    display: none;
   }
 }
 .events {

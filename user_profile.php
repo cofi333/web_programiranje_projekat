@@ -69,7 +69,7 @@
 
 
     <main class="main-user-section">
-        <img src="./images/user_image.png" alt="user">
+        <img src="./images/user_image_profile.png" id="cover-profile-pic" alt="user">
 
         <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
