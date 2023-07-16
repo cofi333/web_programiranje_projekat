@@ -12656,8 +12656,20 @@ footer .icons {
   margin: 0;
 }
 
+.nav-link {
+  color: #fff;
+}
+
+@media (max-width: 575.98px) {
+  .created-by-user .usr-ev {
+    flex-direction: column;
+  }
+}
 .events {
   position: relative;
+}
+.events .swiper {
+  width: 70%;
 }
 .events .swiper .swiper-wrapper .swiper-slide {
   border-radius: 1.1em;

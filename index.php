@@ -80,7 +80,7 @@
 
       <section class="events">
           <h2>New Events</h2>
-          <div class="swiper"> <!-- tbody -->
+          <div class="swiper mySwiper"> <!-- tbody -->
               <div class="swiper-wrapper"> <!-- tr -->
               </div>
           </div>
