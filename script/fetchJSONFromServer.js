@@ -12,13 +12,13 @@ const fetchEventJSON = async () => {
         for(let i in data){
             output +=
                 `<div class="swiper-slide">
-                   <a href="./eventPage.php?id=${data[i].event_id}">
                    <img src="${data[i].event_img}" alt=bck">
-                   <h2>${data[i].event_title}</h2>
-                  </a>
-                   <p>${data[i].event_date}</p>
-                   <p>${data[i].event_time}</p>
-                   <p>${data[i].event_description}</p>
+                   <div class="event-short-info">
+                    <h2>${data[i].event_title}</h2>
+                    <p>Date: ${data[i].event_date}</p>
+                    <p>Time: ${data[i].event_time}</p>
+                    <a id="view-more" href="./eventPage.php?id=${data[i].event_id}">More informations</a>
+                   </div>
                </div>`;
         }
         document.querySelector('.swiper-wrapper').innerHTML = output;

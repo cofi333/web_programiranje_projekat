@@ -12,10 +12,21 @@
           height: 200px;
           padding: 0;
         }
-
         width: 400px;
         background-color: #009DFF;
-        padding: 1em;
+
+        .event-short-info{
+          padding: 1.5em;
+        }
+
+        #view-more{
+          color: white;
+          text-decoration: none;
+          transition: 0.4s ease-in-out;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
         &:hover{
           cursor: pointer;
         }

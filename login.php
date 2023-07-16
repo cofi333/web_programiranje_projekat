@@ -92,10 +92,11 @@
                   <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                   <p id="passwordError"></p>
                 </div>
-                <button type="submit" class="btn btn-primary">Log In</button>
-
-                <span id="forgot-password">Forgot password?</span>
-                <p>Don't have an account? <a href="./sign_up.php">Sing Up</a></p>
+                <div class="login-actions">
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                    <span id="forgot-password">Forgot password?</span>
+                    <p>Don't have an account? <a href="./sign_up.php">Sing Up</a></p>
+                </div>
               </form>
 
 

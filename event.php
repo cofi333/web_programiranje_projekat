@@ -21,9 +21,8 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body id="create_event_page">
-    <header>
-        <nav class="navbar navbar-expand-lg container">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid container">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -53,17 +52,14 @@ if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_S
                         <li class="nav-item create_event_btn">
                             <a class="nav-link" href="#">Create an event</a>
                         </li>
-
                     </ul>
 
                     <div class="user">
-                        <a href="user_profile.php"><img src="./images/user_image.png" id="user_image"></a>
+                        <a href="user_profile.php"><img src="./images/user_image.png" id="user_image" alt="user-profile"></a>
                     </div>
-
                 </div>
             </div>
         </nav>
-    </header>
 
     <main>
         <section class="container basic-info">

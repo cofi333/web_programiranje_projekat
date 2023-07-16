@@ -6,15 +6,11 @@
     .container-fluid {
         justify-content: end;
     }
-}
 
-.navbar-nav {
+  .navbar-nav {
     gap:15px;
-
-   
+  }
 }
-
-
 
 .links {
     .nav-link {
@@ -23,7 +19,6 @@
 }
 
 .buttons {
-    
     .create_event_btn, .log_in_btn {
         background-color: #009DFF;
         border-radius: 5px;
@@ -31,11 +26,10 @@
         .nav-link {
             color:#fff;
         }
-        
       }
       
       .sign_up_btn {
-        background-color: #5EDFFF;
+        background-color: #009DFF;
         border-radius:5px;
         color:#fff;
         
@@ -69,7 +63,6 @@
             width: 30%;
            
         }
-
     }
  }
 

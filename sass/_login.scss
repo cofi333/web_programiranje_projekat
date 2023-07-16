@@ -32,14 +32,33 @@
         }
     }
 }
-@include media-breakpoint-down(lg) {
+@include media-breakpoint-down(xl) {
     .login{
-        width: 100%;
+        flex-direction: column;
         .loginPic{
             img{
                 display: none;
             }
+        }
+        #login-form{
+            width: 100%;
+        }
 
+        #forgot_password_form{
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .login{
+        .login-actions{
+            display: flex;
+            flex-direction: column;
+            gap: 0.8em;
+        }
+        #forgot_password_form{
+            text-align: center;
         }
     }
 }

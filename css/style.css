@@ -12256,8 +12256,7 @@ textarea.form-control-lg {
 .navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl, .navbar .container-xxl {
   justify-content: end;
 }
-
-.navbar-nav {
+.navbar .navbar-nav {
   gap: 15px;
 }
 
@@ -12273,7 +12272,7 @@ textarea.form-control-lg {
   color: #fff;
 }
 .buttons .sign_up_btn {
-  background-color: #5EDFFF;
+  background-color: #009DFF;
   border-radius: 5px;
   color: #fff;
 }
@@ -12446,12 +12445,28 @@ textarea.form-control-lg {
   cursor: pointer;
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 1199.98px) {
   .login {
-    width: 100%;
+    flex-direction: column;
   }
   .login .loginPic img {
     display: none;
+  }
+  .login #login-form {
+    width: 100%;
+  }
+  .login #forgot_password_form {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .login .login-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+  }
+  .login #forgot_password_form {
+    text-align: center;
   }
 }
 footer {
@@ -12649,7 +12664,6 @@ footer .icons {
   gap: 10em;
   width: 400px;
   background-color: #009DFF;
-  padding: 1em;
 }
 .events .swiper .swiper-wrapper .swiper-slide img {
   border-top-left-radius: 1.1em;
@@ -12657,6 +12671,17 @@ footer .icons {
   width: 400px;
   height: 200px;
   padding: 0;
+}
+.events .swiper .swiper-wrapper .swiper-slide .event-short-info {
+  padding: 1.5em;
+}
+.events .swiper .swiper-wrapper .swiper-slide #view-more {
+  color: white;
+  text-decoration: none;
+  transition: 0.4s ease-in-out;
+}
+.events .swiper .swiper-wrapper .swiper-slide #view-more:hover {
+  text-decoration: underline;
 }
 .events .swiper .swiper-wrapper .swiper-slide:hover {
   cursor: pointer;
