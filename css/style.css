@@ -12656,12 +12656,9 @@ footer .icons {
   margin: 0;
 }
 
-.nav-link {
-  color: #fff;
-}
 
-@media (max-width: 575.98px) {
-  .created-by-user .usr-ev {
+@media (max-width: 767.98px) {
+  .main-user-section .user-ev {
     flex-direction: column;
   }
 }
