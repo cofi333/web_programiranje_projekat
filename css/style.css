@@ -12656,10 +12656,23 @@ footer .icons {
   margin: 0;
 }
 
+@media (min-width: 576px) {
+  .main-user-section .created-by-user .user-ev {
 
-@media (max-width: 767.98px) {
-  .main-user-section .user-ev {
     flex-direction: column;
+    gap: 15px;
+  }
+  .main-user-section .created-by-user .user-ev .event-data {
+    flex-direction: column-reverse;
+  }
+  .main-user-section .created-by-user .user-ev .event-data img {
+    height: unset;
+  }
+  .main-user-section .created-by-user .user-ev .even-options {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
   }
 }
 .events {
