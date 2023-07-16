@@ -7,13 +7,14 @@
 }
 
 .main-user-section{
+  position: relative;
   background: radial-gradient(#FF19F2, #730770);
   background-size: cover;
   padding-top: 5em;
 
   #cover-profile-pic{
     position: absolute;
-    top: 405px;
+    top: -65px;
     left: 100px;
     width: 150px;
     border: 5px solid #009DFF;
