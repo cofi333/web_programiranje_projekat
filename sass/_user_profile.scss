@@ -48,10 +48,10 @@
   margin: 0;
 }
 
-@include media-breakpoint-up(sm){
+@include media-breakpoint-down(sm){
 .main-user-section{
   .created-by-user{
-    .user-ev{
+    .usr-ev{
       flex-direction: column;
       gap: 15px;
       .event-data{
@@ -60,7 +60,7 @@
           height: unset;
         }
       }
-      .even-options{
+      .event-options{
         display: flex;
         flex-direction: column;
         gap: 5px;

@@ -12656,19 +12656,18 @@ footer .icons {
   margin: 0;
 }
 
-@media (min-width: 576px) {
-  .main-user-section .created-by-user .user-ev {
-
+@media (max-width: 575.98px) {
+  .main-user-section .created-by-user .usr-ev {
     flex-direction: column;
     gap: 15px;
   }
-  .main-user-section .created-by-user .user-ev .event-data {
+  .main-user-section .created-by-user .usr-ev .event-data {
     flex-direction: column-reverse;
   }
-  .main-user-section .created-by-user .user-ev .event-data img {
+  .main-user-section .created-by-user .usr-ev .event-data img {
     height: unset;
   }
-  .main-user-section .created-by-user .user-ev .even-options {
+  .main-user-section .created-by-user .usr-ev .event-options {
     display: flex;
     flex-direction: column;
     gap: 5px;
