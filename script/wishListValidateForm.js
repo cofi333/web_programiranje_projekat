@@ -23,8 +23,8 @@ let validateForm = () => {
 
     let isValid = true;
 
-    if(isEmpty(gift_name.value) || gift_name.value.length < 3) {
-        name_error.innerHTML="Name can not be empty, and must have at least 3 characters.";
+    if(isEmpty(gift_name.value) || gift_name.value.length < 3 || gift_name.value.length > 30 ) {
+        name_error.innerHTML="Name can not be empty,must have at least 3 characters, and maximum 30 characters.";
         isValid = false;
     }
 

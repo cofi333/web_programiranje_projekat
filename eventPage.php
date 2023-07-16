@@ -10,13 +10,16 @@ if(isset($_GET['id'])){
     exit();
 }
 
-$sql = "SELECT * FROM events WHERE event_id = " . $event_id;
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-
+try {
+    $sql = "SELECT * FROM events WHERE event_id = " . $event_id;
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+catch(PDOException $e) {
+    echo 'Error: ' . $e->getMessage();
+    throw new \PDOException($e->getMessage());
+}
 
 ?>
 
@@ -91,8 +94,10 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="swiper-wrapper">
 
             </div>
-            <img id="leftClick" src="./images/iconLeft.svg" alt="leftclick">
-            <img id="rightClick" src="./images/iconRight.svg" alt="rightClick">
+            <div class="swiper-buttons">
+                <img id="leftClick" src="./images/iconLeft.svg" alt="leftclick">
+                <img id="rightClick" src="./images/iconRight.svg" alt="rightClick">
+            </div>
             <div class="swiper-pagination"></div>
         </div>
 

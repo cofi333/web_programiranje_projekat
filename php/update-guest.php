@@ -15,4 +15,4 @@ if(isset($_POST['event-id'])) {
 }
 
 updateGuestInfo($pdo, $guest_id, $guest_name);
-redirection('./send-invitation.php?event_id='. $event_id);
+redirection('./send-invitation.php?event_id='. $event_id."&si=39");

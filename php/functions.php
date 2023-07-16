@@ -384,14 +384,14 @@ function updateGiftItem(PDO $pdo,int $wish_id, string $name, string $link) : voi
 }
 
 //Fetch comment_sent to check if user already sent comment for event
-function getGuestCommentInfo(PDO $pdo, int $event_id, int $guest_id) : array {
+function getGuestCommentInfo(PDO $pdo, int $event_id, int $guest_id) : int {
     try {
         $sql = "SELECT comment_sent FROM guests WHERE event_id=:event_id AND guest_id=:guest_id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
         $stmt->bindParam(':guest_id', $guest_id, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC)['comment_sent'];
     }
     catch(PDOException $e) {
         var_dump($e->getCode());

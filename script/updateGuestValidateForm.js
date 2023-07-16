@@ -27,8 +27,8 @@ for(let i =0; i< close_modal.length ;i++) {
 let validationForm = () => {
     let isValid = true;
 
-    if(isEmpty(name2.value) || name2.value.length < 3) {
-        name_error.innerHTML="Name can not be empty, and must have at least 3 characters.";
+    if(isEmpty(name2.value) || name2.value.length < 3 || name2.value.length > 30) {
+        name_error.innerHTML="Name can not be empty,must have at least 3,and maximum 30 characters.";
         isValid = false;
     }
 

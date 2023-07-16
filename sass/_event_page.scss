@@ -23,7 +23,7 @@
   }
 
   .event_comments {
-
+      margin-top: 50px;
     .swiper-comments {
       overflow: hidden;
       position: relative;
@@ -34,6 +34,11 @@
         position: relative;
       }
       }
+
+    .swiper-pagination {
+      position: absolute;
+      bottom: 5%;
+    }
 
     #leftClick {
       position: absolute;
@@ -61,7 +66,7 @@
       justify-content: space-around;
       border-radius: 30px;
       width: 400px;
-      height: 500px;
+      height: 270px;
       background-color: #009DFF;
       padding: 2em;
 
@@ -85,4 +90,68 @@
         text-align: center;
       }
     }
+}
+
+@include media-breakpoint-down(xl) {
+  #event_page {
+    .event_comments {
+      #leftClick {
+        left: 20%;
+      }
+      #rightClick {
+        right: 20%;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+
+  #event_page {
+    .event_comments {
+      #leftClick {
+        left: 10%;
+      }
+      #rightClick {
+        right: 10%;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+
+  #event_page {
+    .event_comments {
+      #leftClick {
+        position: unset;
+      }
+      #rightClick {
+        position: unset;
+      }
+
+      .swiper-pagination {
+        bottom:28%;
+      }
+    }
+
+    .swiper-buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  #event_page {
+    .event_comments {
+      .comment {
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }

@@ -12,4 +12,4 @@ if(isset($_GET['event_id'])) {
 
 deleteGuest($pdo, $guest_id);
 
-redirection('./send-invitation.php?event_id='.$event_id);
+redirection('./send-invitation.php?event_id='.$event_id . "&si=38");

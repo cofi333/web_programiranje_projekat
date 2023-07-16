@@ -55,24 +55,6 @@
       </nav>
 
       <section class="hero_sign_up container">
-          <?php
-          require_once './php/config.php';
-          $r = 0;
-
-          if (isset($_GET["r"]) and is_numeric($_GET['r'])) {
-              $r = (int)$_GET["r"];
-
-              if (array_key_exists($r, $messages)) {
-                  echo '
-                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
-                        ' . $messages[$r] . '
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                        </button>
-                    </div>
-                    ';
-              }
-          }
-          ?>
         <div class="content">
           <div class="picture">
             <img src="./images/microphone.png" alt="Microphone picture">
@@ -82,6 +64,24 @@
             <form action="./php/registration.php" method="post" id="form">
 
 
+                <?php
+                require_once './php/config.php';
+                $r = 0;
+
+                if (isset($_GET["r"]) and is_numeric($_GET['r'])) {
+                    $r = (int)$_GET["r"];
+
+                    if (array_key_exists($r, $messages)) {
+                        echo '
+                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
+                        ' . $messages[$r] . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    ';
+                    }
+                }
+                ?>
 
               <div class="form-group">
                   <p class="error" id="error-messages"></p>
