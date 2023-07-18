@@ -40,6 +40,32 @@ catch (PDOException $e) {
     <title>Wish list</title>
 </head>
 <body id="wish-list">
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 links">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.php">Home</a>
+            </ul>
+
+            <ul class="navbar-nav buttons">
+                <li class="nav-item create_event_btn">
+                    <a class="nav-link" href="../event.php">Create an event</a>
+                </li>
+            </ul>
+
+            <div class="user">
+                <a href="../user_profile.php"><img src="../images/user_image.png" id="user_image" alt="user-profile"></a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
 <section class="center_form container-lg">
     <h2 class="invitation-header">Add gift items for <?php echo $result2['event_title'] ?></h2>
 

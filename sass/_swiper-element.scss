@@ -1,6 +1,7 @@
 .events{
   position: relative;
   .swiper{
+    width: 70%;
     .swiper-wrapper{
       .swiper-slide{
         border-radius: 1.1em;
@@ -48,3 +49,36 @@
       right: 5%;
     }
   }
+
+
+@include media-breakpoint-down(md) {
+  .events {
+    #leftClick, #rightClick {
+      position:unset;
+    }
+
+    .swiper-buttons {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .events {
+    .swiper {
+      width: 100%;
+
+      .swiper-wrapper .swiper-slide {
+        width: 300px;
+
+        img {
+          width: 300px;
+        }
+    }
+    }
+  }
+}
+

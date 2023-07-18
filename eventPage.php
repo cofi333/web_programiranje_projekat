@@ -36,37 +36,48 @@ catch(PDOException $e) {
 </head>
 <body id="event_page">
 <header>
-    <nav class="navbar navbar_index navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid container">
-            <ul class="navbar-nav buttons">
-            <?php
-            require_once 'php/config.php';
-            require_once 'php/functions.php';
-            if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_SESSION['id_user'])) {
-                echo '<li class="nav-item create_event_btn">';
-                echo '<a class="nav-link" href="./login.php">Create an event</a>';
-                echo '</li>';
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 links">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.php">Home</a>
+                </ul>
 
-                echo '<li class="nav-item sign_up_btn">';
-                echo '<a class="nav-link" href="./sign_up.php">Sign Up</a>';
-                echo '</li>';
+                <ul class="navbar-nav buttons">
 
-                echo '<li class="nav-item log_in_btn">';
-                echo '<a class="nav-link" href="./login.php">Log in</a>';
-                echo '</li>';
-            }
+                    <?php
+                    if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_SESSION['id_user'])) {
+                        echo '<li class="nav-item create_event_btn">';
+                        echo '<a class="nav-link" href="./login.php">Create an event</a>';
+                        echo '</li>';
 
-            else{
-                echo '<li class="nav-item create_event_btn">';
-                echo '<a class="nav-link" href="./event.php">Create an event</a>';
-                echo '</li>';
-                echo '</ul>';
+                        echo '<li class="nav-item sign_up_btn">';
+                        echo '<a class="nav-link" href="./sign_up.php">Sign Up</a>';
+                        echo '</li>';
 
-                echo '<div class="user">';
-                echo '<a href="user_profile.php"><img src="./images/user_image.png" id="user_image"></a>';
-                echo '</div>';
-            }
-            ?>
+                        echo '<li class="nav-item log_in_btn">';
+                        echo '<a class="nav-link" href="./login.php">Log in</a>';
+                        echo '</li>';
+                    }
+
+                    else{
+                        echo '<li class="nav-item create_event_btn">';
+                        echo '<a class="nav-link" href="./event.php">Create an event</a>';
+                        echo '</li>';
+                        echo '</ul>';
+
+                        echo '<div class="user">';
+                        echo '<a href="user_profile.php"><img src="./images/user_image.png" id="user_image"></a>';
+                        echo '</div>';
+                    }
+                    ?>
+
+            </div>
+        </div>
     </nav>
 </header>
 
@@ -92,7 +103,7 @@ catch(PDOException $e) {
     <div class="container">
         <div class="swiper-comments">
             <div class="swiper-wrapper">
-
+                <h2 class="invitation-header">When the event is over, check out guest comments!</h2>
             </div>
             <div class="swiper-buttons">
                 <img id="leftClick" src="./images/iconLeft.svg" alt="leftclick">
@@ -137,6 +148,7 @@ catch(PDOException $e) {
 
 </body>
 
+<script src="./node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
 <script src="node_modules/swiper/swiper-bundle.min.js"></script>
 <script src="./script/swiper.js"></script>
 <script src="./script/fetchJSONFromServer.js"></script>

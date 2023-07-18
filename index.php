@@ -79,14 +79,17 @@
       </header>
 
       <section class="events">
-          <h2>New Events</h2>
-          <div class="swiper"> <!-- tbody -->
+          <h2 class="index-header">New Events</h2>
+          <div class="swiper mySwiper"> <!-- tbody -->
               <div class="swiper-wrapper"> <!-- tr -->
               </div>
           </div>
 
+          <div class="swiper-buttons">
               <img id="leftClick" src="./images/iconLeft.svg" alt="leftclick">
               <img id="rightClick" src="./images/iconRight.svg" alt="rightClick">
+          </div>
+          <div class="swiper-pagination"></div>
 
       </section>
 

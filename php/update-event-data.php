@@ -80,7 +80,7 @@ function validateTime($date, $format = 'H:i:s') {
 
 if(!$errors) {
     updateEvent($pdo, $event_id ,$new_category, $new_title, $new_organizer, $new_location, $new_date, $new_time, $new_description, $comments);
-    redirection('../user_profile.php');
+    redirection('./update-event.php?event_id='.$event_id."&ue=40");
 }
 else {
     $_SESSION['update_event_errors'] = $errors;

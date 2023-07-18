@@ -12295,9 +12295,11 @@ textarea.form-control-lg {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 0.5rem;
   }
   .buttons .create_event_btn, .buttons .log_in_btn, .buttons .sign_up_btn {
     width: 30%;
+    min-width: 140px;
   }
 }
 #sign_up_body {
@@ -12536,6 +12538,13 @@ footer .icons {
 #index_body header .search input::placeholder {
   color: #fff;
 }
+#index_body .events .index-header {
+  text-align: center;
+  font-size: 35px;
+  color: #fff;
+  padding: 25px 0;
+}
+
 #create_event_page {
   background-image: url("../images/background_image.png");
   background-repeat: no-repeat;
@@ -12616,13 +12625,14 @@ footer .icons {
 }
 
 .main-user-section {
+  position: relative;
   background: radial-gradient(#FF19F2, #730770);
   background-size: cover;
   padding-top: 5em;
 }
 .main-user-section #cover-profile-pic {
   position: absolute;
-  top: 405px;
+  top: -65px;
   left: 100px;
   width: 150px;
   border: 5px solid #009DFF;
@@ -12692,6 +12702,9 @@ footer .icons {
 .events {
   position: relative;
 }
+.events .swiper {
+  width: 70%;
+}
 .events .swiper .swiper-wrapper .swiper-slide {
   border-radius: 1.1em;
   gap: 10em;
@@ -12732,12 +12745,33 @@ footer .icons {
   right: 5%;
 }
 
+@media (max-width: 767.98px) {
+  .events #leftClick, .events #rightClick {
+    position: unset;
+  }
+  .events .swiper-buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+@media (max-width: 575.98px) {
+  .events .swiper {
+    width: 100%;
+  }
+  .events .swiper .swiper-wrapper .swiper-slide {
+    width: 300px;
+  }
+  .events .swiper .swiper-wrapper .swiper-slide img {
+    width: 300px;
+  }
+}
 #center_form {
   background: radial-gradient(#FF19F2, #730770);
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
 }
 #center_form .switch {
   display: flex;
