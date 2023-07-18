@@ -57,7 +57,7 @@ const fetchEvents = async() => {
                                 id="updateEventButton"
                                 onclick="updateEvent('${data[event].event_id}', 
                                                      '${data[event].event_title}', 
-                                                     'ID: ${data[event].id_user}',
+                                                     '${data[event].id_user}',
                                                      '${data[event].event_description}',
                                                      '${data[event].event_location}',
                                                      '${data[event].event_date}',
@@ -74,13 +74,6 @@ const fetchEvents = async() => {
                         </div>
                        </div>`;
         }
-/*
-*                                                   ${data[event].event_title},
-                                                     ${data[event].id_user},
-                                                     ${data[event].event_description},
-                                                     ${data[event].event_location},
-                                                     ${data[event].event_date},
-                                                     ${data[event].event_location})"*/
         document.querySelector('#pills-contact').innerHTML = events;
     }catch (e){
         console.log("Fetch error" + e);

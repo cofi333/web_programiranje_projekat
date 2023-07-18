@@ -118,15 +118,30 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form method="post" action="php/update-user-data.php">
                                         <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
-                                            <label for="floatingEmail">Email address</label>
+                                            <input type="email" class="form-control" id="floatingUpdateEmail" placeholder="name@example.com" aria-disabled="true" disabled>
+                                            <label for="floatingUpdateEmail">Username</label>
                                         </div>
 
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingName" placeholder="Your name">
-                                            <label for="floatingName">Name</label>
+                                            <input type="text" class="form-control" id="floatingUpdateName" placeholder="Your name">
+                                            <label for="floatingUpdateName">Name</label>
+                                        </div>
+
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="floatingUpdatePassword" placeholder="Your name">
+                                            <label for="floatingUpdatePassword">Current password</label>
+                                        </div>
+
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="floatingUpdateNewPassword" placeholder="Your name">
+                                            <label for="floatingUpdateNewPassword">New Password</label>
+                                        </div>
+
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="floatingUpdateRepeatPassword" placeholder="Your name">
+                                            <label for="floatingUpdateRepeatPassword">Repeat password</label>
                                         </div>
 
                                     </form>

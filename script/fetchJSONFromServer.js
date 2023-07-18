@@ -8,7 +8,7 @@ const fetchEventJSON = async () => {
         });
         const data = await res.json();
         let output = '';
-        console.log(data);
+        //console.log(data);
         for(let i in data){
             output +=
                 `<div class="swiper-slide">
@@ -37,13 +37,19 @@ const fetchUserJSON = async ()=> {
         });
         const data = await res.json();
         let output = '';
+        let email = '';
+        let name = '';
         for(let i in data){
+            email = data[i].email;
+            name = data[i].firstname;
             output +=
                 `<p>Username: ${data[i].email}</p>
                  <p>Name: ${data[i].firstname }</p>
                  <p>Date created: ${data[i].date_time}</p>`;
         }
         document.getElementById('user-info').innerHTML = output;
+        document.getElementById('floatingUpdateEmail').value = email;
+        document.getElementById('floatingUpdateName').value = name;
     }catch (e){
         console.log("Error in fetching data", e);
     }
@@ -64,7 +70,7 @@ const fetchUserEvents = async () => {
         }
 
         let bannedEvents = [];
-        console.log(data);
+        //console.log(data);
 
 
         for(let i in data) {
@@ -194,7 +200,7 @@ let fetchUserMessages = async () => {
             },
         });
         const data = await res.json();
-        console.log(data);
+        //console.log(data);
         let message = '';
         for(let i in data){
             message +=      `<a href="#" class="list-group-item list-group-item-action w-50 p-3 mx-auto my-1" aria-current="true">

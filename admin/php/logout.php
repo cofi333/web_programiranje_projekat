@@ -1,4 +1,5 @@
 <?php
+require_once '../../php/config.php';
 require_once '../../php/functions.php';
 session_start();
 
@@ -16,8 +17,6 @@ if(isset($_SESSION['admin-username']) && $_SESSION['admin-id']){
     session_destroy();
 
     redirection("../a-login.php?m=5");
-    exit();
 } else{
     redirection("../a-login.php?m=0");
-    exit();
 }
