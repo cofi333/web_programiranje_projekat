@@ -89,7 +89,15 @@ const fetchAdminInfo = async () => {
             },
         });
         const data = await response.json();
-        //console.log(data);
+        console.log(data);
+        let footerData = '';
+        for(let i in data){
+            footerData += `<p>username: ${data[i].username}</p>
+                           <p>session id: ${data[i].id_admin}</p>`;
+        }
+
+        document.querySelector('#admin-info').innerHTML = footerData;
+
     }catch (e){
         console.log("Fetch error" + e);
     }

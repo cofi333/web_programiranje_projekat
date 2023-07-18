@@ -22,7 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse justify-content-evenly" id="navbarSupportedContent">
                     <ul class="nav nav-pills" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-admin-tab" data-bs-toggle="pill" data-bs-target="#pills-admin" type="button" role="tab" aria-controls="pills-admin" aria-selected="true">Admin profile</button>
@@ -265,10 +265,21 @@
 
         <!-- Admin events modals -->
 
-        <section class="admin-actions">
-
-        </section>
+        <section class="admin-actions"></section>
     </main>
+
+    <footer class="admin-footer">
+        <div id="admin-info">
+
+        </div>
+        <div id="logo">
+            <h2>createEvent/admin</h2>
+        </div>
+        <div id="date">
+            <?php echo 'Date: ' . date('d-m-Y'); ?>
+        </div>
+    </footer>
+
 </body>
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -277,5 +288,6 @@
     <script>
         fetchUsers();
         fetchEvents();
+        fetchAdminInfo();
     </script>
 </html>
