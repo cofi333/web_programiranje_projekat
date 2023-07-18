@@ -279,6 +279,7 @@ function guestUpdateRespone (PDO $pdo, int $event_id, int $guest_id, int $is_com
     }
 }
 
+//function for inserting comment from guest
 function insertComment(PDO $pdo, int $event_id, int $guest_id, string $comment): void {
     try {
         $sql = "INSERT INTO comments (event_id,guest_id,comment,date) VALUES (:event_id, :guest_id, :comment, DATE_ADD(now(),INTERVAL 1 DAY))";
@@ -294,6 +295,7 @@ function insertComment(PDO $pdo, int $event_id, int $guest_id, string $comment):
     }
 }
 
+//function to get guest id ()
 function getGuestId (PDO $pdo, string $mail, int $event_id) : mixed  {
     try {
         $sql ="SELECT guest_id FROM guests WHERE guest_mail=:mail AND event_id=:id";
@@ -408,6 +410,22 @@ function updateGuestComment(PDO $pdo, int $event_id, int $guest_id) : void {
         $stmt->bindParam(':guest_id', $guest_id, PDO::PARAM_INT);
         $stmt->execute();
     } catch (PDOException $e) {
+        var_dump($e->getCode());
+        throw new \PDOException($e->getMessage());
+    }
+}
+
+
+function getGiftItem (PDO $pdo, string $gift_name, int $event_id) {
+    try {
+        $sql= "SELECT * FROM wish_list WHERE wish_gift_name=:gift_name AND event_id=:event_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(":gift_name", $gift_name, PDO::PARAM_STR);
+        $stmt->bindParam(":event_id", $event_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $e) {
         var_dump($e->getCode());
         throw new \PDOException($e->getMessage());
     }

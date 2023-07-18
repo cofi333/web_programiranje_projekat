@@ -48,7 +48,14 @@ if (!existsUser($pdo, $email)) {
     if ($token) {
         $id_user = registerUser($pdo, $password, $firstname,  $email, $token);
         try {
-            $body = "Your username is $email. To activate your account click on the <a href=" . SITE . "php/active.php?token=$token>link</a>";
+            $body = "<div style=\"background: radial-gradient(circle, rgb(97, 65, 189) 30%, rgb(28, 19, 55) 100%); padding:15px; text-align:center; color: #fff; font-family: 'Oxygen', sans-serif; height: 100vh; display: flex;flex-direction:column;justify-content: center\">
+                        <h1 style=\"padding-top:50px\">ACTIVATE YOUR ACCOUNT</h1>
+                        <p style=\"padding: 35px\">Hi, your username is $email. <br>
+                        To activate your account click on the button below.</p>
+                            <div>
+                                <a href=" . SITE . "php/active.php?token=$token style=\"text-decoration:none; color: #fff;border: 1px solid #fff; padding: 5px;\">ACTIVATE</a>
+                            </div>
+                    </div>";
             sendEmail($pdo, $email, $emailMessages['register'], $body);
             redirection("../sign_up.php?r=3");
         } catch (Exception $e) {
