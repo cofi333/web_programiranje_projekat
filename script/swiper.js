@@ -1,11 +1,12 @@
 var swiper = new Swiper(".mySwiper", {
   grabCursor: true,
   centeredSlides: true,
-  initialSlide: 1,
   slidesPerView: "auto",
+  initialSlide: 1,
   spaceBetween: 50,
   pagination: {
     el: ".swiper-pagination",
+    type: "progressbar",
   },
   navigation: {
     nextEl: "#rightClick",

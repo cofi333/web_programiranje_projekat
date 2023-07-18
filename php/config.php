@@ -59,7 +59,8 @@ $messages = [
     36 => 'Check params down below, then submit update form again.',
     37 => 'Event name does not match, please enter valid name.',
     38 => 'Guest is deleted.',
-    39 => 'Guest is updated.'
+    39 => 'Guest is updated.',
+    40 => 'Event is updated.'
 ];
 
 $emailMessages = [
