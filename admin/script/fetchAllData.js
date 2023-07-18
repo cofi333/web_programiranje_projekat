@@ -57,7 +57,7 @@ const fetchEvents = async() => {
                                 id="updateEventButton"
                                 onclick="updateEvent('${data[event].event_id}', 
                                                      '${data[event].event_title}', 
-                                                     'ID: ${data[event].id_user}',
+                                                     '${data[event].id_user}',
                                                      '${data[event].event_description}',
                                                      '${data[event].event_location}',
                                                      '${data[event].event_date}',
@@ -74,13 +74,6 @@ const fetchEvents = async() => {
                         </div>
                        </div>`;
         }
-/*
-*                                                   ${data[event].event_title},
-                                                     ${data[event].id_user},
-                                                     ${data[event].event_description},
-                                                     ${data[event].event_location},
-                                                     ${data[event].event_date},
-                                                     ${data[event].event_location})"*/
         document.querySelector('#pills-contact').innerHTML = events;
     }catch (e){
         console.log("Fetch error" + e);
@@ -96,7 +89,15 @@ const fetchAdminInfo = async () => {
             },
         });
         const data = await response.json();
-        //console.log(data);
+        console.log(data);
+        let footerData = '';
+        for(let i in data){
+            footerData += `<p>username: ${data[i].username}</p>
+                           <p>session id: ${data[i].id_admin}</p>`;
+        }
+
+        document.querySelector('#admin-info').innerHTML = footerData;
+
     }catch (e){
         console.log("Fetch error" + e);
     }

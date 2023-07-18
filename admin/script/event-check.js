@@ -33,7 +33,7 @@ let validateForm = () => {
 document.querySelector('#update-form').addEventListener("submit", function (e){
     e.preventDefault();
 
-    console.log(validateUpdateForm());
+    //console.log(validateUpdateForm());
     if(validateUpdateForm()){
         this.submit();
     }

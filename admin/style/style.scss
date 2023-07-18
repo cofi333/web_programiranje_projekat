@@ -1,29 +1,49 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Oxygen', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Oxygen', sans-serif;
 }
 
 .admin-login {
-    background-color: #490149;
+  background-color: #490149;
 }
 
 #admin-login-form {
-    padding: 5em;
-    width: 720px;
-    border-radius: 10px;
-    background-color: #009DFF;
+  padding: 5em;
+  width: 720px;
+  border-radius: 10px;
+  background-color: #009DFF;
 }
 
 .admin-nav-header {
-    background-color: rgba(97, 65, 189, 0.50);
+  background-color: rgba(97, 65, 189, 0.50);
 }
 
 .user-admin, .admin-v-events {
-    background-color: #009DFF;
-    margin: 2em;
-    padding: 2em;
-    border-radius: 10px;
+  background-color: #009DFF;
+  margin: 2em;
+  padding: 2em;
+  border-radius: 10px;
 }
 
+
+.admin-footer{
+  z-index: 999;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  background-color: #6141BD80;
+  padding: 0.8em;
+
+  p{
+    margin: 0;
+    line-height: 2em;
+  }
+}

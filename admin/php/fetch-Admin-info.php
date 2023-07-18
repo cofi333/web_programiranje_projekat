@@ -1,4 +1,5 @@
 <?php
+    require_once '../../php/config.php';
 try{
     $sql = "SELECT * FROM admins";
     $stmt = $pdo->prepare($sql);

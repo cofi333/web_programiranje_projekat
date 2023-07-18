@@ -25,4 +25,21 @@
   margin: 2em;
   padding: 2em;
   border-radius: 10px;
-}/*# sourceMappingURL=style.css.map */
+}
+
+.admin-footer {
+  z-index: 999;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(97, 65, 189, 0.5019607843);
+  padding: 0.8em;
+}
+.admin-footer p {
+  margin: 0;
+  line-height: 2em;
+}
