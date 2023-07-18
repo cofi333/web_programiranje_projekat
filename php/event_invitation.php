@@ -150,13 +150,13 @@ if($result2 === false) {
             echo ' 
        <div class="rd-btns">
         <div class="form-check">
-            <input class="form-check-input radio_btns"';  if($result2 && $result2['is_coming'] === 1)  echo "checked";  echo ' type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault2">
+            <input class="form-check-input radio_btns"';  if($result2['is_coming'] === 1)  echo "checked";  echo ' type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault2">
             <label class="form-check-label radio_btns" for="flexRadioDefault2">
                 Coming
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input radio_btns"'; if($result2 && ($result2['is_coming']) === 0)  echo "checked"; echo ' type="radio" value="0" name="flexRadioDefault" id="flexRadioDefault1">
+            <input class="form-check-input radio_btns"'; if($result2['is_coming'] === 0)  echo "checked"; echo ' type="radio" value="0" name="flexRadioDefault" id="flexRadioDefault1">
             <label class="form-check-label radio_btns" for="flexRadioDefault1">
                 Not coming
             </label>

@@ -38,6 +38,10 @@ if(!filter_var($gift_link, FILTER_VALIDATE_URL)) {
     $errors[] = "Link is not in valid form.";
 }
 
+if(getGiftItem($pdo, $gift_name, $event_id)) {
+    $errors[] = "Item is already added to the list.";
+}
+
 if(!$errors) {
     insertGiftItem($pdo, $user_id, $event_id, $gift_name, $gift_link);
     redirection('./wish-list.php?event_id='.$event_id . "&wl=34");

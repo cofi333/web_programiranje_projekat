@@ -29,10 +29,10 @@ switch ($method) {
             if ($stmt->rowCount() > 0) {
                 include_once "reset_form.php";
             } else {
-                redirection('reset_form_message.php?rf=15');
+                redirection('reset_form.php?rf=15');
             }
         } else {
-            redirection('reset_form_message.php?rf=0');
+            redirection('reset_form.php?rf=0');
         }
         break;
 
