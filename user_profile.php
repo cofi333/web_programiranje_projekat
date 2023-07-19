@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,6 @@
     <title>Your Profile</title>
 </head>
 <body>
-
     <header class="heading">
         <nav class="navbar navbar_index navbar-expand-lg">
             <div class="container-fluid container">
@@ -41,29 +40,24 @@
                             <a class="nav-link" href="#">Sport</a>
                         </li>
                     </ul>
-
                     <ul class="navbar-nav buttons">
                         <li class="nav-item create_event_btn">
                             <a class="nav-link" href="./event.php">Create an event</a>
                         </li>
-
                     </ul>
-
                     <div class="user">
-                        <a href="#"><img src="./images/user_image.png" id="user_image"></a>
+                        <a href="#"><img src="./images/user_image.png" id="user_image" alt="user"></a>
                     </div>
                 </div>
             </div>
         </nav>
-
         <?php
-        session_start();
-        require_once 'php/config.php';
-        require_once 'php/functions.php';
-        if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_SESSION['id_user'])) {
-            redirection('index.php?l=0');
-        }
-
+            session_start();
+            require_once 'php/config.php';
+            require_once 'php/functions.php';
+            if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_SESSION['id_user'])) {
+                redirection('index.php?l=0');
+            }
         ?>
     </header>
 
@@ -78,7 +72,6 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Events</button>
             </li>
-
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="pills-messages-tab" data-bs-toggle="pill" data-bs-target="#pills-messages" type="button" role="tab" aria-controls="pills-messages" aria-selected="false">Messages</button>
             </li>
@@ -86,7 +79,6 @@
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active py-5" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                 <div class="pb-2 text-center" id="user-info"></div>
-
                 <div class="user-action py-3" style="text-align: center">
                    <!-- logout modal section -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logoutEventModal">Log out</button>
@@ -108,8 +100,7 @@
                         </div>
                     </div>
                     <!-- logout modal section -->
-
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Update profile info</button>
+                    <button id="updateInfoBtn" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Update profile info</button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -118,37 +109,58 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="post" action="php/update-user-data.php">
+                                    <form id="updateUserInfoForm" method="post" action="php/update-user-info.php">
+                                        <div class="form-floating mb-3">
+                                            <input name="userid" type="hidden" class="form-control" id="floatingUpdateID" placeholder="name@example.com">
+                                            <label for="floatingUpdateID">id</label>
+                                        </div>
                                         <div class="form-floating mb-3">
                                             <input type="email" class="form-control" id="floatingUpdateEmail" placeholder="name@example.com" aria-disabled="true" disabled>
                                             <label for="floatingUpdateEmail">Username</label>
                                         </div>
-
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingUpdateName" placeholder="Your name">
+                                            <input name="userUpdateName" type="text" class="form-control" id="floatingUpdateName" placeholder="Your name">
                                             <label for="floatingUpdateName">Name</label>
+                                            <p id="nameInputErrorMsg" style="color: #ff0000"></p>
                                         </div>
-
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingUpdatePassword" placeholder="Your name">
-                                            <label for="floatingUpdatePassword">Current password</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingUpdateNewPassword" placeholder="Your name">
-                                            <label for="floatingUpdateNewPassword">New Password</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingUpdateRepeatPassword" placeholder="Your name">
-                                            <label for="floatingUpdateRepeatPassword">Repeat password</label>
-                                        </div>
-
+                                        <hr>
+                                        <input type="submit" class="btn btn-primary" value="Update profile info">
                                     </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-primary">Update</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button id="updatePasswordBtn" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updatePswd">Update password</button>
+                    <div class="modal fade" id="updatePswd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update password</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="updateUserPasswordForm" method="post" action="php/update-user-password.php">
+                                        <div class="form-floating mb-3">
+                                            <input name="currentPassword" type="text" class="form-control" id="floatingUpdatePassword" placeholder="Your name">
+                                            <label for="floatingUpdatePassword">Current password</label>
+                                            <p id="currentPasswordError"></p>
+                                        </div>
+
+                                        <div class="form-floating mb-3">
+                                            <input name="newPassword" type="text" class="form-control" id="floatingUpdateNewPassword" placeholder="Your name">
+                                            <label for="floatingUpdateNewPassword">New Password</label>
+                                            <p id="newPasswordError"></p>
+                                        </div>
+
+                                        <div class="form-floating mb-3">
+                                            <input name="repeatedNewPassword" type="text" class="form-control" id="floatingUpdateRepeatPassword" placeholder="Your name">
+                                            <label for="floatingUpdateRepeatPassword">Repeat password</label>
+                                        </div>
+                                        <hr>
+                                        <input type="submit" class="btn btn-primary" value="Update password">
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -224,27 +236,24 @@
 
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="node_modules/swiper/swiper-bundle.min.js"></script>
-    <script src="./script/swiper.js">
-
-    </script>
+    <script src="./script/swiper.js"></script>
     <script src="./script/fetchJSONFromServer.js"></script>
     <script>
         fetchUserJSON();
         fetchUserMessages();
     </script>
-<script>
-    let listEventBtn = document.getElementById('pills-profile-tab');
-    let alreadyFetched = false;
-    listEventBtn.addEventListener("click", function (e){
-        if(!alreadyFetched) {
-            fetchUserEventsAndCheck();
-            alreadyFetched = true;
-        } else{
-            e.preventDefault();
-        }
-    });
-
-</script>
-
+    <script>
+        let listEventBtn = document.getElementById('pills-profile-tab');
+        let alreadyFetched = false;
+        listEventBtn.addEventListener("click", function (e){
+            if(!alreadyFetched) {
+                fetchUserEventsAndCheck();
+                alreadyFetched = true;
+            } else{
+                e.preventDefault();
+            }
+        });
+    </script>
+    <script src="script/userUpdateDataCheck.js"></script>
 </body>
 </html>

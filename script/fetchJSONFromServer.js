@@ -39,7 +39,9 @@ const fetchUserJSON = async ()=> {
         let output = '';
         let email = '';
         let name = '';
+        let userid = 0;
         for(let i in data){
+            userid = data[i].id_user;
             email = data[i].email;
             name = data[i].firstname;
             output +=
@@ -48,6 +50,7 @@ const fetchUserJSON = async ()=> {
                  <p>Date created: ${data[i].date_time}</p>`;
         }
         document.getElementById('user-info').innerHTML = output;
+        document.getElementById('floatingUpdateID').value = userid;
         document.getElementById('floatingUpdateEmail').value = email;
         document.getElementById('floatingUpdateName').value = name;
     }catch (e){
@@ -238,4 +241,3 @@ let getGiftData = (name, link, wish_id, event_id) => {
     input_wish_id.value = wish_id;
     input_event_id.value = event_id;
 }
-
