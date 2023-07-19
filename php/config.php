@@ -60,7 +60,9 @@ $messages = [
     37 => 'Event name does not match, please enter valid name.',
     38 => 'Guest is deleted.',
     39 => 'Guest is updated.',
-    40 => 'Event is updated.'
+    40 => 'Event is updated.',
+    41 => 'Name must me at least 3 characters long and it can not be numeric.',
+    42 => 'Please set your new name'
 ];
 
 $emailMessages = [

@@ -25,7 +25,7 @@ if(isset($_POST['id_event']) && isset($_POST['id_user']) && isset($_POST['delete
         $stmt->execute();
         $result = $stmt->fetch();
         $db_eventName = $result['event_title'];
-        var_dump($db_eventName);
+        //var_dump($db_eventName);
     } catch (PDOException $e) {
         echo 'Error: ' . $e->getMessage();
         throw new \PDOException($e->getMessage());
