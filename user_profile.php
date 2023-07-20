@@ -96,14 +96,13 @@
                                     <p>Are you sure you want to log out?</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                                    <a href="./php/logout.php" type="button" id="logout-btn" class="btn btn-warning">Log Out</a>
+                                    <a href="./php/logout.php" type="button" id="logout-btn" class="btn btn-danger">Log Out</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- logout modal section -->
-                    <button id="updateInfoBtn" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Update profile info</button>
+                    <button id="updateInfoBtn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Update profile info</button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -126,7 +125,7 @@
                                             <p id="nameInputErrorMsg" style="color: #ff0000"></p>
                                         </div>
                                         <hr>
-                                        <input type="submit" class="btn btn-primary" value="Update profile info">
+                                        <input type="submit" class="btn btn-danger" value="Update profile info">
                                     </form>
                                 </div>
                             </div>
@@ -134,7 +133,7 @@
                     </div>
 
 
-                    <button id="updatePasswordBtn" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updatePswd">Update password</button>
+                    <button id="updatePasswordBtn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updatePswd">Update password</button>
                     <div class="modal fade" id="updatePswd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -165,7 +164,7 @@
                                             <p id="repNewPasswordError" style="color: red"></p>
                                         </div>
                                         <hr>
-                                        <input type="submit" class="btn btn-primary" value="Update password">
+                                        <input type="submit" class="btn btn-danger" value="Update password">
                                     </form>
                                 </div>
                             </div>
@@ -217,7 +216,7 @@
     </footer>
 
     <div class="modal fade" id="deleteEventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Delete event</h1>
@@ -227,8 +226,7 @@
                     <p>Are you sure you want to delete event?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="" type="button" id="delete-btn" class="btn btn-primary">Delete event</a>
+                    <a href="" type="button" id="delete-btn" class="btn btn-danger">Delete event</a>
                 </div>
             </div>
         </div>

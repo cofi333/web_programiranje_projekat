@@ -89,8 +89,8 @@ const fetchUserEvents = async () => {
                         <div class="event-options"> 
                             <a id="createWish" href="./php/wish-list.php?event_id=${data[i].event_id}" class="btn btn-primary">Wish list</a>  
                             <a id="sendInv" href="./php/send-invitation.php?event_id=${data[i].event_id}" class="btn btn-primary">Invitations</a>
-                            <a id="updateEv" class="btn btn-warning update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
-                            <a id="delButton" class="btn btn-danger" onclick="putID(${data[i].event_id})" role="button" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</a>                                                       
+                            <a id="updateEv" class="btn btn-primary update-event" href="./php/update-event.php?event_id=${data[i].event_id}" role="button">Update Event</a>
+                            <a id="delButton" class="btn btn-primary" onclick="putID(${data[i].event_id})" role="button" data-bs-toggle="modal" data-bs-target="#deleteEventModal">Delete event</a>                                                       
                         </div>
                 </div>`;
         }
@@ -207,7 +207,7 @@ let fetchUserMessages = async () => {
         //console.log(data);
         let message = '';
         for(let i in data){
-            message +=      `<a href="#" class="list-group-item list-group-item-action w-50 p-3 mx-auto my-1" aria-current="true">
+            message +=      `<a href="#" class="list-group-item list-group-item-action w-75 p-3 mx-auto " aria-current="true">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1">Deleted event - ${data[i].event_name}</h5>
                                     <small>${data[i].date_sent}</small>
