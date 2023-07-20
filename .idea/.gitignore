@@ -6,3 +6,14 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+#files
+/gulpfile.js
+/package.json
+/package-lock.json
+/admin/gulpfile.js
+
+#folders
+/sass/
+/node_modules/
+/database/
