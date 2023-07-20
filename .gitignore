@@ -5,6 +5,6 @@ package-lock.json
 admin/gulpfile.js
 
 #folders
-sass
-node-modules
-database
+sass/
+node_modules/
+database/
