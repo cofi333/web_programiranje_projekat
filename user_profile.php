@@ -65,7 +65,7 @@
     <main class="main-user-section">
         <img src="./images/user_image_profile.png" id="cover-profile-pic" alt="user">
 
-        <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+        <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Profile</button>
             </li>
@@ -76,6 +76,24 @@
                 <button class="nav-link" id="pills-messages-tab" data-bs-toggle="pill" data-bs-target="#pills-messages" type="button" role="tab" aria-controls="pills-messages" aria-selected="false">Messages</button>
             </li>
         </ul>
+
+        <section class="redirect-messages">
+            <?php
+            require_once 'php/config.php';
+            if(isset($_GET['m'])){
+                if($_GET['m'] == 45) {
+                    echo '<div class="alert alert-success alert-dismissible fade show mx-auto" style="width: 600px; text-align: center" role="alert">';
+                    echo '  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                } else {
+                    echo '<div class="alert alert-danger alert-dismissible fade show my-3 mx-auto" style="width: 600px; text-align: center" role="alert">';
+                    echo '  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                }
+                echo $messages[$_GET['m']];
+                echo '</div>';
+            }
+            ?>
+        </section>
+
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active py-5" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                 <div class="pb-2 text-center" id="user-info"></div>
@@ -112,7 +130,6 @@
                                     <form id="updateUserInfoForm" method="post" action="php/update-user-info.php">
                                         <div class="form-floating mb-3">
                                             <input name="userid" type="hidden" class="form-control" id="floatingUpdateID" placeholder="name@example.com">
-                                            <label for="floatingUpdateID">id</label>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input type="email" class="form-control" id="floatingUpdateEmail" placeholder="name@example.com" aria-disabled="true" disabled>
@@ -143,20 +160,24 @@
                                 <div class="modal-body">
                                     <form id="updateUserPasswordForm" method="post" action="php/update-user-password.php">
                                         <div class="form-floating mb-3">
-                                            <input name="currentPassword" type="text" class="form-control" id="floatingUpdatePassword" placeholder="Your name">
+                                            <input name="userid" type="hidden" class="form-control" id="floatingUpdatePswdID" placeholder="name@example.com">
+                                            <label for="floatingUpdatePswdID">id</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input name="currentPassword" type="password" class="form-control" id="floatingUpdatePassword" placeholder="Your name">
                                             <label for="floatingUpdatePassword">Current password</label>
-                                            <p id="currentPasswordError"></p>
+                                            <p id="currentPasswordError" style="color: red"></p>
                                         </div>
 
                                         <div class="form-floating mb-3">
-                                            <input name="newPassword" type="text" class="form-control" id="floatingUpdateNewPassword" placeholder="Your name">
+                                            <input name="newPassword" type="password" class="form-control" id="floatingUpdateNewPassword" placeholder="Your name">
                                             <label for="floatingUpdateNewPassword">New Password</label>
-                                            <p id="newPasswordError"></p>
+                                            <p id="newPasswordError" style="color: red"></p>
                                         </div>
-
                                         <div class="form-floating mb-3">
-                                            <input name="repeatedNewPassword" type="text" class="form-control" id="floatingUpdateRepeatPassword" placeholder="Your name">
+                                            <input name="repeatedNewPassword" type="password" class="form-control" id="floatingUpdateRepeatPassword" placeholder="Your name">
                                             <label for="floatingUpdateRepeatPassword">Repeat password</label>
+                                            <p id="repNewPasswordError" style="color: red"></p>
                                         </div>
                                         <hr>
                                         <input type="submit" class="btn btn-primary" value="Update password">
@@ -185,6 +206,7 @@
                 </div>
             </div>
         </div>
+
     </main>
 
     <footer id="user-profile-footer">

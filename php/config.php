@@ -30,7 +30,7 @@ $messages = [
     7 => 'Passwords are not equal!',
     8 => 'Format of e-mail address is not valid!',
     9 => 'Password is too short! It must be minimum 8 characters long!',
-    10 => 'Password is not enough strong! (min 8 characters, at least 1 lowercase character, 1 uppercase character, 1 number, and 1 special character',
+    10 => 'Password is not enough strong!' . '<br/>' . '(min 8 characters, at least 1 lowercase character, 1 uppercase character, 1 number, and 1 special character',
     11 => 'Something went wrong with mail server. We will try to send email later!',
     12 => 'Your account is already activated!',
     13 => 'Your event is created!',
@@ -62,7 +62,11 @@ $messages = [
     39 => 'Guest is updated.',
     40 => 'Event is updated.',
     41 => 'Name must me at least 3 characters long and it can not be numeric.',
-    42 => 'Please set your new name'
+    42 => 'Please set your new name',
+    43 => 'Fill update password form!',
+    44 => 'New password does not match with repeated password!',
+    45 => 'Password updated!',
+    46 => 'Your current password is not valid'
 ];
 
 $emailMessages = [
