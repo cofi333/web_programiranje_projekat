@@ -22,7 +22,7 @@ if(isset($_POST['currentPassword']) && isset($_POST['newPassword']) && isset($_P
 
 //fetching user password from database
 try{
-    $sql = "SELECT password FROM users WHERE id_user=1";
+    $sql = "SELECT password FROM users WHERE id_user=" . $userID;
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll();
