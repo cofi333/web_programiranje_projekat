@@ -5,7 +5,7 @@
 
  if(isset($_GET['id_user'])) {
          try{
-             $sql = ("UPDATE users SET is_banned = 1 WHERE id_user = " . $_GET['id_user'] . " AND is_banned = 0");
+             $sql = ("UPDATE users SET is_banned = 1 WHERE id_user = " . $_GET['id_user'] . " AND is_banned = NULL");
              $stmt = $pdo->prepare($sql);
              $stmt->execute();
              redirection("../admin.php?m=25");

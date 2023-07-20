@@ -29,8 +29,8 @@
 
                 <?php
                 session_start();
-                require_once './php/config.php';
-                require_once './php/functions.php';
+                require_once 'php/config.php';
+                require_once 'php/functions.php';
                 if (!isset($_SESSION['username']) OR !isset($_SESSION['id_user']) OR !is_int($_SESSION['id_user'])) {
                     echo '<li class="nav-item create_event_btn">';
                     echo '<a class="nav-link" href="./login.php">Create an event</a>';

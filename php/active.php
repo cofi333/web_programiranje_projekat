@@ -8,7 +8,7 @@ if (isset($_GET['token'])) {
 
 if (!empty($token) and strlen($token) === 40) {
 
-    $sql = "UPDATE users SET active = 1, registration_token = '', registration_expires = ''
+    $sql = "UPDATE users SET active = 1, registration_token = '', registration_expires = '0000-00-00 00:00:00'
             WHERE binary registration_token = :token AND registration_expires>now()";
 
     $stmt = $pdo->prepare($sql);
@@ -20,8 +20,8 @@ if (!empty($token) and strlen($token) === 40) {
     if ($stmt->rowCount() > 0) {
         redirection('../login.php?l=6');
     } else {
-        redirection('index.php?r=12');
+        redirection('../login.php?l=12');
     }
 } else {
-    redirection('index.php?r=0');
+    redirection('../login.php?l=0');
 }
