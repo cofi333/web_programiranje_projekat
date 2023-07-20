@@ -173,7 +173,7 @@ let fetchGifts = async () => {
 
         const data = await res.json();
         let output = '';
-        let number=1;
+        let number= 1;
 
         for (let i in data) {
             output += `
@@ -206,6 +206,10 @@ let fetchUserMessages = async () => {
         const data = await res.json();
         //console.log(data);
         let message = '';
+        if(data.length === 0){
+            message += `<h4 class="text-center py-5">You have no messages</h4>`;
+        }
+
         for(let i in data){
             message +=      `<a href="#" class="list-group-item list-group-item-action w-75 p-3 mx-auto " aria-current="true">
                                 <div class="d-flex w-100 justify-content-between">

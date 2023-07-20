@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
@@ -62,15 +63,15 @@
             </li>
         </ul>
 
-        <section class="redirect-messages">
+        <section class="redirect-messages py-3">
             <?php
             require_once 'php/config.php';
             if(isset($_GET['m'])){
                 if($_GET['m'] == 45) {
-                    echo '<div class="alert alert-success alert-dismissible fade show mx-auto" style="width: 600px; text-align: center" role="alert">';
+                    echo '<div class="alert alert-success alert-dismissible fade show mx-auto w-75" style="text-align: center" role="alert">';
                     echo '  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                 } else {
-                    echo '<div class="alert alert-danger alert-dismissible fade show my-3 mx-auto" style="width: 600px; text-align: center" role="alert">';
+                    echo '<div class="alert alert-danger alert-dismissible fade show mx-auto" style="width: 600px; text-align: center" role="alert">';
                     echo '  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                 }
                 echo $messages[$_GET['m']];
@@ -79,8 +80,8 @@
             ?>
         </section>
 
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active py-5" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+        <div class="tab-content user-prof" id="pills-tabContent">
+            <div class="tab-pane user-pane fade show active py-2" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                 <div class="pb-2 text-center" id="user-info"></div>
                 <div class="user-action py-3" style="text-align: center">
                    <!-- logout modal section -->
@@ -145,7 +146,6 @@
                                     <form id="updateUserPasswordForm" method="post" action="php/update-user-password.php">
                                         <div class="form-floating mb-3">
                                             <input name="userid" type="hidden" class="form-control" id="floatingUpdatePswdID" placeholder="name@example.com">
-                                            <label for="floatingUpdatePswdID">id</label>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input name="currentPassword" type="password" class="form-control" id="floatingUpdatePassword" placeholder="Your name">
@@ -186,7 +186,6 @@
         <div class="tab-content" id="pills-tabContent">
             <div class="usr-msg tab-pane fade justify-content-center" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab" tabindex="0">
                 <div class="list-group py-5">
-
                 </div>
             </div>
         </div>
@@ -233,7 +232,7 @@
     </div>
 
 
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="node_modules/swiper/swiper-bundle.min.js"></script>
     <script src="./script/swiper.js"></script>
     <script src="./script/fetchJSONFromServer.js"></script>

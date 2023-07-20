@@ -12702,6 +12702,13 @@ footer .icons {
   .main-user-section #cover-profile-pic {
     display: none;
   }
+  .main-user-section .user-action {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0.8em;
+  }
 }
 .events {
   position: relative;

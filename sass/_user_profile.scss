@@ -89,6 +89,14 @@
     #cover-profile-pic{
       display: none;
     }
+
+    .user-action {
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0.8em;
+    }
   }
 
 }
