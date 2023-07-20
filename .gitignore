@@ -1,0 +1,10 @@
+#files to be excluded
+gulpfile.js
+package.json
+package-lock.json
+admin/gulpfile.js
+
+#folders
+sass
+node-modules
+database

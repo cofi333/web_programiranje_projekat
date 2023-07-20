@@ -92,7 +92,7 @@
                     }
 
                 } else{
-                    echo 'Howdy admin';
+                    echo '<p style="text-align: center; padding-top: 2em; font-size: 2em;">Howdy admin</p>';
                 }
                 ?>
 
