@@ -20,20 +20,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 links">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Music</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Nightlife</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Culture</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Food</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Sport</a>
+              <li class="nav-item logo">
+                <a class="nav-link" aria-current="page" href="#">createEvent</a>
               </li>
             </ul>
 
@@ -97,13 +85,9 @@
         <div class="container">
           <div class="row">
             <div class="categories col-md-9">
-              <h6>Categories</h6>
+              <h6>createEvent.com</h6>
               <ul class="type">
-                <li><a href="#">Music</a></li>
-                <li><a href="#">Nightlife</a></li>
-                <li><a href="#">Culture</a></li>
-                <li><a href="#">Food</a></li>
-                <li><a href="#">Sport</a></li>
+                <li><a href="./event.php">Host your event</a></li>
               </ul>
             </div>
 

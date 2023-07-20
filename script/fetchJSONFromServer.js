@@ -51,6 +51,7 @@ const fetchUserJSON = async ()=> {
         }
         document.getElementById('user-info').innerHTML = output;
         document.getElementById('floatingUpdateID').value = userid;
+        document.getElementById('floatingUpdatePswdID').value = userid;
         document.getElementById('floatingUpdateEmail').value = email;
         document.getElementById('floatingUpdateName').value = name;
     }catch (e){

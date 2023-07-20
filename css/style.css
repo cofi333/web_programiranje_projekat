@@ -12249,8 +12249,8 @@ textarea.form-control-lg {
 }
 .navbar {
   z-index: 998;
-  padding-top: 0.9em;
-  padding-bottom: 0.9em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   background-color: rgba(97, 65, 189, 0.5019607843);
 }
 .navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl, .navbar .container-xxl {
@@ -12258,6 +12258,10 @@ textarea.form-control-lg {
 }
 .navbar .navbar-nav {
   gap: 15px;
+}
+.navbar .logo {
+  font-size: 2em;
+  font-weight: 700;
 }
 
 .links .nav-link {
