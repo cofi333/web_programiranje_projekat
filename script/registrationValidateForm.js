@@ -12,6 +12,7 @@ let password_error = document.getElementById("password-error");
 let repeat_password_error = document.getElementById("repeat-password-error");
 
 
+
 form.addEventListener("submit", function (e){
     e.preventDefault();
 
@@ -39,7 +40,7 @@ let registrationValidateForm = () => {
         validForm = false;
     }
 
-    if(!(password.value.trim().length > 8) && !isValidPassword(password)){
+    if(!isValidPassword(password.value)){
         validForm = false;
         password_error.innerHTML +=  "Your password must contain:" + "<br>" + "Minimum eight characters" + "<br>" + "At least one uppercase letter" + "<br>" + "One lowercase letter" + "<br>" + "One number and one special character";
     }
@@ -61,7 +62,7 @@ const isValidEmail = (email) => {
 
 //Function checks if password is valid
 const isValidPassword = (password) => {
-    let rexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    let rexPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
     return rexPassword.test(password);
 }
 

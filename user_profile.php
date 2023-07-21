@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <title>Your Profile</title>
@@ -233,8 +232,6 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="node_modules/swiper/swiper-bundle.min.js"></script>
-    <script src="./script/swiper.js"></script>
     <script src="./script/fetchJSONFromServer.js"></script>
     <script>
         fetchUserJSON();

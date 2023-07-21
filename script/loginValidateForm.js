@@ -27,7 +27,7 @@ let validateLoginForm = () => {
         emailError.innerHTML += 'Please enter valid email address';
     }
 
-    if(isEmpty(passwordInput.value.trim()) && !isValidPassword(passwordInput.value.trim()) && passwordInput.value.length < 8) {
+    if(!isValidPassword(passwordInput.value)) {
         validLoginForm = false;
         passwordError.innerHTML += 'Incorrect password, please try again.';
     }
@@ -43,7 +43,7 @@ const isValidEmail = (email) => {
 }
 
 const isValidPassword = (password) => {
-    let rexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    let rexPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
     return rexPassword.test(password);
 }
 
