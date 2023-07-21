@@ -41,28 +41,29 @@
 </nav>
 
     <main>
-        <section class="hero-login">
-            <?php
-            require_once './php/config.php';
+        <section class="login container">
+            <div>
+                <?php
+                require_once './php/config.php';
 
-            $l = 0;
+                $l = 0;
 
-            if (isset($_GET["l"]) and is_numeric($_GET['l'])) {
-                $l = (int)$_GET["l"];
+                if (isset($_GET["l"]) and is_numeric($_GET['l'])) {
+                    $l = (int)$_GET["l"];
 
-                if (array_key_exists($l, $messages)) {
-                    echo '
+                    if (array_key_exists($l, $messages)) {
+                        echo '
                     <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
                         ' . $messages[$l] . '
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>
                     ';
+                    }
                 }
-            }
-            ?>
-        </section>
-        <section class="login container d-flex justify-content-center gap-2">
+                ?>
+            </div>
+            <div class="d-flex justify-content-center gap-2">
             <div class="loginPic">
                 <img src="./images/people.png" alt="peoplepng">
             </div>
@@ -96,6 +97,7 @@
 
                     <button type="submit" class="btn btn-primary">Reset password</button>
                 </form>
+            </div>
             </div>
         </section>
     </main>

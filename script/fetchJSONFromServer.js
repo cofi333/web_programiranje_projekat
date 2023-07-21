@@ -1,6 +1,6 @@
 const fetchEventJSON = async () => {
   try {
-    const res = await fetch("../php/fetchData/fetch-event.php/", {
+    const res = await fetch("./php/fetchData/fetch-event.php/", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -28,7 +28,7 @@ const fetchEventJSON = async () => {
 
 const fetchUserJSON = async () => {
   try {
-    const res = await fetch("../php/fetchData/fetch-user.php/", {
+    const res = await fetch("./php/fetchData/fetch-user.php/", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -59,7 +59,7 @@ const fetchUserJSON = async () => {
 
 const fetchUserEvents = async () => {
   try {
-    const res = await fetch("../php/fetchData/fetch-userEvent.php/", {
+    const res = await fetch("./php/fetchData/fetch-userEvent.php/", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -100,7 +100,7 @@ const fetchUserEvents = async () => {
 
 const fetchComments = async () => {
   try {
-    const res = await fetch("../php/fetchData/fetch-comments.php", {
+    const res = await fetch("./php/fetchData/fetch-comments.php", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -158,7 +158,7 @@ let fetchUserEventsAndCheck = async () => {
 
 let fetchGifts = async () => {
   try {
-    const res = await fetch("../php/fetchData/fetch-gifts.php", {
+    const res = await fetch("./php/fetchData/fetch-gifts.php", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -191,7 +191,7 @@ let fetchGifts = async () => {
 
 let fetchUserMessages = async () => {
   try {
-    const res = await fetch("../php/fetchData/fetch-userMessages.php/", {
+    const res = await fetch("./php/fetchData/fetch-userMessages.php/", {
       method: "GET",
       headers: {
         Accept: "application/json",
