@@ -144,12 +144,12 @@
                                 </div>
                                 <div class="modal-body">
                                     <form id="updateUserPasswordForm" method="post" action="php/update-user-password.php">
-                                        <div class="form-floating mb-3">
+                                        <div class="form-floating">
                                             <input name="userid" type="hidden" class="form-control" id="floatingUpdatePswdID" placeholder="name@example.com">
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <label for="floatingUpdatePassword">Current password</label>
                                             <input name="currentPassword" type="password" class="form-control" id="floatingUpdatePassword" placeholder="Your name">
+                                            <label for="floatingUpdatePassword">Current password</label>
                                             <p id="currentPasswordError" style="color: red"></p>
                                         </div>
 
@@ -233,8 +233,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="node_modules/swiper/swiper-bundle.min.js"></script>
-    <script src="./script/swiper.js"></script>
+    <script src="./script/userUpdateDataCheck.js"></script>
     <script src="./script/fetchJSONFromServer.js"></script>
     <script>
         fetchUserJSON();
@@ -252,6 +251,6 @@
             }
         });
     </script>
-    <script src="script/userUpdateDataCheck.js"></script>
+
 </body>
 </html>

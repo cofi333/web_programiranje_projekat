@@ -23,11 +23,11 @@ let updateInfoFormValidation = () => {
 }
 
 //update password check
-document.querySelector('#updateUserPasswordForm').addEventListener("submit", function (ev){
-    ev.preventDefault();
+document.querySelector('#updateUserPasswordForm').addEventListener("submit", function (e){
+    e.preventDefault();
+
     if(updatePasswordFormValidation()){
         this.submit();
-        console.log('button clicked');
     }
 });
 
@@ -41,7 +41,7 @@ let updatePasswordFormValidation = () => {
     let newPassword = document.querySelector('#floatingUpdateNewPassword');
     let repNewPassword = document.querySelector('#floatingUpdateRepeatPassword');
 
-//error messages
+    //error messages
     let currPassmsg = document.querySelector('#currentPasswordError');
     let newPassmsg = document.querySelector('#newPasswordError');
     let repnewPassmsg = document.querySelector('#repNewPasswordError');
@@ -65,13 +65,13 @@ let updatePasswordFormValidation = () => {
         repnewPassmsg.innerHTML = 'Your passwords does not match.';
     }
 
-    console.log('valid password: ' + passCheck);
     return passCheck;
+
 }
 
 let isEmpty = value => value === '';
 
 const isValidPassword = (password) => {
-    let rexPassword = /^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    let rexPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
     return rexPassword.test(password);
-}
+};

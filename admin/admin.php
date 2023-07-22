@@ -60,7 +60,7 @@
             </div>
         </nav>
     </header>
-    <main>
+    <main class="admin-main">
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade active show align-middle" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab" tabindex="0">
                 <?php
