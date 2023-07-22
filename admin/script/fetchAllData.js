@@ -89,7 +89,7 @@ const fetchAdminInfo = async () => {
       },
     });
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     let footerData = "";
     for (let i in data) {
       footerData += `<p>username: ${data[i].username}</p>

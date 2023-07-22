@@ -207,13 +207,14 @@
                                 <input type="hidden" value="" name="id_event" id="deleteEventAdmin">
                                 <input type="hidden" value="" name="id_user" id="deleteEventUser">
                             </div>
-                            <div class="form-floating">
+                            <div class="form-floating mb-3">
+                                <input name="eventNameDel" type="text" class="form-control" placeholder="Enter event name" id="floatingInputName">
+                                <label for="floatingInputName">Enter event name: </label>
+                            </div>
+                            <p id="evNameErrMsg"></p>
+                            <div class="form-floating mb-3">
                                 <textarea name="deleteMessage" class="form-control deleteMessage" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                                 <label for="floatingTextarea2">Message</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input name="eventNameDel" type="text" class="form-control" placeholder="Enter event name" id="floatingInput">
-                                <label for="floatingInput">Enter event name: </label>
                             </div>
                             <p id="errorMsg"></p>
                             <input type="submit" id="sumbitDeleteForm" class="btn btn-danger" value="Delete Event">
