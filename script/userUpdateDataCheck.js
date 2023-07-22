@@ -25,46 +25,53 @@ let updateInfoFormValidation = () => {
 //update password check
 document.querySelector('#updateUserPasswordForm').addEventListener("submit", function (ev){
     ev.preventDefault();
-    console.log(updatePasswordFormValidation());
     if(updatePasswordFormValidation()){
         this.submit();
+        console.log('button clicked');
     }
 });
 
 
+
 let updatePasswordFormValidation = () => {
     let passCheck = true;
+
     //input tags
     let currentPassword = document.querySelector('#floatingUpdatePassword');
     let newPassword = document.querySelector('#floatingUpdateNewPassword');
     let repNewPassword = document.querySelector('#floatingUpdateRepeatPassword');
 
-    //error messages
+//error messages
     let currPassmsg = document.querySelector('#currentPasswordError');
     let newPassmsg = document.querySelector('#newPasswordError');
     let repnewPassmsg = document.querySelector('#repNewPasswordError');
 
-    if(isEmpty(currentPassword.value) && !isValidPassword(currentPassword.value.trim())) {
+    currPassmsg.innerHTML = '';
+    newPassmsg.innerHTML = '';
+    repnewPassmsg.innerHTML = '';
+
+    if(!isValidPassword(currentPassword.value)) {
         passCheck = false;
         currPassmsg.innerHTML = 'Please enter valid password';
     }
 
-    if(isEmpty(newPassword.value) && !isValidPassword(newPassword.value.trim()) && !(newPassword.value.trim().length > 8)) {
+    if(!isValidPassword(newPassword.value)) {
         passCheck = false;
         newPassmsg.innerHTML = 'Your new password must containt at least 8 charaters where' + '<br/>' + 'One char is uppercase letter' + '<br/>' + 'One is number' + '<br/>' +  'One is special char';
     }
 
-    if(isEmpty(repNewPassword.value) && (newPassword.value.trim() !== repNewPassword.value.trim())) {
+    if((newPassword.value.trim() !== repNewPassword.value.trim())) {
         passCheck = false;
         repnewPassmsg.innerHTML = 'Your passwords does not match.';
     }
 
+    console.log('valid password: ' + passCheck);
     return passCheck;
 }
 
 let isEmpty = value => value === '';
 
 const isValidPassword = (password) => {
-    let rexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    let rexPassword = /^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
     return rexPassword.test(password);
 }

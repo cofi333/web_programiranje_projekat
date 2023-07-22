@@ -148,8 +148,8 @@
                                             <input name="userid" type="hidden" class="form-control" id="floatingUpdatePswdID" placeholder="name@example.com">
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input name="currentPassword" type="password" class="form-control" id="floatingUpdatePassword" placeholder="Your name">
                                             <label for="floatingUpdatePassword">Current password</label>
+                                            <input name="currentPassword" type="password" class="form-control" id="floatingUpdatePassword" placeholder="Your name">
                                             <p id="currentPasswordError" style="color: red"></p>
                                         </div>
 
