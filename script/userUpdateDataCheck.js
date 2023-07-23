@@ -44,17 +44,20 @@ let updatePasswordFormValidation = () => {
     let newPassmsg = document.querySelector('#newPasswordError');
     let repnewPassmsg = document.querySelector('#repNewPasswordError');
 
-    if(isEmpty(currentPassword.value) && !isValidPassword(currentPassword.value.trim())) {
+    currPassmsg.innerHTML='';
+    newPassmsg.innerHTML='';
+
+    if(!isValidPassword(currentPassword.value)) {
         passCheck = false;
         currPassmsg.innerHTML = 'Please enter valid password';
     }
 
-    if(isEmpty(newPassword.value) && !isValidPassword(newPassword.value.trim()) && !(newPassword.value.trim().length > 8)) {
+    if(!isValidPassword(newPassword.value)) {
         passCheck = false;
         newPassmsg.innerHTML = 'Your new password must containt at least 8 charaters where' + '<br/>' + 'One char is uppercase letter' + '<br/>' + 'One is number' + '<br/>' +  'One is special char';
     }
 
-    if(isEmpty(repNewPassword.value) && (newPassword.value.trim() !== repNewPassword.value.trim())) {
+    if((newPassword.value.trim() !== repNewPassword.value.trim())) {
         passCheck = false;
         repnewPassmsg.innerHTML = 'Your passwords does not match.';
     }
