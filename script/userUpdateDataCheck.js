@@ -23,17 +23,19 @@ let updateInfoFormValidation = () => {
 }
 
 //update password check
-document.querySelector('#updateUserPasswordForm').addEventListener("submit", function (ev){
-    ev.preventDefault();
-    console.log(updatePasswordFormValidation());
+document.querySelector('#updateUserPasswordForm').addEventListener("submit", function (e){
+    e.preventDefault();
+
     if(updatePasswordFormValidation()){
         this.submit();
     }
 });
 
 
+
 let updatePasswordFormValidation = () => {
     let passCheck = true;
+
     //input tags
     let currentPassword = document.querySelector('#floatingUpdatePassword');
     let newPassword = document.querySelector('#floatingUpdateNewPassword');
@@ -44,8 +46,11 @@ let updatePasswordFormValidation = () => {
     let newPassmsg = document.querySelector('#newPasswordError');
     let repnewPassmsg = document.querySelector('#repNewPasswordError');
 
-    currPassmsg.innerHTML='';
-    newPassmsg.innerHTML='';
+
+    currPassmsg.innerHTML = '';
+    newPassmsg.innerHTML = '';
+    repnewPassmsg.innerHTML = '';
+
 
     if(!isValidPassword(currentPassword.value)) {
         passCheck = false;
@@ -63,11 +68,12 @@ let updatePasswordFormValidation = () => {
     }
 
     return passCheck;
+
 }
 
 let isEmpty = value => value === '';
 
 const isValidPassword = (password) => {
-    let rexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    let rexPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
     return rexPassword.test(password);
-}
+};

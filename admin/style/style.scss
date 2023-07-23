@@ -5,6 +5,13 @@
   font-family: 'Oxygen', sans-serif;
 }
 
+.admin-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+}
+
 .admin-login {
   background-color: #490149;
 }
@@ -33,11 +40,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
 
   background-color: #6141BD80;
   padding: 0.8em;

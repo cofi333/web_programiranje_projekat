@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <form id="updateUserPasswordForm" method="post" action="php/update-user-password.php">
-                                        <div class="form-floating mb-3">
+                                        <div class="form-floating">
                                             <input name="userid" type="hidden" class="form-control" id="floatingUpdatePswdID" placeholder="name@example.com">
                                         </div>
                                         <div class="form-floating mb-3">
@@ -232,6 +232,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./script/userUpdateDataCheck.js"></script>9
     <script src="./script/fetchJSONFromServer.js"></script>
     <script>
         fetchUserJSON();
@@ -249,6 +250,6 @@
             }
         });
     </script>
-    <script src="script/userUpdateDataCheck.js"></script>
+
 </body>
 </html>

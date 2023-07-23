@@ -1,5 +1,5 @@
 let isEmpty = value => value === '';
-let validForm = false;
+
 
 //delete form validation
 document.querySelector('#deleteForm').addEventListener("submit", function (e){
@@ -11,19 +11,22 @@ document.querySelector('#deleteForm').addEventListener("submit", function (e){
 })
 
 let validateForm = () => {
-
+    let validForm = true;
     let messageBox = document.querySelector('.deleteMessage');
     let errMsg = document.querySelector('#errorMsg');
+    let evName = document.querySelector('#floatingInputName');
+    let evNameErr = document.querySelector('#evNameErrMsg');
 
+    errMsg.innerHTML = '';
+    evNameErr.innerHTML = '';
 
-
-    if(!isEmpty(messageBox.value.trim()) && messageBox.value.trim().length >= 15) {
-        errMsg.innerHTML = '';
-        validForm = true;
-    }
-    else {
+    if(isEmpty(messageBox.value.trim()) || (messageBox.value.trim().length < 15)) {
         errMsg.innerHTML = 'Message is required for deleting event create by user';
         validForm = false;
+    }
+    if (isEmpty(evName.value.trim())) {
+        validForm = false;
+        evNameErr.innerHTML = 'You need to enter event name before deleting it';
     }
 
     return validForm;

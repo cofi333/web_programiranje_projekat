@@ -33,12 +33,12 @@ let validateForm = () => {
         validForm = false;
     }
 
-    if(!(new_password.value.trim().length > 8) && !isValidPassword(new_password)){
+    if(!isValidPassword(new_password.value)){
         validForm = false;
         password_errorMessage.innerHTML = "Your password must contain:" + "<br>" + "Minimum eight characters" + "<br>" + "At least one uppercase letter" + "<br>" + "One lowercase letter" + "<br>" + "One number and one special character";
     }
 
-    if( new_password.value.trim() !== repeat_new_password.value.trim()) {
+    if(new_password.value.trim() !== repeat_new_password.value.trim()) {
         repeat_password_error.innerHTML = "Passwords do not match. Please re-enter.";
         validForm = false;
     }
