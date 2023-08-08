@@ -102,8 +102,8 @@ function sendEmail(PDO $pdo, string $email, array $emailData, string $body): voi
         $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 2525;
-        $phpmailer->Username = '28e695b2b69468';
-        $phpmailer->Password = 'ba9c57e1bb08c1';
+        $phpmailer->Username = '8c6d011cccd20c';
+        $phpmailer->Password = '8f50cb350ba3d2';
 
         $phpmailer->setFrom('webmaster@example.com', 'Webmaster');
         $phpmailer->addAddress("$email");

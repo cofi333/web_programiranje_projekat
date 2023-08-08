@@ -8,6 +8,11 @@ const fetchEventJSON = async () => {
     });
     const data = await res.json();
     let output = "";
+
+    if(data.length === 0) {
+      document.querySelector('.swiper-buttons').style.display = "none";
+    }
+
     //console.log(data);
     for (let i in data) {
       output += `<div class="swiper-slide">
@@ -20,7 +25,9 @@ const fetchEventJSON = async () => {
                    </div>
                </div>`;
     }
+
     document.querySelector(".swiper-wrapper").innerHTML = output;
+
   } catch (e) {
     console.log("Error in fetching data", e);
   }
@@ -67,7 +74,7 @@ const fetchUserEvents = async () => {
     });
     const data = await res.json();
     let output = "";
-    if (data.length === 0) {
+    if (data === 0) {
       output += `<h4 class="text-center py-5">You have no active events</h4>`;
     }
 
@@ -109,6 +116,11 @@ const fetchComments = async () => {
 
     const data = await res.json();
     let output = "";
+
+    if(data.length === 0) {
+      document.querySelector('.swiper-buttons').style.display = "none";
+    }
+
     for (let i in data) {
       output += `
                  <div class="swiper-slide">

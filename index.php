@@ -77,7 +77,7 @@
           </div>
 
           <div class="swiper-buttons">
-              <img id="leftClick" src="./images/iconLeft.svg" alt="leftclick">
+              <img id="leftClick" src="./images/iconLeft.svg" alt="leftClick">
               <img id="rightClick" src="./images/iconRight.svg" alt="rightClick">
           </div>
           <div class="swiper-pagination"></div>
