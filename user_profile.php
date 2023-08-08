@@ -232,7 +232,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./script/userUpdateDataCheck.js"></script>9
+    <script src="./script/userUpdateDataCheck.js"></script>
     <script src="./script/fetchJSONFromServer.js"></script>
     <script>
         fetchUserJSON();

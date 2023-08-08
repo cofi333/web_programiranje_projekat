@@ -170,7 +170,7 @@ let fetchUserEventsAndCheck = async () => {
 
 let fetchGifts = async () => {
   try {
-    const res = await fetch("./php/fetchData/fetch-gifts.php", {
+    const res = await fetch("../php/fetchData/fetch-gifts.php", {
       method: "GET",
       headers: {
         Accept: "application/json",
