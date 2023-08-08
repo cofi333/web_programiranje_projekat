@@ -30,7 +30,10 @@ catch(PDOException $e) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css"/>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/style.css">
     <title>Event Page</title>
@@ -122,19 +125,6 @@ catch(PDOException $e) {
 <footer id="user-footer">
     <div class="container">
         <div class="row">
-            <div class="categories col-md-9">
-                <h6>Categories</h6>
-                <ul class="type">
-                    <li><a href="#">Music</a></li>
-                    <li><a href="#">Nightlife</a></li>
-                    <li><a href="#">Culture</a></li>
-                    <li><a href="#">Food</a></li>
-                    <li><a href="#">Sport</a></li>
-                </ul>
-            </div>
-
-
-
             <div class="social-medias col-md-3">
                 <h6>Follow us</h6>
                 <div class="icons">
@@ -150,7 +140,7 @@ catch(PDOException $e) {
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="node_modules/swiper/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="./script/swiper.js"></script>
 <script src="./script/fetchJSONFromServer.js"></script>
 <script src="https://kit.fontawesome.com/ac55437ec8.js" crossorigin="anonymous"></script>
