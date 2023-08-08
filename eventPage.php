@@ -125,6 +125,15 @@ catch(PDOException $e) {
 <footer id="user-footer">
     <div class="container">
         <div class="row">
+            <div class="categories col-md-9">
+                <h6>createEvent.com</h6>
+                <ul class="type">
+                    <li><a href="./event.php">Host your event</a></li>
+                </ul>
+            </div>
+
+
+
             <div class="social-medias col-md-3">
                 <h6>Follow us</h6>
                 <div class="icons">
