@@ -93,6 +93,7 @@
                     <div class="form-group">
                         <label for="email-forgot">Email</label>
                         <input type="email" class="form-control" id="email-forgot" name="email-forgot" aria-describedby="emailHelp" placeholder="Your email">
+                        <span id="forget-password_error" class="error"></span>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Reset password</button>
@@ -127,5 +128,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./script/forgotPassword.js"></script>
     <script src="script/loginValidateForm.js"></script>
+    <script src="script/forgotPasswordValidateForm.js"></script>
 </body>
 </html>
